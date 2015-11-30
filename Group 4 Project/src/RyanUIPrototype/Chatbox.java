@@ -19,6 +19,7 @@ public class Chatbox extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -48,11 +49,12 @@ public class Chatbox extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblwelcomeToThe = new JLabel("~Welcome to the chat centre~");
-		lblwelcomeToThe.setBounds(145, 11, 156, 14);
+		lblwelcomeToThe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblwelcomeToThe.setBounds(10, 11, 295, 14);
 		contentPane.add(lblwelcomeToThe);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 32, 414, 195);
+		textArea.setBounds(10, 32, 295, 195);
 		contentPane.add(textArea);
 		
 		textField = new JTextField();
@@ -72,5 +74,15 @@ public class Chatbox extends JFrame {
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(307, 236, 60, 23);
 		contentPane.add(btnClear);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(315, 32, 109, 195);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblonlineUsers = new JLabel("~Online Users~");
+		lblonlineUsers.setHorizontalAlignment(SwingConstants.CENTER);
+		lblonlineUsers.setBounds(317, 11, 107, 14);
+		contentPane.add(lblonlineUsers);
 	}
 }
