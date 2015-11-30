@@ -57,21 +57,21 @@ public class Matchmaking extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSubmit.setBounds(14, 164, 101, 23);
+		btnSubmit.setBounds(14, 164, 116, 23);
 		contentPane.add(btnSubmit);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(14, 198, 101, 23);
+		btnClear.setBounds(14, 198, 116, 23);
 		contentPane.add(btnClear);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(14, 232, 101, 23);
+		btnBack.setBounds(14, 232, 116, 23);
 		contentPane.add(btnBack);
 		
 		JLabel lblProfilePicture = new JLabel("Profile Picture");
 		lblProfilePicture.setBackground(Color.YELLOW);
 		lblProfilePicture.setHorizontalAlignment(SwingConstants.CENTER);
-		lblProfilePicture.setBounds(14, 11, 101, 106);
+		lblProfilePicture.setBounds(14, 11, 116, 106);
 		contentPane.add(lblProfilePicture);
 		
 		JLabel lblName = new JLabel("Name:");
@@ -129,6 +129,8 @@ public class Matchmaking extends JFrame {
 		progressBar.setBounds(167, 205, 224, 14);
 		contentPane.add(progressBar);
 		
+		JButton step = new JButton("Step");
+		
 		JLabel lblSearchingForYour = new JLabel("Searching for your match...");
 		lblSearchingForYour.setBounds(167, 181, 220, 14);
 		contentPane.add(lblSearchingForYour);
@@ -138,11 +140,11 @@ public class Matchmaking extends JFrame {
 		contentPane.add(lblMatchFound);
 		
 		JButton btnProceedToChat = new JButton("Proceed to chat >");
-		btnProceedToChat.setBounds(266, 232, 125, 23);
+		btnProceedToChat.setBounds(245, 232, 146, 23);
 		contentPane.add(btnProceedToChat);
 		
 		JButton btnUploadPicture = new JButton("Upload Picture");
-		btnUploadPicture.setBounds(14, 130, 101, 23);
+		btnUploadPicture.setBounds(14, 130, 116, 23);
 		contentPane.add(btnUploadPicture);
 	}
 }
