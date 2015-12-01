@@ -1,5 +1,5 @@
 package DarylUI;
 
-public class hi {
+public class News {
 
 }
