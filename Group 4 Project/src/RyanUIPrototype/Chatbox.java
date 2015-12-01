@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JScrollBar;
 
 public class Chatbox extends JFrame {
 
@@ -55,11 +56,11 @@ public class Chatbox extends JFrame {
 		contentPane.add(lblwelcomeToThe);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 32, 295, 195);
+		textArea.setBounds(10, 32, 280, 195);
 		contentPane.add(textArea);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 238, 295, 18);
+		textField.setBounds(10, 238, 280, 18);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -73,7 +74,7 @@ public class Chatbox extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(307, 236, 60, 23);
+		btnClear.setBounds(298, 236, 63, 23);
 		contentPane.add(btnClear);
 		
 		textField_1 = new JTextField();
@@ -85,5 +86,9 @@ public class Chatbox extends JFrame {
 		lblonlineUsers.setHorizontalAlignment(SwingConstants.CENTER);
 		lblonlineUsers.setBounds(317, 11, 107, 14);
 		contentPane.add(lblonlineUsers);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(288, 31, 17, 195);
+		contentPane.add(scrollBar);
 	}
 }
