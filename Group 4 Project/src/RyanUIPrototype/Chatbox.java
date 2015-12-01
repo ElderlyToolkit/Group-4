@@ -14,11 +14,13 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JScrollBar;
 
 public class Chatbox extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -40,6 +42,7 @@ public class Chatbox extends JFrame {
 	 * Create the frame.
 	 */
 	public Chatbox() {
+		setTitle("Chatroom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,15 +51,16 @@ public class Chatbox extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblwelcomeToThe = new JLabel("~Welcome to the chat centre~");
-		lblwelcomeToThe.setBounds(145, 11, 156, 14);
+		lblwelcomeToThe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblwelcomeToThe.setBounds(10, 11, 295, 14);
 		contentPane.add(lblwelcomeToThe);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 32, 414, 195);
+		textArea.setBounds(10, 32, 280, 195);
 		contentPane.add(textArea);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 238, 295, 18);
+		textField.setBounds(10, 238, 280, 18);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -70,7 +74,21 @@ public class Chatbox extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(307, 236, 60, 23);
+		btnClear.setBounds(298, 236, 63, 23);
 		contentPane.add(btnClear);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(315, 32, 109, 195);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblonlineUsers = new JLabel("~Online Users~");
+		lblonlineUsers.setHorizontalAlignment(SwingConstants.CENTER);
+		lblonlineUsers.setBounds(317, 11, 107, 14);
+		contentPane.add(lblonlineUsers);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(288, 31, 17, 195);
+		contentPane.add(scrollBar);
 	}
 }
