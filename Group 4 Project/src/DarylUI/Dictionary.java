@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Dictionary extends JFrame {
 
@@ -46,19 +49,29 @@ public class Dictionary extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblText = new JLabel("Word/Phrases:\r\n");
-		lblText.setBounds(44, 16, 133, 20);
+		lblText.setBounds(15, 16, 133, 20);
 		contentPane.add(lblText);
 		
 		txtGtg = new JTextField();
-		txtGtg.setText("gtg");
-		txtGtg.setBounds(152, 13, 178, 26);
+		txtGtg.setBounds(126, 13, 178, 26);
 		contentPane.add(txtGtg);
 		txtGtg.setColumns(10);
 		
 		txtrgtgAbbreviationGo = new JTextArea();
 		txtrgtgAbbreviationGo.setFont(new Font("Arial", Font.PLAIN, 16));
-		txtrgtgAbbreviationGo.setText("gtg\r\n  Abbreviation: Go to go\r\n  Usage: Hey mate, gtg see you soon!\r\n  Meaning: Hey mate, go to go see you soon!\r\n");
-		txtrgtgAbbreviationGo.setBounds(44, 52, 330, 152);
+		txtrgtgAbbreviationGo.setBounds(69, 55, 272, 152);
 		contentPane.add(txtrgtgAbbreviationGo);
+		
+		JLabel lblUsage = new JLabel("Usage:");
+		lblUsage.setBounds(15, 52, 69, 20);
+		contentPane.add(lblUsage);
+		
+		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSearch.setBounds(309, 15, 91, 23);
+		contentPane.add(btnSearch);
 	}
 }
