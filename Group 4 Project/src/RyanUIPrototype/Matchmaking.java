@@ -91,7 +91,7 @@ public class Matchmaking extends JFrame {
 		contentPane.add(rdbtnMale);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
-		rdbtnFemale.setBounds(332, 86, 59, 23);
+		rdbtnFemale.setBounds(307, 86, 84, 23);
 		contentPane.add(rdbtnFemale);
 		
 		textField = new JTextField();
@@ -113,11 +113,11 @@ public class Matchmaking extends JFrame {
 		contentPane.add(lblPreference);
 		
 		JRadioButton radioButton = new JRadioButton("Male");
-		radioButton.setBounds(245, 143, 54, 23);
+		radioButton.setBounds(245, 139, 54, 23);
 		contentPane.add(radioButton);
 		
 		JRadioButton radioButton_1 = new JRadioButton("Female");
-		radioButton_1.setBounds(332, 143, 59, 23);
+		radioButton_1.setBounds(307, 139, 84, 23);
 		contentPane.add(radioButton_1);
 		
 		textField_2 = new JTextField();
