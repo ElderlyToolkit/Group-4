@@ -8,11 +8,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
 
 public class NumGenerator extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -41,13 +43,24 @@ public class NumGenerator extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(81, 39, 146, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(41, 30, 129, 26);
+		contentPane.add(comboBox);
 		
-		JLabel lblFakTisShit = new JLabel("fak tis shit im out");
-		lblFakTisShit.setBounds(77, 134, 411, 145);
-		contentPane.add(lblFakTisShit);
+		JLabel lblSetOfNumbers = new JLabel("Set of numbers:");
+		lblSetOfNumbers.setBounds(41, 73, 119, 33);
+		contentPane.add(lblSetOfNumbers);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(164, 76, 43, 26);
+		contentPane.add(comboBox_1);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(41, 122, 506, 226);
+		contentPane.add(textArea);
+		
+		JButton btnGenerate = new JButton("Generate");
+		btnGenerate.setBounds(452, 75, 95, 29);
+		contentPane.add(btnGenerate);
 	}
 }
