@@ -52,7 +52,7 @@ public class Chatbox extends JFrame {
 		
 		JLabel lblwelcomeToThe = new JLabel("~Welcome to the chat centre~");
 		lblwelcomeToThe.setHorizontalAlignment(SwingConstants.CENTER);
-		lblwelcomeToThe.setBounds(10, 11, 295, 14);
+		lblwelcomeToThe.setBounds(109, 11, 181, 14);
 		contentPane.add(lblwelcomeToThe);
 		
 		JTextArea textArea = new JTextArea();
@@ -60,7 +60,7 @@ public class Chatbox extends JFrame {
 		contentPane.add(textArea);
 		
 		textField = new JTextField();
-		textField.setBounds(10, 238, 280, 18);
+		textField.setBounds(10, 238, 257, 18);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -70,11 +70,11 @@ public class Chatbox extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBounds(367, 236, 57, 23);
+		btnNewButton.setBounds(356, 236, 68, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(298, 236, 63, 23);
+		btnClear.setBounds(277, 236, 74, 23);
 		contentPane.add(btnClear);
 		
 		textField_1 = new JTextField();
@@ -90,5 +90,16 @@ public class Chatbox extends JFrame {
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(288, 31, 17, 195);
 		contentPane.add(scrollBar);
+		
+		JButton button = new JButton("< Back");
+		button.setBounds(10, 9, 89, 19);
+		contentPane.add(button);
+		button.addActionListener(new ActionListener () {
+			public void actionPerformed (ActionEvent e) {
+				ChatboxUsername chatboxusername = new ChatboxUsername();
+            	setVisible(false);
+            	chatboxusername.setVisible(true);
+			}
+		});
 	}
 }
