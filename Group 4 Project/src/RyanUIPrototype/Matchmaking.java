@@ -162,13 +162,10 @@ public class Matchmaking extends JFrame {
 				group.clearSelection();
 				prefmale.setSelected(false);
 				preffemale.setSelected(false);
-			}
-		});
-		
-		btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblSearchingForYour.setVisible(true);
-				imagelabel.setVisible(true);
+				lblSearchingForYour.setVisible(false);
+				imagelabel.setVisible(false);
+				lblMatchFound.setVisible(false);
+				btnProceedToChat.setVisible(false);
 			}
 		});
 		
@@ -178,6 +175,26 @@ public class Matchmaking extends JFrame {
 				imagelabel.setVisible(false);
             }
         };
-		new Timer(5000, taskPerformer).start();
+        Timer timer = new Timer(5000, taskPerformer);
+        
+        ActionListener resultDisplay = new ActionListener() {
+        	public void actionPerformed(ActionEvent evt) {
+				lblMatchFound.setVisible(true);
+				btnProceedToChat.setVisible(true);
+        	}
+        };
+        Timer displaytimer = new Timer(5000, resultDisplay);
+        
+        btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblSearchingForYour.setVisible(true);
+				imagelabel.setVisible(true);
+				btnClear.setEnabled(false);
+				btnSubmit.setEnabled(false);
+				btnUploadPicture.setEnabled(false);
+				timer.start();
+				displaytimer.start();
+			}
+		});
 	}
 }
