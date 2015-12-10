@@ -143,6 +143,13 @@ public class Matchmaking extends JFrame {
 		btnProceedToChat.setBounds(245, 198, 146, 23);
 		contentPane.add(btnProceedToChat);
 		btnProceedToChat.setVisible(false);
+		btnProceedToChat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrivateChat privatechat = new PrivateChat();
+				setVisible(false); //hide current frame
+				privatechat.setVisible(true);
+			}
+		});
 		
 		JButton btnUploadPicture = new JButton("Upload Picture");
 		btnUploadPicture.setBounds(14, 130, 116, 23);

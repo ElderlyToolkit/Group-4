@@ -2,7 +2,6 @@ package RyanUIPrototype;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class PrivateChat extends JFrame {
 
@@ -24,7 +24,7 @@ public class PrivateChat extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -82,6 +82,18 @@ public class PrivateChat extends JFrame {
 		JButton button = new JButton("< Back");
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Matchmaking matchmaking = null;
+				try {
+					matchmaking = new Matchmaking();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				setVisible(false);
+				matchmaking.setVisible(true);
+			}
+		});
 		
 		Action action =  new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
