@@ -1,21 +1,21 @@
 package RyanUIPrototype;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.JProgressBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import javax.swing.*;
+import javax.swing.Timer;
+
 
 public class Matchmaking extends JFrame {
 
@@ -23,11 +23,13 @@ public class Matchmaking extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	
+	public final static int FIVE_SECOND = 5000;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -42,8 +44,9 @@ public class Matchmaking extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
 	 */
-	public Matchmaking() {
+	public Matchmaking() throws IOException {
 		setTitle("Matchmaker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -53,14 +56,11 @@ public class Matchmaking extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnSubmit = new JButton("Search");
-		btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
 		btnSubmit.setBounds(14, 164, 116, 23);
 		contentPane.add(btnSubmit);
 		
-		JButton btnClear = new JButton("Clear");
+		JButton btnClear = new JButton("Reset");
 		btnClear.setBounds(14, 198, 116, 23);
 		contentPane.add(btnClear);
 		
@@ -112,39 +112,74 @@ public class Matchmaking extends JFrame {
 		lblPreference.setBounds(167, 143, 59, 14);
 		contentPane.add(lblPreference);
 		
-		JRadioButton radioButton = new JRadioButton("Male");
-		radioButton.setBounds(245, 139, 54, 23);
-		contentPane.add(radioButton);
+		JRadioButton prefmale = new JRadioButton("Male");
+		prefmale.setBounds(245, 139, 54, 23);
+		contentPane.add(prefmale);
 		
-		JRadioButton radioButton_1 = new JRadioButton("Female");
-		radioButton_1.setBounds(307, 139, 84, 23);
-		contentPane.add(radioButton_1);
+		JRadioButton preffemale = new JRadioButton("Female");
+		preffemale.setBounds(307, 139, 84, 23);
+		contentPane.add(preffemale);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnMale);
+		group.add(rdbtnFemale);
 		
 		textField_2 = new JTextField();
 		textField_2.setBounds(206, 112, 185, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(167, 205, 224, 14);
-		contentPane.add(progressBar);
-		
-		JButton step = new JButton("Step");
-		
-		JLabel lblSearchingForYour = new JLabel("Searching for your match...");
+		final JLabel lblSearchingForYour = new JLabel("Searching for your match...");
 		lblSearchingForYour.setBounds(167, 181, 220, 14);
 		contentPane.add(lblSearchingForYour);
+		lblSearchingForYour.setVisible(false);
 		
-		JLabel lblMatchFound = new JLabel("Match found!");
-		lblMatchFound.setBounds(167, 236, 132, 14);
+		final JLabel lblMatchFound = new JLabel("Match found!");
+		lblMatchFound.setBounds(167, 202, 132, 14);
 		contentPane.add(lblMatchFound);
+		lblMatchFound.setVisible(false);
 		
 		JButton btnProceedToChat = new JButton("Proceed to chat >");
-		btnProceedToChat.setBounds(245, 232, 146, 23);
+		btnProceedToChat.setBounds(245, 198, 146, 23);
 		contentPane.add(btnProceedToChat);
+		btnProceedToChat.setVisible(false);
 		
 		JButton btnUploadPicture = new JButton("Upload Picture");
 		btnUploadPicture.setBounds(14, 130, 116, 23);
 		contentPane.add(btnUploadPicture);
+		
+		ImageIcon image = new ImageIcon("C:/Users/User/Documents/GitHub/Group 4 Project/Group 4 Project/245.gif");
+		final JLabel imagelabel = new JLabel(image);
+		imagelabel.setBounds(167, 202, 224, 14);
+		contentPane.add(imagelabel);
+		imagelabel.setVisible(false);
+		
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				group.clearSelection();
+				prefmale.setSelected(false);
+				preffemale.setSelected(false);
+			}
+		});
+		
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblSearchingForYour.setVisible(true);
+				imagelabel.setVisible(true);
+			}
+		});
+		
+		ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	lblSearchingForYour.setVisible(false);
+				imagelabel.setVisible(false);
+				lblMatchFound.setVisible(true);
+				btnProceedToChat.setVisible(true);
+            }
+        };
+		new Timer(3000, taskPerformer).start();
 	}
 }
