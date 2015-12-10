@@ -1,13 +1,17 @@
 package RyanUIPrototype;
 
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
 
-public class Events{
+public class Events extends JFrame{
     static JLabel lblMonth, lblYear;
     static JButton btnPrev, btnNext;
     static JTable tblCalendar;
@@ -19,7 +23,7 @@ public class Events{
     static JPanel pnlCalendar;
     static int realYear, realMonth, realDay, currentYear, currentMonth;
     
-    public static void main (String args[]){
+    public static void main (String args[]) throws IOException {
         //Look and feel
         try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
         catch (ClassNotFoundException e) {}
