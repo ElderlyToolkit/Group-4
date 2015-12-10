@@ -176,10 +176,8 @@ public class Matchmaking extends JFrame {
             public void actionPerformed(ActionEvent evt) {
             	lblSearchingForYour.setVisible(false);
 				imagelabel.setVisible(false);
-				lblMatchFound.setVisible(true);
-				btnProceedToChat.setVisible(true);
             }
         };
-		new Timer(3000, taskPerformer).start();
+		new Timer(5000, taskPerformer).start();
 	}
 }
