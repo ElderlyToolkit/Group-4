@@ -148,7 +148,7 @@ public class Matchmaking extends JFrame {
 		btnUploadPicture.setBounds(14, 130, 116, 23);
 		contentPane.add(btnUploadPicture);
 		
-		ImageIcon image = new ImageIcon("C:/Users/User/Documents/GitHub/Group 4 Project/Group 4 Project/245.gif");
+		ImageIcon image = new ImageIcon("Images/245.GIF");
 		final JLabel imagelabel = new JLabel(image);
 		imagelabel.setBounds(167, 202, 224, 14);
 		contentPane.add(imagelabel);
