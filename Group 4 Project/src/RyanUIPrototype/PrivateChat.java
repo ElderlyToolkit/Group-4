@@ -8,8 +8,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.awt.event.ActionEvent;
 
 public class PrivateChat extends JFrame {
@@ -57,10 +61,19 @@ public class PrivateChat extends JFrame {
 		JButton btnSend = new JButton("Send");
 		btnSend.setBounds(352, 229, 72, 23);
 		contentPane.add(btnSend);
+		btnSend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+				String input = textField.getText();
+				textArea.append(timeStamp + " " + input + "\n");
+				textField.setText("");
+			}
+		});
 		
 		JButton btnNewButton = new JButton("Clear");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
 			}
 		});
 		btnNewButton.setBounds(285, 229, 67, 23);
@@ -69,5 +82,15 @@ public class PrivateChat extends JFrame {
 		JButton button = new JButton("< Back");
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
+		
+		Action action =  new AbstractAction() {
+			public void actionPerformed(ActionEvent e) {
+			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+			String input = textField.getText();
+			textArea.append(timeStamp + " " + input + "\n");
+			textField.setText("");
+		}
+		};
+		textField.addActionListener(action);
 	}
 }
