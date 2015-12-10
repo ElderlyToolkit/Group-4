@@ -38,6 +38,7 @@ public class News extends JFrame {
 	 * Create the frame.
 	 */
 	public News() {
+		setTitle("News");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 669, 452);
 		contentPane = new JPanel();

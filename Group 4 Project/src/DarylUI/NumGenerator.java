@@ -36,6 +36,7 @@ public class NumGenerator extends JFrame {
 	 * Create the frame.
 	 */
 	public NumGenerator() {
+		setTitle("Number Generator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 620, 420);
 		contentPane = new JPanel();
