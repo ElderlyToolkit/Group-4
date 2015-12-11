@@ -9,9 +9,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollBar;
@@ -56,7 +60,7 @@ public class Chatbox extends JFrame {
 		contentPane.add(lblwelcomeToThe);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 32, 280, 195);
+		textArea.setBounds(10, 32, 295, 195);
 		contentPane.add(textArea);
 		
 		textField = new JTextField();
@@ -67,7 +71,11 @@ public class Chatbox extends JFrame {
 		JButton btnNewButton = new JButton("Send");
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+				String input = textField.getText();
+				textArea.append(timeStamp + " " + input + "\n");
+				textField.setText("");
 			}
 		});
 		btnNewButton.setBounds(356, 236, 68, 23);
@@ -87,10 +95,6 @@ public class Chatbox extends JFrame {
 		lblonlineUsers.setBounds(317, 11, 107, 14);
 		contentPane.add(lblonlineUsers);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(288, 31, 17, 195);
-		contentPane.add(scrollBar);
-		
 		JButton button = new JButton("< Back");
 		button.setBounds(10, 9, 89, 19);
 		contentPane.add(button);
@@ -101,5 +105,15 @@ public class Chatbox extends JFrame {
             	chatboxusername.setVisible(true);
 			}
 		});
+		
+		Action action =  new AbstractAction() {
+			public void actionPerformed(ActionEvent e) {
+			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+			String input = textField.getText();
+			textArea.append(timeStamp + " " + input + "\n");
+			textField.setText("");
+		}
+		};
+		textField.addActionListener(action);
 	}
 }

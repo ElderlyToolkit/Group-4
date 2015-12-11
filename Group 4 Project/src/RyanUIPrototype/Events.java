@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class Events extends JFrame{
+	public Events() {
+	}
     static JLabel lblMonth, lblYear;
     static JButton btnPrev, btnNext;
     static JTable tblCalendar;
@@ -32,9 +34,9 @@ public class Events extends JFrame{
         catch (UnsupportedLookAndFeelException e) {}
         
         //Prepare frame
-        frmMain = new JFrame ("Gestionnaire de clients"); //Create frame
+        frmMain = new JFrame (""); //Create frame
         frmMain.setTitle("Calendar");
-        frmMain.setSize(330, 375); //Set size to 400x400 pixels
+        frmMain.setSize(400, 400); //Set size to 400x400 pixels
         pane = frmMain.getContentPane(); //Get content pane
         pane.setLayout(null); //Apply null layout
         frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Close when X is clicked
@@ -45,7 +47,11 @@ public class Events extends JFrame{
         cmbYear = new JComboBox();
         btnPrev = new JButton ("Previous");
         btnNext = new JButton ("Next");
-        mtblCalendar = new DefaultTableModel(){public boolean isCellEditable(int rowIndex, int mColIndex){return false;}};
+        mtblCalendar = new DefaultTableModel(){
+        	public boolean isCellEditable(int rowIndex, int mColIndex) {
+        		return false;
+        		}
+        	};
         tblCalendar = new JTable(mtblCalendar);
         stblCalendar = new JScrollPane(tblCalendar);
         pnlCalendar = new JPanel(null);
