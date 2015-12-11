@@ -180,17 +180,11 @@ public class Matchmaking extends JFrame {
             public void actionPerformed(ActionEvent evt) {
             	lblSearchingForYour.setVisible(false);
 				imagelabel.setVisible(false);
+				lblMatchFound.setVisible(true);
+				btnProceedToChat.setVisible(true);
             }
         };
         Timer timer = new Timer(5000, taskPerformer);
-        
-        ActionListener resultDisplay = new ActionListener() {
-        	public void actionPerformed(ActionEvent evt) {
-				lblMatchFound.setVisible(true);
-				btnProceedToChat.setVisible(true);
-        	}
-        };
-        Timer displaytimer = new Timer(5000, resultDisplay);
         
         btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -200,7 +194,6 @@ public class Matchmaking extends JFrame {
 				btnSubmit.setEnabled(false);
 				btnUploadPicture.setEnabled(false);
 				timer.start();
-				displaytimer.start();
 			}
 		});
 	}
