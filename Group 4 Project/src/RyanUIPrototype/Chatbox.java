@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -53,14 +54,14 @@ public class Chatbox extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblwelcomeToThe = new JLabel("~Welcome to the chat centre~");
+
+		final JLabel lblwelcomeToThe = new JLabel("~Welcome to the chatroom!~");
 		lblwelcomeToThe.setHorizontalAlignment(SwingConstants.CENTER);
-		lblwelcomeToThe.setBounds(109, 11, 181, 14);
+		lblwelcomeToThe.setBounds(10, 29, 295, 18);
 		contentPane.add(lblwelcomeToThe);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 32, 295, 195);
+		textArea.setBounds(10, 51, 295, 176);
 		contentPane.add(textArea);
 		
 		textField = new JTextField();
@@ -86,13 +87,13 @@ public class Chatbox extends JFrame {
 		contentPane.add(btnClear);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(315, 32, 109, 195);
+		textField_1.setBounds(315, 51, 109, 176);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblonlineUsers = new JLabel("~Online Users~");
 		lblonlineUsers.setHorizontalAlignment(SwingConstants.CENTER);
-		lblonlineUsers.setBounds(317, 11, 107, 14);
+		lblonlineUsers.setBounds(317, 31, 107, 14);
 		contentPane.add(lblonlineUsers);
 		
 		JButton button = new JButton("< Back");

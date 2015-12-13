@@ -40,6 +40,7 @@ public class ChatboxUsername extends JFrame {
 	 * Create the frame.
 	 */
 	public ChatboxUsername() {
+		setTitle("Chatroom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -47,23 +48,24 @@ public class ChatboxUsername extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblwelcomeToThe = new JLabel("~Welcome to the chatroom!~");
+		ImageIcon logo = new ImageIcon("Images/logo.png");
+		JLabel lblwelcomeToThe = new JLabel(logo);
 		lblwelcomeToThe.setHorizontalAlignment(SwingConstants.CENTER);
-		lblwelcomeToThe.setBounds(10, 11, 414, 14);
+		lblwelcomeToThe.setBounds(10, 33, 414, 89);
 		contentPane.add(lblwelcomeToThe);
 		
 		textField = new JTextField();
-		textField.setBounds(118, 101, 212, 20);
+		textField.setBounds(118, 158, 212, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblEnterANickname = new JLabel("Enter a nickname:");
 		lblEnterANickname.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEnterANickname.setBounds(118, 76, 212, 14);
+		lblEnterANickname.setBounds(118, 133, 212, 14);
 		contentPane.add(lblEnterANickname);
 		
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(227, 132, 89, 23);
+		btnSubmit.setBounds(241, 189, 89, 23);
 		contentPane.add(btnSubmit);
 		
 		JButton button = new JButton("< Back");
@@ -72,12 +74,12 @@ public class ChatboxUsername extends JFrame {
 		
 		ImageIcon image = new ImageIcon("Images/ajax-loader.gif");
 		final JLabel loadingLabel = new JLabel(image);
-		loadingLabel.setBounds(201, 177, 46, 35);
+		loadingLabel.setBounds(201, 189, 46, 35);
 		contentPane.add(loadingLabel);
 		loadingLabel.setVisible(false);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(128, 132, 89, 23);
+		btnClear.setBounds(118, 189, 89, 23);
 		contentPane.add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
@@ -96,8 +98,8 @@ public class ChatboxUsername extends JFrame {
         
         btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				btnSubmit.setEnabled(false);
-				btnClear.setEnabled(false);
+				btnSubmit.setVisible(false);
+				btnClear.setVisible(false);
 				loadingLabel.setVisible(true);
 				timer.start();
 			}
