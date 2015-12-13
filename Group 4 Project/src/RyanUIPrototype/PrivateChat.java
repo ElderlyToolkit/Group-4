@@ -2,6 +2,9 @@ package RyanUIPrototype;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.FontFormatException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -14,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
 
 public class PrivateChat extends JFrame {
@@ -39,8 +43,14 @@ public class PrivateChat extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
+	 * @throws FontFormatException 
 	 */
-	public PrivateChat() {
+	public PrivateChat() throws FontFormatException, IOException {
+		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
+		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
+		Font sizedFont = font.deriveFont(12f);
+		
 		setTitle("Matchmaker Chat");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -51,15 +61,18 @@ public class PrivateChat extends JFrame {
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(10, 45, 414, 177);
+		textArea.setFont(sizedFont);
 		contentPane.add(textArea);
 		
 		textField = new JTextField();
 		textField.setBounds(10, 230, 268, 20);
+		textField.setFont(sizedFont);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnSend = new JButton("Send");
 		btnSend.setBounds(352, 229, 72, 23);
+		btnSend.setFont(sizedFont);
 		contentPane.add(btnSend);
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -77,17 +90,19 @@ public class PrivateChat extends JFrame {
 			}
 		});
 		btnNewButton.setBounds(285, 229, 67, 23);
+		btnNewButton.setFont(sizedFont);
 		contentPane.add(btnNewButton);
 		
 		JButton button = new JButton("< Back");
 		button.setBounds(10, 11, 89, 23);
+		button.setFont(sizedFont);
 		contentPane.add(button);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Matchmaking matchmaking = null;
 				try {
 					matchmaking = new Matchmaking();
-				} catch (IOException e1) {
+				} catch (IOException | FontFormatException e1) {
 					e1.printStackTrace();
 				}
 				setVisible(false);
