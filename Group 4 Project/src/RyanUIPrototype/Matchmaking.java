@@ -232,11 +232,11 @@ public class Matchmaking extends JFrame {
 				btnSubmit.setEnabled(false);
 				btnUploadPicture.setEnabled(false);
 				
-				Constructors constructor = new Constructors(name, age, 1, email, 1);
+				MatchmakingConsructor constructor = new MatchmakingConsructor(name, age, 1, email, 1);
 				lblSearchingForYour.setVisible(true);
 				imagelabel.setVisible(true);
 				try {
-					id= DA.createMatchmaking(constructor);
+					id= MatchmakingDA.createMatchmaking(constructor);
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				}

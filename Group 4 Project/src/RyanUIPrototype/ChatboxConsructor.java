@@ -1,8 +1,8 @@
 package RyanUIPrototype;
 
-import RyanUIPrototype.DA;
+import RyanUIPrototype.MatchmakingDA;
 
-public class Constructors {
+public class ChatboxConsructor {
 	private int id;
 	private static String name;
 	private static String age;
@@ -10,11 +10,11 @@ public class Constructors {
 	private static String email;
 	private static int preference;
 	
-	public Constructors() {
+	public ChatboxConsructor() {
 		super();
 	}
 	
-	public Constructors(String name, String age, int gender, String email, int preference) {
+	public ChatboxConsructor(String name, String age, int gender, String email, int preference) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
@@ -57,15 +57,5 @@ public class Constructors {
 	}
 	public void setPreference(int preference) {
 		this.preference = preference;
-	}
-	
-	public static void main (String[] args) throws ClassNotFoundException {
-		Constructors constructor = new Constructors ("Peter", "18", 1, "stupid@idiot.com", 1);
-    	System.out.println("Connecting to database...");
-    	int id= DA.createMatchmaking(constructor);
-    	if (id>0) {
-    		constructor.setId(id);
-    		System.out.println("Entry was created");
-    	}
 	}
 }
