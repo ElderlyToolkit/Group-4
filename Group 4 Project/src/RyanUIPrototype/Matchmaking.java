@@ -1,9 +1,9 @@
 package RyanUIPrototype;
 
+import Database.DBController;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontFormatException;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,8 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.*;
 import javax.swing.Timer;
 

@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet; 
 import java.sql.Statement;
 
-public class DBController_Events {
+public class DBController {
 	private Connection con; 
 	
 	/********************************************************
@@ -29,8 +29,8 @@ public class DBController_Events {
 	public void getConnection(){ 
 		String url = ""; 
 		try { 
-			url = "jdbc:mysql://localhost:8866/events"; 
-			con = DriverManager.getConnection(url, "admin", "admin"); 
+			url = "jdbc:mysql://localhost:8866/group4project"; 
+			con = DriverManager.getConnection(url, "Admin", "admin"); 
 			System.out.println("Successfully connected to " + url+ "."); 
 		} 
 		catch (java.sql.SQLException e) { 
@@ -131,7 +131,7 @@ public class DBController_Events {
 		}
 	}
 	public static void main(String[] arg)throws Exception{
-		DBController_Events db = new DBController_Events();
+		DBController db = new DBController();
 		db.testDriver();
 	}
 }
