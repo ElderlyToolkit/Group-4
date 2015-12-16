@@ -7,7 +7,7 @@ import Database.DBController;
 
 
 public class DA {
-	public static int createMatchmaking(Constructors constructor){
+	public static int createMatchmaking(Constructors constructor) throws ClassNotFoundException{
     	DBController db=new DBController();
     	String dbQuery;
     	PreparedStatement pstmt;
@@ -23,7 +23,7 @@ public class DA {
     	//step 3: to insert record
     	try {
     		pstmt.setString(1,Constructors.getName());
-    		pstmt.setInt(2,Constructors.getAge());
+    		pstmt.setString(2,Constructors.getAge());
     		pstmt.setInt(3,Constructors.getGender());
     		pstmt.setString(4, Constructors.getEmail());
     		pstmt.setInt(5, Constructors.getPreference());

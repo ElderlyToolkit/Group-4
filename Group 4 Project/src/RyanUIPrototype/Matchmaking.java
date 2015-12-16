@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.*;
@@ -221,13 +222,35 @@ public class Matchmaking extends JFrame {
         Timer timer = new Timer(5000, taskPerformer);
         
         btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblSearchingForYour.setVisible(true);
-				imagelabel.setVisible(true);
+			public void actionPerformed(ActionEvent e){
+				int id = 0;
+				
+				String name = textField.getText();
+				String age = textField_1.getText();
+				String email = textField_2.getText();
 				btnClear.setEnabled(false);
 				btnSubmit.setEnabled(false);
 				btnUploadPicture.setEnabled(false);
-				timer.start();
+				
+				Constructors constructor = new Constructors(name, age, 1, email, 1);
+				lblSearchingForYour.setVisible(true);
+				imagelabel.setVisible(true);
+				try {
+					id= DA.createMatchmaking(constructor);
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				
+				if (id>0) {
+		    		constructor.setId(id);
+		    		lblSearchingForYour.setVisible(false);
+					imagelabel.setVisible(false);
+					lblMatchFound.setVisible(true);
+					btnProceedToChat.setVisible(true);
+		    		//System.out.println("Entry was created");
+		    	}
+				
+				//timer.start();
 			}
 		});
 	}

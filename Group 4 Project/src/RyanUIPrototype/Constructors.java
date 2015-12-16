@@ -5,7 +5,7 @@ import RyanUIPrototype.DA;
 public class Constructors {
 	private int id;
 	private static String name;
-	private static int age;
+	private static String age;
 	private static int gender;
 	private static String email;
 	private static int preference;
@@ -14,7 +14,7 @@ public class Constructors {
 		super();
 	}
 	
-	public Constructors(String name, int age, int gender, String email, int preference) {
+	public Constructors(String name, String age, int gender, String email, int preference) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
@@ -34,10 +34,10 @@ public class Constructors {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public static int getAge() {
+	public static String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	public static int getGender() {
@@ -59,9 +59,9 @@ public class Constructors {
 		this.preference = preference;
 	}
 	
-	public static void main (String[] args) {
-		Constructors constructor = new Constructors ("Peter", 18, 1, "stupid@idiot.com", 1);
-    	System.out.println(constructor);
+	public static void main (String[] args) throws ClassNotFoundException {
+		Constructors constructor = new Constructors ("Peter", "18", 1, "stupid@idiot.com", 1);
+    	System.out.println("Connecting to database...");
     	int id= DA.createMatchmaking(constructor);
     	if (id>0) {
     		constructor.setId(id);
