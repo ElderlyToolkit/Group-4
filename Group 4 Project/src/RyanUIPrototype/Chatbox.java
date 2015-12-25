@@ -77,6 +77,9 @@ public class Chatbox extends JFrame {
 				String input = textField.getText();
 				textArea.append(timeStamp + " " + input + "\n");
 				textField.setText("");
+				
+				ChatboxConstructor constructor = new ChatboxConstructor(input);
+				int id = ChatboxDA.createItem(constructor);
 			}
 		});
 		btnNewButton.setBounds(356, 236, 68, 23);

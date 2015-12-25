@@ -29,8 +29,8 @@ public class DBController {
 	public void getConnection() { 
 		String url = ""; 
 		try {
-			//url = "jdbc:mysql://localhost:8866/group4project"; //Local Server
-			url = "jdbc:mysql://db4free.net:3306/group4project"; //Remote Server (db4free)
+			url = "jdbc:mysql://localhost:8866/group4project"; //Local Server
+			//url = "jdbc:mysql://db4free.net:3306/group4project"; //Remote Server (db4free)
 			//url = "http://sql6.freesqldatabase.com:3306/group4project"; //Remote Server (FreeSQL)
 			con = DriverManager.getConnection(url, "ryan", "password"); 
 			System.out.println("Successfully connected to " + url+ "."); 
