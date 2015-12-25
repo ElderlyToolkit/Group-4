@@ -1,4 +1,4 @@
-package aye2;
+package AyeUi;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

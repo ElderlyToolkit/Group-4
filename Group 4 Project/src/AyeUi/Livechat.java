@@ -1,4 +1,4 @@
-package Screen3;
+package AyeUi;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

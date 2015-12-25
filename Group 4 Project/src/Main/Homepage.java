@@ -1,4 +1,4 @@
-package aye1;
+package Main;
 import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
