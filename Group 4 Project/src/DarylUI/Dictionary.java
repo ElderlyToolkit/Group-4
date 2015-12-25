@@ -18,8 +18,8 @@ import java.awt.event.ActionEvent;
 public class Dictionary extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtGtg;
-	private JTextArea txtrgtgAbbreviationGo;
+	private JTextField txt;
+	private JTextArea Usage;
 
 	/**
 	 * Launch the application.
@@ -53,15 +53,15 @@ public class Dictionary extends JFrame {
 		lblText.setBounds(15, 16, 133, 20);
 		contentPane.add(lblText);
 		
-		txtGtg = new JTextField();
-		txtGtg.setBounds(126, 13, 178, 26);
-		contentPane.add(txtGtg);
-		txtGtg.setColumns(10);
+		txt = new JTextField();
+		txt.setBounds(126, 13, 178, 26);
+		contentPane.add(txt);
+		txt.setColumns(10);
 		
-		txtrgtgAbbreviationGo = new JTextArea();
-		txtrgtgAbbreviationGo.setFont(new Font("Arial", Font.PLAIN, 16));
-		txtrgtgAbbreviationGo.setBounds(69, 55, 272, 152);
-		contentPane.add(txtrgtgAbbreviationGo);
+		Usage = new JTextArea();
+		Usage.setFont(new Font("Arial", Font.PLAIN, 16));
+		Usage.setBounds(69, 55, 272, 152);
+		contentPane.add(Usage);
 		
 		JLabel lblUsage = new JLabel("Usage:");
 		lblUsage.setBounds(15, 52, 69, 20);
@@ -70,8 +70,10 @@ public class Dictionary extends JFrame {
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
+		
 		btnSearch.setBounds(309, 15, 91, 23);
 		contentPane.add(btnSearch);
 	}
