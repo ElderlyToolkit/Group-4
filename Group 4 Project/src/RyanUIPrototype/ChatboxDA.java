@@ -3,11 +3,11 @@ package RyanUIPrototype;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import SQLDemo.item;
+import Database.DBController;
 
 public class ChatboxDA {
 	
-    public static int createItem(item item){
+    public static int createItem(ChatboxConsructor constructor){
     	DBController db=new DBController();
     	String dbQuery;
     	PreparedStatement pstmt;
