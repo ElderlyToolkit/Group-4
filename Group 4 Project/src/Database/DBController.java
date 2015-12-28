@@ -48,10 +48,12 @@ public class DBController {
 	 ************************************************************/
 	public ResultSet readRequest(String dbQuery) {
 		ResultSet rs = null;
+		Connection con1;
 		System.out.println("DB Query: " + dbQuery);
 		try {
 			// create a statement object
-			Statement stmt = con.createStatement();
+			con1 = DriverManager.getConnection("jdbc:mysql://localhost:8866/group4project", "ryan", "password");
+			Statement stmt = con1.createStatement();
 			// execute an SQL query and get the result
 			rs = stmt.executeQuery(dbQuery);
 		} catch (Exception e) {

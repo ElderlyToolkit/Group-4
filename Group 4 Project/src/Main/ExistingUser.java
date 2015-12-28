@@ -122,18 +122,12 @@ public class ExistingUser extends JFrame {
 				String databasePassword = null;
 				ResultSet rs = null;
 				
-				//DBController db=new DBController();
+				DBController db=new DBController();
 				
 				String dbQuery = "SELECT name, password FROM users WHERE name='" + name + "' AND password='" + password+ "'";
 				
 				//queries database
-				try {
-					con = DriverManager.getConnection("jdbc:mysql://localhost:8866/group4project", "ryan", "password");
-					Statement stmt = con.createStatement();
-					rs = stmt.executeQuery(dbQuery);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				rs = db.readRequest(dbQuery);
 				
 				//check username and password
 				try {
@@ -147,8 +141,11 @@ public class ExistingUser extends JFrame {
 
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
 			        lblLoginSucessful.setVisible(true);
+			        textField.setText("");
+			        textField_1.setText("");
 			    } else {
 			        lblLoginFailed.setVisible(true);
+			        textField_1.setText("");
 			    }
 			}
 		});
