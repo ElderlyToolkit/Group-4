@@ -1,6 +1,6 @@
 package RyanUIPrototype;
 
-import RyanUIPrototype.MatchmakingDA;
+import Database.DBController;
 
 public class ChatboxConstructor {
 	private int id;
