@@ -11,6 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ButtonGroup;
+import java.lang.Math;
+import javax.swing.JOptionPane;
 
 public class NumGenerator extends JFrame {
 
@@ -19,6 +25,11 @@ public class NumGenerator extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	public void infoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,24 +55,83 @@ public class NumGenerator extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(41, 30, 129, 26);
-		contentPane.add(comboBox);
+		JRadioButton b2 = new JRadioButton("Toto");
+		b2.setBounds(105, 29, 155, 29);
+		contentPane.add(b2);
+		
+		JRadioButton b1 = new JRadioButton("4D");
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		b1.setBounds(41, 29, 57, 29);
+		contentPane.add(b1);
+		
+		ButtonGroup category = new ButtonGroup();
+		category.add(b1);
+		category.add(b2);
+		
 		
 		JLabel lblSetOfNumbers = new JLabel("Set of numbers:");
 		lblSetOfNumbers.setBounds(41, 73, 119, 33);
 		contentPane.add(lblSetOfNumbers);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(164, 76, 43, 26);
-		contentPane.add(comboBox_1);
+		JComboBox set = new JComboBox();
+		set.setBounds(164, 76, 43, 26);
+		contentPane.add(set);
+		set.addItem("1");
+		set.addItem("2");
+		set.addItem("3");
+		set.addItem("4");
+		set.addItem("5");
+		set.addItem("6");
+		set.addItem("7");
+		set.addItem("8");
+		set.addItem("9");
+		set.addItem("10");
+		
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(41, 122, 506, 226);
 		contentPane.add(textArea);
 		
-		JButton btnGenerate = new JButton("Generate");
-		btnGenerate.setBounds(452, 75, 95, 29);
-		contentPane.add(btnGenerate);
+		JButton HUAT = new JButton("Generate");
+		HUAT.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int x;
+				String y;
+				if (b1.isSelected()) {
+					for (int i = 0; i <= set.getSelectedIndex() ; i++){ 
+					x = (int) (Math.random() * 10000);
+					y = "" + x + " ";
+					textArea.append(y);
+				}
+				}
+				else if (b2.isSelected() ){
+					for (int i = 0; i <= set.getSelectedIndex() ; i++) {
+						x = (int) (Math.random() * 49) + 1;
+						y = "" + x + " ";
+						textArea.append(y);;
+					}
+				}
+				
+				else {
+					infoBox("Please select 4D/Toto.","Error");
+				}
+					
+			}
+		});
+		HUAT.setBounds(452, 75, 95, 29);
+		contentPane.add(HUAT);
+		
+		JButton Clear = new JButton("Clear");
+		Clear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText("");
+			}
+		});
+		Clear.setBounds(366, 75, 69, 29);
+		contentPane.add(Clear);
 	}
 }
