@@ -15,12 +15,14 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.sql.DriverManager;
 
 public class ExistingUser extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private Connection con;
 
 	/**
 	 * Launch the application.
@@ -118,13 +120,20 @@ public class ExistingUser extends JFrame {
 				String password = textField_1.getText();
 				String databaseUsername = null;
 				String databasePassword = null;
+				ResultSet rs = null;
 				
-				DBController db=new DBController();
+				//DBController db=new DBController();
 				
-				String SQL = "SELECT name, password FROM users WHERE name='" + name + "' AND password='" + password+ "'";
+				String dbQuery = "SELECT name, password FROM users WHERE name='" + name + "' AND password='" + password+ "'";
 				
 				//queries database
-				ResultSet rs = db.readRequest(SQL);
+				try {
+					con = DriverManager.getConnection("jdbc:mysql://localhost:8866/group4project", "ryan", "password");
+					Statement stmt = con.createStatement();
+					rs = stmt.executeQuery(dbQuery);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				
 				//check username and password
 				try {
@@ -139,7 +148,7 @@ public class ExistingUser extends JFrame {
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
 			        lblLoginSucessful.setVisible(true);
 			    } else {
-			        lblLoginFailed.setVisible(false);
+			        lblLoginFailed.setVisible(true);
 			    }
 			}
 		});
