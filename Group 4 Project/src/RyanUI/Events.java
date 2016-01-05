@@ -1,19 +1,30 @@
 package RyanUI;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import com.toedter.calendar.JDayChooser;
-import com.toedter.components.JSpinField;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class Events extends JFrame {
 
+	protected static String Date = null;
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -42,13 +53,55 @@ public class Events extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblLogo = new JLabel("Logo");
-		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogo.setBounds(190, 28, 46, 14);
-		contentPane.add(lblLogo);
+		ImageIcon image = new ImageIcon("Images/logo.png");
+		final JLabel imagelabel = new JLabel(image);
+		imagelabel.setBounds(10, 45, 414, 103);
+		contentPane.add(imagelabel);
 		
 		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(93, 88, 252, 20);
+		dateChooser.setBounds(100, 159, 252, 20);
 		contentPane.add(dateChooser);
+		
+		JButton button = new JButton("< Back");
+		button.setBounds(10, 11, 89, 23);
+		contentPane.add(button);
+		
+		textField = new JTextField();
+		textField.setBounds(100, 190, 252, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSelectedDate = new JLabel("Selected Date:");
+		lblSelectedDate.setBounds(24, 193, 75, 14);
+		contentPane.add(lblSelectedDate);
+		
+		JButton btnViewEvents = new JButton("View Events");
+		btnViewEvents.setBounds(153, 221, 141, 23);
+		contentPane.add(btnViewEvents);
+		
+		dateChooser.addPropertyChangeListener (new PropertyChangeListener() {
+			public void propertyChange (PropertyChangeEvent e) {
+				
+				if ("date".equals(e.getPropertyName())) {
+	                System.out.println(e.getPropertyName() + ": " + (Date) e.getNewValue());
+	                String output = e.getPropertyName() + ": " + (Date) e.getNewValue();
+	                Date = output.substring(6, 16);
+	                textField.setText(Date);
+			}
+			}
+		});
+		
+		btnViewEvents.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				DayEvent dayevent = null;
+				try {
+					dayevent = new DayEvent();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				setVisible(false);
+				dayevent.setVisible(true);
+			}
+		});
 	}
 }

@@ -1,11 +1,8 @@
 package RyanUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -13,16 +10,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
-import java.awt.Color;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import javax.swing.JMenuItem;
+import javax.swing.JComboBox;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+
 
 public class DayEvent extends JFrame {
 
@@ -46,8 +40,11 @@ public class DayEvent extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public DayEvent() {
+	@SuppressWarnings("null")
+	public DayEvent() throws FileNotFoundException, IOException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -61,27 +58,33 @@ public class DayEvent extends JFrame {
 		
 		JLabel lblTodaysDate = new JLabel("Today's Date");
 		lblTodaysDate.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTodaysDate.setBounds(109, 15, 315, 14);
+		lblTodaysDate.setBounds(109, 15, 216, 14);
+		String selecteddate = Events.Date;
 		contentPane.add(lblTodaysDate);
+		lblTodaysDate.setText(selecteddate);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 45, 414, 8);
 		contentPane.add(separator);
 		
-		JLabel lblam = new JLabel("Timings");
-		lblam.setHorizontalAlignment(SwingConstants.CENTER);
-		lblam.setForeground(Color.BLACK);
-		lblam.setBackground(UIManager.getColor("List.background"));
-		lblam.setBounds(10, 57, 62, 193);
-		Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
-		lblam.setBorder(border);
-		contentPane.add(lblam);
+		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSave.setBounds(335, 11, 89, 23);
+		contentPane.add(btnSave);
 		
-		JLabel lblNewLabel = new JLabel("Events");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(71, 57, 353, 193);
-		lblNewLabel.setBorder(border);
-		contentPane.add(lblNewLabel);
+		JLabel lblSelectTimeslot = new JLabel("Select Timeslot:");
+		lblSelectTimeslot.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectTimeslot.setBounds(10, 61, 89, 14);
+		contentPane.add(lblSelectTimeslot);
+		
+		JComboBox<?> comboBox = new JComboBox<Object>();
+		comboBox.setModel((ComboBoxModel<?>) new DefaultComboBoxModel<Object>(new String[] {"6AM to 7AM", "7AM to 8AM", "8AM to 9AM", "9AM to 10AM", "10AM to 11AM", "11AM to 12PM", "12PM to 1PM", "1PM to 2PM", "2PM to 3PM", "3PM to 4PM", "4PM to 5PM", "5PM to 6PM", "6PM to 7PM", "7PM to 8PM", "8PM to 9PM", "9PM to 10PM", "10PM to 11PM", "11PM to 12PM"}));
+		comboBox.setMaximumRowCount(18);
+		comboBox.setBounds(95, 58, 127, 17);
+		contentPane.add(comboBox);
 		
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {

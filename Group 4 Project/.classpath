@@ -5,9 +5,6 @@
 	<classpathentry kind="src" path="Fonts"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector.J 5.1/mysql-connector-java-5.1.38-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre1.8.0_66/lib/jdatepicker-1.3.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User/Documents/Poly/SF1502/Year 1/Sem 2/ITP192/DatePicker/DatePicker-V0.99-2006.09.01.jar"/>
 	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User/Documents/Poly/SF1502/Year 1/Sem 2/ITP192/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
