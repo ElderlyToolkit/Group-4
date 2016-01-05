@@ -9,11 +9,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.sql.*;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
+
 import java.sql.DriverManager;
 
 public class ExistingUser extends JFrame {
@@ -137,14 +140,30 @@ public class ExistingUser extends JFrame {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				
+				ActionListener taskPerformer = new ActionListener() {
+		            public void actionPerformed(ActionEvent evt) {
+		            	lblLoginSucessful.setVisible(false);
+		            	lblLoginFailed.setVisible(false);
+		            }
+		        };
+		        Timer timer = new Timer(5000, taskPerformer);
 
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
-			        lblLoginSucessful.setVisible(true);
+			        //lblLoginSucessful.setVisible(true);
+			    	
+			    	JOptionPane.showMessageDialog(null, "User authenticated.\n\nWelcome " + name + ".");
+			    	
 			        textField.setText("");
 			        textField_1.setText("");
+			        timer.start();
 			    } else {
-			        lblLoginFailed.setVisible(true);
+			        //lblLoginFailed.setVisible(true);
+			    	
+			    	JOptionPane.showMessageDialog(null, "Username and/or Password not found.", "Message", JOptionPane.WARNING_MESSAGE);
+			    	
 			        textField_1.setText("");
+			        timer.start();
 			    }
 			}
 		});
