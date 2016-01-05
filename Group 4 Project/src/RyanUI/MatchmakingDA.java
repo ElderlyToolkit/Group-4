@@ -1,12 +1,13 @@
-package RyanUIPrototype;
+package RyanUI;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import Database.DBController;
 
-public class ChatboxDA {
-	
-    public static int createItem(ChatboxConstructor constructor){
+
+public class MatchmakingDA {
+	public static int createMatchmaking(MatchmakingConsructor constructor) throws ClassNotFoundException{
     	DBController db=new DBController();
     	String dbQuery;
     	PreparedStatement pstmt;
@@ -16,12 +17,16 @@ public class ChatboxDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO chatbox(message) values (?)";
+    	dbQuery="INSERT INTO matchmaking(Name, Age, Gender, Email, Preference) values (?,?,?,?,?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
     	try {
-    		pstmt.setString(1,ChatboxConstructor.getMessage());
+    		pstmt.setString(1,MatchmakingConsructor.getName());
+    		pstmt.setString(2,MatchmakingConsructor.getAge());
+    		pstmt.setInt(3,MatchmakingConsructor.getGender());
+    		pstmt.setString(4, MatchmakingConsructor.getEmail());
+    		pstmt.setInt(5, MatchmakingConsructor.getPreference());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database
@@ -35,5 +40,5 @@ public class ChatboxDA {
     		e.printStackTrace();
     	}
     	return id;    	
-    } 
+    }
 }

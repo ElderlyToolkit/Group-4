@@ -1,4 +1,4 @@
-package RyanUIPrototype;
+package RyanUI;
 
 import javax.swing.*;
 import javax.swing.table.*;

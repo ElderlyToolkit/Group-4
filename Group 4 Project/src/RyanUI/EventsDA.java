@@ -1,13 +1,13 @@
-package RyanUIPrototype;
+package RyanUI;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import Database.DBController;
 
-
-public class MatchmakingDA {
-	public static int createMatchmaking(MatchmakingConsructor constructor) throws ClassNotFoundException{
+public class EventsDA {
+	
+    public static int createItem(EventConsructor eventconstructor){
     	DBController db=new DBController();
     	String dbQuery;
     	PreparedStatement pstmt;
@@ -17,16 +17,15 @@ public class MatchmakingDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO matchmaking(Name, Age, Gender, Email, Preference) values (?,?,?,?,?)";
+    	dbQuery="INSERT INTO item(name, description, price, image) values (?,?,?,?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
     	try {
-    		pstmt.setString(1,MatchmakingConsructor.getName());
-    		pstmt.setString(2,MatchmakingConsructor.getAge());
-    		pstmt.setInt(3,MatchmakingConsructor.getGender());
-    		pstmt.setString(4, MatchmakingConsructor.getEmail());
-    		pstmt.setInt(5, MatchmakingConsructor.getPreference());
+    		pstmt.setString(1,item.getname());
+    		pstmt.setString(2,item.getdescription());
+    		pstmt.setDouble(3,item.getprice());
+    		pstmt.setBytes(4, item.getimage());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database
@@ -40,5 +39,5 @@ public class MatchmakingDA {
     		e.printStackTrace();
     	}
     	return id;    	
-    }
+    } 
 }

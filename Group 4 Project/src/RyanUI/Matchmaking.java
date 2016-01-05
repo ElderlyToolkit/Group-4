@@ -1,4 +1,4 @@
-package RyanUIPrototype;
+package RyanUI;
 
 import Database.DBController;
 import java.awt.EventQueue;

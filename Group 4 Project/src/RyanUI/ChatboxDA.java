@@ -1,13 +1,12 @@
-package RyanUIPrototype;
+package RyanUI;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import Database.DBController;
 
-public class EventsDA {
+public class ChatboxDA {
 	
-    public static int createItem(EventConsructor eventconstructor){
+    public static int createItem(ChatboxConstructor constructor){
     	DBController db=new DBController();
     	String dbQuery;
     	PreparedStatement pstmt;
@@ -17,15 +16,12 @@ public class EventsDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO item(name, description, price, image) values (?,?,?,?)";
+    	dbQuery="INSERT INTO chatbox(message) values (?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
     	try {
-    		pstmt.setString(1,item.getname());
-    		pstmt.setString(2,item.getdescription());
-    		pstmt.setDouble(3,item.getprice());
-    		pstmt.setBytes(4, item.getimage());
+    		pstmt.setString(1,ChatboxConstructor.getMessage());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database

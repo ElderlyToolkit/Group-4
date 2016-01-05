@@ -1,8 +1,8 @@
-package RyanUIPrototype;
+package RyanUI;
 
-import RyanUIPrototype.MatchmakingDA;
+import RyanUI.MatchmakingDA;
 
-public class EventConsructor {
+public class MatchmakingConsructor {
 	private int id;
 	private static String name;
 	private static String age;
@@ -10,11 +10,11 @@ public class EventConsructor {
 	private static String email;
 	private static int preference;
 	
-	public EventConsructor() {
+	public MatchmakingConsructor() {
 		super();
 	}
 	
-	public EventConsructor(String name, String age, int gender, String email, int preference) {
+	public MatchmakingConsructor(String name, String age, int gender, String email, int preference) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
