@@ -5,57 +5,69 @@ import RyanUI.MatchmakingDA;
 public class EventConsructor {
 	private int id;
 	private static String name;
-	private static String age;
-	private static int gender;
-	private static String email;
-	private static int preference;
+	private static String time;
+	private static String description;
+	private static String location;
+	private static String organiser;
+	
 	
 	public EventConsructor() {
 		super();
 	}
 	
-	public EventConsructor(String name, String age, int gender, String email, int preference) {
+	public EventConsructor(String name, String time, String description, String location, String organiser) {
 		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.email = email;
-		this.preference = preference;
+		this.time = time;
+		this.description = description;
+		this.location = location;
+		this.organiser = organiser;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public static String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public static void setName(String name) {
+		EventConsructor.name = name;
 	}
-	public static String getAge() {
-		return age;
+
+	public static String getTime() {
+		return time;
 	}
-	public void setAge(String age) {
-		this.age = age;
+
+	public static void setTime(String time) {
+		EventConsructor.time = time;
 	}
-	public static int getGender() {
-		return gender;
+
+	public static String getDescription() {
+		return description;
 	}
-	public void setGender(int gender) {
-		this.gender = gender;
+
+	public static void setDescription(String description) {
+		EventConsructor.description = description;
 	}
-	public static String getEmail() {
-		return email;
+
+	public static String getLocation() {
+		return location;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public static void setLocation(String location) {
+		EventConsructor.location = location;
 	}
-	public static int getPreference() {
-		return preference;
+
+	public static String getOrganiser() {
+		return organiser;
 	}
-	public void setPreference(int preference) {
-		this.preference = preference;
+
+	public static void setOrganiser(String organiser) {
+		EventConsructor.organiser = organiser;
 	}
 }

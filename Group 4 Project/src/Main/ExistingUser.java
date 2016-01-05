@@ -25,6 +25,7 @@ public class ExistingUser extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private Connection con;
+	public static String user;
 
 	/**
 	 * Launch the application.
@@ -89,18 +90,6 @@ public class ExistingUser extends JFrame {
 		btnClear.setBounds(300, 195, 89, 23);
 		contentPane.add(btnClear);
 		
-		JLabel lblLoginSucessful = new JLabel("Login Sucessful!");
-		lblLoginSucessful.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLoginSucessful.setBounds(200, 225, 89, 14);
-		lblLoginSucessful.setVisible(false);
-		contentPane.add(lblLoginSucessful);
-		
-		JLabel lblLoginFailed = new JLabel("Login Failed!");
-		lblLoginFailed.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLoginFailed.setBounds(200, 236, 89, 14);
-		lblLoginFailed.setVisible(false);
-		contentPane.add(lblLoginFailed);
-		
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				textField.setText("");
@@ -140,30 +129,17 @@ public class ExistingUser extends JFrame {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-				
-				ActionListener taskPerformer = new ActionListener() {
-		            public void actionPerformed(ActionEvent evt) {
-		            	lblLoginSucessful.setVisible(false);
-		            	lblLoginFailed.setVisible(false);
-		            }
-		        };
-		        Timer timer = new Timer(5000, taskPerformer);
 
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
-			        //lblLoginSucessful.setVisible(true);
 			    	
 			    	JOptionPane.showMessageDialog(null, "User authenticated.\n\nWelcome " + name + ".");
 			    	
 			        textField.setText("");
 			        textField_1.setText("");
-			        timer.start();
+			        user = databaseUsername;
 			    } else {
-			        //lblLoginFailed.setVisible(true);
-			    	
 			    	JOptionPane.showMessageDialog(null, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
-			    	
 			        textField_1.setText("");
-			        timer.start();
 			    }
 			}
 		});

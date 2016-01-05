@@ -19,12 +19,12 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class Events extends JFrame {
 
 	protected static String Date = null;
 	private JPanel contentPane;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -59,25 +59,33 @@ public class Events extends JFrame {
 		contentPane.add(imagelabel);
 		
 		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(100, 159, 252, 20);
+		dateChooser.setBounds(66, 159, 319, 20);
 		contentPane.add(dateChooser);
 		
 		JButton button = new JButton("< Back");
+		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
 		
-		textField = new JTextField();
-		textField.setBounds(100, 190, 252, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JButton btnSignUpFor = new JButton("Sign Up for Events");
+		btnSignUpFor.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		btnSignUpFor.setBounds(239, 190, 146, 23);
+		contentPane.add(btnSignUpFor);
 		
-		JLabel lblSelectedDate = new JLabel("Selected Date:");
-		lblSelectedDate.setBounds(24, 193, 75, 14);
-		contentPane.add(lblSelectedDate);
+		JButton button_2 = new JButton("View Events");
+		button_2.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		button_2.setBounds(66, 190, 146, 23);
+		contentPane.add(button_2);
 		
-		JButton btnViewEvents = new JButton("View Events");
-		btnViewEvents.setBounds(153, 221, 141, 23);
-		contentPane.add(btnViewEvents);
+		JButton btnCreateAnEvent = new JButton("Create an Event");
+		btnCreateAnEvent.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		btnCreateAnEvent.setBounds(66, 224, 146, 23);
+		contentPane.add(btnCreateAnEvent);
+		
+		JButton btnDeleteAnEvent = new JButton("Delete an Event");
+		btnDeleteAnEvent.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		btnDeleteAnEvent.setBounds(239, 224, 146, 23);
+		contentPane.add(btnDeleteAnEvent);
 		
 		dateChooser.addPropertyChangeListener (new PropertyChangeListener() {
 			public void propertyChange (PropertyChangeEvent e) {
@@ -85,22 +93,7 @@ public class Events extends JFrame {
 				if ("date".equals(e.getPropertyName())) {
 	                System.out.println(e.getPropertyName() + ": " + (Date) e.getNewValue());
 	                String output = e.getPropertyName() + ": " + (Date) e.getNewValue();
-	                Date = output.substring(6, 16);
-	                textField.setText(Date);
 			}
-			}
-		});
-		
-		btnViewEvents.addActionListener(new ActionListener() {
-			public void actionPerformed (ActionEvent e) {
-				DayEvent dayevent = null;
-				try {
-					dayevent = new DayEvent();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				setVisible(false);
-				dayevent.setVisible(true);
 			}
 		});
 	}

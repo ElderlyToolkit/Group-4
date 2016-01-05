@@ -1,0 +1,155 @@
+package RyanUI;
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JSeparator;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextArea;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import Main.ExistingUser;
+
+import javax.swing.border.BevelBorder;
+import javax.swing.ListSelectionModel;
+import javax.swing.JTextField;
+import java.awt.Font;
+
+public class DayEventSignUp extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DayEventSignUp frame = new DayEventSignUp();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public DayEventSignUp() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton button = new JButton("< Back");
+		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		button.setBounds(10, 11, 89, 23);
+		contentPane.add(button);
+		
+		JLabel lblTodaysDate = new JLabel("Today's Date");
+		lblTodaysDate.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblTodaysDate.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTodaysDate.setBounds(109, 15, 296, 14);
+		String selecteddate = Events.Date;
+		contentPane.add(lblTodaysDate);
+		lblTodaysDate.setText(selecteddate);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 45, 414, 8);
+		contentPane.add(separator);
+		
+		JLabel lblSelectTimeslot = new JLabel("Select Timeslot:");
+		lblSelectTimeslot.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblSelectTimeslot.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectTimeslot.setBounds(10, 61, 95, 14);
+		contentPane.add(lblSelectTimeslot);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"6AM to 7AM", "7AM to 8AM", "8AM to 9AM", "9AM to 10AM", "10AM to 11AM", "11AM to 12PM", "12PM to 1PM", "1PM to 2PM", "2PM to 3PM", "3PM to 4PM", "4PM to 5PM", "5PM to 6PM", "6PM to 7PM", "7PM to 8PM", "8PM to 9PM", "9PM to 10PM", "10PM to 11PM", "11PM to 12PM"}));
+		comboBox.setMaximumRowCount(18);
+		comboBox.setBounds(109, 60, 133, 17);
+		contentPane.add(comboBox);
+		
+		JLabel lblDetails = new JLabel("Name:");
+		lblDetails.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblDetails.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDetails.setBounds(10, 204, 95, 14);
+		contentPane.add(lblDetails);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setBounds(109, 202, 133, 17);
+		textField.setText(ExistingUser.user);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnIAmGoing = new JButton("I am going!");
+		btnIAmGoing.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		btnIAmGoing.setBounds(285, 200, 120, 23);
+		contentPane.add(btnIAmGoing);
+		
+		JLabel lblSelectEvent = new JLabel("Name of Event:");
+		lblSelectEvent.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblSelectEvent.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectEvent.setBounds(10, 86, 89, 14);
+		contentPane.add(lblSelectEvent);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setBounds(109, 85, 133, 17);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblLocation = new JLabel("Location:");
+		lblLocation.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblLocation.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLocation.setBounds(10, 115, 89, 14);
+		contentPane.add(lblLocation);
+		
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setColumns(10);
+		textField_2.setBounds(109, 113, 133, 17);
+		contentPane.add(textField_2);
+		
+		JLabel lblNameOfOrganiser = new JLabel("Name of Organiser:");
+		lblNameOfOrganiser.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNameOfOrganiser.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblNameOfOrganiser.setBounds(10, 143, 89, 14);
+		contentPane.add(lblNameOfOrganiser);
+		
+		textField_3 = new JTextField();
+		textField_3.setEditable(false);
+		textField_3.setColumns(10);
+		textField_3.setBounds(109, 141, 133, 17);
+		contentPane.add(textField_3);
+		
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				Events event = new Events();
+				setVisible(false);
+				event.setVisible(true);
+			}
+		});
+	}
+}
