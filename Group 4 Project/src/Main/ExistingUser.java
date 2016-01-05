@@ -160,7 +160,7 @@ public class ExistingUser extends JFrame {
 			    } else {
 			        //lblLoginFailed.setVisible(true);
 			    	
-			    	JOptionPane.showMessageDialog(null, "Username and/or Password not found.", "Message", JOptionPane.WARNING_MESSAGE);
+			    	JOptionPane.showMessageDialog(null, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
 			    	
 			        textField_1.setText("");
 			        timer.start();
