@@ -1,22 +1,15 @@
 package RyanUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.util.Calendar;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import com.toedter.calendar.JDateChooser;
-
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.JFormattedTextField.AbstractFormatter;
+import com.toedter.calendar.JDayChooser;
+import com.toedter.components.JSpinField;
 
 public class Events extends JFrame {
 
@@ -55,7 +48,7 @@ public class Events extends JFrame {
 		contentPane.add(lblLogo);
 		
 		JDateChooser dateChooser = new JDateChooser();
-	    dateChooser.setBounds(20, 20, 200, 20);
-	    contentPane.add(dateChooser);
+		dateChooser.setBounds(93, 88, 252, 20);
+		contentPane.add(dateChooser);
 	}
 }
