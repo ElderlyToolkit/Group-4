@@ -16,6 +16,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import com.toedter.calendar.JDateChooser;
+
+import Main.Homepage;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -23,7 +26,7 @@ import java.awt.Font;
 
 public class Events extends JFrame {
 
-	protected static String Date = null;
+	public static String Date = null;
 	private JPanel contentPane;
 
 	/**
@@ -93,7 +96,53 @@ public class Events extends JFrame {
 				if ("date".equals(e.getPropertyName())) {
 	                System.out.println(e.getPropertyName() + ": " + (Date) e.getNewValue());
 	                String output = e.getPropertyName() + ": " + (Date) e.getNewValue();
+	                Date = output.substring(6, 16);
 			}
+			}
+		});
+		
+		btnSignUpFor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DayEventSignUp signup = new DayEventSignUp();
+				setVisible(false);
+				signup.setVisible(true);
+			}
+		});
+		
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DayEventView view = null;
+				try {
+					view = new DayEventView();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				setVisible(false);
+				view.setVisible(true);
+			}
+		});
+		
+		btnCreateAnEvent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DayEventCreate create = new DayEventCreate();
+				setVisible(false);
+				create.setVisible(true);
+			}
+		});
+		
+		btnDeleteAnEvent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DayEventDelete delete = new DayEventDelete();
+				setVisible(false);
+				delete.setVisible(true);
+			}
+		});
+		
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Homepage home = new Homepage();
+				setVisible(false);
+				home.setVisible(true);
 			}
 		});
 	}

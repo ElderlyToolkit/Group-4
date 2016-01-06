@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Main.Homepage;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
@@ -104,6 +107,14 @@ public class ChatboxUsername extends JFrame {
 				timer.start();
 			}
 		});
+        
+        button.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Homepage home = new Homepage();
+        		setVisible(false);
+        		home.setVisible(true);
+        	}
+        });
 	}
 
 }

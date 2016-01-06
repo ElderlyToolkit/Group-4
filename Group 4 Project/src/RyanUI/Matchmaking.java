@@ -1,6 +1,8 @@
 package RyanUI;
 
 import Database.DBController;
+import Main.Homepage;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -250,5 +252,13 @@ public class Matchmaking extends JFrame {
 				//timer.start();
 			}
 		});
+        
+        btnBack.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Homepage home = new Homepage();
+        		setVisible(false);
+        		home.setVisible(true);
+        	}
+        });
 	}
 }

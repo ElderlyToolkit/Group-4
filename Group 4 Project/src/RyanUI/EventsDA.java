@@ -17,16 +17,17 @@ public class EventsDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO events(name, time, description, location, organiser) values (?,?,?,?,?)";
+    	dbQuery="INSERT INTO events(name, time, date, description, location, organiser) values (?,?,?,?,?,?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
     	try {
     		pstmt.setString(1,EventConsructor.getName());
     		pstmt.setString(2, EventConsructor.getTime());
-    		pstmt.setString(3,EventConsructor.getDescription());
-    		pstmt.setString(4,EventConsructor.getLocation());
-    		pstmt.setString(5, EventConsructor.getOrganiser());
+    		pstmt.setString(3, EventConsructor.getDate());
+    		pstmt.setString(4,EventConsructor.getDescription());
+    		pstmt.setString(5,EventConsructor.getLocation());
+    		pstmt.setString(6, EventConsructor.getOrganiser());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database

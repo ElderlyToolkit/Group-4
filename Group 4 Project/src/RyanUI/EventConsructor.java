@@ -9,18 +9,28 @@ public class EventConsructor {
 	private static String description;
 	private static String location;
 	private static String organiser;
+	private static String date;
 	
 	
 	public EventConsructor() {
 		super();
 	}
 	
-	public EventConsructor(String name, String time, String description, String location, String organiser) {
+	public EventConsructor(String name, String time, String date, String description, String location, String organiser) {
 		this.name = name;
 		this.time = time;
 		this.description = description;
 		this.location = location;
 		this.organiser = organiser;
+		this.date = date;
+	}
+
+	public static String getDate() {
+		return date;
+	}
+
+	public static void setDate(String date) {
+		EventConsructor.date = date;
 	}
 
 	public int getId() {

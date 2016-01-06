@@ -137,6 +137,10 @@ public class ExistingUser extends JFrame {
 			        textField.setText("");
 			        textField_1.setText("");
 			        user = databaseUsername;
+			        
+			        Homepage home = new Homepage();
+			        setVisible(false);
+			        home.setVisible(true);
 			    } else {
 			    	JOptionPane.showMessageDialog(null, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
 			        textField_1.setText("");

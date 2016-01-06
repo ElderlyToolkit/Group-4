@@ -1,15 +1,25 @@
 package Main;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import RyanUI.ChatboxUsername;
+import RyanUI.Events;
+import RyanUI.Matchmaking;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
+
 import javax.swing.JLabel;
 
 public class Homepage extends JFrame {
@@ -56,12 +66,12 @@ public class Homepage extends JFrame {
 		btnForums.setBounds(249, 179, 159, 43);
 		contentPane.add(btnForums);
 		
-		JButton btnEventsAndHobbbies = new JButton("EVENTS & HOBBBIES");
-		btnEventsAndHobbbies.setBackground(new Color(0, 191, 255));
-		btnEventsAndHobbbies.setFont(new Font("Century Schoolbook", Font.BOLD, 10));
-		btnEventsAndHobbbies.setForeground(new Color(0, 0, 0));
-		btnEventsAndHobbbies.setBounds(49, 233, 159, 47);
-		contentPane.add(btnEventsAndHobbbies);
+		JButton btnEventsAndHobbies = new JButton("EVENTS & HOBBIES");
+		btnEventsAndHobbies.setBackground(new Color(0, 191, 255));
+		btnEventsAndHobbies.setFont(new Font("Century Schoolbook", Font.BOLD, 10));
+		btnEventsAndHobbies.setForeground(new Color(0, 0, 0));
+		btnEventsAndHobbies.setBounds(49, 233, 159, 47);
+		contentPane.add(btnEventsAndHobbies);
 		
 		JButton btnChatBox = new JButton("CHAT BOX");
 		btnChatBox.setBackground(new Color(0, 191, 255));
@@ -122,5 +132,34 @@ public class Homepage extends JFrame {
 		final JLabel imagelabel = new JLabel(image);
 		imagelabel.setBounds(20, 11, 408, 103);
 		contentPane.add(imagelabel);
+		
+		btnChatBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChatboxUsername username = new ChatboxUsername();
+				setVisible(false);
+				username.setVisible(true);
+			}
+		});
+		
+		btnEventsAndHobbies.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Events events = new Events();
+				setVisible(false);
+				events.setVisible(true);
+			}
+		});
+		
+		btnMatchMaking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Matchmaking matchmaking = null;
+				try {
+					matchmaking = new Matchmaking();
+				} catch (IOException | FontFormatException e1) {
+					e1.printStackTrace();
+				}
+				setVisible(false);
+				matchmaking.setVisible(true);
+			}
+		});
 	}
 }

@@ -46,20 +46,16 @@ public class Login extends JFrame {
 		
 		ImageIcon image = new ImageIcon("Images/logo.png");
 		final JLabel imagelabel = new JLabel(image);
-		imagelabel.setBounds(16, 54, 408, 103);
+		imagelabel.setBounds(10, 11, 408, 103);
 		contentPane.add(imagelabel);
 		
 		JButton btnCreateAnAccount = new JButton("New Users");
-		btnCreateAnAccount.setBounds(44, 188, 123, 23);
+		btnCreateAnAccount.setBounds(30, 160, 123, 23);
 		contentPane.add(btnCreateAnAccount);
 		
 		JButton btnExistingUsers = new JButton("Existing Users");
-		btnExistingUsers.setBounds(277, 188, 122, 23);
+		btnExistingUsers.setBounds(274, 160, 122, 23);
 		contentPane.add(btnExistingUsers);
-		
-		JButton button = new JButton("< Back");
-		button.setBounds(16, 11, 89, 23);
-		contentPane.add(button);
 		
 		btnCreateAnAccount.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {

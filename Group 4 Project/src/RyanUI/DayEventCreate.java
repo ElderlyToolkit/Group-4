@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -20,6 +22,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import Database.DBController;
+import Main.ExistingUser;
+
 import javax.swing.JTextField;
 import java.awt.Font;
 
@@ -135,6 +141,7 @@ public class DayEventCreate extends JFrame {
 		textField_2.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_2.setColumns(10);
 		textField_2.setBounds(109, 145, 133, 17);
+		textField_2.setText(ExistingUser.user);
 		contentPane.add(textField_2);
 		
 		button.addActionListener(new ActionListener() {
@@ -145,6 +152,41 @@ public class DayEventCreate extends JFrame {
 			}
 		});
 		
+		btnCheckAvailability.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String time = comboBox.getSelectedItem().toString();
+				String date = lblTodaysDate.getText();
+				DBController db=new DBController();
+				String dbQuery = "SELECT time FROM events WHERE time='" + time + "' AND date='" + date + "'";
+				ResultSet rs = null;
+				String databaseTime = null;
+				String databaseDate = null;
+				
+				//queries database
+				rs = db.readRequest(dbQuery);
+				
+				//check timeslot avail
+				try {
+					while (rs.next()) {
+					    databaseTime = rs.getString("time");
+					    databaseDate = rs.getString("date");
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			
+			if (!time.equals(databaseTime) && !date.equals(databaseDate)) {
+				textField.setEditable(true);
+				textField_1.setEditable(true);
+				textField_2.setText(ExistingUser.user);
+				btnSave.setEnabled(true);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "The timeslot has been booked.\n\nPlease select another timeslot.", "Message", JOptionPane.WARNING_MESSAGE);
+			}
+		}
+			});
+		
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int id = 0;
@@ -153,8 +195,9 @@ public class DayEventCreate extends JFrame {
 				String description = textField.getText();
 				String location = textField_1.getText();
 				String organiser = textField_2.getText();
+				String date = lblTodaysDate.getText();
 				
-				EventConsructor constructor = new EventConsructor(name, time, description, location, organiser);
+				EventConsructor constructor = new EventConsructor(name, time, date, description, location, organiser);
 				id= EventsDA.createEvent(constructor);
 				
 				if (id>0) {
