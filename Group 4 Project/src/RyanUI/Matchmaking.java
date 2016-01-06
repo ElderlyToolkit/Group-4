@@ -1,26 +1,24 @@
 package RyanUI;
 
 import Database.DBController;
+import Main.ExistingUser;
 import Main.Homepage;
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
 import java.awt.Color;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
-import javax.swing.Timer;
 
 
 public class Matchmaking extends JFrame {
@@ -29,6 +27,8 @@ public class Matchmaking extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JFileChooser fc;
+	private File file;
 	
 	public final static int FIVE_SECOND = 5000;
 
@@ -58,6 +58,26 @@ public class Matchmaking extends JFrame {
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
 		Font sizedFont = font.deriveFont(12f);
 		
+		ResultSet rs = null;
+        DBController db=new DBController();
+        String name = null, email = null;
+        int age = 0, gender = 0;
+		
+		String dbQuery = "SELECT name, age, email, gender FROM users";
+		
+		rs = db.readRequest(dbQuery);
+		
+		try {
+			while (rs.next()) {
+			    name = rs.getString("name");
+			    age = rs.getInt("age");
+			    email = rs.getString("email");
+			    gender = rs.getInt("gender");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
 		setTitle("Matchmaker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -81,7 +101,7 @@ public class Matchmaking extends JFrame {
 		btnBack.setFont(sizedFont);
 		contentPane.add(btnBack);
 		
-		JLabel lblProfilePicture = new JLabel("Profile Picture");
+		JLabel lblProfilePicture = new JLabel();
 		lblProfilePicture.setBackground(Color.YELLOW);
 		lblProfilePicture.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProfilePicture.setBounds(14, 11, 116, 106);
@@ -103,11 +123,13 @@ public class Matchmaking extends JFrame {
 		contentPane.add(lblGender);
 		
 		JRadioButton rdbtnMale = new JRadioButton("Male");
+		rdbtnMale.setEnabled(false);
 		rdbtnMale.setBounds(245, 86, 54, 23);
 		rdbtnMale.setFont(sizedFont);
 		contentPane.add(rdbtnMale);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
+		rdbtnFemale.setEnabled(false);
 		rdbtnFemale.setBounds(307, 86, 84, 23);
 		rdbtnFemale.setFont(sizedFont);
 		contentPane.add(rdbtnFemale);
@@ -115,10 +137,14 @@ public class Matchmaking extends JFrame {
 		textField = new JTextField();
 		textField.setBounds(206, 37, 185, 20);
 		textField.setFont(sizedFont);
+		textField.setEditable(false);
+		textField.setText(name);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setText(Integer.toString(age));
 		textField_1.setBounds(206, 62, 185, 20);
 		textField_1.setFont(sizedFont);
 		contentPane.add(textField_1);
@@ -149,6 +175,8 @@ public class Matchmaking extends JFrame {
 		group.add(rdbtnFemale);
 		
 		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setText(email);
 		textField_2.setBounds(206, 112, 185, 20);
 		textField_2.setFont(sizedFont);
 		contentPane.add(textField_2);
@@ -187,6 +215,24 @@ public class Matchmaking extends JFrame {
 		JButton btnUploadPicture = new JButton("Upload Picture");
 		btnUploadPicture.setBounds(14, 130, 116, 23);
 		btnUploadPicture.setFont(sizedFont);
+		
+		btnUploadPicture.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e1) {
+        		int retval = 0;
+        		
+        		JFileChooser fileChooser = new JFileChooser();
+        		retval = fileChooser.showOpenDialog(Matchmaking.this);
+				if (retval == JFileChooser.APPROVE_OPTION) {
+				     file = fileChooser.getSelectedFile();
+				     lblProfilePicture.setText("");
+				     lblProfilePicture.setIcon(new ImageIcon(file.getAbsolutePath()));
+			    }
+				else {
+					JOptionPane.showMessageDialog(Matchmaking.this, "No Image selected!");
+				}
+        	}
+        });
+		
 		contentPane.add(btnUploadPicture);
 		
 		ImageIcon image = new ImageIcon("Images/245.GIF");

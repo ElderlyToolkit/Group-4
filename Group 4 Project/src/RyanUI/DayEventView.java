@@ -12,11 +12,18 @@ import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
+import javax.swing.ListModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Database.DBController;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
 import javax.swing.JScrollPane;
@@ -48,15 +55,36 @@ public class DayEventView extends JFrame {
 	 * Create the frame.
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
+	 * @throws SQLException 
 	 */
 	@SuppressWarnings("null")
-	public DayEventView() throws FileNotFoundException, IOException {
+	public DayEventView() throws FileNotFoundException, IOException, SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		ResultSet rs = null;
+		String name, time, date, description, location;
+		DBController db=new DBController();
+		
+		String dbQuery = "SELECT name, time, date, description, location FROM events";
+		
+		db.readRequest(dbQuery);
+		
+		try {
+			while (rs.next()) {
+			    name = rs.getString("name");
+			    time = rs.getString("time");
+			    date = rs.getString("date");
+			    description = rs.getString("date");
+			    location = rs.getString("location");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		
 		JButton button = new JButton("< Back");
 		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
@@ -75,12 +103,13 @@ public class DayEventView extends JFrame {
 		separator.setBounds(10, 45, 414, 8);
 		contentPane.add(separator);
 		
-		table = new JTable();
+		ListTableModel model = ListTableModel.createModelFromResultSet(rs);
+		table = new JTable(model);
 		table.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		table.setEnabled(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table.setModel(new DefaultTableModel(
+		/*table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"6:00AM", null, null, null},
 				{"7:00AM", null, null, null},
@@ -104,7 +133,7 @@ public class DayEventView extends JFrame {
 			new String[] {
 				"Time", "Event", "Location", "Name of Organiser"
 			}
-		));
+		));*/
 		table.getColumnModel().getColumn(1).setPreferredWidth(128);
 		table.getColumnModel().getColumn(1).setMaxWidth(2147483637);
 		table.getColumnModel().getColumn(3).setPreferredWidth(104);

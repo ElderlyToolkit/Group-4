@@ -182,7 +182,7 @@ public class DayEventCreate extends JFrame {
 				btnSave.setEnabled(true);
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "The timeslot has been booked.\n\nPlease select another timeslot.", "Message", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(DayEventCreate.this, "The timeslot has been booked.\n\nPlease select another timeslot.", "Message", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 			});
