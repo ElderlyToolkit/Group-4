@@ -147,8 +147,6 @@ public class ExistingUser extends JFrame {
 			    }
 			}
 		});
-		
-		//test
 	}
 
 }
