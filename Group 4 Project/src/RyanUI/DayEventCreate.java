@@ -56,6 +56,7 @@ public class DayEventCreate extends JFrame {
 	 * Create the frame.
 	 */
 	public DayEventCreate() {
+		setTitle("Create Event");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -157,7 +158,7 @@ public class DayEventCreate extends JFrame {
 				String time = comboBox.getSelectedItem().toString();
 				String date = lblTodaysDate.getText();
 				DBController db=new DBController();
-				String dbQuery = "SELECT time FROM events WHERE time='" + time + "' AND date='" + date + "'";
+				String dbQuery = "SELECT time, date FROM events WHERE time='" + time + "' AND date='" + date + "'";
 				ResultSet rs = null;
 				String databaseTime = null;
 				String databaseDate = null;
@@ -202,7 +203,7 @@ public class DayEventCreate extends JFrame {
 				
 				if (id>0) {
 		    		constructor.setId(id);
-		    		JOptionPane.showMessageDialog(null, "Event created!");
+		    		JOptionPane.showMessageDialog(DayEventCreate.this, "Event created!");
 		    		//System.out.println("Entry was created");
 		    	}
 			}

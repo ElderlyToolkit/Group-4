@@ -15,7 +15,7 @@ public class EventConsructor {
 	public EventConsructor() {
 		super();
 	}
-	
+
 	public EventConsructor(String name, String time, String date, String description, String location, String organiser) {
 		this.name = name;
 		this.time = time;

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.JScrollPane;
 
 public class PrivateChat extends JFrame {
 
@@ -62,7 +64,6 @@ public class PrivateChat extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(10, 45, 414, 177);
 		textArea.setFont(sizedFont);
-		contentPane.add(textArea);
 		
 		textField = new JTextField();
 		textField.setBounds(10, 230, 268, 20);
@@ -97,6 +98,10 @@ public class PrivateChat extends JFrame {
 		button.setBounds(10, 11, 89, 23);
 		button.setFont(sizedFont);
 		contentPane.add(button);
+		
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setBounds(10, 45, 414, 177);
+		contentPane.add(scrollPane);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Matchmaking matchmaking = null;
@@ -110,12 +115,21 @@ public class PrivateChat extends JFrame {
 			}
 		});
 		
-		Action action =  new AbstractAction() {
+		ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+            	textArea.append(timeStamp + " " + Matchmaking.partner + ": Hello!\n");
+            }
+        };
+        Timer timer = new Timer(5000, taskPerformer);
+        
+        Action action =  new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
 			String input = textField.getText();
 			textArea.append(timeStamp + " " + input + "\n");
 			textField.setText("");
+			timer.start();
 		}
 		};
 		textField.addActionListener(action);

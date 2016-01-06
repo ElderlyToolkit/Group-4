@@ -69,10 +69,12 @@ public class DBController {
 	 ***********************************************************/
 	public int updateRequest(String dbQuery) {
 		int count = 0;
+		Connection con2;
 		System.out.println("DB Query: " + dbQuery);
 		try {
 			// create a statement object
-			Statement stmt = con.createStatement();
+			con2 = DriverManager.getConnection("jdbc:mysql://localhost:8866/group4project", "ryan", "password");
+			Statement stmt = con2.createStatement();
 			// execute an SQL query and get the result
 			count = stmt.executeUpdate(dbQuery);
 		} catch (Exception e) {

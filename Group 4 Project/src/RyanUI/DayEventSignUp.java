@@ -8,16 +8,21 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Database.DBController;
 import Main.ExistingUser;
 
 import javax.swing.border.BevelBorder;
@@ -66,7 +71,7 @@ public class DayEventSignUp extends JFrame {
 		contentPane.add(button);
 		
 		JLabel lblTodaysDate = new JLabel("Today's Date");
-		lblTodaysDate.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblTodaysDate.setFont(new Font("Roboto Condensed", Font.PLAIN, 15));
 		lblTodaysDate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTodaysDate.setBounds(109, 15, 296, 14);
 		String selecteddate = Events.Date;
@@ -97,6 +102,7 @@ public class DayEventSignUp extends JFrame {
 		contentPane.add(lblDetails);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField.setEditable(false);
 		textField.setBounds(109, 202, 133, 17);
 		textField.setText(ExistingUser.user);
@@ -115,6 +121,7 @@ public class DayEventSignUp extends JFrame {
 		contentPane.add(lblSelectEvent);
 		
 		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_1.setEditable(false);
 		textField_1.setBounds(109, 85, 133, 17);
 		contentPane.add(textField_1);
@@ -127,6 +134,7 @@ public class DayEventSignUp extends JFrame {
 		contentPane.add(lblLocation);
 		
 		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_2.setEditable(false);
 		textField_2.setColumns(10);
 		textField_2.setBounds(109, 113, 133, 17);
@@ -139,6 +147,7 @@ public class DayEventSignUp extends JFrame {
 		contentPane.add(lblNameOfOrganiser);
 		
 		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_3.setEditable(false);
 		textField_3.setColumns(10);
 		textField_3.setBounds(109, 141, 133, 17);
@@ -149,6 +158,54 @@ public class DayEventSignUp extends JFrame {
 				Events event = new Events();
 				setVisible(false);
 				event.setVisible(true);
+			}
+		});
+		
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String selectedtime = comboBox.getSelectedItem().toString();
+				
+				ResultSet rs = null;
+				String name = null, date = Events.Date, description = null, location = null;
+				DBController db=new DBController();
+				
+				String dbQuery = "SELECT * FROM events WHERE date='" + date + "' AND time='" + selectedtime + "'";
+				
+				rs = db.readRequest(dbQuery);
+				
+				try {
+					while (rs.next()) {
+					    name = rs.getString("name");
+					    date = rs.getString("date");
+					    description = rs.getString("description");
+					    location = rs.getString("location");
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				textField_1.setText(description);
+				textField_2.setText(location);
+				textField_3.setText(name);
+				
+				
+			}
+		});
+		
+		btnIAmGoing.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ResultSet rs = null;
+				String attendee = textField.getText();
+				DBController db=new DBController();
+				
+				SignUpConstructor constructor = new SignUpConstructor(attendee);
+				int id= SignUpDA.signup(constructor);
+				
+				if (id>0) {
+		    		constructor.setId(id);
+		    		JOptionPane.showMessageDialog(DayEventSignUp.this, "You are going!");
+		    		//System.out.println("Entry was created");
+		    	}
 			}
 		});
 	}

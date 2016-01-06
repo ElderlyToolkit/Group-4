@@ -132,7 +132,7 @@ public class ExistingUser extends JFrame {
 
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
 			    	
-			    	JOptionPane.showMessageDialog(null, "User authenticated.\n\nWelcome " + name + ".");
+			    	JOptionPane.showMessageDialog(ExistingUser.this, "User authenticated.\n\nWelcome " + name + ".");
 			    	
 			        textField.setText("");
 			        textField_1.setText("");
@@ -142,7 +142,7 @@ public class ExistingUser extends JFrame {
 			        setVisible(false);
 			        home.setVisible(true);
 			    } else {
-			    	JOptionPane.showMessageDialog(null, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
+			    	JOptionPane.showMessageDialog(ExistingUser.this, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
 			        textField_1.setText("");
 			    }
 			}

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -114,7 +115,7 @@ public class Events extends JFrame {
 				DayEventView view = null;
 				try {
 					view = new DayEventView();
-				} catch (IOException e1) {
+				} catch (IOException | SQLException e1) {
 					e1.printStackTrace();
 				}
 				setVisible(false);

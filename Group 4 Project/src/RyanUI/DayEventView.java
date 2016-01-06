@@ -59,6 +59,7 @@ public class DayEventView extends JFrame {
 	 */
 	@SuppressWarnings("null")
 	public DayEventView() throws FileNotFoundException, IOException, SQLException {
+		setTitle("View Events");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -67,14 +68,14 @@ public class DayEventView extends JFrame {
 		contentPane.setLayout(null);
 		
 		ResultSet rs = null;
-		String name, time, date, description, location;
+		String name, time, date = Events.Date, description, location;
 		DBController db=new DBController();
 		
-		String dbQuery = "SELECT name, time, date, description, location FROM events";
+		String dbQuery = "SELECT name, time, date, description, location FROM events WHERE date='" + date + "'";
 		
-		db.readRequest(dbQuery);
+		rs = db.readRequest(dbQuery);
 		
-		try {
+		/*try {
 			while (rs.next()) {
 			    name = rs.getString("name");
 			    time = rs.getString("time");
@@ -84,7 +85,7 @@ public class DayEventView extends JFrame {
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-		}
+		}*/
 		
 		JButton button = new JButton("< Back");
 		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
@@ -92,7 +93,7 @@ public class DayEventView extends JFrame {
 		contentPane.add(button);
 		
 		JLabel lblTodaysDate = new JLabel("Today's Date");
-		lblTodaysDate.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblTodaysDate.setFont(new Font("Roboto Condensed", Font.PLAIN, 15));
 		lblTodaysDate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTodaysDate.setBounds(109, 11, 315, 23);
 		String selecteddate = Events.Date;
@@ -104,40 +105,16 @@ public class DayEventView extends JFrame {
 		contentPane.add(separator);
 		
 		ListTableModel model = ListTableModel.createModelFromResultSet(rs);
-		table = new JTable(model);
+		JTable table = new JTable(model);
 		table.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		table.setEnabled(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		/*table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"6:00AM", null, null, null},
-				{"7:00AM", null, null, null},
-				{"8:00AM", null, null, null},
-				{"9:00AM", null, null, null},
-				{"10:00AM", null, null, null},
-				{"11:00AM", null, null, null},
-				{"12:00AM", null, null, null},
-				{"1:00PM", null, null, null},
-				{"2:00PM", null, null, null},
-				{"3:00PM", null, null, null},
-				{"4:00PM", null, null, null},
-				{"5:00PM", null, null, null},
-				{"6:00PM", null, null, null},
-				{"7:00PM", null, null, null},
-				{"8:00PM", null, null, null},
-				{"9:00PM", null, null, null},
-				{"10:00PM", null, null, null},
-				{"11:00PM", null, null, null},
-			},
-			new String[] {
-				"Time", "Event", "Location", "Name of Organiser"
-			}
-		));*/
 		table.getColumnModel().getColumn(1).setPreferredWidth(128);
 		table.getColumnModel().getColumn(1).setMaxWidth(2147483637);
 		table.getColumnModel().getColumn(3).setPreferredWidth(104);
 		table.setBounds(10, 55, 399, 195);
+		contentPane.add(table);
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 55, 414, 195);

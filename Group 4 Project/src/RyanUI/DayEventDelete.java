@@ -5,12 +5,15 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
@@ -22,6 +25,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Database.DBController;
 import Main.ExistingUser;
 
 public class DayEventDelete extends JFrame {
@@ -51,6 +55,7 @@ public class DayEventDelete extends JFrame {
 	 * Create the frame.
 	 */
 	public DayEventDelete() {
+		setTitle("Delete Event");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -64,7 +69,7 @@ public class DayEventDelete extends JFrame {
 		contentPane.add(button);
 		
 		JLabel lblTodaysDate = new JLabel("Today's Date");
-		lblTodaysDate.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		lblTodaysDate.setFont(new Font("Roboto Condensed", Font.PLAIN, 15));
 		lblTodaysDate.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTodaysDate.setBounds(109, 15, 296, 14);
 		String selecteddate = Events.Date;
@@ -88,15 +93,11 @@ public class DayEventDelete extends JFrame {
 		comboBox.setBounds(109, 60, 133, 17);
 		contentPane.add(comboBox);
 		
-		JButton btnIAmGoing = new JButton("Delete Event");
-		btnIAmGoing.setEnabled(false);
-		btnIAmGoing.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnIAmGoing.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
-		btnIAmGoing.setBounds(149, 198, 120, 23);
-		contentPane.add(btnIAmGoing);
+		JButton btnDelete = new JButton("Delete Event");
+		btnDelete.setEnabled(false);
+		btnDelete.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		btnDelete.setBounds(149, 198, 120, 23);
+		contentPane.add(btnDelete);
 		
 		JLabel lblSelectEvent = new JLabel("Name of Event:");
 		lblSelectEvent.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
@@ -144,6 +145,61 @@ public class DayEventDelete extends JFrame {
 				Events event = new Events();
 				setVisible(false);
 				event.setVisible(true);
+			}
+		});
+		
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String selectedtime = comboBox.getSelectedItem().toString();
+				
+				ResultSet rs = null;
+				String name = null, date = Events.Date, description = null, location = null;
+				DBController db=new DBController();
+				
+				String dbQuery = "SELECT * FROM events WHERE date='" + date + "' AND time='" + selectedtime + "'";
+				
+				rs = db.readRequest(dbQuery);
+				
+				try {
+					while (rs.next()) {
+					    name = rs.getString("name");
+					    date = rs.getString("date");
+					    description = rs.getString("description");
+					    location = rs.getString("location");
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				textField_1.setText(description);
+				textField_2.setText(location);
+				textField_3.setText(name);
+			}
+		});
+		
+		btnValidateUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String organiser = textField_3.getText();
+				String name = ExistingUser.user;
+				
+				if (name.equals(organiser)) {
+					btnDelete.setEnabled(true);
+				}
+			}
+		});
+		
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(DayEventDelete.this, "Are you sure?\n\nThis will PERMANENTLY delete your booking","Alert", JOptionPane.OK_CANCEL_OPTION);
+				System.out.print(result);
+				
+				if (result == 0) {
+					DBController db=new DBController();
+					
+					String dbQuery = "DELETE FROM events WHERE name='" + ExistingUser.user + "'";
+					
+					db.updateRequest(dbQuery);
+				}
 			}
 		});
 	}

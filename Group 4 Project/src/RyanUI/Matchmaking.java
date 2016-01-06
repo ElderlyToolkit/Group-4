@@ -29,6 +29,7 @@ public class Matchmaking extends JFrame {
 	private JTextField textField_2;
 	private JFileChooser fc;
 	private File file;
+	public static String partner;
 	
 	public final static int FIVE_SECOND = 5000;
 
@@ -63,7 +64,7 @@ public class Matchmaking extends JFrame {
         String name = null, email = null;
         int age = 0, gender = 0;
 		
-		String dbQuery = "SELECT name, age, email, gender FROM users";
+		String dbQuery = "SELECT * FROM users WHERE name='" + ExistingUser.user + "'";
 		
 		rs = db.readRequest(dbQuery);
 		
@@ -170,6 +171,13 @@ public class Matchmaking extends JFrame {
 		preffemale.setFont(sizedFont);
 		contentPane.add(preffemale);
 		
+		if (gender == 1) {
+			rdbtnMale.setSelected(true);
+		}
+		else {
+			rdbtnFemale.setSelected(true);
+		}
+		
 		ButtonGroup group = new ButtonGroup();
 		group.add(rdbtnMale);
 		group.add(rdbtnFemale);
@@ -268,34 +276,76 @@ public class Matchmaking extends JFrame {
         
         btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				int id = 0;
-				
-				String name = textField.getText();
-				String age = textField_1.getText();
-				String email = textField_2.getText();
-				btnClear.setEnabled(false);
-				btnSubmit.setEnabled(false);
-				btnUploadPicture.setEnabled(false);
-				
-				MatchmakingConsructor constructor = new MatchmakingConsructor(name, age, 1, email, 1);
-				lblSearchingForYour.setVisible(true);
-				imagelabel.setVisible(true);
-				try {
-					id= MatchmakingDA.createMatchmaking(constructor);
-				} catch (ClassNotFoundException e1) {
-					e1.printStackTrace();
+				int pref = 0;
+				String databasePartner = null;
+				if (prefmale.isSelected()) {
+					pref = 1;
+					ResultSet rs = null;
+					DBController db=new DBController();
+					String dbQuery = "SELECT * FROM users WHERE gender='" + pref + "'";
+					
+					rs = db.readRequest(dbQuery);
+					
+					try {
+						while (rs.next()) {
+							databasePartner = rs.getString("name");
+						}
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					
+					if (!databasePartner.equals("")) {
+						lblSearchingForYour.setVisible(true);
+						imagelabel.setVisible(true);
+						timer.start();
+					}
+				}
+				else if (preffemale.isSelected()) {
+					pref = 2;
+					ResultSet rs = null;
+					DBController db=new DBController();
+					String dbQuery = "SELECT * FROM users WHERE gender='" + pref + "'";
+					
+					rs = db.readRequest(dbQuery);
+					
+					try {
+						while (rs.next()) {
+							databasePartner = rs.getString("name");
+						}
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					
+					if (!databasePartner.equals("")) {
+						lblSearchingForYour.setVisible(true);
+						imagelabel.setVisible(true);
+						timer.start();
+					}
+				}
+				else if (prefmale.isSelected() && preffemale.isSelected()) {
+					pref = 3;
+					ResultSet rs = null;
+					DBController db=new DBController();
+					String dbQuery = "SELECT * FROM users ORDER BY RAND() LIMIT 1";
+					
+					rs = db.readRequest(dbQuery);
+					
+					try {
+						while (rs.next()) {
+							lblSearchingForYour.setVisible(true);
+							imagelabel.setVisible(true);
+							databasePartner = rs.getString("name");
+						}
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					
+					if (!databasePartner.equals("")) {
+						timer.start();
+					}
 				}
 				
-				if (id>0) {
-		    		constructor.setId(id);
-		    		lblSearchingForYour.setVisible(false);
-					imagelabel.setVisible(false);
-					lblMatchFound.setVisible(true);
-					btnProceedToChat.setVisible(true);
-		    		//System.out.println("Entry was created");
-		    	}
-				
-				//timer.start();
+				partner = databasePartner;
 			}
 		});
         
