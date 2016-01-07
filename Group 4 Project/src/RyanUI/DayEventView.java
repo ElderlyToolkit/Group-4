@@ -61,6 +61,7 @@ public class DayEventView extends JFrame {
 	public DayEventView() throws FileNotFoundException, IOException, SQLException {
 		setTitle("View Events");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setState(JFrame.NORMAL);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
