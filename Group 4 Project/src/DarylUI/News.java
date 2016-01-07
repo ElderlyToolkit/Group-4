@@ -19,10 +19,13 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.util.ArrayList;
 
-public class News extends JFrame {
+public class News extends JFrame  {
 	int page = 1;
 	String[] World = {"123","321","231","456","654","564"};
 	String[] World2 = {"12","32","23","45","65","56"};
@@ -52,7 +55,11 @@ public class News extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public News() {
+	public News() throws IOException, FontFormatException {
+		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
+		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
+		Font sizedFont = font.deriveFont(12f);
+		
 		setTitle("News");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 669, 452);
@@ -190,6 +197,37 @@ public class News extends JFrame {
 		if (page == 1) {
 			Previous.setEnabled(false);
 		}
+		
+		News1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)  {
+				if (page == 1) {
+					if (Category.getSelectedItem() == "Economic") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(5,"Economic");
+						} catch (IOException e1) {
+							
+							e1.printStackTrace();
+						} catch (FontFormatException e1) {
+						
+							e1.printStackTrace();
+						}
+						mf.setVisible(true);
+					}
+					
+					else {
+						
+					}
+					
+				
+				}
+				
+				else {
+					
+				}
+			}
+		});
 		
 		
 	

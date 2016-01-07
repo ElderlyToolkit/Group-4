@@ -2,6 +2,8 @@ package DarylUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.FontFormatException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,6 +15,8 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import java.lang.Math;
@@ -46,7 +50,10 @@ public class NumGenerator extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public NumGenerator() {
+	public NumGenerator() throws IOException, FontFormatException {
+		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
+		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
+		Font sizedFont = font.deriveFont(12f);
 		setTitle("Number Generator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 620, 420);
@@ -58,6 +65,7 @@ public class NumGenerator extends JFrame {
 		JRadioButton b2 = new JRadioButton("Toto");
 		b2.setBounds(105, 29, 155, 29);
 		contentPane.add(b2);
+		
 		
 		JRadioButton b1 = new JRadioButton("4D");
 		b2.addActionListener(new ActionListener() {
@@ -133,5 +141,12 @@ public class NumGenerator extends JFrame {
 		});
 		Clear.setBounds(366, 75, 69, 29);
 		contentPane.add(Clear);
+		Clear.setFont(sizedFont);
+		HUAT.setFont(sizedFont);
+		b1.setFont(sizedFont);
+		b2.setFont(sizedFont);
+		lblSetOfNumbers.setFont(sizedFont);
+		textArea.setFont(sizedFont);
+		set.setFont(sizedFont);
 	}
 }
