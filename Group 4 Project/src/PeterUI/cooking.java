@@ -1,4 +1,5 @@
 package PeterUI;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -6,13 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.SwingConstants;
+import java.awt.Font;
 
-public class Game extends JFrame {
+public class cooking extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +20,7 @@ public class Game extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Game frame = new Game();
+					cooking frame = new cooking();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,19 +32,18 @@ public class Game extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Game() {
-		setTitle("Game");
+	public cooking() {
+		setTitle("Cooking");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 450);
+		setBounds(100, 100, 451, 529);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel label = new JLabel("");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setIcon(new ImageIcon("C:\\Users\\peter_000\\Desktop\\School\\OOPP PROJ\\tic-tac.gif"));
-		label.setBounds(12, 13, 408, 377);
-		contentPane.add(label);
+		JLabel lblHey = new JLabel("Eggs");
+		lblHey.setFont(new Font("Century Schoolbook", Font.BOLD, 20));
+		lblHey.setBounds(12, 13, 56, 34);
+		contentPane.add(lblHey);
 	}
 }
