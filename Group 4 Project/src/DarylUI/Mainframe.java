@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import NewsArticles.*;
+import java.awt.Window.Type;
 
 public class Mainframe extends JFrame {
 
@@ -27,6 +28,7 @@ public class Mainframe extends JFrame {
 	 * Create the frame.
 	 */
 	public Mainframe(int id, String topic) throws IOException, FontFormatException {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		if (topic == "Economic") {
 			switch (id) {
 			case 1 : setTitle("News");

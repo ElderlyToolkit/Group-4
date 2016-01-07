@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.util.ArrayList;
+import java.awt.Color;
+import NewsArticles.*;
 
 public class News extends JFrame  {
 	int page = 1;
@@ -56,9 +58,10 @@ public class News extends JFrame  {
 	 * Create the frame.
 	 */
 	public News() throws IOException, FontFormatException {
+		setBackground(Color.WHITE);
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(12f);
+		Font sizedFont = font.deriveFont(14f);
 		
 		setTitle("News");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -144,6 +147,8 @@ public class News extends JFrame  {
 		Category.addItem("World");
 		Category.addItem("Economic");
 		
+		News1.setText(Economic1.returnHeadline());
+		
 		JButton Previous = new JButton("Previous Page <");
 		
 		JButton Next = new JButton("> Next Page");
@@ -202,21 +207,26 @@ public class News extends JFrame  {
 			@Override
 			public void mouseClicked(MouseEvent e)  {
 				if (page == 1) {
-					if (Category.getSelectedItem() == "Economic") {
+					if (Category.getSelectedItem() == "World") {
 						Mainframe mf = null;
 						try {
-							mf = new Mainframe(5,"Economic");
-						} catch (IOException e1) {
-							
-							e1.printStackTrace();
-						} catch (FontFormatException e1) {
-						
+							mf = new Mainframe(1,"World");
+						} catch (IOException | FontFormatException e1) {
 							e1.printStackTrace();
 						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 						mf.setVisible(true);
 					}
 					
 					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(1,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
 						
 					}
 					
@@ -224,12 +234,330 @@ public class News extends JFrame  {
 				}
 				
 				else {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(7,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(7,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				}
+			}
+		});
+		
+		News2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)  {
+				if (page == 1) {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(2,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(2,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				
+				}
+				
+				else {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(8,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(8,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				}
+			}
+		});
+		
+		News3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)  {
+				if (page == 1) {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(3,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(3,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				
+				}
+				
+				else {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(9,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(9,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				}
+			}
+		});
+		News4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)  {
+				if (page == 1) {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(4,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(4,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				
+				}
+				
+				else {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(10,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(10,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				}
+			}
+		});
+		News5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)  {
+				if (page == 1) {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(5,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(5,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				
+				}
+				
+				else {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(11,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(11,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				}
+			}
+		});
+		News6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)  {
+				if (page == 1) {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(6,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(6,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
+					
+				
+				}
+				
+				else {
+					if (Category.getSelectedItem() == "World") {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(12,"World");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+					}
+					
+					else {
+						Mainframe mf = null;
+						try {
+							mf = new Mainframe(12,"Economic");
+						} catch (IOException | FontFormatException e1) {
+							e1.printStackTrace();
+						}
+						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						mf.setVisible(true);
+						
+					}
 					
 				}
 			}
 		});
 		
 		
+		News1.setFont(sizedFont);
+		News2.setFont(sizedFont);
+		News3.setFont(sizedFont);
+		News4.setFont(sizedFont);
+		News5.setFont(sizedFont);
+		News6.setFont(sizedFont);
+		Previous.setFont(sizedFont);
+		Next.setFont(sizedFont);
+		Category.setFont(sizedFont);
 	
 	}
 }

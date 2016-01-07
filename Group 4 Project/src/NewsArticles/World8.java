@@ -1,6 +1,9 @@
 package NewsArticles;
 
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +17,7 @@ public class World8 extends Masterpanel {
 	/**
 	 * Create the panel.
 	 */
-	public World8(JFrame mf) {
+	public World8(JFrame mf) throws IOException, FontFormatException {
 		super(mf);
 		
 		JTextArea Info = new JTextArea();
@@ -26,6 +29,14 @@ public class World8 extends Masterpanel {
 		Headline.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
 		Headline.setBounds(15, 40, 188, 33);
 		add(Headline);
+		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
+		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
+		Font sizedFont = font.deriveFont(14f);
+		File font2_file = new File("Fonts/RobotoCondensed-Bold.ttf");
+		Font font2 = Font.createFont(Font.TRUETYPE_FONT, font2_file);
+		Font headlineFont = font2.deriveFont(19f);
+		Info.setFont(sizedFont);
+		Headline.setFont(headlineFont);
 	}
 
 }

@@ -22,6 +22,7 @@ public class Economic5 extends Masterpanel {
 		super(mf);
 		
 		JTextArea Info = new JTextArea();
+		Info.setEditable(false);
 		Info.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		Info.setLineWrap(true);
 		Info.setWrapStyleWord(true);
@@ -35,9 +36,12 @@ public class Economic5 extends Masterpanel {
 		add(Headline);
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(12f);
+		Font sizedFont = font.deriveFont(14f);
+		File font2_file = new File("Fonts/RobotoCondensed-Bold.ttf");
+		Font font2 = Font.createFont(Font.TRUETYPE_FONT, font2_file);
+		Font headlineFont = font2.deriveFont(19f);
 		Info.setFont(sizedFont);
-		Headline.setFont(sizedFont);
+		Headline.setFont(headlineFont);
 	}
 
 	}
