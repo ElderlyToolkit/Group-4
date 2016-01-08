@@ -134,6 +134,8 @@ public class Homepage extends JFrame {
 		imagelabel.setBounds(20, 11, 408, 103);
 		contentPane.add(imagelabel);
 		
+		
+		
 		btnChatBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChatboxUsername username = new ChatboxUsername();
