@@ -87,5 +87,9 @@ public class eBooks extends JFrame {
 		JButton btnSewing = new JButton("Sewing");
 		btnSewing.setBounds(251, 199, 97, 25);
 		contentPane.add(btnSewing);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(159, 322, 97, 25);
+		contentPane.add(btnBack);
 	}
 }

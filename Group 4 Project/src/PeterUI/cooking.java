@@ -6,8 +6,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Main.Homepage;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 
 public class cooking extends JFrame {
 
@@ -41,9 +48,52 @@ public class cooking extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblHey = new JLabel("Eggs");
-		lblHey.setFont(new Font("Century Schoolbook", Font.BOLD, 20));
-		lblHey.setBounds(12, 13, 56, 34);
-		contentPane.add(lblHey);
+		JButton btnEggs = new JButton("Eggs");
+		btnEggs.setBounds(51, 48, 119, 25);
+		contentPane.add(btnEggs);
+		btnEggs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Eggs egg = new Eggs();
+				egg.setVisible(true);
+				
+			}
+		});
+		
+		JButton btnSpaghetti = new JButton("Spaghetti");
+		btnSpaghetti.setBounds(264, 48, 119, 25);
+		contentPane.add(btnSpaghetti);
+		btnSpaghetti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Spaghetti spaghetti = new Spaghetti();
+				spaghetti.setVisible(true);
+				
+			}
+		});
+		
+		JButton btnSalmon = new JButton("Salmon");
+		btnSalmon.setBounds(51, 210, 119, 25);
+		contentPane.add(btnSalmon);
+		
+		JButton btnRice = new JButton("Rice");
+		btnRice.setBounds(264, 210, 119, 25);
+		contentPane.add(btnRice);
+		
+		JButton btnQuin = new JButton("Quinoa");
+		btnQuin.setBounds(51, 366, 119, 25);
+		contentPane.add(btnQuin);
+		
+		JButton btnChickenSoup = new JButton("Chicken soup");
+		btnChickenSoup.setBounds(264, 366, 119, 25);
+		contentPane.add(btnChickenSoup);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(171, 444, 97, 25);
+		contentPane.add(btnBack);
+		btnBack.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		eBooks eBooks = new eBooks();
+        		setVisible(false);
+        	}
+        });
 	}
 }
