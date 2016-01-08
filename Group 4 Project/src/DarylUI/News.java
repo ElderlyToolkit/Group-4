@@ -29,10 +29,38 @@ import NewsArticles.*;
 
 public class News extends JFrame  {
 	int page = 1;
-	String[] World = {"123","321","231","456","654","564"};
-	String[] World2 = {"12","32","23","45","65","56"};
-	String[] Economic = {"abc","cba","bca","def","fed","efd"};
-	String[] Economic2 = {"ab","cb","bc","de","fe","ef"};
+	String[] World = {
+			"Germany shocked by Cologne New Year gang assaults on women",
+			"California state of emergency over methane leak",
+			"N Korea nuclear: US, Japan, S Korea pledge united response\r\n",
+			"Libya oil storage tanks ablaze after assault by IS",
+			"Israeli TV reporter stabbed demonstrating 'knife-proof' vest",
+			"China lands more civilian planes on Fiery Cross reef\r\n"};
+	
+	String[] Economic = {
+			"Market sell-off isn\u2019t the end of the world",
+			"Asian stocks steeply lower after China suspends trade early\r\n",
+			"The market will drop more than 20%",
+			"China Worries Send U.S. Stocks Tumbling",
+			"Loretta Mester:China isn\u2019t a big risk to U.S. economy",
+			"Fed\u2019s Mester sees pickup in growth in 2016 "};
+	
+	String[] World2 = {
+			"Man with knife killed by Paris police on anniversary of Charlie Hebdo attacks",
+			"Air Force radiation 'sniffer' jet may be headed to Korea\r\n",
+			"Nauru confirms refugee child assault investigation",
+			"Jallikattu: India lifts ban on bullfighting in Tamil Nadu\r\n",
+			"Barack Obama accuses NRA of misleading US over guns",
+			"Australia Waroona fire threatens more towns after devastating Yarloop\r\n"};
+	
+	String[] Economic2 = {
+			"Global stocks slide on China, oil; North Korea test adds to worries",
+			"What Happens After You Beat the IRS in an Audit",
+			"Fed watching China stocks rout, Republicans slam yuan slump",
+			"Six-year low to US$, but Sing$ still strong against other currencies\r\n",
+			"Asia-Pacific tops global IPO activity",
+			"Banking for immigrants"};
+	
 	ArrayList<JTextPane> news = new ArrayList();
 	
 
@@ -147,7 +175,7 @@ public class News extends JFrame  {
 		Category.addItem("World");
 		Category.addItem("Economic");
 		
-		News1.setText(Economic1.returnHeadline());
+		
 		
 		JButton Previous = new JButton("Previous Page <");
 		

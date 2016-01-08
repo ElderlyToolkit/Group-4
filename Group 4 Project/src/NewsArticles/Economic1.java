@@ -14,16 +14,8 @@ import javax.swing.JLabel;
 import DarylUI.Masterpanel;
 
 public class Economic1 extends Masterpanel {
-static String s;
 
-public void getHeadline(String x) {
-	s = x;
-}
-
-public static String returnHeadline() {
-	return s;
-}
-
+	
 
 	/**
 	 * Create the panel.
@@ -54,11 +46,7 @@ public static String returnHeadline() {
 		Info.setFont(sizedFont);
 		Headline.setFont(headlineFont);
 		
-		
-		getHeadline(Headline.getText());
 	}
-	
-	
 
 	}
 
