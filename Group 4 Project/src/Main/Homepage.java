@@ -48,6 +48,7 @@ public class Homepage extends JFrame {
 	public Homepage() {
 		setTitle("Main Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setState(JFrame.NORMAL);
 		setBounds(100, 100, 481, 468);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -4,11 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Database.DBController;
+import Main.ExistingUser;
 import Main.Homepage;
 
 import javax.swing.JLabel;
@@ -22,6 +26,7 @@ public class ChatboxUsername extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	public static String nickname = null;
 
 	/**
 	 * Launch the application.
@@ -45,6 +50,7 @@ public class ChatboxUsername extends JFrame {
 	public ChatboxUsername() {
 		setTitle("Chatroom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setState(JFrame.NORMAL);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,6 +65,7 @@ public class ChatboxUsername extends JFrame {
 		
 		textField = new JTextField();
 		textField.setBounds(118, 158, 212, 20);
+		textField.setText(ExistingUser.user);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -98,12 +105,14 @@ public class ChatboxUsername extends JFrame {
             }
         };
         Timer timer = new Timer(5000, taskPerformer);
+        timer.setRepeats(false);
         
         btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				btnSubmit.setVisible(false);
 				btnClear.setVisible(false);
 				loadingLabel.setVisible(true);
+				nickname = textField.getText();
 				timer.start();
 			}
 		});
