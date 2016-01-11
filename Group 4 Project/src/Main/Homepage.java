@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import RyanUI.ChatboxUsername;
+import RyanUI.DayEventDelete;
 import RyanUI.Events;
 import RyanUI.Matchmaking;
 
@@ -21,6 +22,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Homepage extends JFrame {
 
@@ -58,70 +60,70 @@ public class Homepage extends JFrame {
 		JButton btnNewButton = new JButton("COUNSELLING");
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		btnNewButton.setFont(new Font("Century Schoolbook", Font.BOLD, 13));
-		btnNewButton.setBounds(49, 179, 159, 43);
+		btnNewButton.setBounds(49, 179, 159, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnForums = new JButton("FORUMS");
 		btnForums.setBackground(new Color(0, 191, 255));
 		btnForums.setForeground(new Color(0, 0, 0));
 		btnForums.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
-		btnForums.setBounds(249, 179, 159, 43);
+		btnForums.setBounds(249, 179, 159, 34);
 		contentPane.add(btnForums);
 		
 		JButton btnEventsAndHobbies = new JButton("EVENTS & HOBBIES");
 		btnEventsAndHobbies.setBackground(new Color(0, 191, 255));
 		btnEventsAndHobbies.setFont(new Font("Century Schoolbook", Font.BOLD, 10));
 		btnEventsAndHobbies.setForeground(new Color(0, 0, 0));
-		btnEventsAndHobbies.setBounds(49, 233, 159, 47);
+		btnEventsAndHobbies.setBounds(49, 233, 159, 34);
 		contentPane.add(btnEventsAndHobbies);
 		
 		JButton btnChatBox = new JButton("CHAT BOX");
 		btnChatBox.setBackground(new Color(0, 191, 255));
 		btnChatBox.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
 		btnChatBox.setForeground(new Color(0, 0, 0));
-		btnChatBox.setBounds(49, 291, 159, 47);
+		btnChatBox.setBounds(49, 291, 159, 34);
 		contentPane.add(btnChatBox);
 		
 		JButton btnNews = new JButton("NEWS");
 		btnNews.setBackground(new Color(0, 191, 255));
 		btnNews.setForeground(new Color(0, 0, 0));
 		btnNews.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
-		btnNews.setBounds(49, 349, 159, 43);
+		btnNews.setBounds(49, 349, 159, 34);
 		contentPane.add(btnNews);
 		
 		JButton btnMatchMaking = new JButton("MATCH MAKING");
 		btnMatchMaking.setBackground(new Color(0, 191, 255));
 		btnMatchMaking.setFont(new Font("Century Schoolbook", Font.BOLD, 13));
 		btnMatchMaking.setForeground(new Color(0, 0, 0));
-		btnMatchMaking.setBounds(249, 233, 159, 47);
+		btnMatchMaking.setBounds(249, 233, 159, 34);
 		contentPane.add(btnMatchMaking);
 		
 		JButton btnDictionary = new JButton("DICTIONARY");
 		btnDictionary.setBackground(new Color(0, 191, 255));
 		btnDictionary.setForeground(new Color(0, 0, 0));
 		btnDictionary.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
-		btnDictionary.setBounds(249, 291, 159, 47);
+		btnDictionary.setBounds(249, 291, 159, 34);
 		contentPane.add(btnDictionary);
 		
 		JButton btndtotoGenerator = new JButton("4D/TOTO\r\n GENERATOR");
 		btndtotoGenerator.setBackground(new Color(0, 191, 255));
 		btndtotoGenerator.setForeground(new Color(0, 0, 0));
 		btndtotoGenerator.setFont(new Font("Century Schoolbook", Font.BOLD, 10));
-		btndtotoGenerator.setBounds(249, 351, 159, 43);
+		btndtotoGenerator.setBounds(249, 351, 159, 32);
 		contentPane.add(btndtotoGenerator);
 		
 		JButton btnEbooks = new JButton("E-BOOKS");
 		btnEbooks.setBackground(new Color(0, 191, 255));
 		btnEbooks.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
 		btnEbooks.setForeground(new Color(0, 0, 0));
-		btnEbooks.setBounds(249, 125, 159, 43);
+		btnEbooks.setBounds(249, 125, 159, 34);
 		contentPane.add(btnEbooks);
 		
 		JButton btnGames = new JButton("GAMES");
 		btnGames.setFont(new Font("Century Schoolbook", Font.BOLD, 14));
 		btnGames.setBackground(new Color(0, 191, 255));
 		btnGames.setForeground(new Color(0, 0, 0));
-		btnGames.setBounds(49, 125, 159, 43);
+		btnGames.setBounds(49, 125, 159, 34);
 		contentPane.add(btnGames);
 		
 		//JLabel lblNewLabel = new JLabel("");
@@ -134,6 +136,11 @@ public class Homepage extends JFrame {
 		final JLabel imagelabel = new JLabel(image);
 		imagelabel.setBounds(20, 11, 408, 103);
 		contentPane.add(imagelabel);
+		
+		JButton btnExit = new JButton("Exit");
+		btnExit.setFont(new Font("Roboto Condensed", Font.PLAIN, 14));
+		btnExit.setBounds(153, 395, 159, 23);
+		contentPane.add(btnExit);
 		
 		
 		
@@ -163,6 +170,19 @@ public class Homepage extends JFrame {
 				}
 				setVisible(false);
 				matchmaking.setVisible(true);
+			}
+		});
+		
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(Homepage.this, "This will end the app.\n\nAre you sure?","Alert", JOptionPane.OK_CANCEL_OPTION);
+				System.out.print(result);
+				
+				if (result == 0) {
+					Goodbye goodbye = new Goodbye();
+					setVisible(false);
+					goodbye.setVisible(true);
+				}
 			}
 		});
 	}
