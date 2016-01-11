@@ -50,22 +50,22 @@ public class Forumpage2 extends JFrame {
 		
 		JLabel lblChooseACategory = new JLabel("Choose a Category:");
 		lblChooseACategory.setFont(new Font("Nyala", Font.BOLD, 18));
-		lblChooseACategory.setBounds(27, 29, 163, 20);
+		lblChooseACategory.setBounds(27, 29, 174, 20);
 		contentPane.add(lblChooseACategory);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Nyala", Font.BOLD, 18));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"}));
-		comboBox.setBounds(176, 26, 208, 26);
+		comboBox.setBounds(211, 26, 173, 26);
 		contentPane.add(comboBox);
 		
 		JLabel lblSubject = new JLabel("Subject:");
 		lblSubject.setFont(new Font("Nyala", Font.BOLD, 18));
-		lblSubject.setBounds(27, 76, 69, 20);
+		lblSubject.setBounds(27, 76, 82, 20);
 		contentPane.add(lblSubject);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(101, 76, 283, 26);
+		textPane.setBounds(119, 76, 265, 26);
 		contentPane.add(textPane);
 		
 		JLabel lblBody = new JLabel("Body:");

@@ -50,7 +50,7 @@ public class Livechat extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 147, 398, 223);
+		textArea.setBounds(15, 147, 460, 223);
 		contentPane.add(textArea);
 		
 		JTextPane txtpnTypeYourMessage = new JTextPane();
@@ -70,7 +70,7 @@ public class Livechat extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
-		textField.setBounds(85, 90, 328, 41);
+		textField.setBounds(85, 90, 390, 41);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
