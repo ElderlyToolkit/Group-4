@@ -3,22 +3,24 @@ package PeterUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
 
 import Main.Homepage;
 
-import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
+
+import javax.swing.*;
 
 public class cooking extends JFrame {
 
 	private JPanel contentPane;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -60,7 +62,7 @@ public class cooking extends JFrame {
 		});
 		
 		JButton btnSpaghetti = new JButton("Spaghetti");
-		btnSpaghetti.setBounds(264, 48, 119, 25);
+		btnSpaghetti.setBounds(264, 210, 119, 25);
 		contentPane.add(btnSpaghetti);
 		btnSpaghetti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -75,8 +77,15 @@ public class cooking extends JFrame {
 		contentPane.add(btnSalmon);
 		
 		JButton btnRice = new JButton("Rice");
-		btnRice.setBounds(264, 210, 119, 25);
+		btnRice.setBounds(264, 48, 119, 25);
 		contentPane.add(btnRice);
+		btnRice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Rice rice = new Rice();
+				rice.setVisible(true);
+				
+			}
+		});
 		
 		JButton btnQuin = new JButton("Quinoa");
 		btnQuin.setBounds(51, 366, 119, 25);
