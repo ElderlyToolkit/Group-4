@@ -53,7 +53,7 @@ public class NumGenerator extends JFrame {
 	public NumGenerator() throws IOException, FontFormatException {
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(12f);
+		Font sizedFont = font.deriveFont(16f);
 		setTitle("Number Generator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 620, 420);
@@ -101,6 +101,8 @@ public class NumGenerator extends JFrame {
 		
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
 		textArea.setBounds(41, 122, 506, 226);
 		contentPane.add(textArea);
 		
@@ -112,14 +114,19 @@ public class NumGenerator extends JFrame {
 				if (b1.isSelected()) {
 					for (int i = 0; i <= set.getSelectedIndex() ; i++){ 
 					x = (int) (Math.random() * 10000);
-					y = "" + x + " ";
+					if (x < 1000) {
+						y = "0" + x + " ";
+					}
+					else {
+						y = x + " ";
+					}
 					textArea.append(y);
 				}
 				}
 				else if (b2.isSelected() ){
 					for (int i = 0; i <= set.getSelectedIndex() ; i++) {
 						x = (int) (Math.random() * 49) + 1;
-						y = "" + x + " ";
+						y = x + " ";
 						textArea.append(y);;
 					}
 				}

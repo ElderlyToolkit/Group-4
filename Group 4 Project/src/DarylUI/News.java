@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -175,11 +176,16 @@ public class News extends JFrame  {
 		Category.addItem("World");
 		Category.addItem("Economic");
 		
+		ImageIcon backie = new ImageIcon("Images/previous.png");
+		JButton Previous = new JButton(backie);
+		Previous.setBorder(BorderFactory.createEmptyBorder());
+		Previous.setContentAreaFilled(false);
 		
+		ImageIcon nextie = new ImageIcon("Images/next.png");
+		JButton Next = new JButton(nextie);
+		Next.setBorder(BorderFactory.createEmptyBorder());
+		Next.setContentAreaFilled(false);
 		
-		JButton Previous = new JButton("Previous Page <");
-		
-		JButton Next = new JButton("> Next Page");
 		Next.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			Next.setEnabled(false);
@@ -197,9 +203,6 @@ public class News extends JFrame  {
 						}
 					}
 					}
-				
-				
-		
 		
 		});
 		Next.setBounds(446, 15, 174, 29);
