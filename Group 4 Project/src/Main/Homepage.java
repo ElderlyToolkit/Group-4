@@ -15,6 +15,7 @@ import RyanUI.DayEventDelete;
 import RyanUI.Events;
 import RyanUI.Matchmaking;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -137,14 +138,15 @@ public class Homepage extends JFrame {
 		imagelabel.setBounds(20, 11, 408, 103);
 		contentPane.add(imagelabel);
 		
-		JButton btnExit = new JButton("EXIT");
+		ImageIcon exit = new ImageIcon("Images/exit.png");
+		JButton btnExit = new JButton(exit);
+		btnExit.setBorder(BorderFactory.createEmptyBorder());
+		btnExit.setContentAreaFilled(false);
 		btnExit.setForeground(Color.BLACK);
 		btnExit.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
 		btnExit.setBackground(new Color(0, 191, 255));
 		btnExit.setBounds(150, 397, 159, 21);
 		contentPane.add(btnExit);
-		
-		
 		
 		btnChatBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
