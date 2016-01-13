@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import DarylUI.Masterpanel;
@@ -25,7 +26,9 @@ public class World11 extends Masterpanel {
 		Info.setLineWrap(true);
 		Info.setText("US President Barack Obama has strongly criticised the most powerful US gun lobby during a televised public forum.\r\n\r\nHe said the National Rifle Association (NRA) had deliberately misrepresented proposed legislation on gun control.\r\n\r\nThe NRA declined to take part in the discussion, which it called a public relations spectacle.Meanwhile, US Republican presidential hopeful Donald Trump said he would eliminate gun-free zones in schools on his first day in office, if elected.\r\n\r\nAddressing the audience at George Mason University in Fairfax, Virginia, Mr Obama blamed the NRA and others for suggesting that \"somebody's going to come grab your guns\".\r\n\r\nHe said that all he was seeking to do was strengthen background checks - not seize all firearms.\r\n");
 		Info.setBounds(15, 116, 570, 318);
-		add(Info);
+		JScrollPane scrollPane = new JScrollPane(Info);
+		scrollPane.setBounds(15, 116, 570, 318);
+		add(scrollPane);
 		
 		JLabel Headline = new JLabel("Barack Obama accuses NRA of misleading US over guns");
 		Headline.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
@@ -33,7 +36,7 @@ public class World11 extends Masterpanel {
 		add(Headline);
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(14f);
+		Font sizedFont = font.deriveFont(20f);
 		File font2_file = new File("Fonts/RobotoCondensed-Bold.ttf");
 		Font font2 = Font.createFont(Font.TRUETYPE_FONT, font2_file);
 		Font headlineFont = font2.deriveFont(21f);

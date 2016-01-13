@@ -1,6 +1,7 @@
 package NewsArticles;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.Font;
@@ -28,7 +29,9 @@ public class Economic5 extends Masterpanel {
 		Info.setWrapStyleWord(true);
 		Info.setText("Weakness in China\u2019s economy is not a big risk to the U.S. economic outlook, Cleveland Fed President Loretta Mester said Monday, a day on which weak Chinese manufacturing data triggered a global stock-market selloff.\r\n\r\nIn an interview with Bloomberg Television, Mester said the Fed has already built a weakening Chinese economy into its forecast, and growth has been slowing in the Asian giant \u201Cfor a while.\u201D\r\n\r\n\u201CI don\u2019t see that as a significant risk to the forecast, but it is certainly a risk,\u201D Mester said.\r\n\r\n\u201CUnderlying fundamentals of the U.S. economy remain very sound,\u201D she added.\r\n\r\nOne piece of data on China\u2019s economy can move markets because it has been hard for economists to understand the actual scope of the downturn in the world\u2019s second-largest economy, she noted.\r\n\r\n\r\n");
 		Info.setBounds(15, 116, 570, 318);
-		add(Info);
+		JScrollPane scrollPane = new JScrollPane(Info);
+		scrollPane.setBounds(15, 116, 570, 318);
+		add(scrollPane);
 		
 		JLabel Headline = new JLabel("Loretta Mester:China isn\u2019t a big risk to U.S. economy");
 		Headline.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
@@ -36,7 +39,7 @@ public class Economic5 extends Masterpanel {
 		add(Headline);
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(14f);
+		Font sizedFont = font.deriveFont(20f);
 		File font2_file = new File("Fonts/RobotoCondensed-Bold.ttf");
 		Font font2 = Font.createFont(Font.TRUETYPE_FONT, font2_file);
 		Font headlineFont = font2.deriveFont(19f);

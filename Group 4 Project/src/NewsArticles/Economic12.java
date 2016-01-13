@@ -1,6 +1,7 @@
 package NewsArticles;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.Font;
@@ -26,7 +27,9 @@ public class Economic12 extends Masterpanel {
 		Info.setLineWrap(true);
 		Info.setText("MOST banks wouldn\u2019t lend to Roberta. She arrived in New York from Mexico with papers but no credit history. But Neighborhood Trust Federal Credit Union, which specialises in lending to immigrants, gave her advice and a $2,000 loan. She started out selling Mexican food from a cart. She now runs a food truck, employs five people and has plans to expand.\r\n\r\nMany immigrants, like Roberta, want to save or start a business. But they struggle to get finance. In America 23% of households headed by a non-citizen, and 35% of households where only Spanish is spoken, have no bank accounts\u2014compared with 8% for the population as a whole. There are multiple barriers: not just low incomes, which make it hard to meet minimum-balance requirements, but also trouble with language, identification and trust.\r\n\r\nNeighborhood Trust is trying to change that. More than half its members are Latino, largely from the Dominican Republic, and many are undocumented. Most of the staff are themselves immigrants, and know their members well: they visit borrowers\u2019 businesses often and offer workshops on financial literacy. The hands-on approach keeps default rates low.");
 		Info.setBounds(15, 116, 570, 318);
-		add(Info);
+		JScrollPane scrollPane = new JScrollPane(Info);
+		scrollPane.setBounds(15, 116, 570, 318);
+		add(scrollPane);
 		
 		JLabel Headline = new JLabel("Banking for immigrants");
 		Headline.setFont(new Font("Malgun Gothic", Font.PLAIN, 24));
@@ -34,7 +37,7 @@ public class Economic12 extends Masterpanel {
 		add(Headline);
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(14f);
+		Font sizedFont = font.deriveFont(20f);
 		File font2_file = new File("Fonts/RobotoCondensed-Bold.ttf");
 		Font font2 = Font.createFont(Font.TRUETYPE_FONT, font2_file);
 		Font headlineFont = font2.deriveFont(19f);

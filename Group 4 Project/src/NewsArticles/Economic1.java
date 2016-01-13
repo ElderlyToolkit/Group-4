@@ -25,7 +25,7 @@ public class Economic1 extends Masterpanel {
 		super(mf);
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(15f);
+		Font sizedFont = font.deriveFont(20f);
 		
 		JTextArea Info = new JTextArea();
 		Info.setEditable(false);
