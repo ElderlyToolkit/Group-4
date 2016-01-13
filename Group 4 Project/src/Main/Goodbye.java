@@ -78,7 +78,7 @@ public class Goodbye extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 counter--;
                 progressBar.setValue(counter);
-                if (counter<1) {
+                if (counter<0) {
                 	//JOptionPane.showMessageDialog(null, "Kaboom!");
                     timer.stop();
                     System.exit(0);
