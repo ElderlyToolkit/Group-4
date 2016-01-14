@@ -197,9 +197,10 @@ public class DayEventSignUp extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet rs = null;
 				String attendee = textField.getText();
+				String event = textField_1.getText();
 				DBController db=new DBController();
 				
-				SignUpConstructor constructor = new SignUpConstructor(attendee);
+				SignUpConstructor constructor = new SignUpConstructor(attendee, event);
 				int id= SignUpDA.signup(constructor);
 				
 				if (id>0) {

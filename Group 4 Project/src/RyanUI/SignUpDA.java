@@ -17,12 +17,13 @@ public class SignUpDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO attendee(attendee) values (?)";
+    	dbQuery="INSERT INTO attendee(attendee, event) values (?,?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
     	try {
     		pstmt.setString(1,SignUpConstructor.getAttendee());
+    		pstmt.setString(2, SignUpConstructor.getEvent());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database

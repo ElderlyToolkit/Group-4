@@ -3,11 +3,15 @@ package RyanUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import java.io.FileNotFoundException;
@@ -23,6 +27,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
+import Main.ExistingUser;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
@@ -69,7 +74,7 @@ public class DayEventView extends JFrame {
 		contentPane.setLayout(null);
 		
 		ResultSet rs = null;
-		String name, time, date = Events.Date, description, location;
+		String name = null, time, date = Events.Date, description, location;
 		DBController db=new DBController();
 		
 		String dbQuery = "SELECT name, time, date, description, location FROM events WHERE date='" + date + "'";
@@ -108,7 +113,7 @@ public class DayEventView extends JFrame {
 		ListTableModel model = ListTableModel.createModelFromResultSet(rs);
 		JTable table = new JTable(model);
 		table.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
-		table.setEnabled(false);
+		table.setEnabled(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.getColumnModel().getColumn(1).setPreferredWidth(128);
@@ -128,5 +133,40 @@ public class DayEventView extends JFrame {
 				event.setVisible(true);
 			}
 		});
+		
+		table.addMouseListener(new MouseAdapter() {
+			  public void mouseClicked(MouseEvent e) {
+			    if (e.getClickCount() == 1) {
+			    	int row = 0, column = 0;
+			    	String attendee = null, event = null, databaseAttendee = null, databaseEvent = null;
+			      
+			      row = table.getSelectedRow();
+			      column = table.getSelectedColumn();
+			      event = table.getValueAt(row, 3).toString();
+			      System.out.println(event);
+			      
+			      ResultSet rs = null;
+					
+					DBController db=new DBController();
+					
+					String dbQuery = "SELECT * FROM attendee WHERE event='" + event + "'";
+					
+					//queries database
+					rs = db.readRequest(dbQuery);
+					
+					try {
+						while (rs.next()) {
+						    databaseAttendee = rs.getString("attendee");
+						    databaseEvent = rs.getString("event");
+						}
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					
+					System.out.println(databaseAttendee);
+					JOptionPane.showMessageDialog(DayEventView.this, "People attending " + event + ":\n\n" + databaseAttendee);
+			    }
+			  }
+			});
 	}
 }
