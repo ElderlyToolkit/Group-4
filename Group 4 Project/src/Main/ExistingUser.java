@@ -133,6 +133,19 @@ public class ExistingUser extends JFrame {
 
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
 			    	
+			    	if (name.equals("Admin") && password.equals("admin")) {
+				    	JOptionPane.showMessageDialog(ExistingUser.this, "WARNING THIS IS AN ADMINISTRATOR ACCOUNT\n\nUSE EXTREME CAUTION.");
+				    	
+				        textField.setText("");
+				        textField_1.setText("");
+				        user = databaseUsername;
+				        
+				        Homepage home = new Homepage();
+				        setVisible(false);
+				        home.setVisible(true);
+				    }
+			    	
+			    	else {
 			    	JOptionPane.showMessageDialog(ExistingUser.this, "User authenticated.\n\nWelcome " + name + ".");
 			    	
 			        textField.setText("");
@@ -142,7 +155,10 @@ public class ExistingUser extends JFrame {
 			        Homepage home = new Homepage();
 			        setVisible(false);
 			        home.setVisible(true);
-			    } else {
+			    	}
+			    }
+			    
+			    else {
 			    	JOptionPane.showMessageDialog(ExistingUser.this, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
 			        textField_1.setText("");
 			    }

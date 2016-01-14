@@ -186,6 +186,9 @@ public class DayEventDelete extends JFrame {
 				if (name.equals(organiser)) {
 					btnDelete.setEnabled(true);
 				}
+				else if (name.equals("Admin")) {
+					btnDelete.setEnabled(true);
+				}
 			}
 		});
 		
