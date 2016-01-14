@@ -138,7 +138,7 @@ public class DayEventView extends JFrame {
 			  public void mouseClicked(MouseEvent e) {
 			    if (e.getClickCount() == 1) {
 			    	int row = 0, column = 0;
-			    	String attendee = null, event = null, databaseAttendee = null, databaseEvent = null;
+			    	String attendee = "", event = null, databaseAttendee = "", databaseEvent = null;
 			      
 			      row = table.getSelectedRow();
 			      column = table.getSelectedColumn();
@@ -156,14 +156,15 @@ public class DayEventView extends JFrame {
 					
 					try {
 						while (rs.next()) {
-						    databaseAttendee = rs.getString("attendee");
+						    databaseAttendee += rs.getString("attendee")+ ", ";
 						    databaseEvent = rs.getString("event");
+						    System.out.println(databaseAttendee);
 						}
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
 					
-					System.out.println(databaseAttendee);
+					
 					JOptionPane.showMessageDialog(DayEventView.this, "People attending " + event + ":\n\n" + databaseAttendee);
 			    }
 			  }
