@@ -252,10 +252,6 @@ public class Matchmaking extends JFrame {
 		
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				group.clearSelection();
 				prefmale.setSelected(false);
 				preffemale.setSelected(false);
 				lblSearchingForYour.setVisible(false);
