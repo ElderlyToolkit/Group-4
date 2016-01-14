@@ -79,13 +79,7 @@ public class cooking extends JFrame {
 		JButton btnRice = new JButton("Rice");
 		btnRice.setBounds(264, 48, 119, 25);
 		contentPane.add(btnRice);
-		btnRice.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Rice rice = new Rice();
-				rice.setVisible(true);
-				
-			}
-		});
+		
 		
 		JButton btnQuin = new JButton("Quinoa");
 		btnQuin.setBounds(51, 366, 119, 25);

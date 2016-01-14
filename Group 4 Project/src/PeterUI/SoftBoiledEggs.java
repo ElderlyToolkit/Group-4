@@ -39,6 +39,7 @@ public class SoftBoiledEggs extends JFrame {
 	 * Create the frame.
 	 */
 	public SoftBoiledEggs() {
+		setTitle("Soft-boiled eggs");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 732, 587);
 		contentPane = new JPanel();
@@ -55,7 +56,7 @@ public class SoftBoiledEggs extends JFrame {
 		JTextPane txtpnToSoftboilEggs = new JTextPane();
 		txtpnToSoftboilEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
 		txtpnToSoftboilEggs.setBackground(SystemColor.control);
-		txtpnToSoftboilEggs.setText("To cook soft-boiled eggs, use the same technique as hard-boiling and simply steep the eggs in hot water for a bit less time: Put your eggs in a pan and cover with cold water. Bring to a boil over high heat, then take the pan off the stove and cover. Let stand for 4 minutes.");
+		txtpnToSoftboilEggs.setText("Step 1: \nUse the same technique as hard-boiling but let stand for 4 minutes instead of 10 minutes.");
 		txtpnToSoftboilEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToSoftboilEggs);
 		
@@ -68,6 +69,9 @@ public class SoftBoiledEggs extends JFrame {
         		setVisible(false);
         	}
         });
+		
+		
+		
 	}
 
 }
