@@ -7,6 +7,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -65,6 +67,10 @@ public class Events extends JFrame {
 		
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(66, 159, 319, 20);
+		Date date = new Date();
+		dateChooser.setDate(date);
+		System.out.println(date);
+		Date = date.toString().substring(0, 10);
 		contentPane.add(dateChooser);
 		
 		JButton button = new JButton("< Back");
@@ -94,7 +100,6 @@ public class Events extends JFrame {
 		
 		dateChooser.addPropertyChangeListener (new PropertyChangeListener() {
 			public void propertyChange (PropertyChangeEvent e) {
-				
 				if ("date".equals(e.getPropertyName())) {
 	                System.out.println(e.getPropertyName() + ": " + (Date) e.getNewValue());
 	                String output = e.getPropertyName() + ": " + (Date) e.getNewValue();

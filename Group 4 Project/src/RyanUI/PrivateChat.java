@@ -131,6 +131,7 @@ public class PrivateChat extends JFrame {
 			textArea.append(timeStamp + " " + input + "\n");
 			textField.setText("");
 			timer.start();
+			timer.stop();
 		}
 		};
 		textField.addActionListener(action);
