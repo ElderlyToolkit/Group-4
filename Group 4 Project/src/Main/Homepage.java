@@ -148,6 +148,16 @@ public class Homepage extends JFrame {
 		btnExit.setBounds(150, 397, 159, 21);
 		contentPane.add(btnExit);
 		
+		if (ExistingUser.user.equals("Community Center")) {
+			btnNewButton.setEnabled(false);
+			btnNews.setEnabled(false);
+			btnMatchMaking.setEnabled(false);
+			btnDictionary.setEnabled(false);
+			btndtotoGenerator.setEnabled(false);
+			btnEbooks.setEnabled(false);
+			btnGames.setEnabled(false);
+		}
+		
 		btnChatBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChatboxUsername username = new ChatboxUsername();
