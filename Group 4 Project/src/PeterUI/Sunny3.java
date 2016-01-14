@@ -8,14 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 
-public class Sunny extends JFrame {
+public class Sunny3 extends JFrame {
 
 	private JPanel contentPane;
 
@@ -26,7 +26,7 @@ public class Sunny extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Sunny frame = new Sunny();
+					Sunny3 frame = new Sunny3();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class Sunny extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Sunny() {
+	public Sunny3() {
 		setTitle("Sunny eggs");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 732, 587);
@@ -56,24 +56,14 @@ public class Sunny extends JFrame {
 		JTextPane txtpnToSunnyEggs = new JTextPane();
 		txtpnToSunnyEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 23));
 		txtpnToSunnyEggs.setBackground(SystemColor.control);
-		txtpnToSunnyEggs.setText("Step 1:\nHeat oil or melt butter in a nonstick skillet over medium heat. Carefully crack eggs one at a time into the skillet.");
+		txtpnToSunnyEggs.setText("Step 3:\nCovering the pan or basting the egg helps the top to cook without flipping the egg. Total time: 4 to 5 minutes. ");
 		txtpnToSunnyEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToSunnyEggs);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(496, 502, 97, 25);
+		btnBack.setBounds(605, 502, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		Eggs egg = new Eggs();
-        		setVisible(false);
-        	}
-        });
-		
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(605, 502, 97, 25);
-		contentPane.add(btnNext);
-		btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		Sunny2 su2 = new Sunny2();
         		setVisible(false);

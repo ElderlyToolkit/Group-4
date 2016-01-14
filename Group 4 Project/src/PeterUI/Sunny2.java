@@ -8,14 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 
-public class Sunny extends JFrame {
+public class Sunny2 extends JFrame {
 
 	private JPanel contentPane;
 
@@ -26,7 +26,7 @@ public class Sunny extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Sunny frame = new Sunny();
+					Sunny2 frame = new Sunny2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class Sunny extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Sunny() {
+	public Sunny2() {
 		setTitle("Sunny eggs");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 732, 587);
@@ -56,7 +56,7 @@ public class Sunny extends JFrame {
 		JTextPane txtpnToSunnyEggs = new JTextPane();
 		txtpnToSunnyEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 23));
 		txtpnToSunnyEggs.setBackground(SystemColor.control);
-		txtpnToSunnyEggs.setText("Step 1:\nHeat oil or melt butter in a nonstick skillet over medium heat. Carefully crack eggs one at a time into the skillet.");
+		txtpnToSunnyEggs.setText("Step 2:\nWait for 1 to 2 minutes, then either cover the pan for a minute, or tilt the skillet and use a spoon to collect the fat and pour it over the egg white. Repeat to pour it over the yolk.");
 		txtpnToSunnyEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToSunnyEggs);
 		
@@ -65,8 +65,9 @@ public class Sunny extends JFrame {
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Eggs egg = new Eggs();
+        		Sunny su = new Sunny();
         		setVisible(false);
+        		su.setVisible(true);
         	}
         });
 		
@@ -75,9 +76,9 @@ public class Sunny extends JFrame {
 		contentPane.add(btnNext);
 		btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Sunny2 su2 = new Sunny2();
+        		Sunny3 su3 = new Sunny3();
         		setVisible(false);
-        		su2.setVisible(true);
+        		su3.setVisible(true);
         	}
         });
 	}
