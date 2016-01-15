@@ -21,6 +21,7 @@ import java.sql.SQLException;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 import javax.swing.ListModel;
 import javax.swing.JTable;
@@ -93,7 +94,8 @@ public class DayEventView extends JFrame {
 			e1.printStackTrace();
 		}*/
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
 		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
@@ -156,7 +158,7 @@ public class DayEventView extends JFrame {
 					
 					try {
 						while (rs.next()) {
-						    databaseAttendee += rs.getString("attendee")+ ", ";
+						    databaseAttendee += rs.getString("attendee") + ", ";
 						    databaseEvent = rs.getString("event");
 						    System.out.println(databaseAttendee);
 						}

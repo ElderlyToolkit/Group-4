@@ -16,6 +16,7 @@ import Main.ExistingUser;
 import Main.Homepage;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.JTextField;
@@ -74,11 +75,13 @@ public class ChatboxUsername extends JFrame {
 		lblEnterANickname.setBounds(118, 133, 212, 14);
 		contentPane.add(lblEnterANickname);
 		
-		JButton btnSubmit = new JButton("Submit");
+		ImageIcon submit = new ImageIcon("Images/submit.png");
+		JButton btnSubmit = new JButton(submit);
 		btnSubmit.setBounds(241, 189, 89, 23);
 		contentPane.add(btnSubmit);
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/Back.png");
+		JButton button = new JButton(back);
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
 		
@@ -88,7 +91,8 @@ public class ChatboxUsername extends JFrame {
 		contentPane.add(loadingLabel);
 		loadingLabel.setVisible(false);
 		
-		JButton btnClear = new JButton("Clear");
+		ImageIcon clear = new ImageIcon("Images/clear.png");
+		JButton btnClear = new JButton(clear);
 		btnClear.setBounds(118, 189, 89, 23);
 		contentPane.add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
@@ -109,11 +113,17 @@ public class ChatboxUsername extends JFrame {
         
         btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				btnSubmit.setVisible(false);
-				btnClear.setVisible(false);
-				loadingLabel.setVisible(true);
-				nickname = textField.getText();
-				timer.start();
+				
+				if (textField.getText().equals("")) {
+					JOptionPane.showMessageDialog(ChatboxUsername.this, "Please input a name");
+				}
+				else{
+					btnSubmit.setVisible(false);
+					btnClear.setVisible(false);
+					loadingLabel.setVisible(true);
+					nickname = textField.getText();
+					timer.start();
+				}
 			}
 		});
         

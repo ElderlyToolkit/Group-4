@@ -18,6 +18,7 @@ import java.sql.SQLException;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -66,7 +67,8 @@ public class DayEventSignUp extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
 		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
@@ -110,7 +112,8 @@ public class DayEventSignUp extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnIAmGoing = new JButton("I am going!");
+		ImageIcon going = new ImageIcon("Images/going.png");
+		JButton btnIAmGoing = new JButton(going);
 		btnIAmGoing.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		btnIAmGoing.setBounds(285, 200, 120, 23);
 		contentPane.add(btnIAmGoing);
@@ -195,19 +198,39 @@ public class DayEventSignUp extends JFrame {
 		
 		btnIAmGoing.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ResultSet rs = null;
 				String attendee = textField.getText();
 				String event = textField_1.getText();
+				String databaseAttendee = null;
+				String databaseEvent = null;
 				DBController db=new DBController();
+				ResultSet rs2;
 				
-				SignUpConstructor constructor = new SignUpConstructor(attendee, event);
-				int id= SignUpDA.signup(constructor);
+				String dbQuery = "SELECT * FROM attendee WHERE attendee='" + attendee + "' AND event='" + event + "'";
 				
-				if (id>0) {
-		    		constructor.setId(id);
-		    		JOptionPane.showMessageDialog(DayEventSignUp.this, "You are going!");
-		    		//System.out.println("Entry was created");
-		    	}
+				rs2 = db.readRequest(dbQuery);
+				
+				try {
+					while (rs2.next()) {
+					    databaseAttendee = rs2.getString("attendee");
+					    databaseEvent = rs2.getString("event");
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				if (attendee.equals(databaseAttendee) && event.equals(databaseEvent)) {
+					JOptionPane.showMessageDialog(DayEventSignUp.this, "You are already signed up for this event!");
+				}
+				else {
+					SignUpConstructor constructor = new SignUpConstructor(attendee, event);
+					int id= SignUpDA.signup(constructor);
+					
+					if (id>0) {
+			    		constructor.setId(id);
+			    		JOptionPane.showMessageDialog(DayEventSignUp.this, "You are going!");
+			    		//System.out.println("Entry was created");
+			    	}
+				}
 			}
 		});
 	}

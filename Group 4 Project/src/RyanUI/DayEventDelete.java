@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -64,7 +65,8 @@ public class DayEventDelete extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
 		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
@@ -94,10 +96,11 @@ public class DayEventDelete extends JFrame {
 		comboBox.setBounds(109, 60, 133, 17);
 		contentPane.add(comboBox);
 		
-		JButton btnDelete = new JButton("Delete Event");
+		ImageIcon delete = new ImageIcon("Images/deleteevent.png");
+		JButton btnDelete = new JButton(delete);
 		btnDelete.setEnabled(false);
 		btnDelete.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
-		btnDelete.setBounds(149, 198, 120, 23);
+		btnDelete.setBounds(136, 198, 169, 23);
 		contentPane.add(btnDelete);
 		
 		JLabel lblSelectEvent = new JLabel("Name of Event:");
@@ -136,9 +139,10 @@ public class DayEventDelete extends JFrame {
 		textField_3.setBounds(109, 141, 133, 17);
 		contentPane.add(textField_3);
 		
-		JButton btnValidateUser = new JButton("Validate User");
+		ImageIcon validate = new ImageIcon("Images/validate.png");
+		JButton btnValidateUser = new JButton(validate);
 		btnValidateUser.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
-		btnValidateUser.setBounds(262, 143, 120, 18);
+		btnValidateUser.setBounds(262, 138, 162, 23);
 		contentPane.add(btnValidateUser);
 		
 		button.addActionListener(new ActionListener() {

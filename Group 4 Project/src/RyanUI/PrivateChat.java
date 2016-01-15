@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -72,7 +73,8 @@ public class PrivateChat extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnSend = new JButton("Send");
+		ImageIcon send = new ImageIcon("Images/send.png");
+		JButton btnSend = new JButton(send);
 		btnSend.setBounds(352, 229, 72, 23);
 		btnSend.setFont(sizedFont);
 		contentPane.add(btnSend);
@@ -85,7 +87,8 @@ public class PrivateChat extends JFrame {
 			}
 		});
 		
-		JButton btnNewButton = new JButton("Clear");
+		ImageIcon clear = new ImageIcon("Images/clear.png");
+		JButton btnNewButton = new JButton(clear);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText("");
@@ -95,7 +98,8 @@ public class PrivateChat extends JFrame {
 		btnNewButton.setFont(sizedFont);
 		contentPane.add(btnNewButton);
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
 		button.setBounds(10, 11, 89, 23);
 		button.setFont(sizedFont);
 		contentPane.add(button);
