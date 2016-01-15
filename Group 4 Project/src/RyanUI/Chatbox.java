@@ -71,8 +71,9 @@ public class Chatbox extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Send");
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
+		ImageIcon send = new ImageIcon("Images/send.png");
+		JButton btnNewButton = new JButton(send);
+		//btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
@@ -87,7 +88,8 @@ public class Chatbox extends JFrame {
 		btnNewButton.setBounds(356, 236, 68, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnClear = new JButton("Clear");
+		ImageIcon clear = new ImageIcon("Images/clear.png");
+		JButton btnClear = new JButton(clear);
 		btnClear.setBounds(277, 236, 74, 23);
 		contentPane.add(btnClear);
 		
@@ -96,7 +98,8 @@ public class Chatbox extends JFrame {
 		lblonlineUsers.setBounds(317, 31, 107, 14);
 		contentPane.add(lblonlineUsers);
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
 		button.setBounds(10, 9, 89, 19);
 		contentPane.add(button);
 		

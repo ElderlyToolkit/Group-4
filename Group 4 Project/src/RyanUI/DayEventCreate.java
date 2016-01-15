@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -65,7 +66,8 @@ public class DayEventCreate extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
 		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
@@ -82,7 +84,8 @@ public class DayEventCreate extends JFrame {
 		separator.setBounds(10, 45, 414, 8);
 		contentPane.add(separator);
 		
-		JButton btnSave = new JButton("Book Slot");
+		ImageIcon createevent = new ImageIcon("Images/createevent.png");
+		JButton btnSave = new JButton(createevent);
 		btnSave.setEnabled(false);
 		btnSave.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		btnSave.setBounds(168, 194, 127, 23);
@@ -101,9 +104,10 @@ public class DayEventCreate extends JFrame {
 		comboBox.setBounds(109, 60, 133, 17);
 		contentPane.add(comboBox);
 		
-		JButton btnCheckAvailability = new JButton("Check Availability");
+		ImageIcon checkavail = new ImageIcon("Images/checkavail.png");
+		JButton btnCheckAvailability = new JButton(checkavail);
 		btnCheckAvailability.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
-		btnCheckAvailability.setBounds(270, 56, 127, 25);
+		btnCheckAvailability.setBounds(252, 56, 172, 25);
 		contentPane.add(btnCheckAvailability);
 		
 		JLabel lblNameOfEvent = new JLabel("Name of Event:");

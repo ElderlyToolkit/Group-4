@@ -88,25 +88,34 @@ public class Matchmaking extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnSubmit = new JButton("Search");
-		btnSubmit.setBounds(14, 164, 116, 23);
+		ImageIcon search = new ImageIcon("Images/search.png");
+		JButton btnSubmit = new JButton(search);
+		btnSubmit.setBorder(BorderFactory.createEmptyBorder());
+		btnSubmit.setContentAreaFilled(false);
+		btnSubmit.setBounds(14, 164, 143, 23);
 		btnSubmit.setFont(sizedFont);
 		contentPane.add(btnSubmit);
 		
-		JButton btnClear = new JButton("Reset");
-		btnClear.setBounds(14, 198, 116, 23);
+		ImageIcon reset = new ImageIcon("Images/reset.png");
+		JButton btnClear = new JButton(reset);
+		btnClear.setBorder(BorderFactory.createEmptyBorder());
+		btnClear.setContentAreaFilled(false);
+		btnClear.setBounds(14, 198, 143, 23);
 		btnClear.setFont(sizedFont);
 		contentPane.add(btnClear);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(14, 232, 116, 23);
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton btnBack = new JButton(back);
+		btnBack.setBorder(BorderFactory.createEmptyBorder());
+		btnBack.setContentAreaFilled(false);
+		btnBack.setBounds(14, 232, 143, 23);
 		btnBack.setFont(sizedFont);
 		contentPane.add(btnBack);
 		
 		JLabel lblProfilePicture = new JLabel();
 		lblProfilePicture.setBackground(Color.YELLOW);
 		lblProfilePicture.setHorizontalAlignment(SwingConstants.CENTER);
-		lblProfilePicture.setBounds(14, 11, 116, 106);
+		lblProfilePicture.setBounds(14, 11, 143, 106);
 		contentPane.add(lblProfilePicture);
 		
 		JLabel lblName = new JLabel("Name:");
@@ -221,8 +230,11 @@ public class Matchmaking extends JFrame {
 			}
 		});
 		
-		JButton btnUploadPicture = new JButton("Upload Picture");
-		btnUploadPicture.setBounds(14, 130, 116, 23);
+		ImageIcon upload = new ImageIcon("Images/upload.png");
+		JButton btnUploadPicture = new JButton(upload);
+		btnUploadPicture.setBorder(BorderFactory.createEmptyBorder());
+		btnUploadPicture.setContentAreaFilled(false);
+		btnUploadPicture.setBounds(14, 130, 143, 23);
 		btnUploadPicture.setFont(sizedFont);
 		
 		btnUploadPicture.addActionListener(new ActionListener() {
