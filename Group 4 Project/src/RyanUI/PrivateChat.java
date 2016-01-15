@@ -123,7 +123,7 @@ public class PrivateChat extends JFrame {
 		ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
             	String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
-            	textArea.append(timeStamp + " " + Matchmaking.partner + ": Hello!\n");
+            	textArea.append(timeStamp + " " + MatchmakingList.partner + ": Hello!\n");
             }
         };
         Timer timer = new Timer(5000, taskPerformer);
