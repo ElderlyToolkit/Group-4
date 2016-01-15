@@ -58,21 +58,21 @@ public class TTT extends JFrame {
 			result = "Player O wins!";
 		else if (table[2][0] + table[1][1] + table[0][2] == 3)
 			result = "Player O wins!";
-		else if (table[0][0] + table[0][1] + table[0][2] == 0) 
+		else if (table[0][0] + table[0][1] + table[0][2] == 6) 
 			result = "Player X wins!";
-		else if (table[1][0] + table[1][1] + table[1][2] == 0)
+		else if (table[1][0] + table[1][1] + table[1][2] == 6)
 			result = "Player X wins!";
-		else if (table[2][0] + table[2][1] + table[2][2] == 0)
+		else if (table[2][0] + table[2][1] + table[2][2] == 6)
 			result = "Player X wins!";
-		else if (table[0][0] + table[1][0] + table[2][0] == 0)
+		else if (table[0][0] + table[1][0] + table[2][0] == 6)
 			result = "Player X wins!";
-		else if (table[0][1] + table[1][1] + table[2][1] == 0)
+		else if (table[0][1] + table[1][1] + table[2][1] == 6)
 			result = "Player X wins!";
-		else if (table[0][2] + table[1][2] + table[2][2] == 0)
+		else if (table[0][2] + table[1][2] + table[2][2] == 6)
 			result = "Player X wins!";
-		else if (table[0][0] + table[1][1] + table[2][2] == 0)
+		else if (table[0][0] + table[1][1] + table[2][2] == 6)
 			result = "Player X wins!";
-		else if (table[2][0] + table[1][1] + table[0][2] == 0)
+		else if (table[2][0] + table[1][1] + table[0][2] == 6)
 			result = "Player X wins!";
 		
 		else 
@@ -89,6 +89,7 @@ public class TTT extends JFrame {
 	 */
 	public TTT() {
 		int[][] table = new int[3][3];
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
@@ -168,7 +169,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box1.setIcon(x);
-						table[0][0] = 0;
+						table[0][0] = 2;
 						box1.removeMouseListener(this);
 					}
 					
@@ -189,7 +190,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box2.setIcon(x);
-						table[0][1] = 0;
+						table[0][1] = 2;
 						box2.removeMouseListener(this);
 					}
 					counter++;
@@ -207,7 +208,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box3.setIcon(x);
-						table[0][2] = 0;
+						table[0][2] = 2;
 						box3.removeMouseListener(this);
 					}
 					
@@ -226,7 +227,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box4.setIcon(x);
-						table[1][0] = 0;
+						table[1][0] = 2;
 						box4.removeMouseListener(this);
 					}
 					
@@ -245,7 +246,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box5.setIcon(x);
-						table[1][1] = 0;
+						table[1][1] = 2;
 						box5.removeMouseListener(this);
 					}
 					
@@ -264,7 +265,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box6.setIcon(x);
-						table[1][2] = 0;
+						table[1][2] = 2;
 						box6.removeMouseListener(this);
 					}
 					
@@ -283,7 +284,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box7.setIcon(x);
-						table[2][0] = 0;
+						table[2][0] = 2;
 						box7.removeMouseListener(this);
 					}
 					
@@ -303,7 +304,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box8.setIcon(x);
-						table[2][1] = 0;
+						table[2][1] = 2;
 						box8.removeMouseListener(this);
 					}
 					
@@ -322,7 +323,7 @@ public class TTT extends JFrame {
 					
 					else {
 						box9.setIcon(x);
-						table[2][2] = 0;
+						table[2][2] = 2;
 						box9.removeMouseListener(this);
 					}
 					
@@ -372,7 +373,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box1.setIcon(x);
-								table[0][0] = 0;
+								table[0][0] = 2;
 								box1.removeMouseListener(this);
 							}
 							
@@ -393,7 +394,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box2.setIcon(x);
-								table[0][1] = 0;
+								table[0][1] = 2;
 								box2.removeMouseListener(this);
 							}
 							counter++;
@@ -411,7 +412,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box3.setIcon(x);
-								table[0][2] = 0;
+								table[0][2] = 2;
 								box3.removeMouseListener(this);
 							}
 							
@@ -430,7 +431,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box4.setIcon(x);
-								table[1][0] = 0;
+								table[1][0] = 2;
 								box4.removeMouseListener(this);
 							}
 							
@@ -449,7 +450,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box5.setIcon(x);
-								table[1][1] = 0;
+								table[1][1] = 2;
 								box5.removeMouseListener(this);
 							}
 							
@@ -468,7 +469,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box6.setIcon(x);
-								table[1][2] = 0;
+								table[1][2] = 2;
 								box6.removeMouseListener(this);
 							}
 							
@@ -487,7 +488,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box7.setIcon(x);
-								table[2][0] = 0;
+								table[2][0] = 2;
 								box7.removeMouseListener(this);
 							}
 							
@@ -507,7 +508,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box8.setIcon(x);
-								table[2][1] = 0;
+								table[2][1] = 2;
 								box8.removeMouseListener(this);
 							}
 							
@@ -526,7 +527,7 @@ public class TTT extends JFrame {
 							
 							else {
 								box9.setIcon(x);
-								table[2][2] = 0;
+								table[2][2] = 2;
 								box9.removeMouseListener(this);
 							}
 							
