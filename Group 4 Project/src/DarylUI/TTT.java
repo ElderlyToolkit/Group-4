@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ import java.awt.event.ActionEvent;
 public class TTT extends JFrame {
 	int counter = 0;
 	private JPanel contentPane;
+	ArrayList<JLabel> tictacs = new ArrayList();
 
 	/**
 	 * Launch the application.
@@ -88,7 +90,7 @@ public class TTT extends JFrame {
 	public TTT() {
 		int[][] table = new int[3][3];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -143,6 +145,17 @@ public class TTT extends JFrame {
 		box9.setHorizontalAlignment(JLabel.CENTER);
 		contentPane.add(box9);
 		
+		tictacs.add(box1);
+		tictacs.add(box2);
+		tictacs.add(box3);
+		tictacs.add(box4);
+		tictacs.add(box5);
+		tictacs.add(box6);
+		tictacs.add(box7);
+		tictacs.add(box8);
+		tictacs.add(box9);
+		
+		
 		
 			box1.addMouseListener(new MouseAdapter() {
 				@Override
@@ -150,30 +163,37 @@ public class TTT extends JFrame {
 					if (counter % 2 != 0) {
 						box1.setIcon(o);
 						table[0][0] = 1;
+						box1.removeMouseListener(this);
 					}
 					
 					else {
 						box1.setIcon(x);
 						table[0][0] = 0;
+						box1.removeMouseListener(this);
 					}
 					
 					counter++;
+				
 				}
 			});
+
 			box2.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					
 					if (counter % 2  != 0) {
 						box2.setIcon(o);
 						table[0][1] = 1;
+						box2.removeMouseListener(this);						
 					}
 					
 					else {
 						box2.setIcon(x);
 						table[0][1] = 0;
+						box2.removeMouseListener(this);
 					}
-					
 					counter++;
+					
 				}
 			});
 			box3.addMouseListener(new MouseAdapter() {
@@ -182,14 +202,17 @@ public class TTT extends JFrame {
 					if (counter % 2  != 0) {
 						box3.setIcon(o);
 						table[0][2] = 1;
+						box3.removeMouseListener(this);
 					}
 					
 					else {
 						box3.setIcon(x);
 						table[0][2] = 0;
+						box3.removeMouseListener(this);
 					}
 					
 					counter++;
+					
 				}
 			});
 			box4.addMouseListener(new MouseAdapter() {
@@ -198,14 +221,17 @@ public class TTT extends JFrame {
 					if (counter % 2  != 0) {
 						box4.setIcon(o);
 						table[1][0] = 1;
+						box4.removeMouseListener(this);
 					}
 					
 					else {
 						box4.setIcon(x);
 						table[1][0] = 0;
+						box4.removeMouseListener(this);
 					}
 					
 					counter++;
+				
 				}
 			});
 			box5.addMouseListener(new MouseAdapter() {
@@ -214,14 +240,17 @@ public class TTT extends JFrame {
 					if (counter % 2  != 0) {
 						box5.setIcon(o);
 						table[1][1] = 1;
+						box5.removeMouseListener(this);
 					}
 					
 					else {
 						box5.setIcon(x);
 						table[1][1] = 0;
+						box5.removeMouseListener(this);
 					}
 					
 					counter++;
+					
 				}
 			});
 			box6.addMouseListener(new MouseAdapter() {
@@ -230,14 +259,17 @@ public class TTT extends JFrame {
 					if (counter % 2  != 0) {
 						box6.setIcon(o);
 						table[1][2] = 1;
+						box6.removeMouseListener(this);
 					}
 					
 					else {
 						box6.setIcon(x);
 						table[1][2] = 0;
+						box6.removeMouseListener(this);
 					}
 					
 					counter++;
+					
 				}
 			});
 			box7.addMouseListener(new MouseAdapter() {
@@ -246,14 +278,18 @@ public class TTT extends JFrame {
 					if (counter % 2  != 0) {
 						box7.setIcon(o);
 						table[2][0] = 1;
+						box7.removeMouseListener(this);
 					}
 					
 					else {
 						box7.setIcon(x);
 						table[2][0] = 0;
+						box7.removeMouseListener(this);
 					}
 					
+					
 					counter++;
+					
 				}
 			});
 			box8.addMouseListener(new MouseAdapter() {
@@ -262,14 +298,17 @@ public class TTT extends JFrame {
 					if (counter % 2  != 0) {
 						box8.setIcon(o);
 						table[2][1] = 1;
+						box8.removeMouseListener(this);
 					}
 					
 					else {
 						box8.setIcon(x);
 						table[2][1] = 0;
+						box8.removeMouseListener(this);
 					}
 					
 					counter++;
+					
 				}
 			});
 			box9.addMouseListener(new MouseAdapter() {
@@ -278,14 +317,17 @@ public class TTT extends JFrame {
 					if (counter % 2  != 0) {
 						box9.setIcon(o);
 						table[2][2] = 1;
+						box9.removeMouseListener(this);
 					}
 					
 					else {
 						box9.setIcon(x);
 						table[2][2] = 0;
+						box9.removeMouseListener(this);
 					}
 					
 					counter++;
+					
 				}
 			});
 			
@@ -294,14 +336,208 @@ public class TTT extends JFrame {
 		tac.setBounds(15, 16, 548, 312);
 		contentPane.add(tac);
 		
-		JButton Button = new JButton("New button");
+		JButton Button = new JButton("Check");
 		Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkResult(table);
+				checkResult(table);			
 			}
 		});
-		Button.setBounds(448, 5, 115, 29);
+		Button.setBounds(570, 100, 100, 30);
 		contentPane.add(Button);
 		
+		JButton Restart= new JButton("Restart");
+		Restart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				counter = 0;
+				for (int row = 0; row < 3; row++) {
+					for (int col = 0; col < 3; col++) {
+						table[row][col] = 0;
+					}
+				
+					}
+
+				for (JLabel i : tictacs) {
+					i.setIcon(null);
+					};
+
+
+					box1.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2 != 0) {
+								box1.setIcon(o);
+								table[0][0] = 1;
+								box1.removeMouseListener(this);
+							}
+							
+							else {
+								box1.setIcon(x);
+								table[0][0] = 0;
+								box1.removeMouseListener(this);
+							}
+							
+							counter++;
+							
+						}
+					});
+
+					box2.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							
+							if (counter % 2  != 0) {
+								box2.setIcon(o);
+								table[0][1] = 1;
+								box2.removeMouseListener(this);						
+							}
+							
+							else {
+								box2.setIcon(x);
+								table[0][1] = 0;
+								box2.removeMouseListener(this);
+							}
+							counter++;
+							
+						}
+					});
+					box3.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2  != 0) {
+								box3.setIcon(o);
+								table[0][2] = 1;
+								box3.removeMouseListener(this);
+							}
+							
+							else {
+								box3.setIcon(x);
+								table[0][2] = 0;
+								box3.removeMouseListener(this);
+							}
+							
+							counter++;
+							
+						}
+					});
+					box4.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2  != 0) {
+								box4.setIcon(o);
+								table[1][0] = 1;
+								box4.removeMouseListener(this);
+							}
+							
+							else {
+								box4.setIcon(x);
+								table[1][0] = 0;
+								box4.removeMouseListener(this);
+							}
+							
+							counter++;
+							
+						}
+					});
+					box5.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2  != 0) {
+								box5.setIcon(o);
+								table[1][1] = 1;
+								box5.removeMouseListener(this);
+							}
+							
+							else {
+								box5.setIcon(x);
+								table[1][1] = 0;
+								box5.removeMouseListener(this);
+							}
+							
+							counter++;
+							
+						}
+					});
+					box6.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2  != 0) {
+								box6.setIcon(o);
+								table[1][2] = 1;
+								box6.removeMouseListener(this);
+							}
+							
+							else {
+								box6.setIcon(x);
+								table[1][2] = 0;
+								box6.removeMouseListener(this);
+							}
+							
+							counter++;
+							
+						}
+					});
+					box7.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2  != 0) {
+								box7.setIcon(o);
+								table[2][0] = 1;
+								box7.removeMouseListener(this);
+							}
+							
+							else {
+								box7.setIcon(x);
+								table[2][0] = 0;
+								box7.removeMouseListener(this);
+							}
+							
+							
+							counter++;
+							
+						}
+					});
+					box8.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2  != 0) {
+								box8.setIcon(o);
+								table[2][1] = 1;
+								box8.removeMouseListener(this);
+							}
+							
+							else {
+								box8.setIcon(x);
+								table[2][1] = 0;
+								box8.removeMouseListener(this);
+							}
+							
+							counter++;
+							
+						}
+					});
+					box9.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if (counter % 2  != 0) {
+								box9.setIcon(o);
+								table[2][2] = 1;
+								box9.removeMouseListener(this);
+							}
+							
+							else {
+								box9.setIcon(x);
+								table[2][2] = 0;
+								box9.removeMouseListener(this);
+							}
+							
+							counter++;
+							
+						}
+					});
+				}
+			
+		});
+		Restart.setBounds(570, 200, 100, 30);
+		contentPane.add(Restart);
 	}
 }
