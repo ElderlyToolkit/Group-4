@@ -16,7 +16,7 @@ public class NewUserDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO users(name, age, gender, email, password) values (?,?,?,?,?)";
+    	dbQuery="INSERT INTO users(name, age, gender, email, password, permissions) values (?,?,?,?,?,?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
@@ -26,6 +26,7 @@ public class NewUserDA {
     		pstmt.setInt(3,NewUserConstructor.getGender());
     		pstmt.setString(4, NewUserConstructor.getEmail());
     		pstmt.setString(5, NewUserConstructor.getPassword());
+    		pstmt.setString(6, NewUserConstructor.getPermission());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database

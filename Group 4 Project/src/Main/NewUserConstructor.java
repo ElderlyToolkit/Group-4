@@ -7,19 +7,29 @@ public class NewUserConstructor {
 	private static int gender;
 	private static String email;
 	private static String password;
+	private static String permission;
 	
 	public NewUserConstructor() {
 		super();
 	}
 	
-	public NewUserConstructor(String name, int age, int gender, String email, String password) {
+	public NewUserConstructor(String name, int age, int gender, String email, String password, String permission) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.email = email;
 		this.password = password;
+		this.permission = permission;
 	}
 	
+	public static String getPermission() {
+		return permission;
+	}
+
+	public static void setPermission(String permission) {
+		NewUserConstructor.permission = permission;
+	}
+
 	public static String getPassword() {
 		return password;
 	}

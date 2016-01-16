@@ -2,12 +2,20 @@ package Main;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -16,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import Database.DBController;
+import javax.swing.JComboBox;
 
 public class NewUser extends JFrame {
 
@@ -43,6 +52,7 @@ public class NewUser extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public NewUser() {
 		setTitle("Create Account");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,11 +96,11 @@ public class NewUser extends JFrame {
 		contentPane.add(lblAge);
 		
 		JRadioButton rdbtnMale = new JRadioButton("Male");
-		rdbtnMale.setBounds(233, 112, 47, 23);
+		rdbtnMale.setBounds(233, 112, 64, 23);
 		contentPane.add(rdbtnMale);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setBounds(226, 81, 75, 20);
+		spinner.setBounds(228, 81, 167, 20);
 		contentPane.add(spinner);
 		
 		JLabel lblGender = new JLabel("Gender:");
@@ -98,8 +108,12 @@ public class NewUser extends JFrame {
 		contentPane.add(lblGender);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("Female");
-		rdbtnFemale.setBounds(331, 112, 64, 23);
+		rdbtnFemale.setBounds(314, 112, 81, 23);
 		contentPane.add(rdbtnFemale);
+		
+		ButtonGroup buttonGroup = new ButtonGroup();
+		buttonGroup.add(rdbtnMale);
+		buttonGroup.add(rdbtnFemale);
 		
 		JLabel lblEmal = new JLabel("Email:");
 		lblEmal.setBounds(170, 145, 46, 14);
@@ -119,21 +133,86 @@ public class NewUser extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JLabel lblAccountCreated = new JLabel("Account Created!");
-		lblAccountCreated.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAccountCreated.setBounds(187, 217, 167, 14);
-		lblAccountCreated.setVisible(false);
-		contentPane.add(lblAccountCreated);
-		
 		JButton btnClear = new JButton("Clear");
 		btnClear.setBounds(10, 195, 109, 23);
 		contentPane.add(btnClear);
+		
+		JLabel lblPriviledge = new JLabel("Permission:");
+		lblPriviledge.setBounds(170, 199, 56, 14);
+		contentPane.add(lblPriviledge);
+		
+		String[] comboTypes = {"Standard", "Organiser", "Administrator"};
+		JComboBox comboBox = new JComboBox(comboTypes);
+		comboBox.setEnabled(false);
+		comboBox.setBounds(228, 197, 81, 18);
+		contentPane.add(comboBox);
+		
+		JButton btnAuthenticatePermission = new JButton("Enable");
+		btnAuthenticatePermission.setBounds(319, 196, 76, 21);
+		contentPane.add(btnAuthenticatePermission);
 		
 		Timer timer = new Timer(5000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login login = new Login();
 	        	setVisible(false);
 	        	login.setVisible(true);
+			}
+		});
+		
+		btnAuthenticatePermission.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				JPanel panel = new JPanel(new BorderLayout(5, 5));
+
+			    JPanel label = new JPanel(new GridLayout(0, 1, 2, 2));
+			    label.add(new JLabel("Name", SwingConstants.RIGHT));
+			    label.add(new JLabel("Password", SwingConstants.RIGHT));
+			    panel.add(label, BorderLayout.WEST);
+
+			    JPanel controls = new JPanel(new GridLayout(0, 1, 2, 2));
+			    JTextField username = new JTextField();
+			    controls.add(username);
+			    JTextField password = new JTextField();
+			    controls.add(password);
+			    panel.add(controls, BorderLayout.CENTER);
+
+			    JOptionPane.showMessageDialog(NewUser.this, panel, "Login", JOptionPane.OK_CANCEL_OPTION);
+			    
+			    String name = username.getText();
+			    String userpassword = password.getText();
+			    
+			    String databaseUsername = null;
+				String databasePassword = null;
+				ResultSet rs = null;
+				
+				DBController db=new DBController();
+				
+				String dbQuery = "SELECT name, password FROM users WHERE name='" + name + "' AND password='" + userpassword+ "'";
+				
+				//queries database
+				rs = db.readRequest(dbQuery);
+				
+				//check username and password
+				try {
+					while (rs.next()) {
+					    databaseUsername = rs.getString("name");
+					    databasePassword = rs.getString("password");
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				if (name.equals("") || userpassword.equals("")) {
+					JOptionPane.showMessageDialog(NewUser.this, "Empty fields detected.\n\nPlease enter details.");
+				}
+				else {
+					if (databaseUsername.equals("Admin") && databasePassword.equals("admin")) {
+						JOptionPane.showMessageDialog(NewUser.this, "Administrator Authenticated.\n\nPermissions granted.");
+						comboBox.setEnabled(true);
+					}
+					else {
+						JOptionPane.showMessageDialog(NewUser.this, "Your account is not an administrator.\n\nPlease contact an administrator to change permissions.");
+					}
+				}
 			}
 		});
 		
@@ -145,14 +224,27 @@ public class NewUser extends JFrame {
 				int age = (int) spinner.getValue();
 				String email = textField_1.getText();
 				String password = textField_2.getText();
+				String permission = (String) comboBox.getSelectedItem();
+				int gender = 0;
 				btnClear.setEnabled(false);
 				btnSubmit.setEnabled(false);
 				
-				NewUserConstructor constructor = new NewUserConstructor (name, age, 1, email, password);
+				if (rdbtnMale.isSelected()) {
+					gender = 1;
+				}
+				else if (rdbtnFemale.isSelected()) {
+					gender = 2;
+				}
+				else {
+					JOptionPane.showMessageDialog(NewUser.this, "Please select a gender");
+				}
+				
+				NewUserConstructor constructor = new NewUserConstructor (name, age, gender, email, password, permission);
 				id = NewUserDA.createUser(constructor);
 				
 				if (id > 0) {
-					lblAccountCreated.setVisible(true);	
+					//lblAccountCreated.setVisible(true);
+					JOptionPane.showMessageDialog(NewUser.this, "Account Created!");
 				}
 				
 				Login login = new Login();
