@@ -93,7 +93,7 @@ public class News extends JFrame  {
 		Font sizedFont = font.deriveFont(14f);
 		
 		setTitle("News");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 669, 452);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import DarylUI.News;
+import DarylUI.Dictionary;
+import DarylUI.NumGenerator;
 import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
 import RyanUI.Events;
@@ -187,6 +190,39 @@ public class Homepage extends JFrame {
 			btnEbooks.setEnabled(false);
 			btnGames.setEnabled(false);
 		}
+		
+		btnNews.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					News news = new News();
+					news.setVisible(true);
+				} catch (IOException | FontFormatException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		btnDictionary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Dictionary dic = new Dictionary();
+					dic.setVisible(true);
+				} catch (IOException | FontFormatException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		btndtotoGenerator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					NumGenerator generator = new NumGenerator();
+					generator.setVisible(true);
+				} catch (IOException | FontFormatException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		btnChatBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
