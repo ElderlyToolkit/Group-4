@@ -61,7 +61,8 @@ public class ExistingUser extends JFrame {
 		imagelabel.setBounds(16, 54, 408, 103);
 		contentPane.add(imagelabel);
 		
-		JButton button = new JButton("< Back");
+		ImageIcon back = new ImageIcon("Images/Back.png");
+		JButton button = new JButton(back);
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
 		
@@ -70,7 +71,7 @@ public class ExistingUser extends JFrame {
 		contentPane.add(lblName);
 		
 		textField = new JTextField();
-		textField.setBounds(97, 168, 155, 20);
+		textField.setBounds(111, 168, 155, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -79,15 +80,17 @@ public class ExistingUser extends JFrame {
 		contentPane.add(lblPassword);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(97, 199, 155, 20);
+		textField_1.setBounds(111, 196, 155, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnSubmit = new JButton("Submit");
+		ImageIcon submit = new ImageIcon("Images/submit.png");
+		JButton btnSubmit = new JButton(submit);
 		btnSubmit.setBounds(300, 164, 89, 23);
 		contentPane.add(btnSubmit);
 		
-		JButton btnClear = new JButton("Clear");
+		ImageIcon clear = new ImageIcon("Images/clear.png");
+		JButton btnClear = new JButton(clear);
 		btnClear.setBounds(300, 195, 89, 23);
 		contentPane.add(btnClear);
 		

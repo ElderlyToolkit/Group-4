@@ -50,12 +50,14 @@ public class Login extends JFrame {
 		imagelabel.setBounds(10, 11, 408, 103);
 		contentPane.add(imagelabel);
 		
-		JButton btnCreateAnAccount = new JButton("New Users");
-		btnCreateAnAccount.setBounds(30, 160, 123, 23);
+		ImageIcon newuser = new ImageIcon("Images/NewUsers.png");
+		JButton btnCreateAnAccount = new JButton(newuser);
+		btnCreateAnAccount.setBounds(30, 160, 146, 23);
 		contentPane.add(btnCreateAnAccount);
 		
-		JButton btnExistingUsers = new JButton("Existing Users");
-		btnExistingUsers.setBounds(274, 160, 122, 23);
+		ImageIcon existing = new ImageIcon("Images/ExistingUsers.png");
+		JButton btnExistingUsers = new JButton(existing);
+		btnExistingUsers.setBounds(250, 160, 146, 23);
 		contentPane.add(btnExistingUsers);
 		
 		btnCreateAnAccount.addActionListener(new ActionListener() {

@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
@@ -24,7 +25,10 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import Database.DBController;
+import RyanUI.Matchmaking;
+
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 
 public class NewUser extends JFrame {
 
@@ -32,6 +36,8 @@ public class NewUser extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JFileChooser fc;
+	private File file;
 
 	/**
 	 * Launch the application.
@@ -65,8 +71,9 @@ public class NewUser extends JFrame {
 		
 		ImageIcon image = new ImageIcon("Images/logo.png");
 		
-		JButton button = new JButton("< Back");
-		button.setBounds(10, 229, 109, 23);
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
+		button.setBounds(30, 227, 101, 23);
 		contentPane.add(button);
 		
 		JLabel lblAvatar = new JLabel("Avatar");
@@ -74,12 +81,14 @@ public class NewUser extends JFrame {
 		lblAvatar.setBounds(10, 11, 109, 111);
 		contentPane.add(lblAvatar);
 		
-		JButton btnNewButton = new JButton("Upload Picture");
-		btnNewButton.setBounds(10, 122, 109, 23);
+		ImageIcon upload = new ImageIcon("Images/upload.png");
+		JButton btnNewButton = new JButton(upload);
+		btnNewButton.setBounds(10, 122, 140, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(10, 161, 109, 23);
+		ImageIcon submit = new ImageIcon("Images/submit.png");
+		JButton btnSubmit = new JButton(submit);
+		btnSubmit.setBounds(30, 161, 101, 23);
 		contentPane.add(btnSubmit);
 		
 		JLabel lblName = new JLabel("Name:");
@@ -133,8 +142,9 @@ public class NewUser extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(10, 195, 109, 23);
+		ImageIcon clear = new ImageIcon("Images/clear.png");
+		JButton btnClear = new JButton(clear);
+		btnClear.setBounds(30, 193, 101, 23);
 		contentPane.add(btnClear);
 		
 		JLabel lblPriviledge = new JLabel("Permission:");
@@ -260,5 +270,22 @@ public class NewUser extends JFrame {
             	login.setVisible(true);
 			}
 		});
+		
+		btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e1) {
+        		int retval = 0;
+        		
+        		JFileChooser fileChooser = new JFileChooser();
+        		retval = fileChooser.showOpenDialog(NewUser.this);
+				if (retval == JFileChooser.APPROVE_OPTION) {
+				     file = fileChooser.getSelectedFile();
+				     lblAvatar.setText("");
+				     lblAvatar.setIcon(new ImageIcon(file.getAbsolutePath()));
+			    }
+				else {
+					JOptionPane.showMessageDialog(NewUser.this, "No Image selected!");
+				}
+        	}
+        });
 	}
 }

@@ -58,7 +58,8 @@ public class Welcome extends JFrame {
 		lblWelcomeToGet.setBounds(10, 125, 408, 23);
 		contentPane.add(lblWelcomeToGet);
 		
-		JButton btnGo = new JButton("Go!");
+		ImageIcon go = new ImageIcon("Images/Go.png");
+		JButton btnGo = new JButton(go);
 		btnGo.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		btnGo.setBounds(167, 171, 89, 23);
 		contentPane.add(btnGo);
