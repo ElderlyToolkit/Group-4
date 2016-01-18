@@ -8,20 +8,30 @@ public class NewUserConstructor {
 	private static String email;
 	private static String password;
 	private static String permission;
+	private static String photo;
 	
 	public NewUserConstructor() {
 		super();
 	}
 	
-	public NewUserConstructor(String name, int age, int gender, String email, String password, String permission) {
+	public NewUserConstructor(String name, int age, int gender, String email, String password, String permission, String photo) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.email = email;
 		this.password = password;
 		this.permission = permission;
+		this.photo = photo;
 	}
 	
+	public static String getPhoto() {
+		return photo;
+	}
+
+	public static void setPhoto(String photo) {
+		NewUserConstructor.photo = photo;
+	}
+
 	public static String getPermission() {
 		return permission;
 	}

@@ -63,6 +63,7 @@ public class Matchmaking extends JFrame {
         DBController db=new DBController();
         String name = null, email = null;
         int age = 0, gender = 0;
+        String photo = null;
 		
 		String dbQuery = "SELECT * FROM users WHERE name='" + ExistingUser.user + "'";
 		
@@ -74,6 +75,7 @@ public class Matchmaking extends JFrame {
 			    age = rs.getInt("age");
 			    email = rs.getString("email");
 			    gender = rs.getInt("gender");
+			    photo = rs.getString("photo");
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -112,7 +114,8 @@ public class Matchmaking extends JFrame {
 		btnBack.setFont(sizedFont);
 		contentPane.add(btnBack);
 		
-		JLabel lblProfilePicture = new JLabel();
+		ImageIcon profile = new ImageIcon(photo);
+		JLabel lblProfilePicture = new JLabel(profile);
 		lblProfilePicture.setBackground(Color.YELLOW);
 		lblProfilePicture.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProfilePicture.setBounds(14, 11, 143, 106);

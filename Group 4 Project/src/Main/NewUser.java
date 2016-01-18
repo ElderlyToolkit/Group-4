@@ -38,6 +38,7 @@ public class NewUser extends JFrame {
 	private JTextField textField_2;
 	private JFileChooser fc;
 	private File file;
+	private String path;
 
 	/**
 	 * Launch the application.
@@ -249,7 +250,7 @@ public class NewUser extends JFrame {
 					JOptionPane.showMessageDialog(NewUser.this, "Please select a gender");
 				}
 				
-				NewUserConstructor constructor = new NewUserConstructor (name, age, gender, email, password, permission);
+				NewUserConstructor constructor = new NewUserConstructor (name, age, gender, email, password, permission, path);
 				id = NewUserDA.createUser(constructor);
 				
 				if (id > 0) {
@@ -281,6 +282,7 @@ public class NewUser extends JFrame {
 				     file = fileChooser.getSelectedFile();
 				     lblAvatar.setText("");
 				     lblAvatar.setIcon(new ImageIcon(file.getAbsolutePath()));
+				     path = file.getAbsolutePath();
 			    }
 				else {
 					JOptionPane.showMessageDialog(NewUser.this, "No Image selected!");
