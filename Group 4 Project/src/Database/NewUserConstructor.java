@@ -1,4 +1,4 @@
-package Main;;
+package Database;;
 
 public class NewUserConstructor {
 	private int id;

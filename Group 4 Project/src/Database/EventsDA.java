@@ -1,12 +1,11 @@
-package Main;
+package Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import Database.DBController;
 
-public class NewUserDA {
+public class EventsDA {
 	
-    public static int createUser(NewUserConstructor constructor){
+    public static int createEvent(EventConsructor eventconstructor){
     	DBController db=new DBController();
     	String dbQuery;
     	PreparedStatement pstmt;
@@ -16,18 +15,17 @@ public class NewUserDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO users(name, age, gender, email, password, permissions, photo) values (?,?,?,?,?,?,?)";
+    	dbQuery="INSERT INTO events(name, time, date, description, location, organiser) values (?,?,?,?,?,?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
     	try {
-    		pstmt.setString(1,NewUserConstructor.getName());
-    		pstmt.setInt(2,NewUserConstructor.getAge());
-    		pstmt.setInt(3,NewUserConstructor.getGender());
-    		pstmt.setString(4, NewUserConstructor.getEmail());
-    		pstmt.setString(5, NewUserConstructor.getPassword());
-    		pstmt.setString(6, NewUserConstructor.getPermission());
-    		pstmt.setString(7, NewUserConstructor.getPhoto());
+    		pstmt.setString(1,EventConsructor.getName());
+    		pstmt.setString(2, EventConsructor.getTime());
+    		pstmt.setString(3, EventConsructor.getDate());
+    		pstmt.setString(4,EventConsructor.getDescription());
+    		pstmt.setString(5,EventConsructor.getLocation());
+    		pstmt.setString(6, EventConsructor.getOrganiser());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database

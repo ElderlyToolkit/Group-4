@@ -1,4 +1,4 @@
-package RyanUI;
+package Database;
 
 public class SignUpConstructor {
 	private int id;

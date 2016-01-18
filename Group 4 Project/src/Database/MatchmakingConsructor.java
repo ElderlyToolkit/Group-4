@@ -1,6 +1,6 @@
-package RyanUI;
+package Database;
 
-import RyanUI.MatchmakingDA;
+import Database.MatchmakingDA;
 
 public class MatchmakingConsructor {
 	private int id;

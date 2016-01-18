@@ -1,6 +1,4 @@
-package RyanUI;
-
-import Database.DBController;
+package Database;
 
 public class ChatboxConstructor {
 	private int id;

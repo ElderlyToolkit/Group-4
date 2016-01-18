@@ -25,6 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import Database.DBController;
+import Database.NewUserConstructor;
+import Database.NewUserDA;
 import RyanUI.Matchmaking;
 
 import javax.swing.JComboBox;

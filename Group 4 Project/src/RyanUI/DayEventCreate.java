@@ -25,6 +25,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
+import Database.EventConsructor;
+import Database.EventsDA;
 import Main.ExistingUser;
 
 import javax.swing.JTextField;

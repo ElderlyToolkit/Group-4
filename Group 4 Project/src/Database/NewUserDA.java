@@ -1,13 +1,11 @@
-package RyanUI;
+package Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import Database.DBController;
-
-
-public class MatchmakingDA {
-	public static int createMatchmaking(MatchmakingConsructor constructor) throws ClassNotFoundException{
+public class NewUserDA {
+	
+    public static int createUser(NewUserConstructor constructor){
     	DBController db=new DBController();
     	String dbQuery;
     	PreparedStatement pstmt;
@@ -17,16 +15,18 @@ public class MatchmakingDA {
     	db.getConnection();
     	
     	//step 2: declare the SQL statement
-    	dbQuery="INSERT INTO matchmaking(Name, Age, Gender, Email, Preference) values (?,?,?,?,?)";
+    	dbQuery="INSERT INTO users(name, age, gender, email, password, permissions, photo) values (?,?,?,?,?,?,?)";
     	pstmt=db.getPreparedStatementWithKey(dbQuery);
     	
     	//step 3: to insert record
     	try {
-    		pstmt.setString(1,MatchmakingConsructor.getName());
-    		pstmt.setString(2,MatchmakingConsructor.getAge());
-    		pstmt.setInt(3,MatchmakingConsructor.getGender());
-    		pstmt.setString(4, MatchmakingConsructor.getEmail());
-    		pstmt.setInt(5, MatchmakingConsructor.getPreference());
+    		pstmt.setString(1,NewUserConstructor.getName());
+    		pstmt.setInt(2,NewUserConstructor.getAge());
+    		pstmt.setInt(3,NewUserConstructor.getGender());
+    		pstmt.setString(4, NewUserConstructor.getEmail());
+    		pstmt.setString(5, NewUserConstructor.getPassword());
+    		pstmt.setString(6, NewUserConstructor.getPermission());
+    		pstmt.setString(7, NewUserConstructor.getPhoto());
     		pstmt.executeUpdate();
     		
     		// getting the auto generated key from the database
@@ -40,5 +40,5 @@ public class MatchmakingDA {
     		e.printStackTrace();
     	}
     	return id;    	
-    }
+    } 
 }
