@@ -6,6 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 
 public class eBooks extends JFrame {
@@ -32,28 +37,59 @@ public class eBooks extends JFrame {
 	 * Create the frame.
 	 */
 	public eBooks() {
+		setTitle("eBooks");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 449);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblCategories = new JLabel("Categories");
-		lblCategories.setBounds(173, 13, 61, 50);
+		lblCategories.setBounds(176, 13, 84, 33);
 		contentPane.add(lblCategories);
 		
-		JLabel lblRomance = new JLabel("Romance");
-		lblRomance.setBounds(10, 69, 53, 50);
-		contentPane.add(lblRomance);
+		JButton btnKnitting = new JButton("Knitting");
+		btnKnitting.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnKnitting.setBounds(67, 59, 97, 25);
+		contentPane.add(btnKnitting);
 		
-		JLabel lblMystery = new JLabel("Mystery");
-		lblMystery.setBounds(183, 69, 50, 50);
-		contentPane.add(lblMystery);
+		JButton btnCooking = new JButton("Cooking");
+		btnCooking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cooking cook = new cooking();
+				cook.setVisible(true);
+				
+			}
+		});
+		btnCooking.setBounds(251, 59, 97, 25);
+		contentPane.add(btnCooking);
 		
-		JLabel lblFiction = new JLabel("Fiction");
-		lblFiction.setBounds(359, 69, 61, 50);
-		contentPane.add(lblFiction);
+		JButton btnNewButton = new JButton("Gardening");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(67, 129, 97, 25);
+		contentPane.add(btnNewButton);
+		
+		JButton btnJuggling = new JButton("Juggling");
+		btnJuggling.setBounds(251, 129, 97, 25);
+		contentPane.add(btnJuggling);
+		
+		JButton btnEmbroidery = new JButton("Embroidery");
+		btnEmbroidery.setBounds(67, 199, 97, 25);
+		contentPane.add(btnEmbroidery);
+		
+		JButton btnSewing = new JButton("Sewing");
+		btnSewing.setBounds(251, 199, 97, 25);
+		contentPane.add(btnSewing);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(159, 322, 97, 25);
+		contentPane.add(btnBack);
 	}
-
 }

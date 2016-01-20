@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Game extends JFrame {
 
@@ -35,10 +38,16 @@ public class Game extends JFrame {
 	public Game() {
 		setTitle("Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 510, 510);
+		setBounds(100, 100, 450, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setIcon(new ImageIcon("C:\\Users\\peter_000\\Desktop\\School\\OOPP PROJ\\tic-tac.gif"));
+		label.setBounds(12, 13, 408, 377);
+		contentPane.add(label);
 	}
 }

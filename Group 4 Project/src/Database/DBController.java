@@ -29,9 +29,9 @@ public class DBController {
 	public void getConnection() { 
 		String url = ""; 
 		try {
-			//url = "jdbc:mysql://localhost:8866/group4project"; //Local Server
-			url = "jdbc:mysql://db4free.net:3306/group4project"; //Remote Server (db4free)
-			//url = "http://sql6.freesqldatabase.com:3306/group4project"; //Remote Server (FreeSQL)
+			url = "jdbc:mysql://localhost:8866/group4project?autoReconnect=true&amp;useSSL=false"; //Local Server
+			//url = "jdbc:mysql://db4free.net:3306/group4project"; //Remote Server (db4free)
+			//url = "jdbc:mysql://sql6.freesqldatabase.com:3306/group4project"; //Remote Server (FreeSQL)
 			con = DriverManager.getConnection(url, "ryan", "password"); 
 			System.out.println("Successfully connected to " + url+ "."); 
 		} 
@@ -48,10 +48,12 @@ public class DBController {
 	 ************************************************************/
 	public ResultSet readRequest(String dbQuery) {
 		ResultSet rs = null;
-		System.out.println("DB Query: " + dbQuery);
+		Connection con1;
+		System.out.println("SQL Statement: " + dbQuery);
 		try {
 			// create a statement object
-			Statement stmt = con.createStatement();
+			con1 = DriverManager.getConnection("jdbc:mysql://localhost:8866/group4project", "ryan", "password");
+			Statement stmt = con1.createStatement();
 			// execute an SQL query and get the result
 			rs = stmt.executeQuery(dbQuery);
 		} catch (Exception e) {
@@ -67,10 +69,12 @@ public class DBController {
 	 ***********************************************************/
 	public int updateRequest(String dbQuery) {
 		int count = 0;
+		Connection con2;
 		System.out.println("DB Query: " + dbQuery);
 		try {
 			// create a statement object
-			Statement stmt = con.createStatement();
+			con2 = DriverManager.getConnection("jdbc:mysql://localhost:8866/group4project", "ryan", "password");
+			Statement stmt = con2.createStatement();
 			// execute an SQL query and get the result
 			count = stmt.executeUpdate(dbQuery);
 		} catch (Exception e) {
