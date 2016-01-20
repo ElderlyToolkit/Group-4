@@ -22,14 +22,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.util.ArrayList;
 import java.awt.Color;
-import NewsArticles.*;
+import Database.DBController;
 
 public class NewsApp extends JFrame  {
 	int page = 1;
+	DBController db = new DBController();
 	String[] World = {
 			"Germany shocked by Cologne New Year gang assaults on women",
 			"California state of emergency over methane leak",
@@ -93,10 +96,12 @@ public class NewsApp extends JFrame  {
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
 		Font sizedFont = font.deriveFont(14f);
+		ImageIcon backie = new ImageIcon("Images/previous.png");
+		ImageIcon nextie = new ImageIcon("Images/next.png");
 		
 		setTitle("News");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 669, 452);
+		setBounds(100, 100, 900, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -104,32 +109,32 @@ public class NewsApp extends JFrame  {
 		
 		JTextPane News1 = new JTextPane();
 		News1.setEditable(false);
-		News1.setBounds(25, 58, 174, 129);
+		News1.setBounds(30, 90, 260, 225);
 		contentPane.add(News1);
 		
 		JTextPane News2 = new JTextPane();
 		News2.setEditable(false);
-		News2.setBounds(237, 58, 174, 129);
+		News2.setBounds(320, 90, 260, 225);
 		contentPane.add(News2);
 		
 		JTextPane News3 = new JTextPane();
 		News3.setEditable(false);
-		News3.setBounds(446, 58, 174, 129);
+		News3.setBounds(610, 90, 260, 225);
 		contentPane.add(News3);
 		
 		JTextPane News4 = new JTextPane();
 		News4.setEditable(false);
-		News4.setBounds(25, 222, 174, 129);
+		News4.setBounds(30, 345, 260, 225);
 		contentPane.add(News4);
 		
 		JTextPane News5 = new JTextPane();
 		News5.setEditable(false);
-		News5.setBounds(237, 222, 174, 129);
+		News5.setBounds(320, 345, 260, 225);
 		contentPane.add(News5);
 		
 		JTextPane News6 = new JTextPane();
 		News6.setEditable(false);
-		News6.setBounds(446, 222, 174, 129);
+		News6.setBounds(610, 345, 260, 225);
 		contentPane.add(News6);
 		
 		news.add(News1);
@@ -174,18 +179,32 @@ public class NewsApp extends JFrame  {
 				
 			}
 		});
-		Category.setBounds(268, 16, 113, 26);
-		contentPane.add(Category);
-		Category.addItem("World");
-		Category.addItem("Economic");
-		
-		ImageIcon backie = new ImageIcon("Images/previous.png");
 		JButton Previous = new JButton(backie);
 		Previous.setBorder(BorderFactory.createEmptyBorder());
 		Previous.setContentAreaFilled(false);
-		
-		ImageIcon nextie = new ImageIcon("Images/next.png");
 		JButton Next = new JButton(nextie);
+
+		Previous.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				page--;
+				Next.setEnabled(true);
+				Previous.setEnabled(false);
+				if(Category.getSelectedItem().toString() == "Economic") {
+					for (int i = 0; i < 6 ; i++) {
+						news.get(i).setText(Economic[i]);
+					}
+				}
+				else {
+					for (int i = 0; i < 6 ; i++) {
+						news.get(i).setText(World[i]);
+					}
+				}
+				}
+			
+		});
+		Previous.setBounds(30, 30, 260, 30);
+		contentPane.add(Previous);
+		Previous.setFont(sizedFont);
 		Next.setBorder(BorderFactory.createEmptyBorder());
 		Next.setContentAreaFilled(false);
 		
@@ -208,380 +227,81 @@ public class NewsApp extends JFrame  {
 					}
 		
 		});
-		Next.setBounds(446, 15, 174, 29);
+		Next.setBounds(610, 30, 260, 30);
 		contentPane.add(Next);
+		Next.setFont(sizedFont);
+		Category.setBounds(370, 30, 160, 30);
+		contentPane.add(Category);
+		Category.addItem("World");
+		Category.addItem("Economic");
 		
-		
-
-		Previous.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				page--;
-				Next.setEnabled(true);
-				Previous.setEnabled(false);
-				if(Category.getSelectedItem().toString() == "Economic") {
-					for (int i = 0; i < 6 ; i++) {
-						news.get(i).setText(Economic[i]);
-					}
-				}
-				else {
-					for (int i = 0; i < 6 ; i++) {
-						news.get(i).setText(World[i]);
-					}
-				}
-				}
-			
-		});
-		Previous.setBounds(25, 15, 174, 29);
-		contentPane.add(Previous);
 		if (page == 1) {
 			Previous.setEnabled(false);
 		}
 		
+		News news = new News();
 		News1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e)  {
-				if (page == 1) {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(1,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
+				if (Category.getSelectedItem().toString() == "World") {
+					int id = 1;
+					ResultSet rs = null;
+					String dbQuery = "SELECT Headline, Content FROM news WHERE id = '" + id + "'";
+					rs = db.readRequest(dbQuery);
+					String headline = "", content = "";
 					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(1,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
+					try {
+						while (rs.next()) {
+					headline += rs.getString("Headline");
+					content += rs.getString("Content");
 						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
 					}
+					catch (SQLException z) { 
+						z.printStackTrace();
+					}
+					news.setHeadline(headline);
+					news.setArticle(content);
 					
-				
+					NewsArticle article;
+					try {
+						article = new NewsArticle(news);
+						article.setVisible(true);
+					} catch (FontFormatException | IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 				
 				else {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(7,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
+					int id = 2;
+					ResultSet rs = null;
+					String dbQuery = "SELECT Headline, Content FROM news WHERE id = '" + id + "'";
+					rs = db.readRequest(dbQuery);
+					String headline = "", content = "";
 					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(7,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
+					try {
+						while (rs.next()) {
+					headline += rs.getString("Headline");
+					content += rs.getString("Content");
 						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
+					}
+					catch (SQLException z) { 
+						z.printStackTrace();
+					}
+					news.setHeadline(headline);
+					news.setArticle(content);
+					
+					NewsArticle article;
+					try {
+						article = new NewsArticle(news);
+						article.setVisible(true);
+					} catch (FontFormatException | IOException e1) {
+						e1.printStackTrace();
 					}
 					
 				}
+				
 			}
-		});
-		
-		News2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)  {
-				if (page == 1) {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(2,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(2,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				
-				}
-				
-				else {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(8,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(8,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				}
-			}
-		});
-		
-		News3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)  {
-				if (page == 1) {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(3,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(3,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				
-				}
-				
-				else {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(9,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(9,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				}
-			}
-		});
-		News4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)  {
-				if (page == 1) {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(4,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(4,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				
-				}
-				
-				else {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(10,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(10,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				}
-			}
-		});
-		News5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)  {
-				if (page == 1) {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(5,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(5,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				
-				}
-				
-				else {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(11,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(11,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				}
-			}
-		});
-		News6.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)  {
-				if (page == 1) {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(6,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(6,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				
-				}
-				
-				else {
-					if (Category.getSelectedItem() == "World") {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(12,"World");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-					}
-					
-					else {
-						Mainframe mf = null;
-						try {
-							mf = new Mainframe(12,"Economic");
-						} catch (IOException | FontFormatException e1) {
-							e1.printStackTrace();
-						}
-						mf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						mf.setVisible(true);
-						
-					}
-					
-				}
-			}
-		});
-		
+		});	
 		
 		News1.setFont(sizedFont);
 		News2.setFont(sizedFont);
@@ -589,8 +309,6 @@ public class NewsApp extends JFrame  {
 		News4.setFont(sizedFont);
 		News5.setFont(sizedFont);
 		News6.setFont(sizedFont);
-		Previous.setFont(sizedFont);
-		Next.setFont(sizedFont);
 		Category.setFont(sizedFont);
 	
 	}

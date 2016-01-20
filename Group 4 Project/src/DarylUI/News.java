@@ -4,6 +4,8 @@ public class News {
 	private String article;
 	private String headline;
 	
+	public News(){}
+	
 	public News(String headline, String article) {
 		this.headline = headline;
 		this.article = article;
