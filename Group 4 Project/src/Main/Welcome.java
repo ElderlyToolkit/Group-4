@@ -66,9 +66,9 @@ public class Welcome extends JFrame {
 		
 		btnGo.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				Login login = new Login();
+				CardFrame cardframe = new CardFrame();
 				setVisible(false);
-				login.setVisible(true);
+				cardframe.setVisible(true);
 			}
 		});
 	}
