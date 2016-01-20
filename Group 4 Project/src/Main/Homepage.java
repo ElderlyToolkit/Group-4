@@ -164,12 +164,6 @@ public class Homepage extends JFrame {
 		btnGames.setBounds(49, 125, 159, 34);
 		contentPane.add(btnGames);
 		
-		//JLabel lblNewLabel = new JLabel("");
-		//Image images = new ImageIcon(this.getClass().getResource("/img1.png")).getImage();
-		//lblNewLabel.setIcon(new ImageIcon(images));
-		//lblNewLabel.setBounds(20, 11, 408, 103);
-		//contentPane.add(lblNewLabel);
-		
 		ImageIcon image = new ImageIcon("Images/logo.png");
 		final JLabel imagelabel = new JLabel(image);
 		imagelabel.setBounds(20, 11, 408, 103);
