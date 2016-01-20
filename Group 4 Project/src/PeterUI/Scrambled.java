@@ -14,9 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+import Database.DBController;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Scrambled extends JFrame {
-
+	int id = 3;
 	private JPanel contentPane;
 
 	/**
@@ -70,15 +73,29 @@ public class Scrambled extends JFrame {
         	}
         });
 		
+		DBController DBC = new DBController();
 		
 		JButton btnNext = new JButton("Next");
 		btnNext.setBounds(605, 502, 97, 25);
 		contentPane.add(btnNext);
 		btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		Scrambled2 s2 = new Scrambled2();
-        		setVisible(false);
-        		s2.setVisible(true);
+			public void actionPerformed(ActionEvent e) {
+        		ResultSet rs = null;
+        		String s = "";
+        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		rs = DBC.readRequest(dbQuery);
+        		DBC.readRequest(dbQuery);
+        		try{
+        			while(rs.next()){
+        				s = rs.getString("content");
+        				txtpnToScrambledEggs.setText(s);
+        			}
+        			
+        		}catch(SQLException f){
+        			f.printStackTrace();
+        		}
+        	id +=1;	
+        		
         	}
         });
 	}

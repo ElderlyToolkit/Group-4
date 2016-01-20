@@ -56,7 +56,7 @@ public class Sunny2 extends JFrame {
 		JTextPane txtpnToSunnyEggs = new JTextPane();
 		txtpnToSunnyEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 23));
 		txtpnToSunnyEggs.setBackground(SystemColor.control);
-		txtpnToSunnyEggs.setText("Step 2:\nWait for 1 to 2 minutes, then either cover the pan for a minute, or tilt the skillet and use a spoon to collect the fat and pour it over the egg white. Repeat to pour it over the yolk.");
+		txtpnToSunnyEggs.setText("Step 2: Wait for 1 to 2 minutes, then either cover the pan for a minute, or tilt the skillet and use a spoon to collect the fat and pour it over the egg white. Repeat to pour it over the yolk.");
 		txtpnToSunnyEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToSunnyEggs);
 		
