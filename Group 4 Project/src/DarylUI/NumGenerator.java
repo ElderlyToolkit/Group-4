@@ -53,7 +53,7 @@ public class NumGenerator extends JFrame {
 	public NumGenerator() throws IOException, FontFormatException {
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(16f);
+		Font sizedFont = font.deriveFont(17f);
 		setTitle("Number Generator");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 620, 420);
@@ -115,10 +115,10 @@ public class NumGenerator extends JFrame {
 					for (int i = 0; i <= set.getSelectedIndex() ; i++){ 
 					x = (int) (Math.random() * 10000);
 					if (x < 1000) {
-						y = "0" + x + " ";
+						y = "0" + x + " \n";
 					}
 					else {
-						y = x + " ";
+						y = x + " \n";
 					}
 					textArea.append(y);
 				}
