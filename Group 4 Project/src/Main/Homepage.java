@@ -3,6 +3,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -15,6 +16,7 @@ import DarylUI.NewsApp;
 import DarylUI.Dictionary;
 import DarylUI.DictionaryApp;
 import DarylUI.NumGenerator;
+import Database.DBController;
 import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
 import RyanUI.Events;
@@ -183,7 +185,7 @@ public class Homepage extends JFrame {
 		btnExit.setBounds(150, 397, 159, 21);
 		contentPane.add(btnExit);
 		
-		if (ExistingUser.user.equals("Community Center")) {
+		if (ExistingUser.permission.equals("Organiser")) {
 			btnNewButton.setEnabled(false);
 			btnNews.setEnabled(false);
 			btnMatchMaking.setEnabled(false);

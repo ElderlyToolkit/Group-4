@@ -26,6 +26,7 @@ public class ExistingUser extends JFrame {
 	private JTextField textField_1;
 	private Connection con;
 	public static String user;
+	public static String permission;
 
 	/**
 	 * Launch the application.
@@ -115,6 +116,7 @@ public class ExistingUser extends JFrame {
 				String password = textField_1.getText();
 				String databaseUsername = null;
 				String databasePassword = null;
+				String databasePermission = null;
 				ResultSet rs = null;
 				
 				DBController db=new DBController();
@@ -129,6 +131,7 @@ public class ExistingUser extends JFrame {
 					while (rs.next()) {
 					    databaseUsername = rs.getString("name");
 					    databasePassword = rs.getString("password");
+					    databasePermission = rs.getString("permissions");
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -136,12 +139,13 @@ public class ExistingUser extends JFrame {
 
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
 			    	
-			    	if (name.equals("Admin") && password.equals("admin")) {
+			    	if (databasePermission.equals("Administrator")) {
 				    	JOptionPane.showMessageDialog(ExistingUser.this, "WARNING THIS IS AN ADMINISTRATOR ACCOUNT\n\nUSE EXTREME CAUTION.");
 				    	
 				        textField.setText("");
 				        textField_1.setText("");
 				        user = databaseUsername;
+				        permission = databasePermission;
 				        
 				        Homepage home = new Homepage();
 				        setVisible(false);
