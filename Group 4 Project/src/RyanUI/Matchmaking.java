@@ -1,7 +1,7 @@
 package RyanUI;
 
 import Database.DBController;
-import Main.CardFrame;
+import Main.Login;
 import Main.Homepage;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -65,7 +65,7 @@ public class Matchmaking extends JFrame {
         int age = 0, gender = 0;
         String photo = null;
 		
-		String dbQuery = "SELECT * FROM users WHERE name='" + CardFrame.user + "'";
+		String dbQuery = "SELECT * FROM users WHERE name='" + Login.user + "'";
 		
 		rs = db.readRequest(dbQuery);
 		

@@ -179,7 +179,7 @@ public class Homepage extends JFrame {
 		btnExit.setBounds(150, 397, 159, 21);
 		contentPane.add(btnExit);
 		
-		if (CardFrame.permission.equals("Organiser")) {
+		if (Login.permission.equals("Organiser")) {
 			btnNewButton.setEnabled(false);
 			btnNews.setEnabled(false);
 			btnMatchMaking.setEnabled(false);

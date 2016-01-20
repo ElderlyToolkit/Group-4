@@ -32,7 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
-public class CardFrame extends JFrame {
+public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -54,7 +54,7 @@ public class CardFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CardFrame frame = new CardFrame();
+					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +66,7 @@ public class CardFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CardFrame() {
+	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -153,7 +153,7 @@ public class CardFrame extends JFrame {
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
 			    	
 			    	if (permission.equals("Administrator")) {
-				    	JOptionPane.showMessageDialog(CardFrame.this, "WARNING THIS IS AN ADMINISTRATOR ACCOUNT\n\nUSE EXTREME CAUTION.");
+				    	JOptionPane.showMessageDialog(Login.this, "WARNING THIS IS AN ADMINISTRATOR ACCOUNT\n\nUSE EXTREME CAUTION.");
 				    	
 				        textField.setText("");
 				        textField_1.setText("");
@@ -165,7 +165,7 @@ public class CardFrame extends JFrame {
 				    }
 			    	
 			    	else {
-			    	JOptionPane.showMessageDialog(CardFrame.this, "User authenticated.\n\nWelcome " + name + ".");
+			    	JOptionPane.showMessageDialog(Login.this, "User authenticated.\n\nWelcome " + name + ".");
 			    	
 			        textField.setText("");
 			        textField_1.setText("");
@@ -178,7 +178,7 @@ public class CardFrame extends JFrame {
 			    }
 			    
 			    else {
-			    	JOptionPane.showMessageDialog(CardFrame.this, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
+			    	JOptionPane.showMessageDialog(Login.this, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
 			        textField_1.setText("");
 			    }
 			}
@@ -298,7 +298,7 @@ public class CardFrame extends JFrame {
 			    controls.add(password);
 			    panel.add(controls, BorderLayout.CENTER);
 
-			    JOptionPane.showMessageDialog(CardFrame.this, panel, "Login", JOptionPane.OK_CANCEL_OPTION);
+			    JOptionPane.showMessageDialog(Login.this, panel, "Login", JOptionPane.OK_CANCEL_OPTION);
 			    
 			    String nameauthenticate = username.getText();
 			    String userpasswordauthenticate = password.getText();
@@ -325,15 +325,15 @@ public class CardFrame extends JFrame {
 				}
 				
 				if (nameauthenticate.equals("") || userpasswordauthenticate.equals("")) {
-					JOptionPane.showMessageDialog(CardFrame.this, "Empty fields detected.\n\nPlease enter details.");
+					JOptionPane.showMessageDialog(Login.this, "Empty fields detected.\n\nPlease enter details.");
 				}
 				else {
 					if (databaseUsername.equals("Admin") && databasePassword.equals("admin")) {
-						JOptionPane.showMessageDialog(CardFrame.this, "Administrator Authenticated.\n\nPermissions granted.");
+						JOptionPane.showMessageDialog(Login.this, "Administrator Authenticated.\n\nPermissions granted.");
 						comboBox.setEnabled(true);
 					}
 					else {
-						JOptionPane.showMessageDialog(CardFrame.this, "Your account is not an administrator.\n\nPlease contact an administrator to change permissions.");
+						JOptionPane.showMessageDialog(Login.this, "Your account is not an administrator.\n\nPlease contact an administrator to change permissions.");
 					}
 				}
 			}
@@ -359,7 +359,7 @@ public class CardFrame extends JFrame {
 					gender = 2;
 				}
 				else {
-					JOptionPane.showMessageDialog(CardFrame.this, "Please select a gender");
+					JOptionPane.showMessageDialog(Login.this, "Please select a gender");
 				}
 				
 				NewUserConstructor constructor = new NewUserConstructor (name, age, gender, email, password, permission, path);
@@ -367,7 +367,7 @@ public class CardFrame extends JFrame {
 				
 				if (id > 0) {
 					//lblAccountCreated.setVisible(true);
-					JOptionPane.showMessageDialog(CardFrame.this, "Account Created!");
+					JOptionPane.showMessageDialog(Login.this, "Account Created!");
 				}
 				
 				panel_1.setVisible(false);
@@ -380,7 +380,7 @@ public class CardFrame extends JFrame {
         		int retval = 0;
         		
         		JFileChooser fileChooser = new JFileChooser();
-        		retval = fileChooser.showOpenDialog(CardFrame.this);
+        		retval = fileChooser.showOpenDialog(Login.this);
 				if (retval == JFileChooser.APPROVE_OPTION) {
 				     file = fileChooser.getSelectedFile();
 				     lblAvatar.setText("");
@@ -388,7 +388,7 @@ public class CardFrame extends JFrame {
 				     path = file.getAbsolutePath();
 			    }
 				else {
-					JOptionPane.showMessageDialog(CardFrame.this, "No Image selected!");
+					JOptionPane.showMessageDialog(Login.this, "No Image selected!");
 				}
         	}
         });
