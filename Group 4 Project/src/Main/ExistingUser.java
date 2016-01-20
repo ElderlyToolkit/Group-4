@@ -121,7 +121,7 @@ public class ExistingUser extends JFrame {
 				
 				DBController db=new DBController();
 				
-				String dbQuery = "SELECT name, password FROM users WHERE name='" + name + "' AND password='" + password+ "'";
+				String dbQuery = "SELECT name, password, permissions FROM users WHERE name='" + name + "' AND password='" + password+ "'";
 				
 				//queries database
 				rs = db.readRequest(dbQuery);
@@ -136,6 +136,8 @@ public class ExistingUser extends JFrame {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				
+				permission = databasePermission;
 
 			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
 			    	
@@ -145,7 +147,6 @@ public class ExistingUser extends JFrame {
 				        textField.setText("");
 				        textField_1.setText("");
 				        user = databaseUsername;
-				        permission = databasePermission;
 				        
 				        Homepage home = new Homepage();
 				        setVisible(false);
