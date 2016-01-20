@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DarylUI.News;
+import DarylUI.NewsApp;
 import DarylUI.Dictionary;
+import DarylUI.DictionaryApp;
 import DarylUI.NumGenerator;
 import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
@@ -194,7 +196,7 @@ public class Homepage extends JFrame {
 		btnNews.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					News news = new News();
+					NewsApp news = new NewsApp();
 					news.setVisible(true);
 				} catch (IOException | FontFormatException e1) {
 					e1.printStackTrace();
@@ -205,7 +207,7 @@ public class Homepage extends JFrame {
 		btnDictionary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Dictionary dic = new Dictionary();
+					DictionaryApp dic = new DictionaryApp();
 					dic.setVisible(true);
 				} catch (IOException | FontFormatException e1) {
 					e1.printStackTrace();
