@@ -277,9 +277,8 @@ public class CardFrame extends JFrame {
 		
 		Timer timer = new Timer(5000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login login = new Login();
-	        	setVisible(false);
-	        	login.setVisible(true);
+	        	panel_1.setVisible(false);
+	        	panel.setVisible(true);
 			}
 		});
 		
@@ -350,8 +349,8 @@ public class CardFrame extends JFrame {
 				String password = textField_5.getText();
 				String permission = (String) comboBox.getSelectedItem();
 				int gender = 0;
-				btnClear.setEnabled(false);
-				btnSubmit.setEnabled(false);
+				btnClear1.setEnabled(false);
+				btnSubmit1.setEnabled(false);
 				
 				if (rdbtnMale.isSelected()) {
 					gender = 1;
@@ -371,9 +370,8 @@ public class CardFrame extends JFrame {
 					JOptionPane.showMessageDialog(CardFrame.this, "Account Created!");
 				}
 				
-				Login login = new Login();
-	        	setVisible(false);
-	        	login.setVisible(true);
+				panel_1.setVisible(false);
+	        	panel.setVisible(true);
 			}
 		});
 		

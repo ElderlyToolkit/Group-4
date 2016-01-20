@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import Database.DBController;
 import Database.SignUpConstructor;
 import Database.SignUpDA;
-import Main.ExistingUser;
+import Main.CardFrame;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
@@ -110,7 +110,7 @@ public class DayEventSignUp extends JFrame {
 		textField.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField.setEditable(false);
 		textField.setBounds(109, 202, 133, 17);
-		textField.setText(ExistingUser.user);
+		textField.setText(CardFrame.user);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		

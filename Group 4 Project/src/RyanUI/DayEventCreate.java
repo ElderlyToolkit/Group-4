@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import Database.DBController;
 import Database.EventConsructor;
 import Database.EventsDA;
-import Main.ExistingUser;
+import Main.CardFrame;
 
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -149,7 +149,7 @@ public class DayEventCreate extends JFrame {
 		textField_2.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_2.setColumns(10);
 		textField_2.setBounds(109, 145, 133, 17);
-		textField_2.setText(ExistingUser.user);
+		textField_2.setText(CardFrame.user);
 		contentPane.add(textField_2);
 		
 		button.addActionListener(new ActionListener() {
@@ -186,7 +186,7 @@ public class DayEventCreate extends JFrame {
 			if (!time.equals(databaseTime) && !date.equals(databaseDate)) {
 				textField.setEditable(true);
 				textField_1.setEditable(true);
-				textField_2.setText(ExistingUser.user);
+				textField_2.setText(CardFrame.user);
 				btnSave.setEnabled(true);
 			}
 			else {

@@ -28,7 +28,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
-import Main.ExistingUser;
+import Main.CardFrame;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
