@@ -66,23 +66,14 @@ public class HardBoiledEggs extends JFrame {
 		txtpnToHardboilEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToHardboilEggs);
 		
+		DBController DBC = new DBController();
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(495, 502, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		Eggs egg = new Eggs();
-        		setVisible(false);
-        	}
-        });
-		
-		DBController DBC = new DBController();
-		
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(605, 502, 97, 25);
-		contentPane.add(btnNext);
-		btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
+				--id;
         		ResultSet rs = null;
         		String s = "";
         		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
@@ -97,7 +88,34 @@ public class HardBoiledEggs extends JFrame {
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
-        	id +=1;	
+        	
+        		
+        	}
+        });
+		
+		
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.setBounds(605, 502, 97, 25);
+		contentPane.add(btnNext);
+		btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		id++;
+        		ResultSet rs = null;
+        		String s = "";
+        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		rs = DBC.readRequest(dbQuery);
+        		DBC.readRequest(dbQuery);
+        		try{
+        			while(rs.next()){
+        				s = rs.getString("content");
+        				txtpnToHardboilEggs.setText(s);
+        			}
+        			
+        		}catch(SQLException f){
+        			f.printStackTrace();
+        		}
+        	
         		
         	}
         });

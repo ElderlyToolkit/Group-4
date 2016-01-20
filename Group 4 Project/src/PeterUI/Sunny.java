@@ -20,7 +20,7 @@ import java.sql.SQLException;
 
 
 public class Sunny extends JFrame {
-	int id = 5;
+	int id = 7;
 	private JPanel contentPane;
 
 	/**
@@ -64,21 +64,14 @@ public class Sunny extends JFrame {
 		txtpnToSunnyEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToSunnyEggs);
 		
+		DBController DBC = new DBController();
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(496, 502, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		Eggs egg = new Eggs();
-        		setVisible(false);
-        	}
-        });
-		DBController DBC = new DBController();
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(605, 502, 97, 25);
-		contentPane.add(btnNext);
-		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				--id;
         		ResultSet rs = null;
         		String s = "";
         		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
@@ -93,7 +86,32 @@ public class Sunny extends JFrame {
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
-        	id +=1;	
+        	
+        		
+        	}
+        });
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.setBounds(605, 502, 97, 25);
+		contentPane.add(btnNext);
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+        		id++;
+        		ResultSet rs = null;
+        		String s = "";
+        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		rs = DBC.readRequest(dbQuery);
+        		DBC.readRequest(dbQuery);
+        		try{
+        			while(rs.next()){
+        				s = rs.getString("content");
+        				txtpnToSunnyEggs.setText(s);
+        			}
+        			
+        		}catch(SQLException f){
+        			f.printStackTrace();
+        		}
+        	
         		
         	}
         });
