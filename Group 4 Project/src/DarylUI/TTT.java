@@ -78,7 +78,7 @@ public class TTT extends JFrame {
 		else 
 			result = "No winner!";
 		
-		JOptionPane.showMessageDialog(null, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 	
