@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import Database.DBController;
@@ -20,7 +21,7 @@ import java.sql.SQLException;
 
 
 public class Sunny extends JFrame {
-	int id = 7;
+	private int steps = 7;
 	private JPanel contentPane;
 
 	/**
@@ -61,58 +62,70 @@ public class Sunny extends JFrame {
 		txtpnToSunnyEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 23));
 		txtpnToSunnyEggs.setBackground(SystemColor.control);
 		txtpnToSunnyEggs.setText("Step 1:\nHeat oil or melt butter in a nonstick skillet over medium heat. Carefully crack eggs one at a time into the skillet.");
-		txtpnToSunnyEggs.setBounds(12, 13, 299, 514);
+		txtpnToSunnyEggs.setBounds(12, 99, 299, 428);
 		contentPane.add(txtpnToSunnyEggs);
 		
+		JLabel lblSunny = new JLabel("Sunny");
+		lblSunny.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		lblSunny.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSunny.setBounds(12, 13, 299, 73);
+		contentPane.add(lblSunny);
+		
 		DBController DBC = new DBController();
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.setBounds(605, 502, 97, 25);
+		contentPane.add(btnNext);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(496, 502, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				--id;
+        		steps--;
+        		if(steps == 6)
+					setVisible(false);
         		ResultSet rs = null;
+        		String category = lblSunny.getText();
         		String s = "";
-        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
         		rs = DBC.readRequest(dbQuery);
-        		DBC.readRequest(dbQuery);
         		try{
         			while(rs.next()){
         				s = rs.getString("content");
+        				txtpnToSunnyEggs.setText("");
         				txtpnToSunnyEggs.setText(s);
+        				btnNext.setVisible(true);
         			}
         			
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
-        	
-        		
         	}
         });
 		
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(605, 502, 97, 25);
-		contentPane.add(btnNext);
+		
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-        		id++;
+        		//id++;
+        		steps++;
         		ResultSet rs = null;
+        		String category = lblSunny.getText();
         		String s = "";
-        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
         		rs = DBC.readRequest(dbQuery);
-        		DBC.readRequest(dbQuery);
         		try{
         			while(rs.next()){
         				s = rs.getString("content");
+        				txtpnToSunnyEggs.setText("");
         				txtpnToSunnyEggs.setText(s);
+        				if (steps == 9)
+        					btnNext.setVisible(false);
         			}
         			
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
-        	
-        		
         	}
         });
 	}

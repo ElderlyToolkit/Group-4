@@ -19,10 +19,12 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.SwingConstants;
 
 public class HardBoiledEggs extends JFrame {
-	int id = 1;
-
+	
+	private int steps = 1;
+	
 	private JPanel contentPane;
 
 	/**
@@ -63,31 +65,51 @@ public class HardBoiledEggs extends JFrame {
 		txtpnToHardboilEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
 		txtpnToHardboilEggs.setBackground(SystemColor.control);
 		txtpnToHardboilEggs.setText("Step 1:\nTo hard-boil eggs, place as many eggs as you'd like in a pot with cold water (the water should entirely cover all the eggs). Bring to a boil and cover the pot.");
-		txtpnToHardboilEggs.setBounds(12, 13, 299, 514);
+		txtpnToHardboilEggs.setBounds(12, 99, 299, 428);
 		contentPane.add(txtpnToHardboilEggs);
 		
 		DBController DBC = new DBController();
+		
+		JLabel lblHbe = new JLabel("Hard boiled egg");
+		lblHbe.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		lblHbe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHbe.setBounds(12, 13, 299, 73);
+		contentPane.add(lblHbe);
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.setBounds(605, 502, 97, 25);
+		contentPane.add(btnNext);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(495, 502, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				--id;
+        		//id++;
+        		steps--;
+        		if(steps == 0)
+					setVisible(false);
         		ResultSet rs = null;
+        		String category = lblHbe.getText();
         		String s = "";
-        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
         		rs = DBC.readRequest(dbQuery);
-        		DBC.readRequest(dbQuery);
         		try{
         			while(rs.next()){
         				s = rs.getString("content");
+        				txtpnToHardboilEggs.setText("");
         				txtpnToHardboilEggs.setText(s);
+        				btnNext.setVisible(true);
+        				
+        				
         			}
         			
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
+        		
+        		
+        		
         	
         		
         	}
@@ -95,26 +117,33 @@ public class HardBoiledEggs extends JFrame {
 		
 		
 		
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(605, 502, 97, 25);
-		contentPane.add(btnNext);
+		
+		
+		
 		btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		id++;
+        		//id++;
+        		steps++;
         		ResultSet rs = null;
+        		String category = lblHbe.getText();
         		String s = "";
-        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
         		rs = DBC.readRequest(dbQuery);
-        		DBC.readRequest(dbQuery);
         		try{
         			while(rs.next()){
         				s = rs.getString("content");
+        				txtpnToHardboilEggs.setText("");
         				txtpnToHardboilEggs.setText(s);
+        				if (steps == 3)
+        					btnNext.setVisible(false);
         			}
         			
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
+        		
+        		
+        		
         	
         		
         	}

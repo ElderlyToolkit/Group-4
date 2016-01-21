@@ -17,9 +17,10 @@ import javax.swing.JButton;
 import Database.DBController;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.SwingConstants;
 
 public class Scrambled extends JFrame {
-	int id = 4;
+	private int steps= 4;
 	private JPanel contentPane;
 
 	/**
@@ -60,31 +61,49 @@ public class Scrambled extends JFrame {
 		txtpnToScrambledEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
 		txtpnToScrambledEggs.setBackground(SystemColor.control);
 		txtpnToScrambledEggs.setText("Step 1:\nCrack eggs in a mixing bowl and whisk with a fork. Add a splash of milk and continue mixing.");
-		txtpnToScrambledEggs.setBounds(12, 13, 299, 514);
+		txtpnToScrambledEggs.setBounds(12, 99, 299, 428);
 		contentPane.add(txtpnToScrambledEggs);
 		
+		JLabel lblScrambled = new JLabel("Scrambled");
+		lblScrambled.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		lblScrambled.setHorizontalAlignment(SwingConstants.CENTER);
+		lblScrambled.setBounds(12, 13, 299, 73);
+		contentPane.add(lblScrambled);
+		
 		DBController DBC = new DBController();
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.setBounds(605, 502, 97, 25);
+		contentPane.add(btnNext);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(496, 502, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				--id;
+				 
+        		steps--;
+        		if(steps == 3)
+					setVisible(false);
         		ResultSet rs = null;
+        		String category = lblScrambled.getText();
         		String s = "";
-        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
         		rs = DBC.readRequest(dbQuery);
-        		DBC.readRequest(dbQuery);
         		try{
         			while(rs.next()){
         				s = rs.getString("content");
+        				txtpnToScrambledEggs.setText("");
         				txtpnToScrambledEggs.setText(s);
+        				btnNext.setVisible(true);
         			}
         			
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
+        		
+        		
+        		
         	
         		
         	}
@@ -92,26 +111,35 @@ public class Scrambled extends JFrame {
 		
 		
 		
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(605, 502, 97, 25);
-		contentPane.add(btnNext);
+		
+		
+		
+		
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-        		id++;
+ 
+        		steps++;
         		ResultSet rs = null;
+        		String category = lblScrambled.getText();
         		String s = "";
-        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
         		rs = DBC.readRequest(dbQuery);
-        		DBC.readRequest(dbQuery);
         		try{
         			while(rs.next()){
         				s = rs.getString("content");
+        				txtpnToScrambledEggs.setText("");
         				txtpnToScrambledEggs.setText(s);
+        				if(steps == 6)
+        					btnNext.setVisible(false);
+        				
         			}
         			
         		}catch(SQLException f){
         			f.printStackTrace();
         		}
+        		
+        		
+        		
         	
         		
         	}
