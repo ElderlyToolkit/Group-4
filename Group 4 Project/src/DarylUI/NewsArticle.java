@@ -67,6 +67,7 @@ public class NewsArticle extends JFrame {
 		content.setBounds(25, 81, 525, 280);
 		content.setLineWrap(true);
 		content.setWrapStyleWord(true);
+		content.setEditable(false);
 		
 		
 		JScrollPane pane = new JScrollPane(content);
