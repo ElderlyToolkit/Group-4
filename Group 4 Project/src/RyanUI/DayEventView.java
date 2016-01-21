@@ -145,6 +145,7 @@ public class DayEventView extends JFrame {
 			      row = table.getSelectedRow();
 			      column = table.getSelectedColumn();
 			      event = table.getValueAt(row, 3).toString();
+			      System.out.println(row);
 			      System.out.println(event);
 			      
 			      ResultSet rs = null;
