@@ -6,10 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Main.Login;
+import RyanUI.MatchmakingList;
+
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
+import javax.swing.Timer;
+
 import java.awt.SystemColor;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -69,12 +79,55 @@ public class Livechat extends JFrame {
 		contentPane.add(txtpnTypeYourMessage);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 125, 449, 194);
+		textArea.setBounds(15, 125, 449, 222);
 		contentPane.add(textArea);
 		
-		JButton btnNewButton = new JButton("Send");
+		ImageIcon send = new ImageIcon("Images/send.png");
+		JButton btnNewButton = new JButton(send);
 		btnNewButton.setForeground(Color.RED);
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+		btnNewButton.setBounds(269, 400, 93, 29);
+		contentPane.add(btnNewButton);
+		
+		textField = new JTextField();
+		textField.setText("");
+		textField.setBounds(15, 358, 449, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		ImageIcon clear = new ImageIcon("Images/clear.png");
+		JButton btnClear = new JButton(clear);
+		btnClear.setForeground(Color.RED);
+		btnClear.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+		btnClear.setBounds(112, 400, 99, 29);
+		contentPane.add(btnClear);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+			}
+		});
+		
+		ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+            	textArea.append(timeStamp + " " + Login.user + ": Hello!\n");
+            }
+        };
+        Timer timer = new Timer(5000, taskPerformer);
+		
+		Action action =  new AbstractAction() {
+			public void actionPerformed(ActionEvent e) {
+			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+			String input = textField.getText();
+			textArea.append(timeStamp + " " + input + "\n");
+			textField.setText("");
+			timer.start();
+			timer.stop();
+		}
+		};
+		textField.addActionListener(action);
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -85,26 +138,10 @@ public class Livechat extends JFrame {
 			}
 		});
 		
-		textField = new JTextField();
-		textField.setText("");
-		textField.setBounds(15, 336, 449, 48);
-		contentPane.add(textField);
-		textField.setColumns(10);
-				
-				
-		
-		btnNewButton.setBounds(247, 400, 115, 29);
-		contentPane.add(btnNewButton);
-		
-		JButton btnClear = new JButton("Clear");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText("");
 			}
 		});
-		btnClear.setForeground(Color.RED);
-		btnClear.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
-		btnClear.setBounds(112, 400, 115, 29);
-		contentPane.add(btnClear);
 	}
 }

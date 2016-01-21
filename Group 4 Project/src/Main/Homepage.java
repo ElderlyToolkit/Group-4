@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import AyeUi.Counselling;
 import DarylUI.News;
 import DarylUI.NewsApp;
 import DarylUI.Dictionary;
@@ -261,6 +262,14 @@ public class Homepage extends JFrame {
 					setVisible(false);
 					goodbye.setVisible(true);
 				}
+			}
+		});
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Counselling counselling = new Counselling();
+				setVisible(false);
+				counselling.setVisible(true);
 			}
 		});
 	}

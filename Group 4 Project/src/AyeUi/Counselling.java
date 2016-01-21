@@ -76,5 +76,19 @@ public class Counselling extends JFrame {
 		txtpnOnlineCounselling.setBounds(115, 31, 248, 45);
 		contentPane.add(txtpnOnlineCounselling);
 		Image images1 = new ImageIcon(this.getClass().getResource("/oc.png")).getImage();
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btnChat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Livechat chat = new Livechat();
+				setVisible(false);
+				chat.setVisible(true);
+			}
+		});
 	}
 }
