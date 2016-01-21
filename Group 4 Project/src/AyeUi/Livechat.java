@@ -12,10 +12,13 @@ import javax.swing.JTextPane;
 import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Color;
 
 public class Livechat extends JFrame {
 
@@ -49,34 +52,59 @@ public class Livechat extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 147, 460, 223);
-		contentPane.add(textArea);
+		JTextPane txtpnLiveChat = new JTextPane();
+		txtpnLiveChat.setBackground(SystemColor.control);
+		txtpnLiveChat.setForeground(new Color(240, 128, 128));
+		txtpnLiveChat.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		txtpnLiveChat.setText("LIVE CHAT ");
+		txtpnLiveChat.setBounds(157, 16, 205, 26);
+		contentPane.add(txtpnLiveChat);
 		
 		JTextPane txtpnTypeYourMessage = new JTextPane();
-		txtpnTypeYourMessage.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		txtpnTypeYourMessage.setForeground(new Color(123, 104, 238));
+		txtpnTypeYourMessage.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
 		txtpnTypeYourMessage.setBackground(SystemColor.control);
-		txtpnTypeYourMessage.setText("Fill in your name and message below. Our available counsellor will reply you shortly!");
-		txtpnTypeYourMessage.setBounds(15, 20, 412, 54);
+		txtpnTypeYourMessage.setText("Fill in your message below. Our available counsellor will reply you shortly!");
+		txtpnTypeYourMessage.setBounds(37, 55, 427, 54);
 		contentPane.add(txtpnTypeYourMessage);
 		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(15, 125, 449, 194);
+		contentPane.add(textArea);
+		
 		JButton btnNewButton = new JButton("Send");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton.setForeground(Color.RED);
+		btnNewButton.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+				String input = textField.getText();
+				textArea.append(timeStamp + " " + input + "\n");
+				textField.setText("");
 			}
 		});
-		btnNewButton.setBounds(15, 386, 115, 29);
-		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
-		textField.setBounds(85, 90, 390, 41);
+		textField.setText("");
+		textField.setBounds(15, 336, 449, 48);
 		contentPane.add(textField);
 		textField.setColumns(10);
+				
+				
 		
-		JLabel lblName = new JLabel("Name: ");
-		lblName.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblName.setBounds(25, 90, 69, 41);
-		contentPane.add(lblName);
+		btnNewButton.setBounds(247, 400, 115, 29);
+		contentPane.add(btnNewButton);
+		
+		JButton btnClear = new JButton("Clear");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+			}
+		});
+		btnClear.setForeground(Color.RED);
+		btnClear.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+		btnClear.setBounds(112, 400, 115, 29);
+		contentPane.add(btnClear);
 	}
 }
