@@ -144,8 +144,8 @@ public class NewsApp extends JFrame  {
 	
 	ImageIcon olofmeister = new ImageIcon("Images/mester.jpg");
 	Image boostmeister =  olofmeister.getImage();
-	Image good =  is.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon mester = new ImageIcon(so);
+	Image good =  boostmeister.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+	ImageIcon mester = new ImageIcon(good);
 	
 	ImageIcon olofmeister2 = new ImageIcon("Images/mester2.jpg");
 	Image boostmeister2 =  olofmeister2.getImage();
@@ -265,16 +265,16 @@ public class NewsApp extends JFrame  {
 		
 		EconomicImages.add(face);
 		EconomicImages.add(dropping);
+		EconomicImages.add(predictions);
 		EconomicImages.add(worried);
-		EconomicImages.add(fed);
-		EconomicImages.add(ipo);
-		EconomicImages.add(irs);
+		EconomicImages.add(mester);
+		EconomicImages.add(mester2);
 		
-		EconomicImages2.add(mester);
-		EconomicImages2.add(mester2);
-		EconomicImages2.add(predictions);
+		EconomicImages2.add(fed);
+		EconomicImages2.add(irs);
 		EconomicImages2.add(found);
 		EconomicImages2.add(strong);
+		EconomicImages2.add(ipo);
 		EconomicImages2.add(once);
 		
 				
@@ -422,9 +422,16 @@ public class NewsApp extends JFrame  {
 				}
 				
 				else {
-					int id = 2;
+					int id;
+					if (page == 1) 
+						id = 13;
+					else
+						id = 19;
+					
+					String selected = Category.getSelectedItem().toString();
 					ResultSet rs = null;
-					String dbQuery = "SELECT Headline, Content FROM news WHERE id = '" + id + "'";
+					String dbQuery = "SELECT Headline, Content FROM news WHERE id = '" + id + 
+							"'";
 					rs = db.readRequest(dbQuery);
 					String headline = "", content = "";
 					
