@@ -3,6 +3,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -15,6 +16,7 @@ import DarylUI.NewsApp;
 import DarylUI.Dictionary;
 import DarylUI.DictionaryApp;
 import DarylUI.NumGenerator;
+import Database.DBController;
 import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
 import RyanUI.Events;
@@ -57,7 +59,7 @@ public class Homepage extends JFrame {
 		setTitle("Main Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setState(JFrame.NORMAL);
-		setBounds(100, 100, 481, 468);
+		setBounds(100, 100, 481, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -139,7 +141,7 @@ public class Homepage extends JFrame {
 		btndtotoGenerator.setBackground(new Color(0, 191, 255));
 		btndtotoGenerator.setForeground(new Color(0, 0, 0));
 		btndtotoGenerator.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
-		btndtotoGenerator.setBounds(218, 351, 210, 32);
+		btndtotoGenerator.setBounds(249, 351, 159, 32);
 		contentPane.add(btndtotoGenerator);
 		
 		ImageIcon ebooks = new ImageIcon("Images/ebooks.png");
@@ -162,12 +164,6 @@ public class Homepage extends JFrame {
 		btnGames.setBounds(49, 125, 159, 34);
 		contentPane.add(btnGames);
 		
-		//JLabel lblNewLabel = new JLabel("");
-		//Image images = new ImageIcon(this.getClass().getResource("/img1.png")).getImage();
-		//lblNewLabel.setIcon(new ImageIcon(images));
-		//lblNewLabel.setBounds(20, 11, 408, 103);
-		//contentPane.add(lblNewLabel);
-		
 		ImageIcon image = new ImageIcon("Images/logo.png");
 		final JLabel imagelabel = new JLabel(image);
 		imagelabel.setBounds(20, 11, 408, 103);
@@ -183,7 +179,7 @@ public class Homepage extends JFrame {
 		btnExit.setBounds(150, 397, 159, 21);
 		contentPane.add(btnExit);
 		
-		if (ExistingUser.user.equals("Community Center")) {
+		if (Login.permission.equals("Organiser")) {
 			btnNewButton.setEnabled(false);
 			btnNews.setEnabled(false);
 			btnMatchMaking.setEnabled(false);
