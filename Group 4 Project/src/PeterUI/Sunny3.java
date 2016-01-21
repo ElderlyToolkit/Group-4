@@ -56,7 +56,7 @@ public class Sunny3 extends JFrame {
 		JTextPane txtpnToSunnyEggs = new JTextPane();
 		txtpnToSunnyEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 23));
 		txtpnToSunnyEggs.setBackground(SystemColor.control);
-		txtpnToSunnyEggs.setText("Step 3:\nCovering the pan or basting the egg helps the top to cook without flipping the egg. Total time: 4 to 5 minutes. ");
+		txtpnToSunnyEggs.setText("Step 3: Covering the pan or basting the egg helps the top to cook without flipping the egg. Total time: 4 to 5 minutes. ");
 		txtpnToSunnyEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToSunnyEggs);
 		

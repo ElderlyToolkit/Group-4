@@ -27,7 +27,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
-import Main.ExistingUser;
+import Main.Login;
 
 public class DayEventDelete extends JFrame {
 
@@ -185,7 +185,7 @@ public class DayEventDelete extends JFrame {
 		btnValidateUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String organiser = textField_3.getText();
-				String name = ExistingUser.user;
+				String name = Login.user;
 				
 				if (name.equals(organiser)) {
 					btnDelete.setEnabled(true);
@@ -204,7 +204,7 @@ public class DayEventDelete extends JFrame {
 				if (result == 0) {
 					DBController db=new DBController();
 					
-					String dbQuery = "DELETE FROM events WHERE name='" + ExistingUser.user + "'";
+					String dbQuery = "DELETE FROM events WHERE name='" + Login.user + "'";
 					
 					db.updateRequest(dbQuery);
 				}

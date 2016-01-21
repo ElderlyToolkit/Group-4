@@ -1,6 +1,8 @@
 package PeterUI;
 
 import java.awt.BorderLayout;
+import Database.DBController;
+
 import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
@@ -15,8 +17,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class HardBoiledEggs extends JFrame {
+	int id = 1;
 
 	private JPanel contentPane;
 
@@ -24,6 +29,7 @@ public class HardBoiledEggs extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -70,14 +76,29 @@ public class HardBoiledEggs extends JFrame {
         	}
         });
 		
+		DBController DBC = new DBController();
+		
 		JButton btnNext = new JButton("Next");
 		btnNext.setBounds(605, 502, 97, 25);
 		contentPane.add(btnNext);
 		btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		HardBoiledEggs2 HBE2 = new HardBoiledEggs2();
-        		setVisible(false);
-        		HBE2.setVisible(true);
+        		ResultSet rs = null;
+        		String s = "";
+        		String dbQuery = "SELECT content FROM ebooks WHERE id = '" + id + "'";
+        		rs = DBC.readRequest(dbQuery);
+        		DBC.readRequest(dbQuery);
+        		try{
+        			while(rs.next()){
+        				s = rs.getString("content");
+        				txtpnToHardboilEggs.setText(s);
+        			}
+        			
+        		}catch(SQLException f){
+        			f.printStackTrace();
+        		}
+        	id +=1;	
+        		
         	}
         });
 		

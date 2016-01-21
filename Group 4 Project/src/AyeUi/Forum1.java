@@ -179,12 +179,5 @@ public class Forum1 extends JFrame {
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
 		btnNewButton.setBounds(274, 573, 115, 29);
 		contentPane.add(btnNewButton);
-		
-		JButton button = new JButton("Cats");
-		button.setBackground(new Color(178, 34, 34));
-		button.setForeground(new Color(255, 255, 255));
-		button.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
-		button.setBounds(262, 300, 115, 29);
-		contentPane.add(button);
 	}
 }

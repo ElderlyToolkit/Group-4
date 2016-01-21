@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Database.DBController;
-import Main.ExistingUser;
+import Main.Login;
 import Main.Homepage;
 
 import javax.swing.JLabel;
@@ -66,7 +66,7 @@ public class ChatboxUsername extends JFrame {
 		
 		textField = new JTextField();
 		textField.setBounds(118, 158, 212, 20);
-		textField.setText(ExistingUser.user);
+		textField.setText(Login.user);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
