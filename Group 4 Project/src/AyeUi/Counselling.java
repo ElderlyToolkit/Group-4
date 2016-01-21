@@ -53,7 +53,7 @@ public class Counselling extends JFrame {
 		JButton btnNewButton = new JButton("");
 		Image images = new ImageIcon(this.getClass().getResource("/call.png")).getImage();
 		btnNewButton.setIcon(new ImageIcon(images));
-		btnNewButton.setBounds(106, 92, 268, 133);
+		btnNewButton.setBounds(106, 100, 268, 125);
 		contentPane.add(btnNewButton);
 		
 		
@@ -68,7 +68,7 @@ public class Counselling extends JFrame {
 		btnChat.setBounds(106, 253, 268, 125);
 		contentPane.add(btnChat);
 		
-		JTextPane txtpnOnlineCounselling = new JTextPane();
+		JLabel txtpnOnlineCounselling = new JLabel();
 		txtpnOnlineCounselling.setBackground(SystemColor.control);
 		txtpnOnlineCounselling.setForeground(new Color(51, 153, 255));
 		txtpnOnlineCounselling.setFont(new Font("Trebuchet MS", Font.BOLD, 27));
@@ -79,7 +79,10 @@ public class Counselling extends JFrame {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try { Runtime.getRuntime().exec(new String[] {"rundll32", "url.dll,FileProtocolHandler", "skype:echo123"}); 
+				} catch (Exception e1) {
+					
+				}
 			}
 		});
 		

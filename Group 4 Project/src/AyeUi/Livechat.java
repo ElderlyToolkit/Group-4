@@ -29,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Livechat extends JFrame {
 
@@ -62,23 +63,26 @@ public class Livechat extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTextPane txtpnLiveChat = new JTextPane();
+		JLabel txtpnLiveChat = new JLabel();
+		txtpnLiveChat.setHorizontalAlignment(SwingConstants.CENTER);
 		txtpnLiveChat.setBackground(SystemColor.control);
 		txtpnLiveChat.setForeground(new Color(240, 128, 128));
 		txtpnLiveChat.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
 		txtpnLiveChat.setText("LIVE CHAT ");
-		txtpnLiveChat.setBounds(157, 16, 205, 26);
+		txtpnLiveChat.setBounds(131, 54, 205, 26);
 		contentPane.add(txtpnLiveChat);
 		
-		JTextPane txtpnTypeYourMessage = new JTextPane();
+		JLabel txtpnTypeYourMessage = new JLabel();
+		txtpnTypeYourMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		txtpnTypeYourMessage.setForeground(new Color(123, 104, 238));
-		txtpnTypeYourMessage.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
+		txtpnTypeYourMessage.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		txtpnTypeYourMessage.setBackground(SystemColor.control);
-		txtpnTypeYourMessage.setText("Fill in your message below. Our available counsellor will reply you shortly!");
-		txtpnTypeYourMessage.setBounds(37, 55, 427, 54);
+		txtpnTypeYourMessage.setText("Fill in your message below. \r\nOur available counsellor will reply you shortly!");
+		txtpnTypeYourMessage.setBounds(15, 91, 449, 26);
 		contentPane.add(txtpnTypeYourMessage);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		textArea.setBounds(15, 125, 449, 222);
 		contentPane.add(textArea);
 		
@@ -90,6 +94,7 @@ public class Livechat extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Trebuchet MS", Font.PLAIN, 11));
 		textField.setText("");
 		textField.setBounds(15, 358, 449, 26);
 		contentPane.add(textField);
@@ -101,6 +106,11 @@ public class Livechat extends JFrame {
 		btnClear.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
 		btnClear.setBounds(112, 400, 99, 29);
 		contentPane.add(btnClear);
+		
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
+		button.setBounds(15, 11, 99, 31);
+		contentPane.add(button);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -141,6 +151,12 @@ public class Livechat extends JFrame {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText("");
+			}
+		});
+		
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 	}
