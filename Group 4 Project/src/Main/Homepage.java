@@ -14,9 +14,9 @@ import javax.swing.border.EmptyBorder;
 import AyeUi.Counselling;
 import DarylUI.News;
 import DarylUI.NewsApp;
+import DarylUI.NumGenTab;
 import DarylUI.Dictionary;
 import DarylUI.DictionaryApp;
-import DarylUI.NumGenerator;
 import Database.DBController;
 import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
@@ -215,7 +215,7 @@ public class Homepage extends JFrame {
 		btndtotoGenerator.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					NumGenerator generator = new NumGenerator();
+					NumGenTab generator = new NumGenTab();
 					generator.setVisible(true);
 				} catch (IOException | FontFormatException e1) {
 					e1.printStackTrace();
