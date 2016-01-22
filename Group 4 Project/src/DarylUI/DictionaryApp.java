@@ -78,6 +78,7 @@ public class DictionaryApp extends JFrame {
 		Usage.setBounds(69, 55, 272, 152);
 		contentPane.add(Usage);
 		Usage.setFont(sizedFont);
+		Usage.setEditable(false);
 		
 		JLabel lblUsage = new JLabel("Usage:");
 		lblUsage.setBounds(15, 52, 69, 20);
