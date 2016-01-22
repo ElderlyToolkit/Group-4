@@ -1,6 +1,7 @@
 package AyeUi;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,6 +17,11 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import Database.DBController;
+import java.sql.PreparedStatement;
+
 
 public class Forumpage2 extends JFrame {
 
@@ -41,6 +47,9 @@ public class Forumpage2 extends JFrame {
 	 * Create the frame.
 	 */
 	public Forumpage2() {
+		
+		DBController dbc = new DBController();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
 		contentPane = new JPanel();
@@ -81,5 +90,31 @@ public class Forumpage2 extends JFrame {
 		btnSubmit.setFont(new Font("Nyala", Font.BOLD, 16));
 		btnSubmit.setBounds(27, 355, 115, 29);
 		contentPane.add(btnSubmit);
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String sub = textPane.getText();
+				String body = textPane_1.getText();
+				
+				try{
+					
+				}
+				catch(Exception g){
+					
+				}
+				
+			}
+		});
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnSubmit.setFont(new Font("Nyala", Font.BOLD, 16));
+		btnBack.setBounds(160, 355, 115, 29);
+		contentPane.add(btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
 	}
 }

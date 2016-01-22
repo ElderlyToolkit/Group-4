@@ -22,6 +22,7 @@ import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
 import RyanUI.Events;
 import RyanUI.Matchmaking;
+import PeterUI.eBooks;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -197,6 +198,16 @@ public class Homepage extends JFrame {
 					news.setVisible(true);
 				} catch (IOException | FontFormatException e1) {
 					e1.printStackTrace();
+				}
+			}
+		});
+		
+		btnEbooks.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					eBooks eb = new eBooks();
+					eb.setVisible(true);
+				} catch (Exception h) {
 				}
 			}
 		});

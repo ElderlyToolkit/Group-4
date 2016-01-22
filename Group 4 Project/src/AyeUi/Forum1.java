@@ -6,6 +6,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import PeterUI.Eggs;
+
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Font;
@@ -17,6 +20,9 @@ import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class Forum1 extends JFrame {
@@ -51,6 +57,7 @@ public class Forum1 extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTextPane txtpnPopularCategories = new JTextPane();
+		txtpnPopularCategories.setEditable(false);
 		txtpnPopularCategories.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
 		txtpnPopularCategories.setForeground(new Color(30, 144, 255));
 		txtpnPopularCategories.setBackground(Color.LIGHT_GRAY);
@@ -59,6 +66,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnPopularCategories);
 		
 		JTextPane txtpnAllCategories = new JTextPane();
+		txtpnAllCategories.setEditable(false);
 		txtpnAllCategories.setText("All Categories");
 		txtpnAllCategories.setForeground(new Color(220, 20, 60));
 		txtpnAllCategories.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
@@ -95,6 +103,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(label_2);
 		
 		JTextPane txtpnHealth = new JTextPane();
+		txtpnHealth.setEditable(false);
 		txtpnHealth.setForeground(new Color(0, 0, 0));
 		txtpnHealth.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtpnHealth.setBackground(SystemColor.control);
@@ -103,6 +112,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnHealth);
 		
 		JTextPane txtpnSingapore = new JTextPane();
+		txtpnSingapore.setEditable(false);
 		txtpnSingapore.setForeground(new Color(220, 20, 60));
 		txtpnSingapore.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtpnSingapore.setBackground(SystemColor.control);
@@ -111,6 +121,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnSingapore);
 		
 		JTextPane txtpnFamily = new JTextPane();
+		txtpnFamily.setEditable(false);
 		txtpnFamily.setForeground(new Color(0, 0, 255));
 		txtpnFamily.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtpnFamily.setBackground(SystemColor.control);
@@ -119,6 +130,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnFamily);
 		
 		JTextPane txtpnGeneral = new JTextPane();
+		txtpnGeneral.setEditable(false);
 		txtpnGeneral.setFont(new Font("Segoe UI", Font.ITALIC, 18));
 		txtpnGeneral.setBackground(new Color(245, 222, 179));
 		txtpnGeneral.setText("General");
@@ -126,6 +138,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnGeneral);
 		
 		JTextPane txtpndtoto = new JTextPane();
+		txtpndtoto.setEditable(false);
 		txtpndtoto.setFont(new Font("Segoe UI", Font.ITALIC, 18));
 		txtpndtoto.setBackground(new Color(224, 255, 255));
 		txtpndtoto.setText("4D/TOTO");
@@ -133,6 +146,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpndtoto);
 		
 		JTextPane txtpnFood = new JTextPane();
+		txtpnFood.setEditable(false);
 		txtpnFood.setFont(new Font("Segoe UI", Font.ITALIC, 18));
 		txtpnFood.setBackground(new Color(245, 222, 179));
 		txtpnFood.setText("Food");
@@ -140,6 +154,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnFood);
 		
 		JTextPane txtpnEntertainment = new JTextPane();
+		txtpnEntertainment.setEditable(false);
 		txtpnEntertainment.setFont(new Font("Segoe UI", Font.ITALIC, 18));
 		txtpnEntertainment.setBackground(new Color(224, 255, 255));
 		txtpnEntertainment.setText("Entertainment");
@@ -147,6 +162,7 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnEntertainment);
 		
 		JTextPane txtpnWeather = new JTextPane();
+		txtpnWeather.setEditable(false);
 		txtpnWeather.setFont(new Font("Segoe UI", Font.ITALIC, 18));
 		txtpnWeather.setBackground(new Color(245, 222, 179));
 		txtpnWeather.setText("Weather");
@@ -179,5 +195,13 @@ public class Forum1 extends JFrame {
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
 		btnNewButton.setBounds(274, 573, 115, 29);
 		contentPane.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Forumpage2 np = new Forumpage2();
+				np.setVisible(true);
+				
+			}
+		});
+		
 	}
 }

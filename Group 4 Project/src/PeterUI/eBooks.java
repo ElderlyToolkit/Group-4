@@ -91,5 +91,11 @@ public class eBooks extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(159, 322, 97, 25);
 		contentPane.add(btnBack);
+		btnBack.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		setVisible(false);
+        	}
+        });
+		
 	}
 }
