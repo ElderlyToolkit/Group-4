@@ -12,6 +12,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class Counselling extends JFrame {
 
@@ -40,6 +45,7 @@ public class Counselling extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 510, 450);
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(0, 153, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -47,22 +53,45 @@ public class Counselling extends JFrame {
 		JButton btnNewButton = new JButton("");
 		Image images = new ImageIcon(this.getClass().getResource("/call.png")).getImage();
 		btnNewButton.setIcon(new ImageIcon(images));
-		btnNewButton.setBounds(106, 92, 268, 133);
+		btnNewButton.setBounds(106, 100, 268, 125);
 		contentPane.add(btnNewButton);
 		
-		JButton button = new JButton("");
-		button.setBackground(Color.WHITE);
+		
+		JButton btnChat = new JButton("CHAT");
+		btnChat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnChat.setBackground(Color.WHITE);
 		Image images2 = new ImageIcon(this.getClass().getResource("/msg.png")).getImage();
-		button.setIcon(new ImageIcon(images2));
-		button.setBounds(106, 241, 268, 125);
-		contentPane.add(button);
+		btnChat.setIcon(new ImageIcon(images2));
+		btnChat.setBounds(106, 253, 268, 125);
+		contentPane.add(btnChat);
 		
-	
-		
-		JLabel lblNewLabel_1 = new JLabel("");
+		JLabel txtpnOnlineCounselling = new JLabel();
+		txtpnOnlineCounselling.setBackground(SystemColor.control);
+		txtpnOnlineCounselling.setForeground(new Color(51, 153, 255));
+		txtpnOnlineCounselling.setFont(new Font("Trebuchet MS", Font.BOLD, 27));
+		txtpnOnlineCounselling.setText("Online Counselling");
+		txtpnOnlineCounselling.setBounds(115, 31, 248, 45);
+		contentPane.add(txtpnOnlineCounselling);
 		Image images1 = new ImageIcon(this.getClass().getResource("/oc.png")).getImage();
-		lblNewLabel_1.setIcon(new ImageIcon(images1));
-		lblNewLabel_1.setBounds(38, 16, 435, 60);
-		contentPane.add(lblNewLabel_1);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try { Runtime.getRuntime().exec(new String[] {"rundll32", "url.dll,FileProtocolHandler", "skype:echo123"}); 
+				} catch (Exception e1) {
+					
+				}
+			}
+		});
+		
+		btnChat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Livechat chat = new Livechat();
+				setVisible(false);
+				chat.setVisible(true);
+			}
+		});
 	}
 }
