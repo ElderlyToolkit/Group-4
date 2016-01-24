@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -19,6 +20,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 
 public class NumGenTab extends JFrame {
+	
+	ImageIcon generate = new ImageIcon("Images/generate.png");
+	ImageIcon clear = new ImageIcon("Images/clear2.png");
 
 	private JPanel contentPane;
 
@@ -85,7 +89,7 @@ public class NumGenTab extends JFrame {
 		textArea.setBounds(10, 48, 409, 174);
 		panel.add(textArea);
 		
-		JButton HUAT = new JButton("Generate");
+		JButton HUAT = new JButton(generate);
 		HUAT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int x;
@@ -106,7 +110,7 @@ public class NumGenTab extends JFrame {
 		HUAT.setBounds(308, 14, 94, 26);
 		panel.add(HUAT);
 		
-		JButton Clear = new JButton("Clear");
+		JButton Clear = new JButton(clear);
 		Clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
@@ -152,7 +156,7 @@ public class NumGenTab extends JFrame {
 		textArea1.setBounds(10, 48, 409, 174);
 		panel_1.add(textArea1);
 		
-		JButton HUAT1 = new JButton("Generate");
+		JButton HUAT1 = new JButton(generate);
 		HUAT1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int x;
@@ -165,16 +169,16 @@ public class NumGenTab extends JFrame {
 			}
 		});
 		
-		HUAT1.setBounds(326, 14, 93, 26);
+		HUAT1.setBounds(308, 14, 93, 26);
 		panel_1.add(HUAT1);
 		
-		JButton Clear1 = new JButton("Clear");
+		JButton Clear1 = new JButton(clear);
 		Clear1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea1.setText("");
 			}
 		});
-		Clear1.setBounds(247, 13, 69, 29);
+		Clear1.setBounds(223, 13, 69, 29);
 		panel_1.add(Clear1);
 		Clear1.setFont(sizedFont);
 		HUAT1.setFont(sizedFont);

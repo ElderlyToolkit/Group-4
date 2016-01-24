@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 import java.awt.FontFormatException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -25,6 +26,8 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class DictionaryApp extends JFrame {
+	
+	ImageIcon search = new ImageIcon("Images/search.png");
 
 	private JPanel contentPane;
 	private JTextField txt;
@@ -52,7 +55,7 @@ public class DictionaryApp extends JFrame {
 	public DictionaryApp() throws IOException, FontFormatException {
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
-		Font sizedFont = font.deriveFont(12f);
+		Font sizedFont = font.deriveFont(16f);
 		
 		setTitle("Dictionary");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -85,7 +88,7 @@ public class DictionaryApp extends JFrame {
 		contentPane.add(lblUsage);
 		lblUsage.setFont(sizedFont);
 		
-		JButton btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton(search);
 		btnSearch.setFont(sizedFont);
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
