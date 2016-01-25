@@ -60,8 +60,9 @@ public class SoftBoiledEggs extends JFrame {
 		txtpnToSoftboilEggs.setBounds(12, 13, 299, 514);
 		contentPane.add(txtpnToSoftboilEggs);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(605, 502, 97, 25);
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton btnBack = new JButton(back);
+		btnBack.setBounds(449, 502, 115, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {

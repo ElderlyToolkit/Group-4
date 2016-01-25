@@ -72,12 +72,45 @@ public class Scrambled extends JFrame {
 		
 		DBController DBC = new DBController();
 		
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(605, 502, 97, 25);
-		contentPane.add(btnNext);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(496, 502, 97, 25);
+		ImageIcon next = new ImageIcon("Images/next.png");
+		JButton btnNext = new JButton(next);
+		btnNext.setBounds(571, 502, 120, 25);
+		contentPane.add(btnNext);
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+ 
+        		steps++;
+        		ResultSet rs = null;
+        		String category = lblScrambled.getText();
+        		String s = "";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
+        		rs = DBC.readRequest(dbQuery);
+        		try{
+        			while(rs.next()){
+        				s = rs.getString("content");
+        				txtpnToScrambledEggs.setText("");
+        				txtpnToScrambledEggs.setText(s);
+        				if(steps == 6)
+        					btnNext.setVisible(false);
+        				
+        			}
+        			
+        		}catch(SQLException f){
+        			f.printStackTrace();
+        		}
+        		
+        		
+        		
+        	
+        		
+        	}
+        });
+		
+		
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton btnBack = new JButton(back);
+		btnBack.setBounds(449, 502, 115, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -115,35 +148,7 @@ public class Scrambled extends JFrame {
 		
 		
 		
-		btnNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
- 
-        		steps++;
-        		ResultSet rs = null;
-        		String category = lblScrambled.getText();
-        		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
-        		rs = DBC.readRequest(dbQuery);
-        		try{
-        			while(rs.next()){
-        				s = rs.getString("content");
-        				txtpnToScrambledEggs.setText("");
-        				txtpnToScrambledEggs.setText(s);
-        				if(steps == 6)
-        					btnNext.setVisible(false);
-        				
-        			}
-        			
-        		}catch(SQLException f){
-        			f.printStackTrace();
-        		}
-        		
-        		
-        		
-        	
-        		
-        	}
-        });
+		
 	}
 
 }
