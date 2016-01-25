@@ -50,8 +50,9 @@ public class cooking extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnEggs = new JButton("Eggs");
-		btnEggs.setBounds(51, 48, 119, 25);
+		ImageIcon eggs = new ImageIcon("Images/eggs.png");
+		JButton btnEggs = new JButton(eggs);
+		btnEggs.setBounds(51, 48, 125, 25);
 		contentPane.add(btnEggs);
 		btnEggs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,9 +61,9 @@ public class cooking extends JFrame {
 				
 			}
 		});
-		
-		JButton btnSpaghetti = new JButton("Spaghetti");
-		btnSpaghetti.setBounds(264, 210, 119, 25);
+		ImageIcon spaghetti = new ImageIcon("Images/spaghetti.png");
+		JButton btnSpaghetti = new JButton(spaghetti);
+		btnSpaghetti.setBounds(264, 210, 125, 25);
 		contentPane.add(btnSpaghetti);
 		btnSpaghetti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -71,25 +72,28 @@ public class cooking extends JFrame {
 				
 			}
 		});
-		
-		JButton btnSalmon = new JButton("Salmon");
-		btnSalmon.setBounds(51, 210, 119, 25);
+		ImageIcon salmon = new ImageIcon("Images/salmon.png");
+		JButton btnSalmon = new JButton(salmon);
+		btnSalmon.setBounds(51, 210, 125, 25);
 		contentPane.add(btnSalmon);
 		
-		JButton btnRice = new JButton("Rice");
-		btnRice.setBounds(264, 48, 119, 25);
+		ImageIcon rice = new ImageIcon("Images/rice.png");
+		JButton btnRice = new JButton(rice);
+		btnRice.setBounds(264, 48, 125, 25);
 		contentPane.add(btnRice);
 		
-		
-		JButton btnQuin = new JButton("Quinoa");
-		btnQuin.setBounds(51, 366, 119, 25);
+		ImageIcon quinoa = new ImageIcon("Images/quinoa.png");
+		JButton btnQuin = new JButton(quinoa);
+		btnQuin.setBounds(51, 366, 125, 25);
 		contentPane.add(btnQuin);
 		
-		JButton btnChickenSoup = new JButton("Chicken soup");
-		btnChickenSoup.setBounds(264, 366, 119, 25);
+		ImageIcon cs = new ImageIcon("Images/chicksoup.png");
+		JButton btnChickenSoup = new JButton(cs);
+		btnChickenSoup.setBounds(264, 366, 125, 25);
 		contentPane.add(btnChickenSoup);
 		
-		JButton btnBack = new JButton("Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton btnBack = new JButton(back);
 		btnBack.setBounds(171, 444, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {

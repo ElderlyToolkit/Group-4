@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import Main.Homepage;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class Eggs extends JFrame {
@@ -44,8 +45,9 @@ public class Eggs extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnHardBoiled = new JButton("Hard boiled");
-		btnHardBoiled.setBounds(65, 55, 108, 25);
+		ImageIcon hb = new ImageIcon("Images/hardboiled.png");
+		JButton btnHardBoiled = new JButton(hb);
+		btnHardBoiled.setBounds(65, 55, 115, 35);
 		contentPane.add(btnHardBoiled);
 		btnHardBoiled.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -55,8 +57,9 @@ public class Eggs extends JFrame {
 			}
 		});
 		
-		JButton btnScrambled = new JButton("Scrambled");
-		btnScrambled.setBounds(264, 55, 108, 25);
+		ImageIcon sc = new ImageIcon("Images/scrambled.png");
+		JButton btnScrambled = new JButton(sc);
+		btnScrambled.setBounds(264, 55, 115, 35);
 		contentPane.add(btnScrambled);
 		btnScrambled.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -66,8 +69,9 @@ public class Eggs extends JFrame {
 			}
 		});
 		
-		JButton btnSoftBoiled = new JButton("Soft boiled");
-		btnSoftBoiled.setBounds(65, 162, 108, 25);
+		ImageIcon sb = new ImageIcon("Images/softboiled.png");
+		JButton btnSoftBoiled = new JButton(sb);
+		btnSoftBoiled.setBounds(65, 137, 115, 35);
 		contentPane.add(btnSoftBoiled);
 		btnSoftBoiled.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -77,8 +81,9 @@ public class Eggs extends JFrame {
 			}
 		});
 		
-		JButton btnSunny = new JButton("Sunny");
-		btnSunny.setBounds(264, 162, 108, 25);
+		ImageIcon sn = new ImageIcon("Images/sunny.png");
+		JButton btnSunny = new JButton(sn);
+		btnSunny.setBounds(264, 137, 115, 35);
 		contentPane.add(btnSunny);
 		btnSunny.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -87,8 +92,8 @@ public class Eggs extends JFrame {
 				
 			}
 		});
-
-		JButton btnBack = new JButton("Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton btnBack = new JButton(back);
 		btnBack.setBounds(171, 215, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {

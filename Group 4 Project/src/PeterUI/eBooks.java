@@ -1,5 +1,6 @@
 package PeterUI;
 import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -49,15 +50,17 @@ public class eBooks extends JFrame {
 		lblCategories.setBounds(176, 13, 84, 33);
 		contentPane.add(lblCategories);
 		
-		JButton btnKnitting = new JButton("Knitting");
+		ImageIcon knitting = new ImageIcon("Images/knitting.png");
+		JButton btnKnitting = new JButton(knitting);
 		btnKnitting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnKnitting.setBounds(67, 59, 97, 25);
+		btnKnitting.setBounds(67, 59, 117, 30);
 		contentPane.add(btnKnitting);
 		
-		JButton btnCooking = new JButton("Cooking");
+		ImageIcon cooking = new ImageIcon("Images/cooking.png");
+		JButton btnCooking = new JButton(cooking);
 		btnCooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cooking cook = new cooking();
@@ -65,30 +68,35 @@ public class eBooks extends JFrame {
 				
 			}
 		});
-		btnCooking.setBounds(251, 59, 97, 25);
+		btnCooking.setBounds(251, 59, 117, 30);
 		contentPane.add(btnCooking);
 		
-		JButton btnNewButton = new JButton("Gardening");
+		ImageIcon gardening = new ImageIcon("Images/gardening.png");
+		JButton btnNewButton = new JButton(gardening);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(67, 129, 97, 25);
+		btnNewButton.setBounds(67, 129, 117, 30);
 		contentPane.add(btnNewButton);
 		
-		JButton btnJuggling = new JButton("Juggling");
-		btnJuggling.setBounds(251, 129, 97, 25);
+		ImageIcon juggling = new ImageIcon("Images/juggling.png");
+		JButton btnJuggling = new JButton(juggling);
+		btnJuggling.setBounds(251, 129,117, 30);
 		contentPane.add(btnJuggling);
 		
-		JButton btnEmbroidery = new JButton("Embroidery");
-		btnEmbroidery.setBounds(67, 199, 97, 25);
+		ImageIcon embroidery = new ImageIcon("Images/embroidery.png");
+		JButton btnEmbroidery = new JButton(embroidery);
+		btnEmbroidery.setBounds(67, 199, 117, 30);
 		contentPane.add(btnEmbroidery);
 		
-		JButton btnSewing = new JButton("Sewing");
-		btnSewing.setBounds(251, 199, 97, 25);
+		ImageIcon sewing = new ImageIcon("Images/sewing.png");
+		JButton btnSewing = new JButton(sewing);
+		btnSewing.setBounds(251, 199, 117, 30);
 		contentPane.add(btnSewing);
 		
-		JButton btnBack = new JButton("Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton btnBack = new JButton(back);
 		btnBack.setBounds(159, 322, 97, 25);
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
