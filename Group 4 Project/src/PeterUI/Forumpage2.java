@@ -1,4 +1,4 @@
-package AyeUi;
+package PeterUI;
 
 import java.awt.BorderLayout;
 
@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JSpinner;
@@ -19,8 +20,15 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Database.*;
 import Database.DBController;
+import Database.NewUserConstructor;
+import Database.NewUserDA;
+import Main.Login;
+
 import java.sql.PreparedStatement;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Forumpage2 extends JFrame {
@@ -64,7 +72,15 @@ public class Forumpage2 extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Nyala", Font.BOLD, 18));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"}));
+		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"})
+		comboBox.addItem("General");
+		comboBox.addItem("Entertainment");
+		comboBox.addItem("Singapore");
+		comboBox.addItem("Family");
+		comboBox.addItem("Health");
+		comboBox.addItem("Hobbies");
+		comboBox.addItem("Lottery");
+		
 		comboBox.setBounds(211, 26, 173, 26);
 		contentPane.add(comboBox);
 		
@@ -93,15 +109,23 @@ public class Forumpage2 extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String sub = textPane.getText();
-				String body = textPane_1.getText();
+				int id = 0;
+				String subject = textPane.getText();
+				String message = textPane_1.getText();
+				String category = comboBox.getSelectedItem().toString();
 				
-				try{
-					
+				if(subject.equals("") || message.equals(""))
+				{
+					JOptionPane.showMessageDialog(Forumpage2.this, "Please do not leave any blanks.");
 				}
-				catch(Exception g){
-					
+				else{
+				ForumsConstructor constructor = new ForumsConstructor (message, category, subject);
+				id = ForumsDA.createForum(constructor);
+				JOptionPane.showMessageDialog(Forumpage2.this, "Post submitted!");
 				}
+				
+				
+			
 				
 			}
 		});

@@ -23,6 +23,9 @@ public class TTT extends JFrame {
 	int counter = 0;
 	private JPanel contentPane;
 	ArrayList<JLabel> tictacs = new ArrayList();
+	
+	ImageIcon check = new ImageIcon("Images/check.png");
+	ImageIcon restart = new ImageIcon("Images/restart.png");
 
 	/**
 	 * Launch the application.
@@ -42,21 +45,21 @@ public class TTT extends JFrame {
 
 	public void checkResult(int[][] table) {
 		String result = "";
-		if (table[0][0] + table[0][1] + table[0][2] == 3) 
+		if (table[0][0] * table[0][1] * table[0][2] == 1) 
 			result = "Player O wins!";
-		else if (table[1][0] + table[1][1] + table[1][2] == 3)
+		else if (table[1][0] * table[1][1] * table[1][2] == 1)
 			result = "Player O wins!";
-		else if (table[2][0] + table[2][1] + table[2][2] == 3)
+		else if (table[2][0] * table[2][1] * table[2][2] == 1)
 			result = "Player O wins!";
-		else if (table[0][0] + table[1][0] + table[2][0] == 3)
+		else if (table[0][0] * table[1][0] * table[2][0] == 1)
 			result = "Player O wins!";
-		else if (table[0][1] + table[1][1] + table[2][1] == 3)
+		else if (table[0][1] * table[1][1] * table[2][1] == 1)
 			result = "Player O wins!";
-		else if (table[0][2] + table[1][2] + table[2][2] == 3)
+		else if (table[0][2] * table[1][2] * table[2][2] == 1)
 			result = "Player O wins!";
-		else if (table[0][0] + table[1][1] + table[2][2] == 3)
+		else if (table[0][0] * table[1][1] * table[2][2] == 1)
 			result = "Player O wins!";
-		else if (table[2][0] + table[1][1] + table[0][2] == 3)
+		else if (table[2][0] * table[1][1] * table[0][2] == 1)
 			result = "Player O wins!";
 		else if (table[0][0] + table[0][1] + table[0][2] == 6) 
 			result = "Player X wins!";
@@ -88,9 +91,14 @@ public class TTT extends JFrame {
 	 * Create the frame.
 	 */
 	public TTT() {
-		int[][] table = new int[3][3];
+		int[][] table = {
+			{0,0,0},
+			{0,0,0},
+			{0,0,0},
+		};
+				
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -337,7 +345,7 @@ public class TTT extends JFrame {
 		tac.setBounds(15, 16, 548, 312);
 		contentPane.add(tac);
 		
-		JButton Button = new JButton("Check");
+		JButton Button = new JButton(check);
 		Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				checkResult(table);			
@@ -346,7 +354,7 @@ public class TTT extends JFrame {
 		Button.setBounds(570, 100, 100, 30);
 		contentPane.add(Button);
 		
-		JButton Restart= new JButton("Restart");
+		JButton Restart= new JButton(restart);
 		Restart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				counter = 0;

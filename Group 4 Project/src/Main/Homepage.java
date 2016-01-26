@@ -222,6 +222,13 @@ public class Homepage extends JFrame {
 				}
 			}
 		});
+
+		btnGames.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TTT games = new TTT();
+				games.setVisible(true);
+			}
+		});
 		
 		btnDictionary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -3,6 +3,8 @@ package DarylUI;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import Database.DBController;
 
 public class DictionaryDA {
@@ -10,7 +12,7 @@ public class DictionaryDA {
 		Dictionary dictionary;
 		ResultSet rs = null;
 		DBController db = new DBController();
-		String Meaning = "Meaning: " , Example = "Usage of term: "; 
+		String Meaning = "Meaning: " , Example = "Usage: "; 
 		String term = txt;
 		String dbQuery = "SELECT Term, Meaning, Example FROM dictionary WHERE Term = '" + term + "'";
 		rs = db.readRequest(dbQuery);
@@ -22,7 +24,8 @@ public class DictionaryDA {
 			}
 		} catch (SQLException z) {
 			z.printStackTrace();
-		}
+		}	
+		
 		dictionary = new Dictionary(Meaning,term,Example);
 		return dictionary;
 	}

@@ -34,13 +34,11 @@ import Database.NewsDA;
 
 
 public class NewsApp extends JFrame  {
-	int page = 1;;
+	int page = 1;
 	
-	String[] World = new String[6];
-	String[] Economic = new String[6];
-	String[] World2 = new String[6];
-	String[] Economic2 = new String[6];
+	ImageIcon testing;
 	
+	ArrayList<News> news2 = new ArrayList<News>();
 	ArrayList<JTextPane> news = new ArrayList();
 	ArrayList<ImageIcon> WorldImages = new ArrayList<ImageIcon>();
 	ArrayList<ImageIcon> WorldImages2 = new ArrayList<ImageIcon>();
@@ -277,7 +275,6 @@ public class NewsApp extends JFrame  {
 		EconomicImages2.add(ipo);
 		EconomicImages2.add(once);
 		
-				
 		JComboBox Category = new JComboBox();
 		Category.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -285,17 +282,30 @@ public class NewsApp extends JFrame  {
 				String selected = Category.getSelectedItem().toString();
 				if (page == 1) {	
 					if (selected == "World") {
-						World = NewsDA.RetrieveHeadlines(page, selected);
+						news2 = NewsDA.RetrieveFrontPage(page, selected);
 						for (int i = 0; i < news.size() ; i++) {
-						news.get(i).setText(World[i] + "\n");
-						news.get(i).insertIcon(WorldImages.get(i));
+						ImageIcon d = new ImageIcon(news2.get(i).getImage());
+						Image q =  d.getImage();
+						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+						ImageIcon y = new ImageIcon(w);
+						
+						news.get(i).setText(news2.get(i).getHeadline() + "\n");
+						news.get(i).insertIcon(y);
+						
+						
+						//news.get(i).insertIcon(WorldImages.get(i));
 						}
 				}
 					else {
-						Economic = NewsDA.RetrieveHeadlines(page, selected);
+						
+						news2 = NewsDA.RetrieveFrontPage(page, selected);
 						for (int i = 0; i < news.size() ; i++) {
-						news.get(i).setText(Economic[i] + "\n");
-						news.get(i).insertIcon(EconomicImages.get(i));
+						news.get(i).setText(news2.get(i).getHeadline() + "\n");
+						ImageIcon d = new ImageIcon(news2.get(i).getImage());
+						Image q =  d.getImage();
+						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+						ImageIcon y = new ImageIcon(w);
+						news.get(i).insertIcon(y);
 						}
 					}
 				}
@@ -303,17 +313,25 @@ public class NewsApp extends JFrame  {
 			
 			else {
 				if(selected == "World") {
-					World2 = NewsDA.RetrieveHeadlines(page, selected);
+					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
-					news.get(i).setText(World2[i] + "\n");
-					news.get(i).insertIcon(WorldImages2.get(i));
+					news.get(i).setText(news2.get(i).getHeadline() + "\n");
+					ImageIcon d = new ImageIcon(news2.get(i).getImage());
+					Image q =  d.getImage();
+					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+					ImageIcon y = new ImageIcon(w);
+					news.get(i).insertIcon(y);
 				}
 				}
 				else {
-					Economic2 = NewsDA.RetrieveHeadlines(page, selected);
+					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
-					news.get(i).setText(Economic2[i] + "\n");
-					news.get(i).insertIcon(EconomicImages2.get(i));
+					news.get(i).setText(news2.get(i).getHeadline() + "\n");
+					ImageIcon d = new ImageIcon(news2.get(i).getImage());
+					Image q =  d.getImage();
+					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+					ImageIcon y = new ImageIcon(w);
+					news.get(i).insertIcon(y);
 					}
 				}
 			}
@@ -332,17 +350,25 @@ public class NewsApp extends JFrame  {
 				Previous.setEnabled(false);
 				String selected = Category.getSelectedItem().toString();
 				if(Category.getSelectedItem().toString() == "Economic") {
-					Economic = NewsDA.RetrieveHeadlines(page, selected);
+					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
-					news.get(i).setText(Economic[i] + "\n");
-					news.get(i).insertIcon(EconomicImages.get(i));
+					news.get(i).setText(news2.get(i).getHeadline() + "\n");
+					ImageIcon d = new ImageIcon(news2.get(i).getImage());
+					Image q =  d.getImage();
+					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+					ImageIcon y = new ImageIcon(w);
+					news.get(i).insertIcon(y);
 					}
 				}
 				else {
-					World = NewsDA.RetrieveHeadlines(page, selected);
+					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
-					news.get(i).setText(World[i] + "\n");
-					news.get(i).insertIcon(WorldImages.get(i));
+					news.get(i).setText(news2.get(i).getHeadline() + "\n");
+					ImageIcon d = new ImageIcon(news2.get(i).getImage());
+					Image q =  d.getImage();
+					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+					ImageIcon y = new ImageIcon(w);
+					news.get(i).insertIcon(y);
 					}
 				}
 				}
@@ -361,17 +387,25 @@ public class NewsApp extends JFrame  {
 			page++;
 			String selected = Category.getSelectedItem().toString();
 			if(Category.getSelectedItem().toString() == "Economic") {
-					Economic = NewsDA.RetrieveHeadlines(page, selected);
+					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
-						news.get(i).setText(Economic[i] + "\n");
-						news.get(i).insertIcon(EconomicImages2.get(i));
+						news.get(i).setText(news2.get(i).getHeadline() + "\n");
+						ImageIcon d = new ImageIcon(news2.get(i).getImage());
+						Image q =  d.getImage();
+						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+						ImageIcon y = new ImageIcon(w);
+						news.get(i).insertIcon(y);
 						}
 					}
 					else {
-						World2 = NewsDA.RetrieveHeadlines(page, selected);
+						news2 = NewsDA.RetrieveFrontPage(page, selected);
 						for (int i = 0; i < news.size() ; i++) {
-						news.get(i).setText(World2[i] + "\n");
-						news.get(i).insertIcon(WorldImages2.get(i));
+						news.get(i).setText(news2.get(i).getHeadline() + "\n");
+						ImageIcon d = new ImageIcon(news2.get(i).getImage());
+						Image q =  d.getImage();
+						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+						ImageIcon y = new ImageIcon(w);
+						news.get(i).insertIcon(y);
 						}
 					}
 					}
@@ -396,7 +430,7 @@ public class NewsApp extends JFrame  {
 				if (Category.getSelectedItem().toString() == "World") {
 					int id = 1;
 					ResultSet rs = null;
-					String dbQuery = "SELECT Headline, Content FROM news WHERE id = '" + id + "'";
+					String dbQuery = "SELECT Headline, Content, Pics FROM news WHERE id = '" + id + "'";
 					rs = db.readRequest(dbQuery);
 					String headline = "", content = "";
 					
