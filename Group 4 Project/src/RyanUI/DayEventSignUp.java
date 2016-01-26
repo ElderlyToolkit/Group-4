@@ -225,6 +225,9 @@ public class DayEventSignUp extends JFrame {
 				if (attendee.equals(organisername)) {
 					JOptionPane.showMessageDialog(DayEventSignUp.this, "You are the organiser of this event!");
 				}
+				else if (event.equals("")) {
+					JOptionPane.showMessageDialog(DayEventSignUp.this, "No such event!");
+				}
 				else {
 					if (attendee.equals(databaseAttendee) && event.equals(databaseEvent)) {
 						JOptionPane.showMessageDialog(DayEventSignUp.this, "You are already signed up for this event!");

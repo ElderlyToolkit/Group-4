@@ -107,10 +107,6 @@ public class DayEventCreate extends JFrame {
 		contentPane.add(comboBox);
 		
 		ImageIcon checkavail = new ImageIcon("Images/checkavail.png");
-		JButton btnCheckAvailability = new JButton(checkavail);
-		btnCheckAvailability.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
-		btnCheckAvailability.setBounds(252, 56, 172, 25);
-		contentPane.add(btnCheckAvailability);
 		
 		JLabel lblNameOfEvent = new JLabel("Name of Event:");
 		lblNameOfEvent.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
@@ -119,7 +115,6 @@ public class DayEventCreate extends JFrame {
 		contentPane.add(lblNameOfEvent);
 		
 		textField = new JTextField();
-		textField.setEditable(false);
 		textField.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField.setBounds(109, 88, 133, 17);
 		contentPane.add(textField);
@@ -132,7 +127,6 @@ public class DayEventCreate extends JFrame {
 		contentPane.add(lblLocation);
 		
 		textField_1 = new JTextField();
-		textField_1.setEditable(false);
 		textField_1.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_1.setColumns(10);
 		textField_1.setBounds(109, 115, 133, 17);
@@ -159,41 +153,6 @@ public class DayEventCreate extends JFrame {
 				event.setVisible(true);
 			}
 		});
-		
-		btnCheckAvailability.addActionListener(new ActionListener() {
-			public void actionPerformed (ActionEvent e) {
-				String time = comboBox.getSelectedItem().toString();
-				String date = lblTodaysDate.getText();
-				DBController db=new DBController();
-				String dbQuery = "SELECT time, date FROM events WHERE time='" + time + "' AND date='" + date + "'";
-				ResultSet rs = null;
-				String databaseTime = null;
-				String databaseDate = null;
-				
-				//queries database
-				rs = db.readRequest(dbQuery);
-				
-				//check timeslot avail
-				try {
-					while (rs.next()) {
-					    databaseTime = rs.getString("time");
-					    databaseDate = rs.getString("date");
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			
-			if (!time.equals(databaseTime) && !date.equals(databaseDate)) {
-				textField.setEditable(true);
-				textField_1.setEditable(true);
-				textField_2.setText(Login.user);
-				btnSave.setEnabled(true);
-			}
-			else {
-				JOptionPane.showMessageDialog(DayEventCreate.this, "The timeslot has been booked.\n\nPlease select another timeslot.", "Message", JOptionPane.WARNING_MESSAGE);
-			}
-		}
-			});
 		
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
