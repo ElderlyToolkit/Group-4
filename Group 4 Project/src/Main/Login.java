@@ -183,7 +183,7 @@ public class Login extends JFrame {
 			    
 			    else {
 			    	JOptionPane.showMessageDialog(Login.this, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
-			        textField_1.setText("");
+			        passwordField.setText("");
 			    }
 			}
 		});

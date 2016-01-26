@@ -15,6 +15,7 @@ import AyeUi.Counselling;
 import DarylUI.News;
 import DarylUI.NewsApp;
 import DarylUI.NumGenTab;
+import DarylUI.TTT;
 import DarylUI.Dictionary;
 import DarylUI.DictionaryApp;
 import Database.DBController;
@@ -173,18 +174,20 @@ public class Homepage extends JFrame {
 		imagelabel.setBounds(20, 11, 408, 103);
 		contentPane.add(imagelabel);
 		
-		ImageIcon exit = new ImageIcon("Images/exit.png");
-		JButton btnExit = new JButton(exit);
+		//ImageIcon exit = new ImageIcon("Images/exit.png");
+		JButton btnExit = new JButton("EXIT");
 		//btnExit.setBorder(BorderFactory.createEmptyBorder());
 		//btnExit.setContentAreaFilled(false);
-		btnExit.setForeground(Color.BLACK);
-		btnExit.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
+		btnExit.setForeground(Color.WHITE);
+		btnExit.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		btnExit.setBackground(myColor);
 		btnExit.setBounds(249, 398, 159, 32);
 		contentPane.add(btnExit);
 		
-		ImageIcon logout = new ImageIcon("Images/logout.png");
-		JButton btnLogout = new JButton(logout);
+		//ImageIcon logout = new ImageIcon("Images/logout.png");
+		JButton btnLogout = new JButton("LOGOUT");
+		btnLogout.setForeground(Color.WHITE);
+		btnLogout.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		btnLogout.setBackground(myColor);
 		btnLogout.setBounds(49, 398, 159, 32);
 		contentPane.add(btnLogout);
@@ -297,6 +300,14 @@ public class Homepage extends JFrame {
 				Login login = new Login();
 				setVisible(false);
 				login.setVisible(true);
+			}
+		});
+		
+		btnGames.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TTT ttt = new TTT();
+				setVisible(false);
+				ttt.setVisible(true);
 			}
 		});
 	}
