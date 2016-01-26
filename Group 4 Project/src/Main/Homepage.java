@@ -67,10 +67,12 @@ public class Homepage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		Color myColor = Color.decode("#b32e2e");
+		
 		ImageIcon counselling = new ImageIcon("Images/counsellingbutton.png");
 		JButton btnNewButton = new JButton(counselling);
-		btnNewButton.setBorder(BorderFactory.createEmptyBorder());
-		btnNewButton.setContentAreaFilled(false);
+		//btnNewButton.setBorder(BorderFactory.createEmptyBorder());
+		//btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		btnNewButton.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
 		btnNewButton.setBounds(49, 179, 159, 34);
@@ -78,8 +80,8 @@ public class Homepage extends JFrame {
 		
 		ImageIcon forums = new ImageIcon("Images/forums.png");
 		JButton btnForums = new JButton(forums);
-		btnForums.setBorder(BorderFactory.createEmptyBorder());
-		btnForums.setContentAreaFilled(false);
+		//btnForums.setBorder(BorderFactory.createEmptyBorder());
+		//btnForums.setContentAreaFilled(false);
 		btnForums.setBackground(new Color(0, 191, 255));
 		btnForums.setForeground(new Color(0, 0, 0));
 		btnForums.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
@@ -88,8 +90,8 @@ public class Homepage extends JFrame {
 		
 		ImageIcon events = new ImageIcon("Images/eventsbutton.png");
 		JButton btnEventsAndHobbies = new JButton(events);
-		btnEventsAndHobbies.setBorder(BorderFactory.createEmptyBorder());
-		btnEventsAndHobbies.setContentAreaFilled(false);
+		//btnEventsAndHobbies.setBorder(BorderFactory.createEmptyBorder());
+		//btnEventsAndHobbies.setContentAreaFilled(false);
 		btnEventsAndHobbies.setBackground(new Color(0, 191, 255));
 		btnEventsAndHobbies.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
 		btnEventsAndHobbies.setForeground(new Color(0, 0, 0));
@@ -98,8 +100,8 @@ public class Homepage extends JFrame {
 		
 		ImageIcon chat = new ImageIcon("Images/chatroom.png");
 		JButton btnChatBox = new JButton(chat);
-		btnChatBox.setBorder(BorderFactory.createEmptyBorder());
-		btnChatBox.setContentAreaFilled(false);
+		//btnChatBox.setBorder(BorderFactory.createEmptyBorder());
+		//btnChatBox.setContentAreaFilled(false);
 		btnChatBox.setBackground(new Color(0, 191, 255));
 		btnChatBox.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
 		btnChatBox.setForeground(new Color(0, 0, 0));
@@ -108,18 +110,18 @@ public class Homepage extends JFrame {
 		
 		ImageIcon news = new ImageIcon("Images/news.png");
 		JButton btnNews = new JButton(news);
-		btnNews.setBorder(BorderFactory.createEmptyBorder());
-		btnNews.setContentAreaFilled(false);
+		//btnNews.setBorder(BorderFactory.createEmptyBorder());
+		//btnNews.setContentAreaFilled(false);
 		btnNews.setBackground(new Color(0, 191, 255));
 		btnNews.setForeground(new Color(0, 0, 0));
 		btnNews.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
-		btnNews.setBounds(49, 349, 159, 34);
+		btnNews.setBounds(49, 351, 159, 34);
 		contentPane.add(btnNews);
 		
 		ImageIcon matchmaking = new ImageIcon("Images/matchmaking.png");
 		JButton btnMatchMaking = new JButton(matchmaking);
-		btnMatchMaking.setBorder(BorderFactory.createEmptyBorder());
-		btnMatchMaking.setContentAreaFilled(false);
+		//btnMatchMaking.setBorder(BorderFactory.createEmptyBorder());
+		//btnMatchMaking.setContentAreaFilled(false);
 		btnMatchMaking.setBackground(new Color(0, 191, 255));
 		btnMatchMaking.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
 		btnMatchMaking.setForeground(new Color(0, 0, 0));
@@ -128,8 +130,8 @@ public class Homepage extends JFrame {
 		
 		ImageIcon dictionary = new ImageIcon("Images/dictionary.png");
 		JButton btnDictionary = new JButton(dictionary);
-		btnDictionary.setBorder(BorderFactory.createEmptyBorder());
-		btnDictionary.setContentAreaFilled(false);
+		//btnDictionary.setBorder(BorderFactory.createEmptyBorder());
+		//btnDictionary.setContentAreaFilled(false);
 		btnDictionary.setBackground(new Color(0, 191, 255));
 		btnDictionary.setForeground(new Color(0, 0, 0));
 		btnDictionary.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
@@ -138,8 +140,8 @@ public class Homepage extends JFrame {
 		
 		ImageIcon generator = new ImageIcon("Images/generator.png");
 		JButton btndtotoGenerator = new JButton(generator);
-		btndtotoGenerator.setBorder(BorderFactory.createEmptyBorder());
-		btndtotoGenerator.setContentAreaFilled(false);
+		//btndtotoGenerator.setBorder(BorderFactory.createEmptyBorder());
+		//btndtotoGenerator.setContentAreaFilled(false);
 		btndtotoGenerator.setBackground(new Color(0, 191, 255));
 		btndtotoGenerator.setForeground(new Color(0, 0, 0));
 		btndtotoGenerator.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
@@ -148,8 +150,8 @@ public class Homepage extends JFrame {
 		
 		ImageIcon ebooks = new ImageIcon("Images/ebooks.png");
 		JButton btnEbooks = new JButton(ebooks);
-		btnEbooks.setBorder(BorderFactory.createEmptyBorder());
-		btnEbooks.setContentAreaFilled(false);
+		//btnEbooks.setBorder(BorderFactory.createEmptyBorder());
+		//btnEbooks.setContentAreaFilled(false);
 		btnEbooks.setBackground(new Color(0, 191, 255));
 		btnEbooks.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
 		btnEbooks.setForeground(new Color(0, 0, 0));
@@ -158,8 +160,8 @@ public class Homepage extends JFrame {
 		
 		ImageIcon games = new ImageIcon("Images/games.png");
 		JButton btnGames = new JButton(games);
-		btnGames.setBorder(BorderFactory.createEmptyBorder());
-		btnGames.setContentAreaFilled(false);
+		//btnGames.setBorder(BorderFactory.createEmptyBorder());
+		//btnGames.setContentAreaFilled(false);
 		btnGames.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
 		btnGames.setBackground(new Color(0, 191, 255));
 		btnGames.setForeground(new Color(0, 0, 0));
@@ -173,13 +175,19 @@ public class Homepage extends JFrame {
 		
 		ImageIcon exit = new ImageIcon("Images/exit.png");
 		JButton btnExit = new JButton(exit);
-		btnExit.setBorder(BorderFactory.createEmptyBorder());
-		btnExit.setContentAreaFilled(false);
+		//btnExit.setBorder(BorderFactory.createEmptyBorder());
+		//btnExit.setContentAreaFilled(false);
 		btnExit.setForeground(Color.BLACK);
 		btnExit.setFont(new Font("Roboto Condensed", Font.BOLD, 14));
-		btnExit.setBackground(new Color(0, 191, 255));
-		btnExit.setBounds(150, 397, 159, 21);
+		btnExit.setBackground(myColor);
+		btnExit.setBounds(249, 398, 159, 32);
 		contentPane.add(btnExit);
+		
+		ImageIcon logout = new ImageIcon("Images/logout.png");
+		JButton btnLogout = new JButton(logout);
+		btnLogout.setBackground(myColor);
+		btnLogout.setBounds(49, 398, 159, 32);
+		contentPane.add(btnLogout);
 		
 		if (Login.permission.equals("Organiser")) {
 			btnNewButton.setEnabled(false);
@@ -281,6 +289,14 @@ public class Homepage extends JFrame {
 				Counselling counselling = new Counselling();
 				setVisible(false);
 				counselling.setVisible(true);
+			}
+		});
+		
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login login = new Login();
+				setVisible(false);
+				login.setVisible(true);
 			}
 		});
 	}

@@ -255,10 +255,6 @@ public class Login extends JFrame {
 		lblPassword1.setBounds(160, 126, 56, 14);
 		panel_1.add(lblPassword1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(111, 202, 155, 20);
-		panel.add(passwordField);
-		
 		passwordField_2 = new JPasswordField();
 		passwordField_2.setBounds(228, 123, 167, 20);
 		panel_1.add(passwordField_2);
