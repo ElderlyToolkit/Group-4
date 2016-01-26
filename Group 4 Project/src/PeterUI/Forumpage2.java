@@ -1,4 +1,4 @@
-package AyeUi;
+package PeterUI;
 
 import java.awt.BorderLayout;
 
@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.JSpinner;
@@ -23,8 +24,11 @@ import Database.*;
 import Database.DBController;
 import Database.NewUserConstructor;
 import Database.NewUserDA;
+import Main.Login;
 
 import java.sql.PreparedStatement;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Forumpage2 extends JFrame {
@@ -68,8 +72,7 @@ public class Forumpage2 extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Nyala", Font.BOLD, 18));
-		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"}));
-		comboBox.addItem("Categories");
+		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"})
 		comboBox.addItem("General");
 		comboBox.addItem("Entertainment");
 		comboBox.addItem("Singapore");
@@ -111,8 +114,15 @@ public class Forumpage2 extends JFrame {
 				String message = textPane_1.getText();
 				String category = comboBox.getSelectedItem().toString();
 				
+				if(subject.equals("") || message.equals(""))
+				{
+					JOptionPane.showMessageDialog(Forumpage2.this, "Please do not leave any blanks.");
+				}
+				else{
 				ForumsConstructor constructor = new ForumsConstructor (message, category, subject);
 				id = ForumsDA.createForum(constructor);
+				JOptionPane.showMessageDialog(Forumpage2.this, "Post submitted!");
+				}
 				
 				
 			

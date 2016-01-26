@@ -1,4 +1,4 @@
-package AyeUi;
+package PeterUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import PeterUI.Eggs;
+import Main.Login;
 
 import javax.swing.JTextPane;
 import java.awt.Color;
@@ -18,12 +18,15 @@ import java.awt.Image;
 
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Forum1 extends JFrame {
 
@@ -50,7 +53,7 @@ public class Forum1 extends JFrame {
 	 */
 	public Forum1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 665, 672);
+		setBounds(100, 100, 665, 674);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -103,12 +106,19 @@ public class Forum1 extends JFrame {
 		contentPane.add(label_2);
 		
 		JTextPane txtpnHealth = new JTextPane();
+		txtpnHealth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ForumHealth FH = new ForumHealth();
+				FH.setVisible(true);
+			}
+		});
 		txtpnHealth.setEditable(false);
 		txtpnHealth.setForeground(new Color(0, 0, 0));
 		txtpnHealth.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtpnHealth.setBackground(SystemColor.control);
 		txtpnHealth.setText("HEALTH");
-		txtpnHealth.setBounds(70, 321, 98, 26);
+		txtpnHealth.setBounds(97, 321, 72, 26);
 		contentPane.add(txtpnHealth);
 		
 		JTextPane txtpnSingapore = new JTextPane();
@@ -121,12 +131,19 @@ public class Forum1 extends JFrame {
 		contentPane.add(txtpnSingapore);
 		
 		JTextPane txtpnFamily = new JTextPane();
+		txtpnFamily.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ForumFamily FF = new ForumFamily();
+				FF.setVisible(true);
+			}
+		});
 		txtpnFamily.setEditable(false);
 		txtpnFamily.setForeground(new Color(0, 0, 255));
 		txtpnFamily.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		txtpnFamily.setBackground(SystemColor.control);
 		txtpnFamily.setText("FAMILY");
-		txtpnFamily.setBounds(484, 321, 98, 26);
+		txtpnFamily.setBounds(484, 321, 63, 26);
 		contentPane.add(txtpnFamily);
 		
 		JTextPane txtpnGeneral = new JTextPane();
