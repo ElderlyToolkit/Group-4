@@ -31,6 +31,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
 
@@ -46,6 +47,8 @@ public class Login extends JFrame {
 	private String path;
 	private JFileChooser fc;
 	private File file;
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_2;
 
 	/**
 	 * Launch the application.
@@ -99,10 +102,10 @@ public class Login extends JFrame {
 		lblPassword.setBounds(41, 176, 69, 14);
 		panel.add(lblPassword);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(111, 173, 155, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(111, 173, 155, 20);
+		panel.add(passwordField);
+		passwordField.setColumns(10);
 		
 		ImageIcon submit = new ImageIcon("Images/submit.png");
 		JButton btnSubmit = new JButton(submit);
@@ -122,9 +125,10 @@ public class Login extends JFrame {
 		});
 		
 		btnSubmit.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed (ActionEvent e) {
 				String name = textField.getText();
-				String password = textField_1.getText();
+				String password = passwordField.getText();
 				String databaseUsername = null;
 				String databasePassword = null;
 				String databasePermission = null;
@@ -168,7 +172,7 @@ public class Login extends JFrame {
 			    	JOptionPane.showMessageDialog(Login.this, "User authenticated.\n\nWelcome " + name + ".");
 			    	
 			        textField.setText("");
-			        textField_1.setText("");
+			        passwordField.setText("");
 			        user = databaseUsername;
 			        
 			        Homepage home = new Homepage();
@@ -251,10 +255,14 @@ public class Login extends JFrame {
 		lblPassword1.setBounds(160, 126, 56, 14);
 		panel_1.add(lblPassword1);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(228, 123, 167, 20);
-		panel_1.add(textField_5);
-		textField_5.setColumns(10);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(111, 202, 155, 20);
+		panel.add(passwordField);
+		
+		passwordField_2 = new JPasswordField();
+		passwordField_2.setBounds(228, 123, 167, 20);
+		panel_1.add(passwordField_2);
+		passwordField_2.setColumns(10);
 		
 		ImageIcon clear1 = new ImageIcon("Images/clear.png");
 		JButton btnClear1 = new JButton(clear);
@@ -294,7 +302,7 @@ public class Login extends JFrame {
 			    JPanel controls = new JPanel(new GridLayout(0, 1, 2, 2));
 			    JTextField username = new JTextField();
 			    controls.add(username);
-			    JTextField password = new JTextField();
+			    JPasswordField password = new JPasswordField();
 			    controls.add(password);
 			    panel.add(controls, BorderLayout.CENTER);
 
@@ -393,5 +401,4 @@ public class Login extends JFrame {
         	}
         });
 	}
-
 }

@@ -220,18 +220,25 @@ public class DayEventSignUp extends JFrame {
 					e1.printStackTrace();
 				}
 				
-				if (attendee.equals(databaseAttendee) && event.equals(databaseEvent)) {
-					JOptionPane.showMessageDialog(DayEventSignUp.this, "You are already signed up for this event!");
+				String organisername = textField_3.getText();
+				
+				if (attendee.equals(organisername)) {
+					JOptionPane.showMessageDialog(DayEventSignUp.this, "You are the organiser of this event!");
 				}
 				else {
-					SignUpConstructor constructor = new SignUpConstructor(attendee, event);
-					int id= SignUpDA.signup(constructor);
-					
-					if (id>0) {
-			    		constructor.setId(id);
-			    		JOptionPane.showMessageDialog(DayEventSignUp.this, "You are going!");
-			    		//System.out.println("Entry was created");
-			    	}
+					if (attendee.equals(databaseAttendee) && event.equals(databaseEvent)) {
+						JOptionPane.showMessageDialog(DayEventSignUp.this, "You are already signed up for this event!");
+					}
+					else {
+						SignUpConstructor constructor = new SignUpConstructor(attendee, event);
+						int id= SignUpDA.signup(constructor);
+						
+						if (id>0) {
+				    		constructor.setId(id);
+				    		JOptionPane.showMessageDialog(DayEventSignUp.this, "You are going!");
+				    		//System.out.println("Entry was created");
+				    	}
+					}
 				}
 			}
 		});

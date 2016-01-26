@@ -93,6 +93,7 @@ public class DictionaryApp extends JFrame {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Dictionary dic = DictionaryDA.retrieveMeaning(txt.getText());
+				Usage.setText("");
 				Usage.append(dic.getMeaning() + "\n");
 				Usage.append(dic.getExample());
 			}

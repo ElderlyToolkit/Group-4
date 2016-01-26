@@ -156,7 +156,9 @@ public class Livechat extends JFrame {
 		
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Counselling counselling = new Counselling();
+				setVisible(false);
+				counselling.setVisible(true);
 			}
 		});
 	}

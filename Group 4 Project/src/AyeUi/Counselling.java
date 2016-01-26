@@ -8,6 +8,9 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Main.Homepage;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -75,6 +78,11 @@ public class Counselling extends JFrame {
 		txtpnOnlineCounselling.setText("Online Counselling");
 		txtpnOnlineCounselling.setBounds(115, 31, 248, 45);
 		contentPane.add(txtpnOnlineCounselling);
+		
+		ImageIcon back = new ImageIcon ("Images/Back.png");
+		JButton button = new JButton(back);
+		button.setBounds(10, 11, 89, 23);
+		contentPane.add(button);
 		Image images1 = new ImageIcon(this.getClass().getResource("/oc.png")).getImage();
 		
 		btnNewButton.addActionListener(new ActionListener() {
@@ -91,6 +99,14 @@ public class Counselling extends JFrame {
 				Livechat chat = new Livechat();
 				setVisible(false);
 				chat.setVisible(true);
+			}
+		});
+		
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Homepage home = new Homepage();
+				setVisible(false);
+				home.setVisible(true);
 			}
 		});
 	}

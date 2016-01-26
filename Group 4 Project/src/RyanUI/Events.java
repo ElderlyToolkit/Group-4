@@ -69,7 +69,7 @@ public class Events extends JFrame {
 		Date date = new Date();
 		dateChooser.setDate(date);
 		System.out.println(date);
-		//Date = date.toString().substring(0, 10);
+		Date = date.toString().substring(0, 10);
 		contentPane.add(dateChooser);
 		
 		ImageIcon back = new ImageIcon("Images/back.png");
