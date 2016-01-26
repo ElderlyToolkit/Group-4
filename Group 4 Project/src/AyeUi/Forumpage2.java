@@ -19,7 +19,11 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Database.*;
 import Database.DBController;
+import Database.NewUserConstructor;
+import Database.NewUserDA;
+
 import java.sql.PreparedStatement;
 
 
@@ -64,7 +68,16 @@ public class Forumpage2 extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Nyala", Font.BOLD, 18));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"}));
+		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"}));
+		comboBox.addItem("Categories");
+		comboBox.addItem("General");
+		comboBox.addItem("Entertainment");
+		comboBox.addItem("Singapore");
+		comboBox.addItem("Family");
+		comboBox.addItem("Health");
+		comboBox.addItem("Hobbies");
+		comboBox.addItem("Lottery");
+		
 		comboBox.setBounds(211, 26, 173, 26);
 		contentPane.add(comboBox);
 		
@@ -93,15 +106,16 @@ public class Forumpage2 extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String sub = textPane.getText();
-				String body = textPane_1.getText();
+				int id = 0;
+				String subject = textPane.getText();
+				String message = textPane_1.getText();
+				String category = comboBox.getSelectedItem().toString();
 				
-				try{
-					
-				}
-				catch(Exception g){
-					
-				}
+				ForumsConstructor constructor = new ForumsConstructor (message, category, subject);
+				id = ForumsDA.createForum(constructor);
+				
+				
+			
 				
 			}
 		});
