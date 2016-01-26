@@ -15,6 +15,7 @@ import AyeUi.Counselling;
 import DarylUI.News;
 import DarylUI.NewsApp;
 import DarylUI.NumGenTab;
+import DarylUI.TTT;
 import DarylUI.Dictionary;
 import DarylUI.DictionaryApp;
 import Database.DBController;
@@ -217,6 +218,13 @@ public class Homepage extends JFrame {
 					eb.setVisible(true);
 				} catch (Exception h) {
 				}
+			}
+		});
+
+		btnGames.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TTT games = new TTT();
+				games.setVisible(true);
 			}
 		});
 		
