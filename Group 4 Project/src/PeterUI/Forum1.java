@@ -112,6 +112,9 @@ public class Forum1 extends JFrame {
 				ForumHealth FH = new ForumHealth();
 				FH.setVisible(true);
 			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+			}
 		});
 		txtpnHealth.setEditable(false);
 		txtpnHealth.setForeground(new Color(0, 0, 0));

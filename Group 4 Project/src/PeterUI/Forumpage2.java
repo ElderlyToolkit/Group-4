@@ -32,6 +32,8 @@ import java.awt.event.MouseEvent;
 
 
 public class Forumpage2 extends JFrame {
+	public String subject, message, category;
+	
 
 	private JPanel contentPane;
 
@@ -110,9 +112,9 @@ public class Forumpage2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				int id = 0;
-				String subject = textPane.getText();
-				String message = textPane_1.getText();
-				String category = comboBox.getSelectedItem().toString();
+				subject = textPane.getText();
+				message = textPane_1.getText();
+				category = comboBox.getSelectedItem().toString();
 				
 				if(subject.equals("") || message.equals(""))
 				{
@@ -121,6 +123,8 @@ public class Forumpage2 extends JFrame {
 				else{
 				ForumsConstructor constructor = new ForumsConstructor (message, category, subject);
 				id = ForumsDA.createForum(constructor);
+				ForumHealth FH = new ForumHealth();
+				FH.createSubj(subject);
 				JOptionPane.showMessageDialog(Forumpage2.this, "Post submitted!");
 				}
 				

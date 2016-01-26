@@ -2,8 +2,10 @@ package PeterUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -49,6 +51,12 @@ public class ForumHealth extends JFrame {
 		});
 		btnBack.setBounds(538, 589, 97, 25);
 		contentPane.add(btnBack);
+		
+		
+		
+		
+	}
+	public void createSubj(String subject){
 		
 		
 		
