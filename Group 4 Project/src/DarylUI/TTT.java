@@ -55,35 +55,35 @@ public class TTT extends JFrame {
 		String result = "";		
 		
 		if ((table[0][0].getSymbol() + table[0][1].getSymbol() + table[0][2].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 52";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[1][0].getSymbol() + table[1][1].getSymbol() + table[1][2].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 54";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[2][0].getSymbol() + table[2][1].getSymbol() + table[2][2].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 56";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[0][0].getSymbol() + table[1][0].getSymbol() + table[2][0].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 58";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[0][1].getSymbol() + table[1][1].getSymbol() + table[2][1].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 60";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[0][2].getSymbol() + table[1][2].getSymbol() + table[2][2].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 62";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[0][0].getSymbol() + table[1][1].getSymbol() + table[2][2].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 64";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[2][0].getSymbol() + table[1][1].getSymbol() + table[0][2].getSymbol()).equals("ooo")) {
-			result = "Player O wins! line 66";
+			result = "Player O wins!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else if ((table[0][0].getSymbol() + table[0][1].getSymbol() + table[0][2].getSymbol()).equals("xxx")) {
@@ -460,6 +460,7 @@ public class TTT extends JFrame {
 		Restart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				turn = true;
+				counter = 0;
 				for (int row = 0; row < 3; row++) {
 					for (int col = 0; col < 3; col++) {
 						table[row][col] = toe;
