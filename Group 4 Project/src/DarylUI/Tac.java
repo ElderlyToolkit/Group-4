@@ -7,7 +7,7 @@ public class Tac extends Toes{
 	
 	public Tac(){}
 	
-	public Tac(char Symbol) {
+	public Tac(String Symbol) {
 		super(Symbol);
 	}
 	

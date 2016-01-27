@@ -7,7 +7,7 @@ public class Tic extends Toes{
 	
 	public Tic(){}
 	
-	public Tic(char Symbol) {
+	public Tic(String Symbol) {
 		super(Symbol);
 	}
 	

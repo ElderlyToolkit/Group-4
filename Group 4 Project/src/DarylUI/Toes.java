@@ -3,18 +3,18 @@ package DarylUI;
 import javax.swing.ImageIcon;
 
 public class Toes {
-	public static char symbol;
+	public static String symbol;
 
-	public Toes(char symbol) {
+	public Toes(String symbol) {
 		this.symbol = symbol;
 	}
 	
 	public Toes(){}
 	
-	public char getSymbol() {
+	public String getSymbol() {
 		return symbol;
 	}
-	public void setSymbol(char symbol) {
+	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
 		
