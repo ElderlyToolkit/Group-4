@@ -136,6 +136,7 @@ public class Forum1 extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ForumFamily FF = new ForumFamily();
+				setVisible(false);
 				FF.setVisible(true);
 			}
 		});

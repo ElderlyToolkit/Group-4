@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
@@ -52,7 +53,7 @@ public class NumGenTab extends JFrame {
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
 		Font sizedFont = font.deriveFont(17f);
 		setTitle("4D and Toto Generator");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -88,6 +89,10 @@ public class NumGenTab extends JFrame {
 		textArea.setLineWrap(true);
 		textArea.setBounds(10, 48, 409, 174);
 		panel.add(textArea);
+		
+		JScrollPane pane = new JScrollPane(textArea);
+		pane.setBounds(10, 48, 409, 174);
+		panel.add(pane);
 		
 		JButton HUAT = new JButton(generate);
 		HUAT.addActionListener(new ActionListener() {
@@ -154,7 +159,10 @@ public class NumGenTab extends JFrame {
 		textArea1.setWrapStyleWord(true);
 		textArea1.setLineWrap(true);
 		textArea1.setBounds(10, 48, 409, 174);
-		panel_1.add(textArea1);
+		
+		JScrollPane pane1 = new JScrollPane(textArea1);
+		pane1.setBounds(10, 48, 409, 174);
+		panel_1.add(pane1);
 		
 		JButton HUAT1 = new JButton(generate);
 		HUAT1.addActionListener(new ActionListener() {

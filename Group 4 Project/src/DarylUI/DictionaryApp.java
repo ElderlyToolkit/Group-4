@@ -11,6 +11,7 @@ import Database.DBController;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import java.awt.Font;
@@ -93,6 +94,10 @@ public class DictionaryApp extends JFrame {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Dictionary dic = DictionaryDA.retrieveMeaning(txt.getText());
+				if (dic.getMeaning() == "Meaning: " && dic.getExample() == "Usage: ")
+						JOptionPane.showMessageDialog(DictionaryApp.this, "'" +  txt.getText()+ "' does not exist.");
+					
+				
 				Usage.setText("");
 				Usage.append(dic.getMeaning() + "\n");
 				Usage.append(dic.getExample());
