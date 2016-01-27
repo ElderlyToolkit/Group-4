@@ -26,6 +26,8 @@ import Database.NewUserConstructor;
 import Database.NewUserDA;
 import Main.Login;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -58,7 +60,7 @@ public class Forumpage2 extends JFrame {
 	 */
 	public Forumpage2() {
 		
-		DBController dbc = new DBController();
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
@@ -123,8 +125,7 @@ public class Forumpage2 extends JFrame {
 				else{
 				ForumsConstructor constructor = new ForumsConstructor (message, category, subject);
 				id = ForumsDA.createForum(constructor);
-				ForumHealth FH = new ForumHealth();
-				FH.createSubj(subject);
+				createSubj();
 				JOptionPane.showMessageDialog(Forumpage2.this, "Post submitted!");
 				}
 				
@@ -144,5 +145,20 @@ public class Forumpage2 extends JFrame {
 				setVisible(false);
 			}
 		});
+	}
+	public void createSubj(){
+		int i = 0;
+		DBController dbc = new DBController();
+		ResultSet rs = null;
+		String dbQuery = "SELECT * FROM forum WHERE subject='" + subject + "' AND category='Health'";
+		rs = dbc.readRequest(dbQuery);
+		try{
+			while(rs.next()){
+				String s = rs.getString("subject");
+			}
+			
+		}catch(SQLException f){
+			f.printStackTrace();
+		}
 	}
 }
