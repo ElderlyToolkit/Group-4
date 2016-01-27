@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -30,6 +32,7 @@ import Main.Login;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
+import javax.swing.MutableComboBoxModel;
 import javax.swing.JTextField;
 import java.awt.Font;
 
@@ -37,9 +40,10 @@ public class DayEventSignUp extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textField_1;
+	private String selectedevent;
 
 	/**
 	 * Launch the application.
@@ -126,13 +130,6 @@ public class DayEventSignUp extends JFrame {
 		lblSelectEvent.setBounds(10, 86, 89, 14);
 		contentPane.add(lblSelectEvent);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
-		textField_1.setEditable(false);
-		textField_1.setBounds(109, 85, 133, 17);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
 		JLabel lblLocation = new JLabel("Location:");
 		lblLocation.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		lblLocation.setHorizontalAlignment(SwingConstants.CENTER);
@@ -152,12 +149,18 @@ public class DayEventSignUp extends JFrame {
 		lblNameOfOrganiser.setBounds(10, 143, 89, 14);
 		contentPane.add(lblNameOfOrganiser);
 		
+		String[] eventlist = new String[150];
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		comboBox_1.setModel(new DefaultComboBoxModel());
+		comboBox_1.setBounds(109, 84, 133, 16);
+		contentPane.add(comboBox_1);
+		
 		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_3.setEditable(false);
-		textField_3.setColumns(10);
-		textField_3.setBounds(109, 141, 133, 17);
+		textField_3.setBounds(109, 141, 133, 16);
 		contentPane.add(textField_3);
+		textField_3.setColumns(10);
 		
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
@@ -169,6 +172,10 @@ public class DayEventSignUp extends JFrame {
 		
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				((DefaultComboBoxModel)comboBox_1.getModel()).removeAllElements();
+				textField_2.setText("");
+				textField_3.setText("");
+				
 				String selectedtime = comboBox.getSelectedItem().toString();
 				
 				ResultSet rs = null;
@@ -179,29 +186,49 @@ public class DayEventSignUp extends JFrame {
 				
 				rs = db.readRequest(dbQuery);
 				
+				//ArrayList<String> events = new ArrayList<String>();
+				MutableComboBoxModel model = (DefaultComboBoxModel)comboBox_1.getModel();
 				try {
 					while (rs.next()) {
-					    name = rs.getString("name");
-					    date = rs.getString("date");
-					    description = rs.getString("description");
-					    location = rs.getString("location");
+					    model.addElement(rs.getString("description"));
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+			}
+		});
+		
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ResultSet rs2 = null;
+				String name = null, date = Events.Date, location = null;
+				DBController db2 = new DBController();
 				
-				textField_1.setText(description);
-				textField_2.setText(location);
-				textField_3.setText(name);
+				selectedevent = comboBox_1.getSelectedItem().toString();
+				String selectedtime = comboBox.getSelectedItem().toString();
 				
+				String dbQueryNext = "SELECT * FROM events WHERE date='" + date + "' AND time='" + selectedtime + "' AND description='" + selectedevent + "'";
 				
+				rs2 = db2.readRequest(dbQueryNext);
+				try {
+					while (rs2.next()) {
+					    name = rs2.getString("name");
+					    date = rs2.getString("date");
+					    location = rs2.getString("location");
+					    
+					    textField_2.setText(location);
+						textField_3.setText(name);
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
 		btnIAmGoing.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String attendee = textField.getText();
-				String event = textField_1.getText();
+				String event = comboBox_1.getSelectedItem().toString();
 				String databaseAttendee = null;
 				String databaseEvent = null;
 				DBController db=new DBController();
