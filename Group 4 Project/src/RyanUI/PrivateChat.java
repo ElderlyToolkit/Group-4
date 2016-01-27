@@ -127,17 +127,17 @@ public class PrivateChat extends JFrame {
             }
         };
         Timer timer = new Timer(5000, taskPerformer);
+        timer.setRepeats(false);
         
-        Action action =  new AbstractAction() {
+        textField.addActionListener(new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
 			String input = textField.getText();
 			textArea.append(timeStamp + " " + input + "\n");
 			textField.setText("");
 			timer.start();
-			timer.stop();
 		}
-		};
-		textField.addActionListener(action);
+		});
+        timer.stop();
 	}
 }

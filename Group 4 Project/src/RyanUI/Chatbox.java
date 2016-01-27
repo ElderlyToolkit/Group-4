@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
@@ -130,14 +131,23 @@ public class Chatbox extends JFrame {
 			}
 		});
 		
-		Action action =  new AbstractAction() {
+		ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
+            	textArea.append(timeStamp + "SwagGrandpa: Hello!\n");
+            }
+        };
+        Timer timer = new Timer(5000, taskPerformer);
+        timer.setRepeats(false);
+		
+		textField.addActionListener(new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
 			String input = textField.getText();
 			textArea.append(timeStamp + " " + ChatboxUsername.nickname + ": " +input + "\n");
 			textField.setText("");
+			timer.start();
 		}
-		};
-		textField.addActionListener(action);
+		});
 	}
 }
