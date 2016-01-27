@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import java.sql.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListModel;
@@ -49,14 +51,14 @@ public class ForumHealth extends JFrame {
 		
 		
 	}
-	Connection con = null;
+
 	private JTable table_1;
 
 	/**
 	 * Create the frame.
 	 */
 	String[] columns = {"Subject", "Message"};
-	DefaultTableModel model = new DefaultTableModel(columns,0);
+	DefaultTableModel model = new DefaultTableModel();
 	DBController dbc = new DBController();
 	
 	public ForumHealth(){
@@ -65,14 +67,15 @@ public class ForumHealth extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		
+		String s ="", r ="";
 		
 		ResultSet rs = null;
-		String subject = null, message = null;
-		String dbQuery = "SELECT * FROM forum";
+		String dbQuery = "SELECT * FROM forum WHERE category='Health'";
 		rs = dbc.readRequest(dbQuery);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(538, 589, 97, 25);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -82,7 +85,7 @@ public class ForumHealth extends JFrame {
 				}catch(Exception m){}
 			}
 		});
-		btnBack.setBounds(538, 589, 97, 25);
+		contentPane.setLayout(null);
 		contentPane.add(btnBack);
 		
 		JButton btnShow = new JButton("Show");
@@ -93,8 +96,28 @@ public class ForumHealth extends JFrame {
 		scrollPane.setBounds(12, 13, 623, 567);
 		contentPane.add(scrollPane);
 		
-		table_1 = new JTable();
+		try{
+			String[] subj = {"Subject","Message"};
+			while(rs.next()){
+				s = rs.getString("message");
+				r = rs.getString("subject");
+				System.out.print(r);
+		
+		
+		String [] [] msg = {{r,s}};
+		table_1 = new JTable(msg, subj);
 		scrollPane.setViewportView(table_1);
+			}
+		}
+		catch(Exception e){
+		}
+		
+		
+		
+		
+		
+		
+		
 		
 
 		
