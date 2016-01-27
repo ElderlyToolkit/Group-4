@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
@@ -89,6 +90,10 @@ public class NumGenTab extends JFrame {
 		textArea.setBounds(10, 48, 409, 174);
 		panel.add(textArea);
 		
+		JScrollPane pane = new JScrollPane(textArea);
+		pane.setBounds(10, 48, 409, 174);
+		panel.add(pane);
+		
 		JButton HUAT = new JButton(generate);
 		HUAT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,7 +159,10 @@ public class NumGenTab extends JFrame {
 		textArea1.setWrapStyleWord(true);
 		textArea1.setLineWrap(true);
 		textArea1.setBounds(10, 48, 409, 174);
-		panel_1.add(textArea1);
+		
+		JScrollPane pane1 = new JScrollPane(textArea1);
+		pane1.setBounds(10, 48, 409, 174);
+		panel_1.add(pane1);
 		
 		JButton HUAT1 = new JButton(generate);
 		HUAT1.addActionListener(new ActionListener() {
