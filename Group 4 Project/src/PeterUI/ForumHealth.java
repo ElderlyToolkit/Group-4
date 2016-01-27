@@ -11,12 +11,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Database.ForumsConstructor;
+import Database.*;
+import RyanUI.ListTableModel;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
 
 public class ForumHealth extends JFrame {
 
@@ -41,46 +49,50 @@ public class ForumHealth extends JFrame {
 		
 		
 	}
+	Connection con = null;
+	private JTable table_1;
 
 	/**
 	 * Create the frame.
 	 */
-	public ForumHealth() {
+	public ForumHealth() throws FileNotFoundException, IOException, SQLException{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 665, 674);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
+		ResultSet rs = null;
+		String subject = null, message = null;
+		DBController dbc = new DBController();
 		
+		String dbQuery = "SELECT * FROM forum";
+		rs = dbc.readRequest(dbQuery);
 		
-		String[] columns = {"Subject", "Message"};
-		String [] [] data = {{ForumsConstructor.getSubject(), ForumsConstructor.getMessage()},{"Dave","Dave"}};
+		ListTableModel model = ListTableModel.createModelFromResultSet(rs);
+		JTable table = new JTable(model);
+		table.setEnabled(true);
 		
 		
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(538, 589, 97, 25);
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-			}
-		});
-		contentPane.setLayout(null);
 		contentPane.add(btnBack);
 		
-		table = new JTable(data,columns);
-		table.setBounds(12, 13, 623, 570);
-		table.setPreferredScrollableViewportSize(new Dimension(450, 63));
-		table.setFillsViewportHeight(true);
+		JButton btnShow = new JButton("Show");
+		btnShow.setBounds(429, 589, 97, 25);
+		contentPane.add(btnShow);
 		
-		JScrollPane js = new JScrollPane(table);
-		js.setBounds(12,13,623,570);
-		contentPane.add(js);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 13, 623, 567);
+		contentPane.add(scrollPane);
 		
+		table_1 = new JTable();
+		scrollPane.setViewportView(table_1);
 		
+
 		
 		
 	}
-	
 }

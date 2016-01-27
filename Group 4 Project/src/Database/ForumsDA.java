@@ -8,7 +8,7 @@ public class ForumsDA {
 		DBController DBC = new DBController();
 		String dbQuery;
 		PreparedStatement pstmt;
-		int id = -1;
+		int id = 0;
 		
 		DBC.getConnection();
 		

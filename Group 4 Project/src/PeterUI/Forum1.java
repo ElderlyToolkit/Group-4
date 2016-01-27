@@ -27,6 +27,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class Forum1 extends JFrame {
 
@@ -109,9 +111,17 @@ public class Forum1 extends JFrame {
 		txtpnHealth.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ForumHealth FH = new ForumHealth();
-				setVisible(false);
-				FH.setVisible(true);
+				ForumHealth FH;
+				try {
+					FH = new ForumHealth();
+					setVisible(false);
+					FH.setVisible(true);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		txtpnHealth.setEditable(false);

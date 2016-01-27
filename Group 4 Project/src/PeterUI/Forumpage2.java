@@ -125,7 +125,6 @@ public class Forumpage2 extends JFrame {
 				else{
 				ForumsConstructor constructor = new ForumsConstructor (message, category, subject);
 				id = ForumsDA.createForum(constructor);
-				createSubj();
 				JOptionPane.showMessageDialog(Forumpage2.this, "Post submitted!");
 				}
 				
@@ -145,20 +144,5 @@ public class Forumpage2 extends JFrame {
 				setVisible(false);
 			}
 		});
-	}
-	public void createSubj(){
-		int i = 0;
-		DBController dbc = new DBController();
-		ResultSet rs = null;
-		String dbQuery = "SELECT * FROM forum WHERE subject='" + subject + "' AND category='Health'";
-		rs = dbc.readRequest(dbQuery);
-		try{
-			while(rs.next()){
-				String s = rs.getString("subject");
-			}
-			
-		}catch(SQLException f){
-			f.printStackTrace();
-		}
 	}
 }
