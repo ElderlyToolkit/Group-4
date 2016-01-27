@@ -21,10 +21,16 @@ import java.awt.event.ActionEvent;
 
 public class TTT extends JFrame {
 	int counter = 0;
-	Toes toe = new Toes("c");
 	boolean turn = false;
 	private JPanel contentPane;
 	ArrayList<JLabel> tictacs = new ArrayList<JLabel>();
+	Toes toe = new Toes("e");
+		
+	Toes[][] table = {
+			{toe,toe,toe},
+			{toe,toe,toe},
+			{toe,toe,toe},
+	};
 	
 	ImageIcon check = new ImageIcon("Images/check.png");
 	ImageIcon restart = new ImageIcon("Images/restart.png");
@@ -46,48 +52,77 @@ public class TTT extends JFrame {
 	}
 
 	public void checkResult(Toes[][] table) {
-		String result = "";
+		String result = "";		
 		
-		System.out.println(table[0][0].getSymbol() + table[0][1].getSymbol() + table[0][2].getSymbol());
-		
-		if ((table[0][0].getSymbol() + table[0][1].getSymbol() + table[0][2].getSymbol()).equals("ooo")) 
+		if ((table[0][0].getSymbol() + table[0][1].getSymbol() + table[0][2].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 52";
-		else if ((table[1][0].getSymbol() + table[1][1].getSymbol() + table[1][2].getSymbol()).equals("ooo"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[1][0].getSymbol() + table[1][1].getSymbol() + table[1][2].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 54";
-		else if ((table[2][0].getSymbol() + table[2][1].getSymbol() + table[2][2].getSymbol()).equals("ooo"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[2][0].getSymbol() + table[2][1].getSymbol() + table[2][2].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 56";
-		else if ((table[0][0].getSymbol() + table[1][0].getSymbol() + table[2][0].getSymbol()).equals("ooo"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][0].getSymbol() + table[1][0].getSymbol() + table[2][0].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 58";
-		else if ((table[0][1].getSymbol() + table[1][1].getSymbol() + table[2][1].getSymbol()).equals("ooo"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][1].getSymbol() + table[1][1].getSymbol() + table[2][1].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 60";
-		else if ((table[0][2].getSymbol() + table[1][2].getSymbol() + table[2][2].getSymbol()).equals("ooo"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][2].getSymbol() + table[1][2].getSymbol() + table[2][2].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 62";
-		else if ((table[0][0].getSymbol() + table[1][1].getSymbol() + table[2][2].getSymbol()).equals("ooo"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][0].getSymbol() + table[1][1].getSymbol() + table[2][2].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 64";
-		else if ((table[2][0].getSymbol() + table[1][1].getSymbol() + table[0][2].getSymbol()).equals("ooo"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[2][0].getSymbol() + table[1][1].getSymbol() + table[0][2].getSymbol()).equals("ooo")) {
 			result = "Player O wins! line 66";
-		else if ((table[0][0].getSymbol() + table[0][1].getSymbol() + table[0][2].getSymbol()).equals("xxx")) 
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][0].getSymbol() + table[0][1].getSymbol() + table[0][2].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
-		else if ((table[1][0].getSymbol() + table[1][1].getSymbol() + table[1][2].getSymbol()).equals("xxx"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[1][0].getSymbol() + table[1][1].getSymbol() + table[1][2].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
-		else if ((table[2][0].getSymbol() + table[2][1].getSymbol() + table[2][2].getSymbol()).equals("xxx"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[2][0].getSymbol() + table[2][1].getSymbol() + table[2][2].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
-		else if ((table[0][0].getSymbol() + table[1][0].getSymbol() + table[2][0].getSymbol()).equals("xxx"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][0].getSymbol() + table[1][0].getSymbol() + table[2][0].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
-		else if ((table[0][1].getSymbol() + table[1][1].getSymbol() + table[2][1].getSymbol()).equals("xxx"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][1].getSymbol() + table[1][1].getSymbol() + table[2][1].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
-		else if ((table[0][2].getSymbol() + table[1][2].getSymbol() + table[2][2].getSymbol()).equals("xxx"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][2].getSymbol() + table[1][2].getSymbol() + table[2][2].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
-		else if ((table[0][0].getSymbol() + table[1][1].getSymbol() + table[2][2].getSymbol()).equals("xxx"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[0][0].getSymbol() + table[1][1].getSymbol() + table[2][2].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
-		else if ((table[2][0].getSymbol() + table[1][1].getSymbol() + table[0][2].getSymbol()).equals("xxx"))
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if ((table[2][0].getSymbol() + table[1][1].getSymbol() + table[0][2].getSymbol()).equals("xxx")) {
 			result = "Player X wins!";
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
 		
-		else 
+		else if (counter == 8) {
 			result = "No winner!";
-		
-		JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
-		
+			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 	
 	
@@ -96,13 +131,6 @@ public class TTT extends JFrame {
 	 * Create the frame.
 	 */
 	public TTT() {
-		Toes[][] table = {
-				{toe,toe,toe},
-				{toe,toe,toe},
-				{toe,toe,toe},
-		};
-				
-		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 700, 410);
 		contentPane = new JPanel();
@@ -110,9 +138,7 @@ public class TTT extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ImageIcon o = new ImageIcon("Images/circle.png");
-		ImageIcon x = new ImageIcon("Images/x.png");
-		ImageIcon tic = new ImageIcon("Images/tictaetoe.png");
+		ImageIcon tics = new ImageIcon("Images/tictaetoe.png");
 		
 		JLabel box1 = new JLabel("\r\n");
 		box1.setBounds(15, 5, 170, 117);
@@ -174,18 +200,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box1.setIcon(tac.getIcon());
-					table[0][0] = tac;
+					Tac tac1 = new Tac("x");
+					box1.setIcon(tac1.getIcon());
+					table[0][0] = tac1;
 					box1.removeMouseListener(this);
 				}
 				
-				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box1.setIcon(tic.getIcon());
-					table[0][0] = tic;
+				else {
+					Tic tic1 = new Tic("o");
+					box1.setIcon(tic1.getIcon());
+					table[0][0] = tic1;
 					box1.removeMouseListener(this);
 					
 				}
@@ -195,6 +219,8 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 			}
 		});
@@ -203,18 +229,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box2.setIcon(tac.getIcon());
-					table[0][1] = tac;
+					Tac tac2 = new Tac("x");
+					box2.setIcon(tac2.getIcon());
+					table[0][1] = tac2;
 					box2.removeMouseListener(this);
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box2.setIcon(tic.getIcon());
-					table[0][1] = tic;
+					Tic tic2 = new Tic("o");
+					box2.setIcon(tic2.getIcon());
+					table[0][1] = tic2;
 					box2.removeMouseListener(this);
 					
 				}
@@ -224,6 +248,8 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 			}
 		});
@@ -231,18 +257,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box3.setIcon(tac.getIcon());
-					table[0][2] = tac;
+					Tac tac3 = new Tac("x");
+					box3.setIcon(tac3.getIcon());
+					table[0][2] = tac3;
 					box3.removeMouseListener(this);
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box3.setIcon(tic.getIcon());
-					table[0][2] = tic;
+					Tic tic3 = new Tic("o");
+					box3.setIcon(tic3.getIcon());
+					table[0][2] = tic3;
 					box3.removeMouseListener(this);
 				}
 
@@ -251,6 +275,8 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 			}
 		});
@@ -258,19 +284,17 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box4.setIcon(tac.getIcon());
-					table[1][0] = tac;
+					Tac tac4 = new Tac("x");
+					box4.setIcon(tac4.getIcon());
+					table[1][0] = tac4;
 					box4.removeMouseListener(this);
 					
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box4.setIcon(tic.getIcon());
-					table[1][0] = tic;
+					Tic tic4 = new Tic("o");
+					box4.setIcon(tic4.getIcon());
+					table[1][0] = tic4;
 					box4.removeMouseListener(this);
 					
 				}
@@ -280,6 +304,8 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 			}
 		});
@@ -287,18 +313,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box5.setIcon(tac.getIcon());
-					table[1][1] = tac;
+					Tac tac5 = new Tac("x");
+					box5.setIcon(tac5.getIcon());
+					table[1][1] = tac5;
 					box5.removeMouseListener(this);
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box5.setIcon(tic.getIcon());
-					table[1][1] = tic;
+					Tic tic5 = new Tic("o");
+					box5.setIcon(tic5.getIcon());
+					table[1][1] = tic5;
 					box5.removeMouseListener(this);
 					
 				}
@@ -308,6 +332,8 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 			}
 		});
@@ -315,18 +341,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box6.setIcon(tac.getIcon());
-					table[1][2] = tac;
+					Tac tac6 = new Tac("x");
+					box6.setIcon(tac6.getIcon());
+					table[1][2] = tac6;
 					box6.removeMouseListener(this);
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box6.setIcon(tic.getIcon());
-					table[1][2] = tic;
+					Tic tic6 = new Tic("o");
+					box6.setIcon(tic6.getIcon());
+					table[1][2] = tic6;
 					box6.removeMouseListener(this);
 					
 				}
@@ -336,6 +360,8 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 			}
 		});
@@ -343,18 +369,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box7.setIcon(tac.getIcon());
-					table[2][0] = tac;
+					Tac tac7 = new Tac("x");
+					box7.setIcon(tac7.getIcon());
+					table[2][0] = tac7;
 					box7.removeMouseListener(this);
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box7.setIcon(tic.getIcon());
-					table[2][0] = tic;
+					Tic tic7 = new Tic("o");
+					box7.setIcon(tic7.getIcon());
+					table[2][0] = tic7;
 					box7.removeMouseListener(this);
 					
 				}
@@ -364,6 +388,8 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 			}
 		});
@@ -371,18 +397,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box8.setIcon(tac.getIcon());
-					table[2][1] = tac;
+					Tac tac8 = new Tac("x");
+					box8.setIcon(tac8.getIcon());
+					table[2][1] = tac8;
 					box8.removeMouseListener(this);
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box8.setIcon(tic.getIcon());
-					table[2][1] = tic;
+					Tic tic8 = new Tic("o");
+					box8.setIcon(tic8.getIcon());
+					table[2][1] = tic8;
 					box8.removeMouseListener(this);
 					
 				}
@@ -391,7 +415,9 @@ public class TTT extends JFrame {
 					turn = true;
 				else 
 					turn = false;
-										
+				
+				checkResult(table);	
+				counter++;					
 				 
 			}
 		});
@@ -399,18 +425,16 @@ public class TTT extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
-					Tic tac = new Tic();
-					tac.setSymbol("o");
-					box9.setIcon(tac.getIcon());
-					table[2][2] = tac;
+					Tac tac9 = new Tac("x");
+					box9.setIcon(tac9.getIcon());
+					table[2][2] = tac9;
 					box9.removeMouseListener(this);
 				}
 				
 				else if (turn == true) {
-					Tac tic = new Tac();
-					tic.setSymbol("x");
-					box9.setIcon(tic.getIcon());
-					table[2][2] = tic;
+					Tic tic9 = new Tic("o");
+					box9.setIcon(tic9.getIcon());
+					table[2][2] = tic9;
 					box9.removeMouseListener(this);
 					
 				}
@@ -420,32 +444,25 @@ public class TTT extends JFrame {
 				else 
 					turn = false;
 				
+				checkResult(table);	
+				counter++;
 				 
 				
 			}
 		});
 			
 			
-		JLabel tac = new JLabel(tic);					
-		tac.setBounds(15, 16, 548, 312);
-		contentPane.add(tac);
-		
-		JButton Button = new JButton(check);
-		Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				checkResult(table);			
-			}
-		});
-		Button.setBounds(570, 100, 100, 30);
-		contentPane.add(Button);
+		JLabel tac2 = new JLabel(tics);					
+		tac2.setBounds(15, 16, 548, 312);
+		contentPane.add(tac2);
 		
 		JButton Restart= new JButton(restart);
 		Restart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				turn = false;
+				turn = true;
 				for (int row = 0; row < 3; row++) {
 					for (int col = 0; col < 3; col++) {
-						table[row][col] = null;
+						table[row][col] = toe;
 					}
 				}
 
@@ -458,18 +475,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box1.setIcon(tac.getIcon());
-								table[0][0] = tac;
+								Tac tac1 = new Tac("x");
+								box1.setIcon(tac1.getIcon());
+								table[0][0] = tac1;
 								box1.removeMouseListener(this);
 							}
 							
-							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box1.setIcon(tic.getIcon());
-								table[0][0] = tic;
+							else {
+								Tic tic1 = new Tic("o");
+								box1.setIcon(tic1.getIcon());
+								table[0][0] = tic1;
 								box1.removeMouseListener(this);
 								
 							}
@@ -479,6 +494,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 						}
 					});
@@ -487,18 +504,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box2.setIcon(tac.getIcon());
-								table[0][1] = tac;
+								Tac tac2 = new Tac("x");
+								box2.setIcon(tac2.getIcon());
+								table[0][1] = tac2;
 								box2.removeMouseListener(this);
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box2.setIcon(tic.getIcon());
-								table[0][1] = tic;
+								Tic tic2 = new Tic("o");
+								box2.setIcon(tic2.getIcon());
+								table[0][1] = tic2;
 								box2.removeMouseListener(this);
 								
 							}
@@ -508,6 +523,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 						}
 					});
@@ -515,18 +532,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box3.setIcon(tac.getIcon());
-								table[0][2] = tac;
+								Tac tac3 = new Tac("x");
+								box3.setIcon(tac3.getIcon());
+								table[0][2] = tac3;
 								box3.removeMouseListener(this);
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box3.setIcon(tic.getIcon());
-								table[0][2] = tic;
+								Tic tic3 = new Tic("o");
+								box3.setIcon(tic3.getIcon());
+								table[0][2] = tic3;
 								box3.removeMouseListener(this);
 							}
 
@@ -535,6 +550,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 						}
 					});
@@ -542,19 +559,17 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box4.setIcon(tac.getIcon());
-								table[1][0] = tac;
+								Tac tac4 = new Tac("x");
+								box4.setIcon(tac4.getIcon());
+								table[1][0] = tac4;
 								box4.removeMouseListener(this);
 								
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box4.setIcon(tic.getIcon());
-								table[1][0] = tic;
+								Tic tic4 = new Tic("o");
+								box4.setIcon(tic4.getIcon());
+								table[1][0] = tic4;
 								box4.removeMouseListener(this);
 								
 							}
@@ -564,6 +579,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 						}
 					});
@@ -571,18 +588,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box5.setIcon(tac.getIcon());
-								table[1][1] = tac;
+								Tac tac5 = new Tac("x");
+								box5.setIcon(tac5.getIcon());
+								table[1][1] = tac5;
 								box5.removeMouseListener(this);
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box5.setIcon(tic.getIcon());
-								table[1][1] = tic;
+								Tic tic5 = new Tic("o");
+								box5.setIcon(tic5.getIcon());
+								table[1][1] = tic5;
 								box5.removeMouseListener(this);
 								
 							}
@@ -592,6 +607,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 						}
 					});
@@ -599,18 +616,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box6.setIcon(tac.getIcon());
-								table[1][2] = tac;
+								Tac tac6 = new Tac("x");
+								box6.setIcon(tac6.getIcon());
+								table[1][2] = tac6;
 								box6.removeMouseListener(this);
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box6.setIcon(tic.getIcon());
-								table[1][2] = tic;
+								Tic tic6 = new Tic("o");
+								box6.setIcon(tic6.getIcon());
+								table[1][2] = tic6;
 								box6.removeMouseListener(this);
 								
 							}
@@ -620,6 +635,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 						}
 					});
@@ -627,18 +644,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box7.setIcon(tac.getIcon());
-								table[2][0] = tac;
+								Tac tac7 = new Tac("x");
+								box7.setIcon(tac7.getIcon());
+								table[2][0] = tac7;
 								box7.removeMouseListener(this);
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box7.setIcon(tic.getIcon());
-								table[2][0] = tic;
+								Tic tic7 = new Tic("o");
+								box7.setIcon(tic7.getIcon());
+								table[2][0] = tic7;
 								box7.removeMouseListener(this);
 								
 							}
@@ -648,6 +663,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 						}
 					});
@@ -655,18 +672,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box8.setIcon(tac.getIcon());
-								table[2][1] = tac;
+								Tac tac8 = new Tac("x");
+								box8.setIcon(tac8.getIcon());
+								table[2][1] = tac8;
 								box8.removeMouseListener(this);
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box8.setIcon(tic.getIcon());
-								table[2][1] = tic;
+								Tic tic8 = new Tic("o");
+								box8.setIcon(tic8.getIcon());
+								table[2][1] = tic8;
 								box8.removeMouseListener(this);
 								
 							}
@@ -675,7 +690,9 @@ public class TTT extends JFrame {
 								turn = true;
 							else 
 								turn = false;
-													
+							
+							checkResult(table);	
+							counter++;					
 							 
 						}
 					});
@@ -683,18 +700,16 @@ public class TTT extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							if (turn == false) {
-								Tic tac = new Tic();
-								tac.setSymbol("o");
-								box9.setIcon(tac.getIcon());
-								table[2][2] = tac;
+								Tac tac9 = new Tac("x");
+								box9.setIcon(tac9.getIcon());
+								table[2][2] = tac9;
 								box9.removeMouseListener(this);
 							}
 							
 							else if (turn == true) {
-								Tac tic = new Tac();
-								tic.setSymbol("x");
-								box9.setIcon(tic.getIcon());
-								table[2][2] = tic;
+								Tic tic9 = new Tic("o");
+								box9.setIcon(tic9.getIcon());
+								table[2][2] = tic9;
 								box9.removeMouseListener(this);
 								
 							}
@@ -704,6 +719,8 @@ public class TTT extends JFrame {
 							else 
 								turn = false;
 							
+							checkResult(table);	
+							counter++;
 							 
 							
 						}
