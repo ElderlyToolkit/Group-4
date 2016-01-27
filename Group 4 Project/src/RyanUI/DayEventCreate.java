@@ -88,7 +88,6 @@ public class DayEventCreate extends JFrame {
 		
 		ImageIcon createevent = new ImageIcon("Images/createevent.png");
 		JButton btnSave = new JButton(createevent);
-		btnSave.setEnabled(false);
 		btnSave.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		btnSave.setBounds(168, 194, 127, 23);
 		contentPane.add(btnSave);
@@ -139,7 +138,6 @@ public class DayEventCreate extends JFrame {
 		contentPane.add(lblName);
 		
 		textField_2 = new JTextField();
-		textField_2.setEditable(false);
 		textField_2.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		textField_2.setColumns(10);
 		textField_2.setBounds(109, 145, 133, 17);
