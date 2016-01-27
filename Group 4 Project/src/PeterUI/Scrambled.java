@@ -116,8 +116,11 @@ public class Scrambled extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				 
         		steps--;
-        		if(steps == 3)
+        		if(steps == 3){
 					setVisible(false);
+        			Eggs egg = new Eggs();
+        			egg.setVisible(true);
+        			}
         		ResultSet rs = null;
         		String category = lblScrambled.getText();
         		String s = "";

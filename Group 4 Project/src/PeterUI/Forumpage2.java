@@ -141,7 +141,10 @@ public class Forumpage2 extends JFrame {
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Forum1 f1 = new Forum1();
+				f1.setVisible(true);
 				setVisible(false);
+				
 			}
 		});
 	}

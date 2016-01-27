@@ -67,6 +67,7 @@ public class SoftBoiledEggs extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		Eggs egg = new Eggs();
+        		egg.setVisible(true);
         		setVisible(false);
         	}
         });

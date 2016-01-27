@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Main.Homepage;
 import Main.Login;
 
 import javax.swing.JTextPane;
@@ -111,16 +112,10 @@ public class Forum1 extends JFrame {
 		txtpnHealth.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ForumHealth FH;
-				try {
-					FH = new ForumHealth();
-					setVisible(false);
-					FH.setVisible(true);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				ForumHealth FH = new ForumHealth();
+				setVisible(false);
+				FH.setVisible(true);
+				
 				
 			}
 		});
@@ -224,10 +219,22 @@ public class Forum1 extends JFrame {
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
 		btnNewButton.setBounds(274, 573, 115, 29);
 		contentPane.add(btnNewButton);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Homepage hp = new Homepage();
+				hp.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnBack.setBounds(533, 589, 97, 25);
+		contentPane.add(btnBack);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Forumpage2 np = new Forumpage2();
 				np.setVisible(true);
+				setVisible(false);
 				
 			}
 		});

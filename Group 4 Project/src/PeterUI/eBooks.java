@@ -2,7 +2,7 @@ package PeterUI;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import java.awt.EventQueue;
-
+import Main.Homepage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -65,6 +65,7 @@ public class eBooks extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cooking cook = new cooking();
 				cook.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
@@ -101,6 +102,8 @@ public class eBooks extends JFrame {
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		Homepage h = new Homepage();
+        		h.setVisible(true);
         		setVisible(false);
         	}
         });

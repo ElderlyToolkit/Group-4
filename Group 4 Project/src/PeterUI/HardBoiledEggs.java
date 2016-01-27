@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 public class HardBoiledEggs extends JFrame {
 	
@@ -63,7 +64,7 @@ public class HardBoiledEggs extends JFrame {
 		
 		JTextPane txtpnToHardboilEggs = new JTextPane();
 		txtpnToHardboilEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
-		txtpnToHardboilEggs.setBackground(SystemColor.control);
+		txtpnToHardboilEggs.setBackground(UIManager.getColor("Button.background"));
 		txtpnToHardboilEggs.setText("Step 1:\nTo hard-boil eggs, place as many eggs as you'd like in a pot with cold water (the water should entirely cover all the eggs). Bring to a boil and cover the pot.");
 		txtpnToHardboilEggs.setBounds(12, 99, 299, 428);
 		contentPane.add(txtpnToHardboilEggs);
@@ -117,8 +118,11 @@ public class HardBoiledEggs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
         		//id++;
         		steps--;
-        		if(steps == 0)
+        		if(steps == 0){
 					setVisible(false);
+        			Eggs egg = new Eggs();
+        			egg.setVisible(true);
+        			}
         		ResultSet rs = null;
         		String category = lblHbe.getText();
         		String s = "";

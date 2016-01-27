@@ -108,8 +108,11 @@ public class Sunny extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
         		steps--;
-        		if(steps == 6)
+        		if(steps == 6){
 					setVisible(false);
+        			Eggs egg = new Eggs();
+        			egg.setVisible(true);
+        			}
         		ResultSet rs = null;
         		String category = lblSunny.getText();
         		String s = "";

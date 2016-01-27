@@ -53,6 +53,7 @@ public class Eggs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				HardBoiledEggs hbe = new HardBoiledEggs();
 				hbe.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
@@ -65,6 +66,7 @@ public class Eggs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Scrambled s = new Scrambled();
 				s.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
@@ -77,6 +79,7 @@ public class Eggs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				SoftBoiledEggs sb = new SoftBoiledEggs();
 				sb.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
@@ -89,7 +92,7 @@ public class Eggs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Sunny sn = new Sunny();
 				sn.setVisible(true);
-				
+				setVisible(false);
 			}
 		});
 		ImageIcon back = new ImageIcon("Images/back.png");
@@ -99,6 +102,7 @@ public class Eggs extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cooking cook = new cooking();
+        		cook.setVisible(true);
         		setVisible(false);
         		
         	}

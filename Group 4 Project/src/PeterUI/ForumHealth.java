@@ -55,7 +55,11 @@ public class ForumHealth extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ForumHealth() throws FileNotFoundException, IOException, SQLException{
+	String[] columns = {"Subject", "Message"};
+	DefaultTableModel model = new DefaultTableModel(columns,0);
+	DBController dbc = new DBController();
+	
+	public ForumHealth(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 665, 674);
 		contentPane = new JPanel();
@@ -65,18 +69,19 @@ public class ForumHealth extends JFrame {
 		
 		ResultSet rs = null;
 		String subject = null, message = null;
-		DBController dbc = new DBController();
-		
 		String dbQuery = "SELECT * FROM forum";
 		rs = dbc.readRequest(dbQuery);
 		
-		ListTableModel model = ListTableModel.createModelFromResultSet(rs);
-		JTable table = new JTable(model);
-		table.setEnabled(true);
-		
-		
-		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					Forum1 f1 = new Forum1();
+					f1.setVisible(true);
+					setVisible(false);
+				}catch(Exception m){}
+			}
+		});
 		btnBack.setBounds(538, 589, 97, 25);
 		contentPane.add(btnBack);
 		

@@ -58,6 +58,7 @@ public class cooking extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Eggs egg = new Eggs();
 				egg.setVisible(true);
+				setVisible(false);
 				
 			}
 		});
@@ -99,6 +100,7 @@ public class cooking extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		eBooks eBooks = new eBooks();
+        		eBooks.setVisible(true);
         		setVisible(false);
         	}
         });

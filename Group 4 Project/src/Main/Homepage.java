@@ -23,6 +23,7 @@ import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
 import RyanUI.Events;
 import RyanUI.Matchmaking;
+import PeterUI.Forum1;
 import PeterUI.eBooks;
 
 import javax.swing.BorderFactory;
@@ -81,6 +82,7 @@ public class Homepage extends JFrame {
 		
 		ImageIcon forums = new ImageIcon("Images/forums.png");
 		JButton btnForums = new JButton(forums);
+		
 		//btnForums.setBorder(BorderFactory.createEmptyBorder());
 		//btnForums.setContentAreaFilled(false);
 		btnForums.setBackground(new Color(0, 191, 255));
@@ -217,6 +219,7 @@ public class Homepage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					eBooks eb = new eBooks();
+					setVisible(false);
 					eb.setVisible(true);
 				} catch (Exception h) {
 				}
@@ -240,7 +243,17 @@ public class Homepage extends JFrame {
 				}
 			}
 		});
-		
+		btnForums.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					Forum1 f = new Forum1();
+					f.setVisible(true);
+					setVisible(false);
+				}catch (Exception l){
+					
+				}
+			}
+		});
 		btndtotoGenerator.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
