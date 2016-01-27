@@ -36,144 +36,10 @@ import Database.NewsDA;
 public class NewsApp extends JFrame  {
 	int page = 1;
 	
-	ImageIcon testing;
 	
 	ArrayList<News> news2 = new ArrayList<News>();
 	ArrayList<JTextPane> news = new ArrayList();
-	ArrayList<ImageIcon> WorldImages = new ArrayList<ImageIcon>();
-	ArrayList<ImageIcon> WorldImages2 = new ArrayList<ImageIcon>();
-	ArrayList<ImageIcon> EconomicImages = new ArrayList<ImageIcon>();
-	ArrayList<ImageIcon> EconomicImages2 = new ArrayList<ImageIcon>();
 	
-	ImageIcon australia = new ImageIcon("Images/australiafire.jpg");
-	Image fire = australia.getImage();
-	Image smallfire = fire.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon australia2 = new ImageIcon(smallfire);
-
-	ImageIcon california = new ImageIcon("Images/california.jpeg");
-	Image gas = california.getImage();
-	Image methane = gas.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon california2 = new ImageIcon(methane);
-	
-	ImageIcon china = new ImageIcon("Images/chinacivilian.jpg");
-	Image civilian = china.getImage();
-	Image chinacivilian = civilian.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon china2 = new ImageIcon(chinacivilian);
-
-	ImageIcon cologne = new ImageIcon("Images/cologne.jpeg");
-	Image sexual = cologne.getImage();
-	Image assasult = sexual.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon cologne2 = new ImageIcon(assasult);
-
-	ImageIcon india = new ImageIcon("Images/indiabull.jpg");
-	Image bull = india.getImage();
-	Image fighting = bull.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon india2 = new ImageIcon(fighting);
-	
-	ImageIcon israeli = new ImageIcon("Images/israeli.jpg");
-	Image reporter = israeli.getImage();
-	Image stabbed = reporter.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon israeli2 = new ImageIcon(stabbed);
-	
-	ImageIcon jet = new ImageIcon("Images/jetsniffer.jpg");
-	Image sniffer = jet.getImage();
-	Image radiation = sniffer.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon jet2 = new ImageIcon(radiation);
-	
-	ImageIcon kim = new ImageIcon("Images/kimjongun.jpeg");
-	Image jong = kim.getImage();
-	Image unnie = jong.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon kimchi = new ImageIcon(jong);
-	
-	ImageIcon libya = new ImageIcon("Images/libyatank.jpg");
-	Image tank = libya.getImage();
-	Image explode = tank.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon IS = new ImageIcon(explode);
-	
-	ImageIcon nauru2 = new ImageIcon("Images/nauru.jpg");
-	Image what = nauru2.getImage();
-	Image is = what.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon nauru = new ImageIcon(is);
-	
-	ImageIcon nra = new ImageIcon("Images/nra.jpg");
-	Image obama = nra.getImage();
-	Image not = obama.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon happy = new ImageIcon(not);
-
-	ImageIcon paris = new ImageIcon("Images/parisknife.jpg");
-	Image knifer = paris.getImage();
-	Image shot = knifer.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon down = new ImageIcon(shot);
-	
-	
-	
-	
-	
-	
-	ImageIcon chinadrop = new ImageIcon("Images/china.jpg");
-	Image again =  chinadrop.getImage();
-	Image sad =  again.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon face = new ImageIcon(sad);
-	
-	ImageIcon chinaagain = new ImageIcon("Images/chinaagain.jpg");
-	Image keep =  chinaagain.getImage();
-	Image on =  keep.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon dropping = new ImageIcon(on);
-
-	ImageIcon chinaworries = new ImageIcon("Images/chinaworries.jpg");
-	Image why = chinaworries.getImage();
-	Image so =  why.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon worried = new ImageIcon(so);
-	
-	ImageIcon feds = new ImageIcon("Images/feds.jpg");
-	Image watch =  feds.getImage();
-	Image rout =  watch.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon fed = new ImageIcon(rout);
-	
-	ImageIcon asia = new ImageIcon("Images/ipo.jpg");
-	Image tops =  asia.getImage();
-	Image global = tops.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon ipo = new ImageIcon(global);
-	
-	ImageIcon how = new ImageIcon("Images/irs.jpg");
-	Image to =  how.getImage();
-	Image skip =  to.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon irs = new ImageIcon(skip);
-	
-	ImageIcon olofmeister = new ImageIcon("Images/mester.jpg");
-	Image boostmeister =  olofmeister.getImage();
-	Image good =  boostmeister.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon mester = new ImageIcon(good);
-	
-	ImageIcon olofmeister2 = new ImageIcon("Images/mester2.jpg");
-	Image boostmeister2 =  olofmeister2.getImage();
-	Image gud =  boostmeister2.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon mester2 = new ImageIcon(gud);
-	
-	ImageIcon the = new ImageIcon("Images/prediction.jpg");
-	Image god =  the.getImage();
-	Image of =  god.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon predictions = new ImageIcon(of);
-	
-	ImageIcon random = new ImageIcon("Images/random.jpg");
-	Image pic = random.getImage();
-	Image ay =  pic.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon found = new ImageIcon(ay);
-	
-	ImageIcon sing = new ImageIcon("Images/singdollar.jpg");
-	Image dollar =  sing.getImage();
-	Image still =  dollar.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon strong = new ImageIcon(still);
-	
-	ImageIcon stocks = new ImageIcon("Images/stocks.jpg");
-	Image going =  stocks.getImage();
-	Image up =  going.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon once = new ImageIcon(up);
-	
-	
-	
-	
-
 	private JPanel contentPane;
 
 	/**
@@ -191,6 +57,16 @@ public class NewsApp extends JFrame  {
 			}
 		});
 	}
+	
+	public static ImageIcon getIcon(String Image) {
+		ImageIcon z = new ImageIcon(Image);
+		Image q =  z.getImage();
+		Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon y = new ImageIcon(w);
+		
+		return y;
+	}
+	
 
 	/**
 	 * Create the frame.
@@ -247,33 +123,7 @@ public class NewsApp extends JFrame  {
 		news.add(News5);
 		news.add(News6);
 		
-		WorldImages.add(cologne2);
-		WorldImages.add(california2);
-		WorldImages.add(kimchi);
-		WorldImages.add(IS);
-		WorldImages.add(israeli2);
-		WorldImages.add(china2);
 		
-		WorldImages2.add(down);
-		WorldImages2.add(jet2);
-		WorldImages2.add(nauru);
-		WorldImages2.add(india2);
-		WorldImages2.add(happy);
-		WorldImages2.add(australia2);
-		
-		EconomicImages.add(face);
-		EconomicImages.add(dropping);
-		EconomicImages.add(predictions);
-		EconomicImages.add(worried);
-		EconomicImages.add(mester);
-		EconomicImages.add(mester2);
-		
-		EconomicImages2.add(fed);
-		EconomicImages2.add(irs);
-		EconomicImages2.add(found);
-		EconomicImages2.add(strong);
-		EconomicImages2.add(ipo);
-		EconomicImages2.add(once);
 		
 		JComboBox Category = new JComboBox();
 		Category.addActionListener(new ActionListener() {
@@ -284,13 +134,9 @@ public class NewsApp extends JFrame  {
 					if (selected == "World") {
 						news2 = NewsDA.RetrieveFrontPage(page, selected);
 						for (int i = 0; i < news.size() ; i++) {
-						ImageIcon d = new ImageIcon(news2.get(i).getImage());
-						Image q =  d.getImage();
-						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-						ImageIcon y = new ImageIcon(w);
-						
+												
 						news.get(i).setText(news2.get(i).getHeadline() + "\n");
-						news.get(i).insertIcon(y);
+						news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 						
 						
 						//news.get(i).insertIcon(WorldImages.get(i));
@@ -301,11 +147,7 @@ public class NewsApp extends JFrame  {
 						news2 = NewsDA.RetrieveFrontPage(page, selected);
 						for (int i = 0; i < news.size() ; i++) {
 						news.get(i).setText(news2.get(i).getHeadline() + "\n");
-						ImageIcon d = new ImageIcon(news2.get(i).getImage());
-						Image q =  d.getImage();
-						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-						ImageIcon y = new ImageIcon(w);
-						news.get(i).insertIcon(y);
+						news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 						}
 					}
 				}
@@ -316,22 +158,14 @@ public class NewsApp extends JFrame  {
 					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
 					news.get(i).setText(news2.get(i).getHeadline() + "\n");
-					ImageIcon d = new ImageIcon(news2.get(i).getImage());
-					Image q =  d.getImage();
-					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-					ImageIcon y = new ImageIcon(w);
-					news.get(i).insertIcon(y);
+					news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 				}
 				}
 				else {
 					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
 					news.get(i).setText(news2.get(i).getHeadline() + "\n");
-					ImageIcon d = new ImageIcon(news2.get(i).getImage());
-					Image q =  d.getImage();
-					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-					ImageIcon y = new ImageIcon(w);
-					news.get(i).insertIcon(y);
+					news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 					}
 				}
 			}
@@ -353,22 +187,14 @@ public class NewsApp extends JFrame  {
 					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
 					news.get(i).setText(news2.get(i).getHeadline() + "\n");
-					ImageIcon d = new ImageIcon(news2.get(i).getImage());
-					Image q =  d.getImage();
-					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-					ImageIcon y = new ImageIcon(w);
-					news.get(i).insertIcon(y);
+					news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 					}
 				}
 				else {
 					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
 					news.get(i).setText(news2.get(i).getHeadline() + "\n");
-					ImageIcon d = new ImageIcon(news2.get(i).getImage());
-					Image q =  d.getImage();
-					Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-					ImageIcon y = new ImageIcon(w);
-					news.get(i).insertIcon(y);
+					news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 					}
 				}
 				}
@@ -390,22 +216,14 @@ public class NewsApp extends JFrame  {
 					news2 = NewsDA.RetrieveFrontPage(page, selected);
 					for (int i = 0; i < news.size() ; i++) {
 						news.get(i).setText(news2.get(i).getHeadline() + "\n");
-						ImageIcon d = new ImageIcon(news2.get(i).getImage());
-						Image q =  d.getImage();
-						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-						ImageIcon y = new ImageIcon(w);
-						news.get(i).insertIcon(y);
+						news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 						}
 					}
 					else {
 						news2 = NewsDA.RetrieveFrontPage(page, selected);
 						for (int i = 0; i < news.size() ; i++) {
 						news.get(i).setText(news2.get(i).getHeadline() + "\n");
-						ImageIcon d = new ImageIcon(news2.get(i).getImage());
-						Image q =  d.getImage();
-						Image w =  q.getScaledInstance(260,180, java.awt.Image.SCALE_SMOOTH);
-						ImageIcon y = new ImageIcon(w);
-						news.get(i).insertIcon(y);
+						news.get(i).insertIcon(getIcon(news2.get(i).getImage()));
 						}
 					}
 					}

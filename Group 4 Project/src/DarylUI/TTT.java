@@ -165,7 +165,6 @@ public class TTT extends JFrame {
 		tictacs.add(box9);
 		
 		
-		
 			box1.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -181,8 +180,8 @@ public class TTT extends JFrame {
 						box1.removeMouseListener(this);
 					}
 					
-					counter++;
-				
+					++counter;
+					System.out.print(counter);
 				}
 			});
 
@@ -201,8 +200,8 @@ public class TTT extends JFrame {
 						table[0][1] = 2;
 						box2.removeMouseListener(this);
 					}
-					counter++;
-					
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			box3.addMouseListener(new MouseAdapter() {
@@ -220,8 +219,8 @@ public class TTT extends JFrame {
 						box3.removeMouseListener(this);
 					}
 					
-					counter++;
-					
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			box4.addMouseListener(new MouseAdapter() {
@@ -239,8 +238,8 @@ public class TTT extends JFrame {
 						box4.removeMouseListener(this);
 					}
 					
-					counter++;
-				
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			box5.addMouseListener(new MouseAdapter() {
@@ -258,8 +257,8 @@ public class TTT extends JFrame {
 						box5.removeMouseListener(this);
 					}
 					
-					counter++;
-					
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			box6.addMouseListener(new MouseAdapter() {
@@ -277,8 +276,8 @@ public class TTT extends JFrame {
 						box6.removeMouseListener(this);
 					}
 					
-					counter++;
-					
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			box7.addMouseListener(new MouseAdapter() {
@@ -297,8 +296,8 @@ public class TTT extends JFrame {
 					}
 					
 					
-					counter++;
-					
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			box8.addMouseListener(new MouseAdapter() {
@@ -316,8 +315,8 @@ public class TTT extends JFrame {
 						box8.removeMouseListener(this);
 					}
 					
-					counter++;
-					
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			box9.addMouseListener(new MouseAdapter() {
@@ -335,8 +334,8 @@ public class TTT extends JFrame {
 						box9.removeMouseListener(this);
 					}
 					
-					counter++;
-					
+					++counter;
+					System.out.print(counter);
 				}
 			});
 			
@@ -385,8 +384,8 @@ public class TTT extends JFrame {
 								box1.removeMouseListener(this);
 							}
 							
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 
@@ -405,8 +404,8 @@ public class TTT extends JFrame {
 								table[0][1] = 2;
 								box2.removeMouseListener(this);
 							}
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 					box3.addMouseListener(new MouseAdapter() {
@@ -424,8 +423,8 @@ public class TTT extends JFrame {
 								box3.removeMouseListener(this);
 							}
 							
-							counter++;
-							
+							++counter;;
+							System.out.print(counter);
 						}
 					});
 					box4.addMouseListener(new MouseAdapter() {
@@ -443,8 +442,8 @@ public class TTT extends JFrame {
 								box4.removeMouseListener(this);
 							}
 							
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 					box5.addMouseListener(new MouseAdapter() {
@@ -462,8 +461,8 @@ public class TTT extends JFrame {
 								box5.removeMouseListener(this);
 							}
 							
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 					box6.addMouseListener(new MouseAdapter() {
@@ -481,8 +480,8 @@ public class TTT extends JFrame {
 								box6.removeMouseListener(this);
 							}
 							
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 					box7.addMouseListener(new MouseAdapter() {
@@ -501,8 +500,8 @@ public class TTT extends JFrame {
 							}
 							
 							
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 					box8.addMouseListener(new MouseAdapter() {
@@ -520,8 +519,8 @@ public class TTT extends JFrame {
 								box8.removeMouseListener(this);
 							}
 							
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 					box9.addMouseListener(new MouseAdapter() {
@@ -539,8 +538,8 @@ public class TTT extends JFrame {
 								box9.removeMouseListener(this);
 							}
 							
-							counter++;
-							
+							++counter;
+							System.out.print(counter);
 						}
 					});
 				}
