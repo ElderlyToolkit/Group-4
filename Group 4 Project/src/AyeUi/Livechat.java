@@ -35,6 +35,7 @@ public class Livechat extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private int i = 0;
 
 	/**
 	 * Launch the application.
@@ -120,23 +121,24 @@ public class Livechat extends JFrame {
 		
 		ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+            	String[] messages = {"Hello!\n", "I am doing good\n", "How about you?\n"};
             	String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
-            	textArea.append(timeStamp + " " + Login.user + ": Hello!\n");
+            	textArea.append(timeStamp + " Counseller: " + messages[i]);
+            	i++;
             }
         };
         Timer timer = new Timer(5000, taskPerformer);
+        timer.setRepeats(false);
 		
-		Action action =  new AbstractAction() {
+		textField.addActionListener(new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
 			String input = textField.getText();
 			textArea.append(timeStamp + " " + input + "\n");
 			textField.setText("");
 			timer.start();
-			timer.stop();
 		}
-		};
-		textField.addActionListener(action);
+		});
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

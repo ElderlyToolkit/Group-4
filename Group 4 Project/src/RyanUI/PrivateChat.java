@@ -27,6 +27,7 @@ public class PrivateChat extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private int i = 0;
 
 	/**
 	 * Launch the application.
@@ -122,8 +123,10 @@ public class PrivateChat extends JFrame {
 		
 		ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+            	String[] messages = {"Hello!\n", "I am doing good\n", "How about you?\n"};
             	String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
-            	textArea.append(timeStamp + " " + MatchmakingList.partner + ": Hello!\n");
+            	textArea.append(timeStamp + " " + MatchmakingList.partner + ": " + messages[i]);
+            	i++;
             }
         };
         Timer timer = new Timer(5000, taskPerformer);

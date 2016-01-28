@@ -32,6 +32,7 @@ public class Chatbox extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private int i = 0;
 
 	/**
 	 * Launch the application.
@@ -133,8 +134,10 @@ public class Chatbox extends JFrame {
 		
 		ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+            	String[] messages = {"Hello!\n", "I am doing good\n", "How about you?\n"};
             	String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
-            	textArea.append(timeStamp + "SwagGrandpa: Hello!\n");
+            	textArea.append(timeStamp + "SwagGrandpa: " + messages[i]);
+            	i++;
             }
         };
         Timer timer = new Timer(5000, taskPerformer);
