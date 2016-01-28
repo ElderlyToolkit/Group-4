@@ -59,6 +59,7 @@ public class Sunny extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JTextPane txtpnToSunnyEggs = new JTextPane();
+		txtpnToSunnyEggs.setEditable(false);
 		txtpnToSunnyEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 23));
 		txtpnToSunnyEggs.setBackground(SystemColor.control);
 		txtpnToSunnyEggs.setText("Step 1:\nHeat oil or melt butter in a nonstick skillet over medium heat. Carefully crack eggs one at a time into the skillet.");

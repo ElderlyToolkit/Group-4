@@ -58,6 +58,7 @@ public class Scrambled extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JTextPane txtpnToScrambledEggs = new JTextPane();
+		txtpnToScrambledEggs.setEditable(false);
 		txtpnToScrambledEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
 		txtpnToScrambledEggs.setBackground(SystemColor.control);
 		txtpnToScrambledEggs.setText("Step 1:\nCrack eggs in a mixing bowl and whisk with a fork. Add a splash of milk and continue mixing.");

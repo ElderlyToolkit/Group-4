@@ -88,25 +88,26 @@ public class ForumHealth extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(btnBack);
 		
-		JButton btnShow = new JButton("Show");
-		btnShow.setBounds(429, 589, 97, 25);
-		contentPane.add(btnShow);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 13, 623, 567);
 		contentPane.add(scrollPane);
 		
 		try{
 			String[] subj = {"Subject","Message"};
+			table_1 = new JTable();
+			table_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+			DefaultTableModel model1=new DefaultTableModel(subj,0);
+			table_1.setModel(model1);
+			scrollPane.setViewportView(table_1);
 			while(rs.next()){
 				s = rs.getString("message");
 				r = rs.getString("subject");
-				System.out.print(r);
+				System.out.println(r);
 		
 		
-		String [] [] msg = {{r,s}};
-		table_1 = new JTable(msg, subj);
-		scrollPane.setViewportView(table_1);
+				String [] [] msg = {{r,s}};
+				model1.addRow(new Object[]{r,s});
+				
 			}
 		}
 		catch(Exception e){

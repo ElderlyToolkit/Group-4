@@ -54,6 +54,7 @@ public class SoftBoiledEggs extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JTextPane txtpnToSoftboilEggs = new JTextPane();
+		txtpnToSoftboilEggs.setEditable(false);
 		txtpnToSoftboilEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
 		txtpnToSoftboilEggs.setBackground(SystemColor.control);
 		txtpnToSoftboilEggs.setText("Step 1: \nUse the same technique as hard-boiling but let stand for 4 minutes instead of 10 minutes.");
