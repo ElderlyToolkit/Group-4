@@ -2,7 +2,7 @@ package AyeUi;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URI;
-
+import java.net.URISyntaxException;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
@@ -122,19 +123,20 @@ public class Counselling extends JFrame {
 		
  btnMail.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent e) {
+		Desktop desktop;
+		URI mailto = null;
 		
-		String cmd = "cmd.exe /c start \"\" \"" + formatMailto("mailto:?subject=%s&body=%s", cmd) + "\"";
-		try {
-			Runtime.getRuntime().exec(cmd);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if (Desktop.isDesktopSupported() && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
+			try {
+				mailto = new URI("mailto:john@example.com?subject=Hello%20World");
+				desktop.mail(mailto);
+			} catch (URISyntaxException | IOException e1) {
+				e1.printStackTrace();
+			}
 		}
-	}
-
-	private String formatMailto(String string, String string2) {
-		// TODO Auto-generated method stub
-		return null;
+		else {
+			throw new RuntimeException("Your computer doesn't have a Mail Application. Mail is dead anyway ;)");
+		}
 	}
  });
 	}
