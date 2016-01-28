@@ -52,6 +52,7 @@ public class Spaghetti extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JTextPane txtpnToSpaghetti = new JTextPane();
+		txtpnToSpaghetti.setEditable(false);
 		txtpnToSpaghetti.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
 		txtpnToSpaghetti.setBackground(SystemColor.control);
 		txtpnToSpaghetti.setText("Step 1: Fill a medium sized pot with cold water. Place it on a stove on high heat. Bring it to a boil\nStep2");
