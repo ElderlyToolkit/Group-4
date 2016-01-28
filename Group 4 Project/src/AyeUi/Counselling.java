@@ -128,14 +128,14 @@ public class Counselling extends JFrame {
 		
 		if (Desktop.isDesktopSupported() && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
 			try {
-				mailto = new URI("mailto:john@example.com?subject=Hello%20World");
+				mailto = new URI("mailto:muchhelpfulcounsellorslol@example.com?subject=Sup%20Fella");
 				desktop.mail(mailto);
 			} catch (URISyntaxException | IOException e1) {
 				e1.printStackTrace();
 			}
 		}
 		else {
-			throw new RuntimeException("Your computer doesn't have a Mail Application. Mail is dead anyway ;)");
+			throw new RuntimeException("Your computer doesn't have a Mail Application. Mail is dead anyway lol ;)");
 		}
 	}
  });
