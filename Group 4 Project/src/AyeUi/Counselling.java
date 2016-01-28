@@ -1,6 +1,8 @@
 package AyeUi;
 import java.awt.Image;
-
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -15,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
@@ -39,24 +42,26 @@ public class Counselling extends JFrame {
 				}
 			}
 		});
+	
 	}
-
 	/**
 	 * Create the frame.
 	 */
 	public Counselling() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 510, 450);
+		setBounds(100, 100, 510, 465);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setForeground(new Color(0, 153, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("");
+		btnNewButton.setBackground(SystemColor.control);
 		Image images = new ImageIcon(this.getClass().getResource("/call.png")).getImage();
 		btnNewButton.setIcon(new ImageIcon(images));
-		btnNewButton.setBounds(106, 100, 268, 125);
+		btnNewButton.setBounds(106, 78, 268, 110);
 		contentPane.add(btnNewButton);
 		
 		
@@ -68,7 +73,7 @@ public class Counselling extends JFrame {
 		btnChat.setBackground(Color.WHITE);
 		Image images2 = new ImageIcon(this.getClass().getResource("/msg.png")).getImage();
 		btnChat.setIcon(new ImageIcon(images2));
-		btnChat.setBounds(106, 253, 268, 125);
+		btnChat.setBounds(106, 194, 268, 103);
 		contentPane.add(btnChat);
 		
 		JLabel txtpnOnlineCounselling = new JLabel();
@@ -83,6 +88,12 @@ public class Counselling extends JFrame {
 		JButton button = new JButton(back);
 		button.setBounds(10, 11, 89, 23);
 		contentPane.add(button);
+		
+		ImageIcon image = new ImageIcon("Images/email.png");
+		JButton btnMail = new JButton(image);
+		btnMail.setBackground(Color.WHITE);
+		btnMail.setBounds(106, 303, 268, 103);
+		contentPane.add(btnMail);
 		Image images1 = new ImageIcon(this.getClass().getResource("/oc.png")).getImage();
 		
 		btnNewButton.addActionListener(new ActionListener() {
@@ -109,5 +120,28 @@ public class Counselling extends JFrame {
 				home.setVisible(true);
 			}
 		});
+		
+ btnMail.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+		Desktop desktop;
+		URI mailto = null;
+		
+		if (Desktop.isDesktopSupported() && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
+			try {
+				mailto = new URI("mailto:muchhelpfulcounsellorslol@example.com?subject=Sup%20Fella");
+				desktop.mail(mailto);
+			} catch (URISyntaxException | IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		else {
+			throw new RuntimeException("Your computer doesn't have a Mail Application. Mail is dead anyway lol ;)");
+		}
+	}
+ });
 	}
 }
+ 
+
+
+
