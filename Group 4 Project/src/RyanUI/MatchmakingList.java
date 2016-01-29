@@ -25,6 +25,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
 import Database.DBController;
+import Database.MatchmakingDA;
 
 public class MatchmakingList extends JFrame {
 
@@ -60,29 +61,7 @@ public class MatchmakingList extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ResultSet rs = null;
-		int preferedage = Matchmaking.preferedage, preferedgender = Matchmaking.preferedgender;
-		String dbQuery = null;
-		DBController db=new DBController();
-		
-		if (preferedgender == 1 || preferedgender == 2){
-			if (preferedage == 0) {
-				dbQuery = "SELECT name, age, gender FROM users WHERE gender='" + preferedgender + "'";
-			}
-			else {
-				dbQuery = "SELECT name, age, gender FROM users WHERE age='" + preferedage + "' AND gender='" + preferedgender + "'";
-			}
-		}
-		else if (preferedgender == 0) {
-			if (preferedage == 0) {
-				dbQuery = "SELECT name, age, gender FROM users";
-			}
-			else {
-				dbQuery = "SELECT name, age, gender FROM users WHERE age='" + preferedage + "'";
-			}
-		}
-		
-		rs = db.readRequest(dbQuery);
+		ResultSet rs = MatchmakingDA.returnDetails(Matchmaking.preferedage, Matchmaking.preferedgender);
 		
 		ImageIcon back = new ImageIcon("Images/back.png");
 		JButton button = new JButton(back);

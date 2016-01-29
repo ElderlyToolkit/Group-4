@@ -2,6 +2,10 @@ package Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import DarylUI.Dictionary;
+import RyanUI.Matchmaking;
 
 
 public class MatchmakingDA {
@@ -39,4 +43,54 @@ public class MatchmakingDA {
     	}
     	return id;    	
     }
+	
+	public static MatchmakingConsructor retrieveName(String name) {
+		MatchmakingConsructor constructor;
+		ResultSet rs = null;
+		DBController db = new DBController();
+		String databaseName = null, databaseAge = null, databaseEmail = null;
+		int databaseGender = 0, databasePreference = 0;
+		String dbQuery = "SELECT * FROM users WHERE name='" + name + "'";
+		rs = db.readRequest(dbQuery);
+		
+		try {
+			while (rs.next()) {
+				databaseName = rs.getString("name");
+				databaseAge = rs.getString("age");
+				databaseGender = rs.getInt("gender");
+				databaseEmail = rs.getString("email");
+				databasePreference = rs.getInt("preference");
+			}
+		} catch (SQLException z) {
+			z.printStackTrace();
+		}	
+		
+		constructor = new MatchmakingConsructor(databaseName, databaseAge, databaseGender, databaseEmail, databasePreference);
+		return constructor;
+	}
+	
+	public static ResultSet returnDetails(int preferedage, int preferedgender) {
+		ResultSet rs = null;
+		String dbQuery = null;
+		DBController db=new DBController();
+		
+		if (preferedgender == 1 || preferedgender == 2){
+			if (preferedage == 0) {
+				dbQuery = "SELECT name, age, gender FROM users WHERE gender='" + preferedgender + "'";
+			}
+			else {
+				dbQuery = "SELECT name, age, gender FROM users WHERE age='" + preferedage + "' AND gender='" + preferedgender + "'";
+			}
+		}
+		else if (preferedgender == 0) {
+			if (preferedage == 0) {
+				dbQuery = "SELECT name, age, gender FROM users";
+			}
+			else {
+				dbQuery = "SELECT name, age, gender FROM users WHERE age='" + preferedage + "'";
+			}
+		}
+		
+		return rs = db.readRequest(dbQuery);
+	}
 }

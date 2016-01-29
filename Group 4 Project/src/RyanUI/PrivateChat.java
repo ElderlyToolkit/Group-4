@@ -8,6 +8,9 @@ import java.awt.FontFormatException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Database.MatchmakingConsructor;
+
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -136,7 +139,7 @@ public class PrivateChat extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			String timeStamp = new SimpleDateFormat("h:mm:ssa").format(Calendar.getInstance().getTime());
 			String input = textField.getText();
-			textArea.append(timeStamp + " " + input + "\n");
+			textArea.append(timeStamp + " You: " + input + "\n");
 			textField.setText("");
 			timer.start();
 		}

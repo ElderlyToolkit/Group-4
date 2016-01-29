@@ -2,6 +2,9 @@ package Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import DarylUI.Dictionary;
 
 public class NewUserDA {
 	
@@ -40,5 +43,5 @@ public class NewUserDA {
     		e.printStackTrace();
     	}
     	return id;    	
-    } 
+    }
 }

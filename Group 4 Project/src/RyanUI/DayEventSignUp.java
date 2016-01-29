@@ -26,6 +26,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
+import Database.EventSignUpConstructor;
+import Database.EventsDA;
 import Database.SignUpConstructor;
 import Database.SignUpDA;
 import Main.Login;
@@ -178,50 +180,24 @@ public class DayEventSignUp extends JFrame {
 				
 				String selectedtime = comboBox.getSelectedItem().toString();
 				
-				ResultSet rs = null;
-				String name = null, date = Events.Date, description = null, location = null;
-				DBController db=new DBController();
-				
-				String dbQuery = "SELECT * FROM events WHERE date='" + date + "' AND time='" + selectedtime + "'";
-				
-				rs = db.readRequest(dbQuery);
-				
-				//ArrayList<String> events = new ArrayList<String>();
 				MutableComboBoxModel model = (DefaultComboBoxModel)comboBox_1.getModel();
-				try {
-					while (rs.next()) {
-					    model.addElement(rs.getString("description"));
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				
+				String events = EventsDA.returnAllEvents(selectedtime);
+				
+				model.addElement(events);
 			}
 		});
 		
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ResultSet rs2 = null;
-				String name = null, date = Events.Date, location = null;
-				DBController db2 = new DBController();
-				
 				selectedevent = comboBox_1.getSelectedItem().toString();
 				String selectedtime = comboBox.getSelectedItem().toString();
 				
-				String dbQueryNext = "SELECT * FROM events WHERE date='" + date + "' AND time='" + selectedtime + "' AND description='" + selectedevent + "'";
+				String name = EventsDA.returnEventOrganiser(selectedtime, selectedevent);
+				String location = EventsDA.returnEventLocation(selectedtime, selectedevent);
 				
-				rs2 = db2.readRequest(dbQueryNext);
-				try {
-					while (rs2.next()) {
-					    name = rs2.getString("name");
-					    date = rs2.getString("date");
-					    location = rs2.getString("location");
-					    
-					    textField_2.setText(location);
-						textField_3.setText(name);
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				textField_2.setText(location);
+				textField_3.setText(name);
 			}
 		});
 		
@@ -229,23 +205,8 @@ public class DayEventSignUp extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String attendee = textField.getText();
 				String event = comboBox_1.getSelectedItem().toString();
-				String databaseAttendee = null;
-				String databaseEvent = null;
-				DBController db=new DBController();
-				ResultSet rs2;
 				
-				String dbQuery = "SELECT * FROM attendee WHERE attendee='" + attendee + "' AND event='" + event + "'";
-				
-				rs2 = db.readRequest(dbQuery);
-				
-				try {
-					while (rs2.next()) {
-					    databaseAttendee = rs2.getString("attendee");
-					    databaseEvent = rs2.getString("event");
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				EventSignUpConstructor constructor2 = EventsDA.returnAttendeeNEvent(attendee, event);
 				
 				String organisername = textField_3.getText();
 				
@@ -256,7 +217,7 @@ public class DayEventSignUp extends JFrame {
 					JOptionPane.showMessageDialog(DayEventSignUp.this, "No such event!");
 				}
 				else {
-					if (attendee.equals(databaseAttendee) && event.equals(databaseEvent)) {
+					if (attendee.equals(constructor2.getDatabaseAttendee()) && event.equals(constructor2.getDatabaseEvent())) {
 						JOptionPane.showMessageDialog(DayEventSignUp.this, "You are already signed up for this event!");
 					}
 					else {

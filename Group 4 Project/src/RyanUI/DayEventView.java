@@ -28,6 +28,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
+import Database.EventsDA;
 import Main.Login;
 
 import javax.swing.border.BevelBorder;
@@ -140,7 +141,7 @@ public class DayEventView extends JFrame {
 			  public void mouseClicked(MouseEvent e) {
 			    if (e.getClickCount() == 1) {
 			    	int row = 0, column = 0;
-			    	String attendee = "", event = null, databaseAttendee = "", databaseEvent = null;
+			    	String event = null;
 			      
 			      row = table.getSelectedRow();
 			      column = table.getSelectedColumn();
@@ -148,27 +149,9 @@ public class DayEventView extends JFrame {
 			      System.out.println(row);
 			      System.out.println(event);
 			      
-			      ResultSet rs = null;
-					
-					DBController db=new DBController();
-					
-					String dbQuery = "SELECT * FROM attendee WHERE event='" + event + "'";
-					
-					//queries database
-					rs = db.readRequest(dbQuery);
-					
-					try {
-						while (rs.next()) {
-						    databaseAttendee += rs.getString("attendee") + ", ";
-						    databaseEvent = rs.getString("event");
-						    System.out.println(databaseAttendee);
-						}
-					} catch (SQLException e1) {
-						e1.printStackTrace();
-					}
-					
-					
-					JOptionPane.showMessageDialog(DayEventView.this, "People attending " + event + ":\n\n" + databaseAttendee);
+			      String attendees = EventsDA.returnAttendee(event);
+			      
+				  JOptionPane.showMessageDialog(DayEventView.this, "People attending " + event + ":\n\n" + attendees);
 			    }
 			  }
 			});
