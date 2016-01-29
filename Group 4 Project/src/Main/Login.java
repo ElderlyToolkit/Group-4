@@ -24,8 +24,8 @@ import javax.swing.JSpinner;
 import javax.swing.border.EmptyBorder;
 
 import Database.DBController;
-import Database.NewUserConstructor;
 import Database.NewUserDA;
+import Entity.NewUserConstructor;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;

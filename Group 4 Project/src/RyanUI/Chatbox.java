@@ -6,10 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Database.ChatboxConstructor;
 import Database.ChatboxDA;
-import Database.NewUserConstructor;
 import Database.NewUserDA;
+import Entity.ChatboxConstructor;
+import Entity.NewUserConstructor;
 
 import javax.swing.JLabel;
 import javax.swing.JTextArea;

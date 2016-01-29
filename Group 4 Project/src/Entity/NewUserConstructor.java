@@ -1,4 +1,4 @@
-package Database;
+package Entity;
 
 public class NewUserConstructor {
 	private int id;

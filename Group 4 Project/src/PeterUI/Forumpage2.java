@@ -21,9 +21,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Database.*;
-import Database.DBController;
-import Database.NewUserConstructor;
-import Database.NewUserDA;
+import Entity.ForumsConstructor;
+import Entity.NewUserConstructor;
 import Main.Login;
 
 import java.sql.ResultSet;

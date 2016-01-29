@@ -1,4 +1,4 @@
-package Database;
+package Entity;
 
 public class ChatboxConstructor {
 	private int id;

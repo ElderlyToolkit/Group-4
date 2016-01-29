@@ -26,10 +26,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
-import Database.EventSignUpConstructor;
 import Database.EventsDA;
-import Database.SignUpConstructor;
 import Database.SignUpDA;
+import Entity.EventSignUpConstructor;
+import Entity.SignUpConstructor;
 import Main.Login;
 
 import javax.swing.border.BevelBorder;

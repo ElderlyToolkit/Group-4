@@ -3,6 +3,8 @@ package Database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import Entity.ForumsConstructor;
+
 public class ForumsDA {
 	public static int createForum(ForumsConstructor constructor){
 		DBController DBC = new DBController();

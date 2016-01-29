@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
 import Database.*;
+import Entity.ForumsConstructor;
 import RyanUI.DayEventCreate;
 import RyanUI.DayEventView;
 import RyanUI.ListTableModel;

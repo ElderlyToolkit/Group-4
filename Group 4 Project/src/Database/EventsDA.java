@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.MutableComboBoxModel;
 
+import Entity.EventConsructor;
+import Entity.EventSignUpConstructor;
 import RyanUI.Events;
 
 public class EventsDA {

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import DarylUI.Dictionary;
+import Entity.NewUserConstructor;
 
 public class NewUserDA {
 	

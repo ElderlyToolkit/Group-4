@@ -3,6 +3,8 @@ package Database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import Entity.ChatboxConstructor;
+
 public class ChatboxDA {
 	
     public static int createItem(ChatboxConstructor constructor){

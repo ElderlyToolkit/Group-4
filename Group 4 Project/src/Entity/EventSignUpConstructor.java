@@ -1,4 +1,4 @@
-package Database;
+package Entity;
 
 public class EventSignUpConstructor {
 	private String databaseAttendee;

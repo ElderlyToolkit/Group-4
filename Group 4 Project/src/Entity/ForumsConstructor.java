@@ -1,4 +1,4 @@
-package Database;
+package Entity;
 
 public class ForumsConstructor {
 	private int id;
