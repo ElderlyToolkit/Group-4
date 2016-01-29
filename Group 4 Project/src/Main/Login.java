@@ -24,7 +24,9 @@ import javax.swing.JSpinner;
 import javax.swing.border.EmptyBorder;
 
 import Database.DBController;
+import Database.LoginDA;
 import Database.NewUserDA;
+import Entity.LoginConstructor;
 import Entity.NewUserConstructor;
 
 import javax.swing.JTabbedPane;
@@ -129,39 +131,19 @@ public class Login extends JFrame {
 			public void actionPerformed (ActionEvent e) {
 				String name = textField.getText();
 				String password = passwordField.getText();
-				String databaseUsername = null;
-				String databasePassword = null;
-				String databasePermission = null;
-				ResultSet rs = null;
 				
-				DBController db=new DBController();
+				LoginConstructor login = LoginDA.authenticateUser(name, password);
 				
-				String dbQuery = "SELECT name, password, permissions FROM users WHERE name='" + name + "' AND password='" + password+ "'";
-				
-				//queries database
-				rs = db.readRequest(dbQuery);
-				
-				//check username and password
-				try {
-					while (rs.next()) {
-					    databaseUsername = rs.getString("name");
-					    databasePassword = rs.getString("password");
-					    databasePermission = rs.getString("permissions");
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-				
-				permission = databasePermission;
+				permission = login.getPermissions();
 
-			    if (name.equals(databaseUsername) && password.equals(databasePassword)) {
+			    if (name.equals(login.getName()) && password.equals(login.getPassword())) {
 			    	
 			    	if (permission.equals("Administrator")) {
 				    	JOptionPane.showMessageDialog(Login.this, "WARNING THIS IS AN ADMINISTRATOR ACCOUNT\n\nUSE EXTREME CAUTION.");
 				    	
 				        textField.setText("");
 				        textField_1.setText("");
-				        user = databaseUsername;
+				        user = login.getName();
 				        
 				        Homepage home = new Homepage();
 				        setVisible(false);
@@ -173,7 +155,7 @@ public class Login extends JFrame {
 			    	
 			        textField.setText("");
 			        passwordField.setText("");
-			        user = databaseUsername;
+			        user = login.getName();
 			        
 			        Homepage home = new Homepage();
 			        setVisible(false);

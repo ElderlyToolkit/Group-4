@@ -21,20 +21,22 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.MutableComboBoxModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
+import Database.EventsDA;
 import Main.Login;
 
 public class DayEventDelete extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private String selectedevent;
 
 	/**
 	 * Launch the application.
@@ -89,7 +91,7 @@ public class DayEventDelete extends JFrame {
 		lblSelectTimeslot.setBounds(10, 61, 95, 14);
 		contentPane.add(lblSelectTimeslot);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<?> comboBox = new JComboBox<Object>();
 		comboBox.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"6AM to 7AM", "7AM to 8AM", "8AM to 9AM", "9AM to 10AM", "10AM to 11AM", "11AM to 12PM", "12PM to 1PM", "1PM to 2PM", "2PM to 3PM", "3PM to 4PM", "4PM to 5PM", "5PM to 6PM", "6PM to 7PM", "7PM to 8PM", "8PM to 9PM", "9PM to 10PM", "10PM to 11PM", "11PM to 12PM"}));
 		comboBox.setMaximumRowCount(18);
@@ -108,12 +110,6 @@ public class DayEventDelete extends JFrame {
 		lblSelectEvent.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectEvent.setBounds(10, 86, 89, 14);
 		contentPane.add(lblSelectEvent);
-		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(109, 85, 133, 17);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
 		
 		JLabel lblLocation = new JLabel("Location:");
 		lblLocation.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
@@ -145,6 +141,11 @@ public class DayEventDelete extends JFrame {
 		btnValidateUser.setBounds(262, 138, 162, 23);
 		contentPane.add(btnValidateUser);
 		
+		JComboBox<String> comboBox_1 = new JComboBox<String>();
+		comboBox_1.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
+		comboBox_1.setBounds(109, 84, 133, 18);
+		contentPane.add(comboBox_1);
+		
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				Events event = new Events();
@@ -155,28 +156,28 @@ public class DayEventDelete extends JFrame {
 		
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				((DefaultComboBoxModel<String>)comboBox_1.getModel()).removeAllElements();
+				textField_2.setText("");
+				textField_3.setText("");
+				
 				String selectedtime = comboBox.getSelectedItem().toString();
 				
-				ResultSet rs = null;
-				String name = null, date = Events.Date, description = null, location = null;
-				DBController db=new DBController();
+				MutableComboBoxModel<String> model = (DefaultComboBoxModel<String>)comboBox_1.getModel();
 				
-				String dbQuery = "SELECT * FROM events WHERE date='" + date + "' AND time='" + selectedtime + "'";
+				String events = EventsDA.returnAllEvents(selectedtime);
 				
-				rs = db.readRequest(dbQuery);
+				model.addElement(events);
+			}
+		});
+		
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selectedtime = comboBox.getSelectedItem().toString();
+				String selectedevent = comboBox_1.getSelectedItem().toString();
 				
-				try {
-					while (rs.next()) {
-					    name = rs.getString("name");
-					    date = rs.getString("date");
-					    description = rs.getString("description");
-					    location = rs.getString("location");
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				String name = EventsDA.returnEventOrganiser(selectedtime, selectedevent);
+				String location = EventsDA.returnEventLocation(selectedtime, selectedevent);
 				
-				textField_1.setText(description);
 				textField_2.setText(location);
 				textField_3.setText(name);
 			}
@@ -211,5 +212,4 @@ public class DayEventDelete extends JFrame {
 			}
 		});
 	}
-
 }
