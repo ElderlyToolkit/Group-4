@@ -149,14 +149,22 @@ public class ForumHealth extends JFrame {
 		btnReply.setBounds(429, 589, 97, 25);
 		contentPane.add(btnReply);
 		
-		
-		
-		
-		
-		
-		
-
-		
-		
+		table_1.addMouseListener(new MouseAdapter() {
+			  public void mouseClicked(MouseEvent e) {
+			    if (e.getClickCount() == 1) {
+			    	int row = 0, column = 0;
+			    	String databaseSubject = "", databaseMessage = null, message, subject;
+			      
+			      row = table_1.getSelectedRow();
+			      column = table_1.getSelectedColumn();
+			      message = table_1.getValueAt(row, 1).toString();
+			      subject = table_1.getValueAt(row, 0).toString();
+			      System.out.println(row);
+			      System.out.println("User Data: " + message);
+			      JOptionPane.showMessageDialog(ForumHealth.this, message);
+			      textPane.setText("RE: " + subject);
+			    }
+			  }
+			});
 	}
 }
