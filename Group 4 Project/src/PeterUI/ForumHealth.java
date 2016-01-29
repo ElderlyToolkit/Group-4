@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
 import Database.*;
+import RyanUI.DayEventCreate;
 import RyanUI.DayEventView;
 import RyanUI.ListTableModel;
 
@@ -139,13 +140,6 @@ public class ForumHealth extends JFrame {
 		contentPane.add(textPane_1);
 		
 		JButton btnReply = new JButton("Reply");
-		btnReply.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(textPane_1.getText() == "" || textPane.getText() == "")
-					JOptionPane.showMessageDialog(ForumHealth.this, "Test");
-					System.out.print("OI");
-			}
-		});
 		btnReply.setBounds(429, 589, 97, 25);
 		contentPane.add(btnReply);
 		
@@ -166,5 +160,24 @@ public class ForumHealth extends JFrame {
 			    }
 			  }
 			});
+		
+		btnReply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int id = 0;
+				String message = textPane_1.getText();
+				String subject = textPane.getText();
+				String catergory = "Health";
+				ForumsConstructor constructor = new ForumsConstructor(message, catergory, subject);
+				id= ForumsDA.createForum(constructor);
+				
+				if (id>0) {
+		    		constructor.setId(id);
+		    		JOptionPane.showMessageDialog(ForumHealth.this, "Reply Sucessful!");
+		    		//System.out.println("Entry was created");
+		    	}
+				
+				table_1.repaint();
+			}
+		});
 	}
 }
