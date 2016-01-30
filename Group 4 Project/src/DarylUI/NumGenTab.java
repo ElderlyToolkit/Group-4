@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +20,14 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 public class NumGenTab extends JFrame {
 	
 	ImageIcon generate = new ImageIcon("Images/generate.png");
 	ImageIcon clear = new ImageIcon("Images/clear2.png");
+	
+	ArrayList<JLabel> labels = new ArrayList<JLabel>();
 
 	private JPanel contentPane;
 
@@ -68,7 +72,7 @@ public class NumGenTab extends JFrame {
 		lblSetOfNumbers.setBounds(10, 11, 118, 33);
 		panel.add(lblSetOfNumbers);
 		
-		JComboBox set = new JComboBox();
+		JComboBox<String> set = new JComboBox<String>();
 		set.setBounds(138, 14, 43, 26);
 		panel.add(set);
 		set.addItem("1");
@@ -76,37 +80,33 @@ public class NumGenTab extends JFrame {
 		set.addItem("3");
 		set.addItem("4");
 		set.addItem("5");
-		set.addItem("6");
-		set.addItem("7");
-		set.addItem("8");
-		set.addItem("9");
-		set.addItem("10");
 		
+		JTextPane textpane = new JTextPane();
+		textpane.setEditable(false);
+		textpane.setBounds(10, 48, 409, 174);
+		panel.add(textpane);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
-		textArea.setBounds(10, 48, 409, 174);
-		panel.add(textArea);
-		
-		JScrollPane pane = new JScrollPane(textArea);
+		JScrollPane pane = new JScrollPane(textpane);
 		pane.setBounds(10, 48, 409, 174);
 		panel.add(pane);
 		
 		JButton HUAT = new JButton(generate);
 		HUAT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int y = 48;
 				for (int i = 0; i <= set.getSelectedIndex() ; i++){ 
+					JLabel l = new JLabel();
+					textpane.insertComponent(l);
+					l.setVisible(true);
 					Numbers num = new Numbers ((int) (Math.random() * 10000));
 					
-					if (num.getNumbers() < 1000) {
-						textArea.append("0" + num.getNumbers() + " \n");
-					}
-					else {
-						textArea.append(num.getNumbers() + " \n");
-					}
-				}
+					if (num.getNumbers() < 1000) 
+						l.setText("0" + num.getNumbers() + " \n");
+					else 
+						l.setText(num.getNumbers()+ " \n");
+					
+					y+=30;
+					}		
 			}
 		});
 		
@@ -116,7 +116,7 @@ public class NumGenTab extends JFrame {
 		JButton Clear = new JButton(clear);
 		Clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
+				textpane.setText("");
 			}
 		});
 		Clear.setBounds(223, 13, 69, 29);
@@ -124,8 +124,7 @@ public class NumGenTab extends JFrame {
 		Clear.setFont(sizedFont);
 		HUAT.setFont(sizedFont);
 		lblSetOfNumbers.setFont(sizedFont);
-		textArea.setFont(sizedFont);
-		set.setFont(sizedFont);
+		textpane.setFont(sizedFont);
 		
 		//END OF PANEL 1
 		
@@ -145,17 +144,9 @@ public class NumGenTab extends JFrame {
 		set1.addItem("3");
 		set1.addItem("4");
 		set1.addItem("5");
-		set1.addItem("6");
-		set1.addItem("7");
-		set1.addItem("8");
-		set1.addItem("9");
-		set1.addItem("10");
 		
-		
-		JTextArea textArea1 = new JTextArea();
+		JTextPane textArea1 = new JTextPane();
 		textArea1.setEditable(false);
-		textArea1.setWrapStyleWord(true);
-		textArea1.setLineWrap(true);
 		textArea1.setBounds(10, 48, 409, 174);
 		
 		JScrollPane pane1 = new JScrollPane(textArea1);
@@ -167,7 +158,7 @@ public class NumGenTab extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i <= set1.getSelectedIndex() ; i++) {
 					Numbers num = new Numbers((int) (Math.random() * 49) + 1);
-					textArea1.append(num.getNumbers() + " ");
+					textArea1.setText(num.getNumbers() + " ");
 				}
 			}
 		});
@@ -189,5 +180,4 @@ public class NumGenTab extends JFrame {
 		textArea1.setFont(sizedFont);
 		set1.setFont(sizedFont);
 	}
-
 }
