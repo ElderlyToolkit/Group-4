@@ -97,17 +97,15 @@ public class NumGenTab extends JFrame {
 		JButton HUAT = new JButton(generate);
 		HUAT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int x;
-				String y;
 				for (int i = 0; i <= set.getSelectedIndex() ; i++){ 
-					x = (int) (Math.random() * 10000);
-					if (x < 1000) {
-						y = "0" + x + " \n";
+					Numbers num = new Numbers ((int) (Math.random() * 10000));
+					
+					if (num.getNumbers() < 1000) {
+						textArea.append("0" + num.getNumbers() + " \n");
 					}
 					else {
-						y = x + " \n";
+						textArea.append(num.getNumbers() + " \n");
 					}
-					textArea.append(y);
 				}
 			}
 		});
@@ -167,12 +165,9 @@ public class NumGenTab extends JFrame {
 		JButton HUAT1 = new JButton(generate);
 		HUAT1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int x;
-				String y;
 				for (int i = 0; i <= set1.getSelectedIndex() ; i++) {
-					x = (int) (Math.random() * 49) + 1;
-					y = x + " ";
-					textArea1.append(y);
+					Numbers num = new Numbers((int) (Math.random() * 49) + 1);
+					textArea1.append(num.getNumbers() + " ");
 				}
 			}
 		});
