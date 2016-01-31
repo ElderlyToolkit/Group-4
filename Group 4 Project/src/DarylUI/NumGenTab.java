@@ -4,12 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,10 +26,10 @@ import javax.swing.JTextPane;
 
 public class NumGenTab extends JFrame {
 	
+	
 	ImageIcon generate = new ImageIcon("Images/generate.png");
 	ImageIcon clear = new ImageIcon("Images/clear2.png");
-	
-	ArrayList<JLabel> labels = new ArrayList<JLabel>();
+	int axe = 0;
 
 	private JPanel contentPane;
 
@@ -56,6 +58,7 @@ public class NumGenTab extends JFrame {
 		File font_file = new File("Fonts/RobotoCondensed-Regular.ttf");
 		Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
 		Font sizedFont = font.deriveFont(17f);
+		Font labelFont = font.deriveFont(19f);
 		setTitle("4D and Toto Generator");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -78,48 +81,85 @@ public class NumGenTab extends JFrame {
 		set.addItem("1");
 		set.addItem("2");
 		set.addItem("3");
-		set.addItem("4");
-		set.addItem("5");
 		
 		JTextPane textpane = new JTextPane();
+		textpane.setBounds(1, 1, 407, 172);
 		textpane.setEditable(false);
-		textpane.setBounds(10, 48, 409, 174);
 		panel.add(textpane);
+		
+		JLabel f = new JLabel("Winning Numbers for today: ");
+		textpane.insertComponent(f);
+		f.setFont(sizedFont);
+		f.setVisible(false);
 		
 		JScrollPane pane = new JScrollPane(textpane);
 		pane.setBounds(10, 48, 409, 174);
 		panel.add(pane);
 		
 		JButton HUAT = new JButton(generate);
+		HUAT.setBounds(308, 14, 94, 26);
 		HUAT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int y = 48;
+				ArrayList<String> list = new ArrayList<String>();
+				f.setVisible(true);
 				for (int i = 0; i <= set.getSelectedIndex() ; i++){ 
-					JLabel l = new JLabel();
-					textpane.insertComponent(l);
-					l.setVisible(true);
 					Numbers num = new Numbers ((int) (Math.random() * 10000));
+						if (num.getNumbers() < 1000)
+							list.add("0" + num.getNumbers());
+						else
+							list.add(num.getNumbers() + "");
+				}
+				
+				
+				for (int i = 0; i < list.size() ; i++) {
+						if (axe == 0) {
+							JLabel l = new JLabel();
+							l.setFont(labelFont);
+							textpane.insertComponent(l);
+							l.setText(list.get(i));
+							l.setIcon(NewsApp.getIcon("Images/bronze.png",30));
+							}
+						if (axe == 1) {
+							JLabel l = new JLabel();
+							l.setFont(labelFont);
+							textpane.insertComponent(l);
+							l.setText(list.get(i));
+							l.setIcon(NewsApp.getIcon("Images/silver.png",30));
+							}
+						if (axe == 2) {
+							JLabel l = new JLabel();
+							l.setFont(labelFont);
+							textpane.insertComponent(l);
+							l.setText(list.get(i));
+							l.setIcon(NewsApp.getIcon("Images/gold.png",30));
+						}
+						
+						if (axe == 3) {
+							textpane.setText("");
+							textpane.insertComponent(f);
+							f.setVisible(false);
+							axe = -1;
+						}
+						axe++;
+						
+					}
 					
-					if (num.getNumbers() < 1000) 
-						l.setText("0" + num.getNumbers() + " \n");
-					else 
-						l.setText(num.getNumbers()+ " \n");
-					
-					y+=30;
-					}		
+				
 			}
 		});
-		
-		HUAT.setBounds(308, 14, 94, 26);
 		panel.add(HUAT);
 		
+		
 		JButton Clear = new JButton(clear);
+		Clear.setBounds(223, 13, 69, 29);
 		Clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textpane.setText("");
+				textpane.insertComponent(f);
+				f.setVisible(false);
+				axe = 0;
 			}
 		});
-		Clear.setBounds(223, 13, 69, 29);
 		panel.add(Clear);
 		Clear.setFont(sizedFont);
 		HUAT.setFont(sizedFont);
@@ -142,23 +182,48 @@ public class NumGenTab extends JFrame {
 		set1.addItem("1");
 		set1.addItem("2");
 		set1.addItem("3");
-		set1.addItem("4");
-		set1.addItem("5");
 		
-		JTextPane textArea1 = new JTextPane();
-		textArea1.setEditable(false);
-		textArea1.setBounds(10, 48, 409, 174);
+		JTextPane textPane1 = new JTextPane();
+		textPane1.setEditable(false);
+		textPane1.setBounds(10, 48, 409, 174);
 		
-		JScrollPane pane1 = new JScrollPane(textArea1);
+		JScrollPane pane1 = new JScrollPane(textPane1);
 		pane1.setBounds(10, 48, 409, 174);
 		panel_1.add(pane1);
 		
 		JButton HUAT1 = new JButton(generate);
 		HUAT1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> list = new ArrayList<String>();
 				for (int i = 0; i <= set1.getSelectedIndex() ; i++) {
 					Numbers num = new Numbers((int) (Math.random() * 49) + 1);
-					textArea1.setText(num.getNumbers() + " ");
+					list.add(num.getNumbers() + "");
+				}
+				for (int i = 0; i < list.size() ; i++) {
+					if (axe == 0) {
+						JLabel l = new JLabel();
+						l.setFont(labelFont);
+						textPane1.insertComponent(l);
+						l.setText(list.get(i));
+						l.setIcon(NewsApp.getIcon("Images/bronze.png",30));
+						}
+					if (axe == 1) {
+						JLabel l = new JLabel();
+						l.setFont(labelFont);
+						textPane1.insertComponent(l);
+						l.setText(list.get(i));
+						l.setIcon(NewsApp.getIcon("Images/silver.png",30));
+						}
+					if (axe == 2) {
+						JLabel l = new JLabel();
+						l.setFont(labelFont);
+						textPane1.insertComponent(l);
+						l.setText(list.get(i));
+						l.setIcon(NewsApp.getIcon("Images/gold.png",30));
+						
+						}
+					axe++;
+					
 				}
 			}
 		});
@@ -169,7 +234,8 @@ public class NumGenTab extends JFrame {
 		JButton Clear1 = new JButton(clear);
 		Clear1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea1.setText("");
+				textPane1.setText("");
+				axe = 0;
 			}
 		});
 		Clear1.setBounds(223, 13, 69, 29);
@@ -177,7 +243,8 @@ public class NumGenTab extends JFrame {
 		Clear1.setFont(sizedFont);
 		HUAT1.setFont(sizedFont);
 		lblSetOfNumbers1.setFont(sizedFont);
-		textArea1.setFont(sizedFont);
+		textPane1.setFont(sizedFont);
 		set1.setFont(sizedFont);
+
 	}
 }

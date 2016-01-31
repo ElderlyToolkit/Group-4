@@ -58,6 +58,15 @@ public class NewsApp extends JFrame  {
 		});
 	}
 	
+	public static ImageIcon getIcon(String Image, int x) {
+		ImageIcon z = new ImageIcon(Image);
+		Image q =  z.getImage();
+		Image w =  q.getScaledInstance(x,x, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon y = new ImageIcon(w);
+		
+		return y;
+	}
+	
 	public static ImageIcon getIcon(String Image) {
 		ImageIcon z = new ImageIcon(Image);
 		Image q =  z.getImage();
