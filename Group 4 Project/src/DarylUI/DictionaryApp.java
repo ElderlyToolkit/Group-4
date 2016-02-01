@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Database.DBController;
+import Entity.Dictionary;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;

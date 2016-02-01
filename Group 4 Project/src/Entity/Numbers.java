@@ -1,4 +1,4 @@
-package DarylUI;
+package Entity;
 
 public class Numbers {
 	private int Numbers;

@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import DarylUI.News;
 import Database.DBController;
+import Entity.News;
 
 public class NewsDA {
 	public static String[] RetrieveHeadlines(int page, String category) {

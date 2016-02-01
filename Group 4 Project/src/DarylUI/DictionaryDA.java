@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 import Database.DBController;
+import Entity.Dictionary;
 
 public class DictionaryDA {
 	public static Dictionary retrieveMeaning(String txt) {

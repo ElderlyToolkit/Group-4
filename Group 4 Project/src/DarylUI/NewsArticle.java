@@ -10,6 +10,9 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Entity.News;
+
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;

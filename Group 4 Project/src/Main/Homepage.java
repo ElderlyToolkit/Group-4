@@ -12,13 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import AyeUi.Counselling;
-import DarylUI.News;
 import DarylUI.NewsApp;
 import DarylUI.NumGenTab;
 import DarylUI.TTT;
-import DarylUI.Dictionary;
 import DarylUI.DictionaryApp;
 import Database.DBController;
+import Entity.Dictionary;
+import Entity.News;
 import RyanUI.ChatboxUsername;
 import RyanUI.DayEventDelete;
 import RyanUI.Events;

@@ -1,4 +1,4 @@
-package DarylUI;
+package Entity;
 
 import javax.swing.ImageIcon;
 

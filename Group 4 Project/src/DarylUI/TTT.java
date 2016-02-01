@@ -7,6 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Entity.Tac;
+import Entity.Tic;
+import Entity.Toes;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 

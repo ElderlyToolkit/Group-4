@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.awt.Color;
 import Database.DBController;
 import Database.NewsDA;
+import Entity.News;
 
 
 public class NewsApp extends JFrame  {
