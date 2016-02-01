@@ -1,6 +1,7 @@
 package PeterUI;
 import java.awt.BorderLayout;
 import Database.DBController;
+import Database.eBooksDA;
 import Entity.eBooksConstructor;
 import java.awt.EventQueue;
 
@@ -24,6 +25,7 @@ import javax.swing.UIManager;
 public class HardBoiledEggs extends JFrame {
 	
 	private int steps = 1;
+	public String category;
 	
 	private JPanel contentPane;
 
@@ -85,31 +87,11 @@ public class HardBoiledEggs extends JFrame {
 		contentPane.add(btnNext);
 		btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		//id++;
         		steps++;
-        		ResultSet rs = null;
-        		String category = lblHbe.getText();
+        		String id = "";
+        		category = txtpnToHardboilEggs.getText();
         		eBooksConstructor ebc = new eBooksConstructor(category);
-        		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + ebc.getCategory() + "' AND step='" + steps +"'";
-        		rs = DBC.readRequest(dbQuery);
-        		try{
-        			while(rs.next()){
-        				s = rs.getString("content");
-        				txtpnToHardboilEggs.setText("");
-        				txtpnToHardboilEggs.setText(s);
-        				if (steps == 3)
-        					btnNext.setVisible(false);
-        			}
-        			
-        		}catch(SQLException f){
-        			f.printStackTrace();
-        		}
-        		
-        		
-        		
-        	
-        		
+        		id = eBooksDA.nextPage(ebc);
         	}
         });
 		
