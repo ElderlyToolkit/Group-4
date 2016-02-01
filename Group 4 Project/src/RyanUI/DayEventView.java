@@ -83,18 +83,6 @@ public class DayEventView extends JFrame {
 		
 		rs = db.readRequest(dbQuery);
 		
-		/*try {
-			while (rs.next()) {
-			    name = rs.getString("name");
-			    time = rs.getString("time");
-			    date = rs.getString("date");
-			    description = rs.getString("date");
-			    location = rs.getString("location");
-			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}*/
-		
 		ImageIcon back = new ImageIcon("Images/back.png");
 		JButton button = new JButton(back);
 		button.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
@@ -113,7 +101,7 @@ public class DayEventView extends JFrame {
 		separator.setBounds(10, 45, 414, 8);
 		contentPane.add(separator);
 		
-		ListTableModel model = ListTableModel.createModelFromResultSet(rs);
+		DefaultTableModel model = BuildTableModel.buildTableModel(rs);
 		JTable table = new JTable(model);
 		table.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		table.setEnabled(true);

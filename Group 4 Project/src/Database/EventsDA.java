@@ -9,6 +9,7 @@ import javax.swing.MutableComboBoxModel;
 
 import Entity.EventConsructor;
 import Entity.EventSignUpConstructor;
+import Main.Login;
 import RyanUI.Events;
 
 public class EventsDA {
@@ -155,5 +156,13 @@ public class EventsDA {
 		
 		EventSignUpConstructor constructor = new EventSignUpConstructor(databaseAttendee, databaseEvent);
 		return constructor;
+    }
+    
+    public static void deleteEvent() {
+    	DBController db=new DBController();
+		
+		String dbQuery = "DELETE FROM events WHERE name='" + Login.user + "'";
+		
+		db.updateRequest(dbQuery);
     }
 }

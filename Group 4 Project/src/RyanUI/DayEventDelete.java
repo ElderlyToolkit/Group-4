@@ -203,11 +203,7 @@ public class DayEventDelete extends JFrame {
 				System.out.print(result);
 				
 				if (result == 0) {
-					DBController db=new DBController();
-					
-					String dbQuery = "DELETE FROM events WHERE name='" + Login.user + "'";
-					
-					db.updateRequest(dbQuery);
+					EventsDA.deleteEvent();
 				}
 			}
 		});

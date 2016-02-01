@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
 import Database.MatchmakingDA;
@@ -73,7 +74,7 @@ public class MatchmakingList extends JFrame {
 		separator.setBounds(10, 45, 414, 8);
 		contentPane.add(separator);
 		
-		ListTableModel model = ListTableModel.createModelFromResultSet(rs);
+		DefaultTableModel model = BuildTableModel.buildTableModel(rs);
 		JTable table = new JTable(model);
 		table.setFont(new Font("Roboto Condensed", Font.PLAIN, 11));
 		table.setEnabled(true);
