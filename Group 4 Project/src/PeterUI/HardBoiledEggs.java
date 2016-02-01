@@ -120,12 +120,7 @@ public class HardBoiledEggs extends JFrame {
         		else{
         		eBooksConstructor constructor = eBooksDA.prevPage(category);
         		txtpnToHardboilEggs.setText(constructor.getContent());
-        		}
-        		
-        		
-        		
-        	
-        		
+        		}	
         	}
         });
 		

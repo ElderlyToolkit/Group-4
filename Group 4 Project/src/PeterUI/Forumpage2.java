@@ -75,7 +75,6 @@ public class Forumpage2 extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Nyala", Font.BOLD, 18));
-		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"Categories", "General", "Entertainment", "Singapore", "Family", "Health", "Hobbies", "Lottery"})
 		comboBox.addItem("General");
 		comboBox.addItem("Entertainment");
 		comboBox.addItem("Singapore");
