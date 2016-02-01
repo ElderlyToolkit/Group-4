@@ -1,4 +1,4 @@
-package PeterUI;
+package UI;
 
 import java.awt.BorderLayout;
 
@@ -23,7 +23,6 @@ import java.awt.event.ActionListener;
 import Database.*;
 import Entity.ForumsConstructor;
 import Entity.NewUserConstructor;
-import Main.Login;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

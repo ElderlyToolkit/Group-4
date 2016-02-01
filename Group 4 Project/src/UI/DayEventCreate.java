@@ -1,4 +1,4 @@
-package RyanUI;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -27,7 +27,6 @@ import javax.swing.table.DefaultTableModel;
 import Database.DBController;
 import Database.EventsDA;
 import Entity.EventConsructor;
-import Main.Login;
 
 import javax.swing.JTextField;
 import java.awt.Font;

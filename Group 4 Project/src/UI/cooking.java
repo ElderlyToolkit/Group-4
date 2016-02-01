@@ -1,13 +1,10 @@
-package PeterUI;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 
 import javax.swing.border.EmptyBorder;
-
-import Main.Homepage;
-
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;

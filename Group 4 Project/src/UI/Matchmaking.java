@@ -1,8 +1,7 @@
-package RyanUI;
+package UI;
 
 import Database.DBController;
-import Main.Login;
-import Main.Homepage;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.FontFormatException;

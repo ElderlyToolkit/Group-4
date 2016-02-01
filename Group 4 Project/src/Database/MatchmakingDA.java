@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import Entity.Dictionary;
 import Entity.MatchmakingConsructor;
-import RyanUI.Matchmaking;
+import UI.Matchmaking;
 
 
 public class MatchmakingDA {

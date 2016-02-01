@@ -1,4 +1,4 @@
-package RyanUI;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

@@ -1,4 +1,4 @@
-package PeterUI;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

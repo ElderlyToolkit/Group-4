@@ -1,4 +1,4 @@
-package RyanUI;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Database.DBController;
-import Main.Login;
-import Main.Homepage;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

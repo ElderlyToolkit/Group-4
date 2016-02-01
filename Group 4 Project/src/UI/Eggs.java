@@ -1,4 +1,4 @@
-package PeterUI;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,9 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Main.Homepage;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 

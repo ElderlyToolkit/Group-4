@@ -1,4 +1,4 @@
-package AyeUi;
+package UI;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URI;
@@ -10,9 +10,6 @@ import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Main.Homepage;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;

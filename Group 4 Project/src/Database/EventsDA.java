@@ -9,8 +9,8 @@ import javax.swing.MutableComboBoxModel;
 
 import Entity.EventConsructor;
 import Entity.EventSignUpConstructor;
-import Main.Login;
-import RyanUI.Events;
+import UI.Events;
+import UI.Login;
 
 public class EventsDA {
 	

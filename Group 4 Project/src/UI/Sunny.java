@@ -1,4 +1,4 @@
-package PeterUI;
+package UI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import Database.DBController;
@@ -20,11 +21,12 @@ import Entity.eBooksConstructor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.SwingConstants;
 
-public class Scrambled extends JFrame {
+
+public class Sunny extends JFrame {
 	private int steps = 1;
 	public String category;
+	
 	private JPanel contentPane;
 
 	/**
@@ -34,7 +36,7 @@ public class Scrambled extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Scrambled frame = new Scrambled();
+					Sunny frame = new Sunny();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,8 +48,8 @@ public class Scrambled extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Scrambled() {
-		setTitle("Scrambled eggs");
+	public Sunny() {
+		setTitle("Sunny eggs");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 732, 587);
 		contentPane = new JPanel();
@@ -55,28 +57,27 @@ public class Scrambled extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ImageIcon img = new ImageIcon("Images/scrambled.jpg");
+		ImageIcon img = new ImageIcon("Images/sunny.jpg");
 		contentPane.setLayout(null);
 		JLabel lblNewLabel = new JLabel(img);
 		lblNewLabel.setBounds(361, 13, 341, 260);
 		contentPane.add(lblNewLabel);
 		
-		JTextPane txtpnToScrambledEggs = new JTextPane();
-		txtpnToScrambledEggs.setEditable(false);
-		txtpnToScrambledEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 25));
-		txtpnToScrambledEggs.setBackground(SystemColor.control);
-		txtpnToScrambledEggs.setText("Step 1:\nCrack eggs in a mixing bowl and whisk with a fork. Add a splash of milk and continue mixing.");
-		txtpnToScrambledEggs.setBounds(12, 99, 299, 428);
-		contentPane.add(txtpnToScrambledEggs);
+		JTextPane txtpnToSunnyEggs = new JTextPane();
+		txtpnToSunnyEggs.setEditable(false);
+		txtpnToSunnyEggs.setFont(new Font("Century Schoolbook", Font.PLAIN, 23));
+		txtpnToSunnyEggs.setBackground(SystemColor.control);
+		txtpnToSunnyEggs.setText("Step 1:\nHeat oil or melt butter in a nonstick skillet over medium heat. Carefully crack eggs one at a time into the skillet.");
+		txtpnToSunnyEggs.setBounds(12, 99, 299, 428);
+		contentPane.add(txtpnToSunnyEggs);
 		
-		JLabel lblScrambled = new JLabel("Scrambled");
-		lblScrambled.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
-		lblScrambled.setHorizontalAlignment(SwingConstants.CENTER);
-		lblScrambled.setBounds(12, 13, 299, 73);
-		contentPane.add(lblScrambled);
+		JLabel lblSunny = new JLabel("Sunny");
+		lblSunny.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		lblSunny.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSunny.setBounds(12, 13, 299, 73);
+		contentPane.add(lblSunny);
 		
 		DBController DBC = new DBController();
-		
 		
 		ImageIcon next = new ImageIcon("Images/next.png");
 		JButton btnNext = new JButton(next);
@@ -85,19 +86,18 @@ public class Scrambled extends JFrame {
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				steps++;
-        		category = lblScrambled.getText();
+        		category = lblSunny.getText();
         		if(steps == 3){
         			eBooksConstructor constructor = eBooksDA.nextPage(category);
-            		txtpnToScrambledEggs.setText(constructor.getContent());
+            		txtpnToSunnyEggs.setText(constructor.getContent());
         			btnNext.setEnabled(false);
         		}
         		else{
         		eBooksConstructor constructor = eBooksDA.nextPage(category);
-        		txtpnToScrambledEggs.setText(constructor.getContent());
+        		txtpnToSunnyEggs.setText(constructor.getContent());
         		}
         	}
         });
-		
 		
 		ImageIcon back = new ImageIcon("Images/back.png");
 		JButton btnBack = new JButton(back);
@@ -105,33 +105,22 @@ public class Scrambled extends JFrame {
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 
 				steps--;
-        		category = lblScrambled.getText();
+        		category = lblSunny.getText();
         		btnNext.setEnabled(true);
         		if(steps == 0){
         			eBooksConstructor constructor = eBooksDA.prevPage(category);
-            		txtpnToScrambledEggs.setText(constructor.getContent());
+            		txtpnToSunnyEggs.setText(constructor.getContent());
         			Eggs egg = new Eggs();
         			egg.setVisible(true);
         			setVisible(false);
         		}
         		else{
         		eBooksConstructor constructor = eBooksDA.prevPage(category);
-        		txtpnToScrambledEggs.setText(constructor.getContent());
+        		txtpnToSunnyEggs.setText(constructor.getContent());
         		}
-        		
-        		
-        		
-        	
-        		
         	}
         });
-		
-		
-		
-		
-		
 		
 		
 		
