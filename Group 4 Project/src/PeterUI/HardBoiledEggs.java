@@ -1,8 +1,7 @@
 package PeterUI;
-
 import java.awt.BorderLayout;
 import Database.DBController;
-
+import Entity.eBooksConstructor;
 import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
@@ -78,6 +77,8 @@ public class HardBoiledEggs extends JFrame {
 		lblHbe.setBounds(12, 13, 299, 73);
 		contentPane.add(lblHbe);
 		
+		
+		
 		ImageIcon next = new ImageIcon("Images/next.png");
 		JButton btnNext = new JButton(next);
 		btnNext.setBounds(571, 502, 120, 25);
@@ -88,8 +89,9 @@ public class HardBoiledEggs extends JFrame {
         		steps++;
         		ResultSet rs = null;
         		String category = lblHbe.getText();
+        		eBooksConstructor ebc = new eBooksConstructor(category);
         		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
+        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + ebc.getCategory() + "' AND step='" + steps +"'";
         		rs = DBC.readRequest(dbQuery);
         		try{
         			while(rs.next()){
