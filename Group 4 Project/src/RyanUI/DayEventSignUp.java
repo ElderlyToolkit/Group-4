@@ -190,7 +190,7 @@ public class DayEventSignUp extends JFrame {
 		
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selectedevent = comboBox_1.getSelectedItem().toString();
+				String selectedevent = comboBox_1.getSelectedItem().toString();
 				String selectedtime = comboBox.getSelectedItem().toString();
 				
 				String name = EventsDA.returnEventOrganiser(selectedtime, selectedevent);
