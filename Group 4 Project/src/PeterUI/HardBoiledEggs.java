@@ -89,10 +89,15 @@ public class HardBoiledEggs extends JFrame {
         	public void actionPerformed(ActionEvent e) {
         		steps++;
         		category = lblHbe.getText();
-        		
+        		if(steps == 3){
+        			eBooksConstructor constructor = eBooksDA.nextPage(category);
+            		txtpnToHardboilEggs.setText(constructor.getContent());
+        			btnNext.setEnabled(false);
+        		}
+        		else{
         		eBooksConstructor constructor = eBooksDA.nextPage(category);
-        		
         		txtpnToHardboilEggs.setText(constructor.getContent());
+        		}
         	}
         });
 		
@@ -102,30 +107,19 @@ public class HardBoiledEggs extends JFrame {
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-        		//id++;
-        		steps--;
+				steps--;
+        		category = lblHbe.getText();
+        		btnNext.setEnabled(true);
         		if(steps == 0){
-					setVisible(false);
+        			eBooksConstructor constructor = eBooksDA.prevPage(category);
+            		txtpnToHardboilEggs.setText(constructor.getContent());
         			Eggs egg = new Eggs();
         			egg.setVisible(true);
-        			}
-        		ResultSet rs = null;
-        		String category = lblHbe.getText();
-        		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
-        		rs = DBC.readRequest(dbQuery);
-        		try{
-        			while(rs.next()){
-        				s = rs.getString("content");
-        				txtpnToHardboilEggs.setText("");
-        				txtpnToHardboilEggs.setText(s);
-        				btnNext.setVisible(true);
-        				
-        				
-        			}
-        			
-        		}catch(SQLException f){
-        			f.printStackTrace();
+        			setVisible(false);
+        		}
+        		else{
+        		eBooksConstructor constructor = eBooksDA.prevPage(category);
+        		txtpnToHardboilEggs.setText(constructor.getContent());
         		}
         		
         		

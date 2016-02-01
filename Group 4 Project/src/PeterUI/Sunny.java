@@ -16,12 +16,17 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import Database.DBController;
+import Database.eBooksDA;
+import Entity.eBooksConstructor;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
 public class Sunny extends JFrame {
-	private int steps = 7;
+	private int steps = 1;
+	public String category;
+	
 	private JPanel contentPane;
 
 	/**
@@ -80,24 +85,16 @@ public class Sunny extends JFrame {
 		contentPane.add(btnNext);
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-        		//id++;
-        		steps++;
-        		ResultSet rs = null;
-        		String category = lblSunny.getText();
-        		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
-        		rs = DBC.readRequest(dbQuery);
-        		try{
-        			while(rs.next()){
-        				s = rs.getString("content");
-        				txtpnToSunnyEggs.setText("");
-        				txtpnToSunnyEggs.setText(s);
-        				if (steps == 9)
-        					btnNext.setVisible(false);
-        			}
-        			
-        		}catch(SQLException f){
-        			f.printStackTrace();
+				steps++;
+        		category = lblSunny.getText();
+        		if(steps == 3){
+        			eBooksConstructor constructor = eBooksDA.nextPage(category);
+            		txtpnToSunnyEggs.setText(constructor.getContent());
+        			btnNext.setEnabled(false);
+        		}
+        		else{
+        		eBooksConstructor constructor = eBooksDA.nextPage(category);
+        		txtpnToSunnyEggs.setText(constructor.getContent());
         		}
         	}
         });
@@ -108,27 +105,19 @@ public class Sunny extends JFrame {
 		contentPane.add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-        		steps--;
-        		if(steps == 6){
-					setVisible(false);
+				steps--;
+        		category = lblSunny.getText();
+        		btnNext.setEnabled(true);
+        		if(steps == 0){
+        			eBooksConstructor constructor = eBooksDA.prevPage(category);
+            		txtpnToSunnyEggs.setText(constructor.getContent());
         			Eggs egg = new Eggs();
         			egg.setVisible(true);
-        			}
-        		ResultSet rs = null;
-        		String category = lblSunny.getText();
-        		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
-        		rs = DBC.readRequest(dbQuery);
-        		try{
-        			while(rs.next()){
-        				s = rs.getString("content");
-        				txtpnToSunnyEggs.setText("");
-        				txtpnToSunnyEggs.setText(s);
-        				btnNext.setVisible(true);
-        			}
-        			
-        		}catch(SQLException f){
-        			f.printStackTrace();
+        			setVisible(false);
+        		}
+        		else{
+        		eBooksConstructor constructor = eBooksDA.prevPage(category);
+        		txtpnToSunnyEggs.setText(constructor.getContent());
         		}
         	}
         });

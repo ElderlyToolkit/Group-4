@@ -15,12 +15,16 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import Database.DBController;
+import Database.eBooksDA;
+import Entity.eBooksConstructor;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.SwingConstants;
 
 public class Scrambled extends JFrame {
-	private int steps= 4;
+	private int steps = 1;
+	public String category;
 	private JPanel contentPane;
 
 	/**
@@ -80,31 +84,17 @@ public class Scrambled extends JFrame {
 		contentPane.add(btnNext);
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
- 
-        		steps++;
-        		ResultSet rs = null;
-        		String category = lblScrambled.getText();
-        		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
-        		rs = DBC.readRequest(dbQuery);
-        		try{
-        			while(rs.next()){
-        				s = rs.getString("content");
-        				txtpnToScrambledEggs.setText("");
-        				txtpnToScrambledEggs.setText(s);
-        				if(steps == 6)
-        					btnNext.setVisible(false);
-        				
-        			}
-        			
-        		}catch(SQLException f){
-        			f.printStackTrace();
+				steps++;
+        		category = lblScrambled.getText();
+        		if(steps == 3){
+        			eBooksConstructor constructor = eBooksDA.nextPage(category);
+            		txtpnToScrambledEggs.setText(constructor.getContent());
+        			btnNext.setEnabled(false);
         		}
-        		
-        		
-        		
-        	
-        		
+        		else{
+        		eBooksConstructor constructor = eBooksDA.nextPage(category);
+        		txtpnToScrambledEggs.setText(constructor.getContent());
+        		}
         	}
         });
 		
@@ -116,27 +106,19 @@ public class Scrambled extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 
-        		steps--;
-        		if(steps == 3){
-					setVisible(false);
+				steps--;
+        		category = lblScrambled.getText();
+        		btnNext.setEnabled(true);
+        		if(steps == 0){
+        			eBooksConstructor constructor = eBooksDA.prevPage(category);
+            		txtpnToScrambledEggs.setText(constructor.getContent());
         			Eggs egg = new Eggs();
         			egg.setVisible(true);
-        			}
-        		ResultSet rs = null;
-        		String category = lblScrambled.getText();
-        		String s = "";
-        		String dbQuery = "SELECT * FROM ebooks WHERE category='" + category + "' AND step='" + steps +"'";
-        		rs = DBC.readRequest(dbQuery);
-        		try{
-        			while(rs.next()){
-        				s = rs.getString("content");
-        				txtpnToScrambledEggs.setText("");
-        				txtpnToScrambledEggs.setText(s);
-        				btnNext.setVisible(true);
-        			}
-        			
-        		}catch(SQLException f){
-        			f.printStackTrace();
+        			setVisible(false);
+        		}
+        		else{
+        		eBooksConstructor constructor = eBooksDA.prevPage(category);
+        		txtpnToScrambledEggs.setText(constructor.getContent());
         		}
         		
         		
