@@ -88,10 +88,11 @@ public class HardBoiledEggs extends JFrame {
 		btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		steps++;
-        		String id = "";
-        		category = txtpnToHardboilEggs.getText();
-        		eBooksConstructor ebc = new eBooksConstructor(category);
-        		id = eBooksDA.nextPage(ebc);
+        		category = lblHbe.getText();
+        		
+        		eBooksConstructor constructor = eBooksDA.nextPage(category);
+        		
+        		txtpnToHardboilEggs.setText(constructor.getContent());
         	}
         });
 		
