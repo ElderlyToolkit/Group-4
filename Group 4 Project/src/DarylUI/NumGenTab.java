@@ -73,6 +73,7 @@ public class NumGenTab extends JFrame {
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("4D", null, panel, null);
 		panel.setLayout(null);
+		axe = 0;
 		
 		JLabel lblSetOfNumbers = new JLabel("Set of numbers:");
 		lblSetOfNumbers.setBounds(10, 11, 118, 33);
@@ -106,9 +107,12 @@ public class NumGenTab extends JFrame {
 				ArrayList<String> list = new ArrayList<String>();
 				f.setVisible(true);
 				for (int i = 0; i <= set.getSelectedIndex() ; i++){ 
-					Numbers num = new Numbers ((int) (Math.random() * 10000));
-						if (num.getNumbers() < 1000)
+					Numbers num = new Numbers ((int) (Math.random() * 9999));
+						if (num.getNumbers() < 100)
+							list.add("00" + num.getNumbers());
+						else if (num.getNumbers() < 1000) {
 							list.add("0" + num.getNumbers());
+						}
 						else
 							list.add(num.getNumbers() + "");
 				}
@@ -140,8 +144,13 @@ public class NumGenTab extends JFrame {
 						if (axe == 3) {
 							textpane.setText("");
 							textpane.insertComponent(f);
-							f.setVisible(false);
-							axe = -1;
+							axe = 0;
+							JLabel l = new JLabel();
+							l.setFont(labelFont);
+							textpane.insertComponent(l);
+							l.setText(list.get(i));
+							l.setIcon(NewsApp.getIcon("Images/bronze.png",30));
+							
 						}
 						axe++;
 						
@@ -174,6 +183,7 @@ public class NumGenTab extends JFrame {
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Toto", null, panel_1, null);
 		panel_1.setLayout(null);
+		axe = 0;
 		
 		JLabel lblSetOfNumbers1 = new JLabel("Set of numbers:");
 		lblSetOfNumbers1.setBounds(10, 11, 118, 33);
@@ -194,9 +204,15 @@ public class NumGenTab extends JFrame {
 		pane1.setBounds(10, 48, 409, 174);
 		panel_1.add(pane1);
 		
+		JLabel f1 = new JLabel("Winning Numbers for today: ");
+		textPane1.insertComponent(f1);
+		f1.setFont(sizedFont);
+		f1.setVisible(false);
+		
 		JButton HUAT1 = new JButton(generate);
 		HUAT1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				f1.setVisible(true);
 				ArrayList<String> list = new ArrayList<String>();
 				for (int i = 0; i <= set1.getSelectedIndex() ; i++) {
 					Numbers num = new Numbers((int) (Math.random() * 49) + 1);
@@ -204,27 +220,38 @@ public class NumGenTab extends JFrame {
 				}
 				for (int i = 0; i < list.size() ; i++) {
 					if (axe == 0) {
-						JLabel l = new JLabel();
-						l.setFont(labelFont);
-						textPane1.insertComponent(l);
-						l.setText(list.get(i));
-						l.setIcon(NewsApp.getIcon("Images/bronze.png",30));
+						JLabel t = new JLabel();
+						t.setFont(labelFont);
+						textPane1.insertComponent(t);
+						t.setText(list.get(i));
+						t.setIcon(NewsApp.getIcon("Images/bronze.png",30));
 						}
 					if (axe == 1) {
-						JLabel l = new JLabel();
-						l.setFont(labelFont);
-						textPane1.insertComponent(l);
-						l.setText(list.get(i));
-						l.setIcon(NewsApp.getIcon("Images/silver.png",30));
+						JLabel t = new JLabel();
+						t.setFont(labelFont);
+						textPane1.insertComponent(t);
+						t.setText(list.get(i));
+						t.setIcon(NewsApp.getIcon("Images/silver.png",30));
 						}
 					if (axe == 2) {
-						JLabel l = new JLabel();
-						l.setFont(labelFont);
-						textPane1.insertComponent(l);
-						l.setText(list.get(i));
-						l.setIcon(NewsApp.getIcon("Images/gold.png",30));
+						JLabel t = new JLabel();
+						t.setFont(labelFont);
+						textPane1.insertComponent(t);
+						t.setText(list.get(i));
+						t.setIcon(NewsApp.getIcon("Images/gold.png",30));
 						
 						}
+					if (axe == 3) {
+						textPane1.setText("");
+						textPane1.insertComponent(f1);
+						axe = 0;
+						JLabel t = new JLabel();
+						t.setFont(labelFont);
+						textPane1.insertComponent(t);
+						t.setText(list.get(i));
+						t.setIcon(NewsApp.getIcon("Images/bronze.png",30));
+						
+					}
 					axe++;
 					
 				}
@@ -238,6 +265,8 @@ public class NumGenTab extends JFrame {
 		Clear1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textPane1.setText("");
+				textPane1.insertComponent(f1);
+				f1.setVisible(false);
 				axe = 0;
 			}
 		});

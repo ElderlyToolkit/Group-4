@@ -50,7 +50,7 @@ public class NewsArticle extends JFrame {
 		Font sizedFont = font.deriveFont(18f);
 		File font2_file = new File("Fonts/RobotoCondensed-Bold.ttf");
 		Font font2 = Font.createFont(Font.TRUETYPE_FONT, font2_file);
-		Font headlineFont = font2.deriveFont(22f);
+		Font headlineFont = font2.deriveFont(19f);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
 		contentPane = new JPanel();
