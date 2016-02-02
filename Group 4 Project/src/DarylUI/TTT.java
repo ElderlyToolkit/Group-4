@@ -146,7 +146,7 @@ public class TTT extends JFrame {
 		ImageIcon tics = new ImageIcon("Images/tictaetoe.png");
 		
 		JLabel box1 = new JLabel("\r\n");
-		box1.setBounds(15, 5, 170, 117);
+		box1.setBounds(15, 15, 170, 93);
 		box1.setHorizontalAlignment(JLabel.CENTER);
 		contentPane.add(box1);
 		
