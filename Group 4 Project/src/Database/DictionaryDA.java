@@ -1,11 +1,10 @@
-package DarylUI;
+package Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import Database.DBController;
 import Entity.Dictionary;
 
 public class DictionaryDA {
