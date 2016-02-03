@@ -11,10 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import DarylUI.NewsApp;
-import DarylUI.NumGenTab;
-import DarylUI.TTT;
-import DarylUI.DictionaryApp;
 import Database.DBController;
 import Entity.Dictionary;
 import Entity.News;
