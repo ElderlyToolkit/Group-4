@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
 import Database.MatchmakingDA;
+import Entity.BuildTableModel;
 
 public class MatchmakingList extends JFrame {
 

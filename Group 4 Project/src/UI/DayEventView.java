@@ -29,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Database.DBController;
 import Database.EventsDA;
+import Entity.BuildTableModel;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
