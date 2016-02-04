@@ -24,6 +24,7 @@ import java.util.Arrays;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.Icon;
 
 public class TTT extends JFrame {
 	int counter = 0;
@@ -507,5 +508,18 @@ public class TTT extends JFrame {
 		});
 		Restart.setBounds(570, 200, 100, 30);
 		contentPane.add(Restart);
+		
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton button = new JButton(back);
+		button.setBounds(570, 236, 100, 30);
+		contentPane.add(button);
+		
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Homepage homepage = new Homepage();
+				setVisible(false);
+				homepage.setVisible(true);
+			}
+		});
 	}
 }

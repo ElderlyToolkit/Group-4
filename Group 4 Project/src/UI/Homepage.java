@@ -217,8 +217,9 @@ public class Homepage extends JFrame {
 
 		btnGames.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TTT games = new TTT();
-				games.setVisible(true);
+				TTT tt = new TTT();
+				setVisible(false);
+				tt.setVisible(true);
 			}
 		});
 		
@@ -309,14 +310,6 @@ public class Homepage extends JFrame {
 				Login login = new Login();
 				setVisible(false);
 				login.setVisible(true);
-			}
-		});
-		
-		btnGames.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TTT ttt = new TTT();
-				setVisible(false);
-				ttt.setVisible(true);
 			}
 		});
 	}
