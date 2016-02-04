@@ -9,7 +9,10 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
+import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -168,6 +171,49 @@ public class Login extends JFrame {
 			        passwordField.setText("");
 			    }
 			}
+		});
+		
+		passwordField.addActionListener(new AbstractAction() {
+			public void actionPerformed(ActionEvent e) {
+				String name = textField.getText();
+				String password = passwordField.getText();
+				
+				LoginConstructor login = LoginDA.authenticateUser(name, password);
+				
+				permission = login.getPermissions();
+
+			    if (name.equals(login.getName()) && password.equals(login.getPassword())) {
+			    	
+			    	if (permission.equals("Administrator")) {
+				    	JOptionPane.showMessageDialog(Login.this, "WARNING THIS IS AN ADMINISTRATOR ACCOUNT\n\nUSE EXTREME CAUTION.");
+				    	
+				        textField.setText("");
+				        textField_1.setText("");
+				        user = login.getName();
+				        
+				        Homepage home = new Homepage();
+				        setVisible(false);
+				        home.setVisible(true);
+				    }
+			    	
+			    	else {
+			    	JOptionPane.showMessageDialog(Login.this, "User authenticated.\n\nWelcome " + name + ".");
+			    	
+			        textField.setText("");
+			        passwordField.setText("");
+			        user = login.getName();
+			        
+			        Homepage home = new Homepage();
+			        setVisible(false);
+			        home.setVisible(true);
+			    	}
+			    }
+			    
+			    else {
+			    	JOptionPane.showMessageDialog(Login.this, "Username and/or Password not found.\n\nPlease try again.", "Message", JOptionPane.WARNING_MESSAGE);
+			        passwordField.setText("");
+			    }
+		}
 		});
 		
 		//NEW PANEL BELOW
