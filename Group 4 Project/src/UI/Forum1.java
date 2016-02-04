@@ -216,7 +216,8 @@ public class Forum1 extends JFrame {
 		btnNewButton.setBounds(274, 573, 115, 29);
 		contentPane.add(btnNewButton);
 		
-		JButton btnBack = new JButton("Back");
+		ImageIcon back = new ImageIcon("Images/back.png");
+		JButton btnBack = new JButton(back);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Homepage hp = new Homepage();

@@ -163,9 +163,9 @@ public class ForumHealth extends JFrame {
 		    		JOptionPane.showMessageDialog(ForumHealth.this, "Reply Sucessful!");
 		    		//System.out.println("Entry was created");
 		    	}
-				
-				table_1.repaint();
 			}
 		});
+		
+		table_1.repaint();
 	}
 }
