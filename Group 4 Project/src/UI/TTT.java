@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -29,6 +30,7 @@ public class TTT extends JFrame {
 	boolean turn = false;
 	private JPanel contentPane;
 	ArrayList<JLabel> tictacs = new ArrayList<JLabel>();
+	ArrayList<MouseListener> mls = new ArrayList<MouseListener>();
 	Toes toe = new Toes("e");
 		
 	Toes[][] table = {
@@ -127,6 +129,7 @@ public class TTT extends JFrame {
 		else if (counter == 8) {
 			result = "No winner!";
 			JOptionPane.showMessageDialog(TTT.this, result, "Winner!", JOptionPane.INFORMATION_MESSAGE);
+			
 		}
 	}
 	
@@ -200,9 +203,7 @@ public class TTT extends JFrame {
 		tictacs.add(box8);
 		tictacs.add(box9);
 		
-		
-		box1.addMouseListener(new MouseAdapter() {
-			@Override
+		MouseListener m1 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac1 = new Tac("x");
@@ -226,12 +227,10 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
 			}
-		});
-
-		box2.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m2 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac2 = new Tac("x");
@@ -255,11 +254,10 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
 			}
-		});
-		box3.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m3 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac3 = new Tac("x");
@@ -282,11 +280,10 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
 			}
-		});
-		box4.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m4 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac4 = new Tac("x");
@@ -311,11 +308,10 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
 			}
-		});
-		box5.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m5 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac5 = new Tac("x");
@@ -339,11 +335,10 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
 			}
-		});
-		box6.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m6 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac6 = new Tac("x");
@@ -367,11 +362,10 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
 			}
-		});
-		box7.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m7 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac7 = new Tac("x");
@@ -395,11 +389,10 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
 			}
-		});
-		box8.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m8 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac8 = new Tac("x");
@@ -422,12 +415,11 @@ public class TTT extends JFrame {
 					turn = false;
 				
 				checkResult(table);	
-				counter++;					
-				 
+				counter++;		
 			}
-		});
-		box9.addMouseListener(new MouseAdapter() {
-			@Override
+		};
+		
+		MouseListener m9 = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (turn == false) {
 					Tac tac9 = new Tac("x");
@@ -451,10 +443,29 @@ public class TTT extends JFrame {
 				
 				checkResult(table);	
 				counter++;
-				 
-				
 			}
-		});
+		};
+		
+		mls.add(m1);
+		mls.add(m2);
+		mls.add(m3);
+		mls.add(m4);
+		mls.add(m5);
+		mls.add(m6);
+		mls.add(m7);
+		mls.add(m8);
+		mls.add(m9);
+		
+		
+		box1.addMouseListener(m1);
+		box2.addMouseListener(m2);
+		box3.addMouseListener(m3);
+		box4.addMouseListener(m4);
+		box5.addMouseListener(m5);
+		box6.addMouseListener(m6);
+		box7.addMouseListener(m7);
+		box8.addMouseListener(m8);
+		box9.addMouseListener(m9);
 			
 			
 		JLabel tac2 = new JLabel(tics);					
@@ -475,262 +486,21 @@ public class TTT extends JFrame {
 				for (JLabel i : tictacs) {
 					i.setIcon(null);
 					};
+					
+				for (int i = 0 ; i < tictacs.size() ; i++) {
+					tictacs.get(i).removeMouseListener(mls.get(i));
+				}
 
 
-					box1.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac1 = new Tac("x");
-								box1.setIcon(tac1.getIcon());
-								table[0][0] = tac1;
-								box1.removeMouseListener(this);
-							}
-							
-							else {
-								Tic tic1 = new Tic("o");
-								box1.setIcon(tic1.getIcon());
-								table[0][0] = tic1;
-								box1.removeMouseListener(this);
-								
-							}
-							
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-						}
-					});
-
-					box2.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac2 = new Tac("x");
-								box2.setIcon(tac2.getIcon());
-								table[0][1] = tac2;
-								box2.removeMouseListener(this);
-							}
-							
-							else if (turn == true) {
-								Tic tic2 = new Tic("o");
-								box2.setIcon(tic2.getIcon());
-								table[0][1] = tic2;
-								box2.removeMouseListener(this);
-								
-							}
-							
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-						}
-					});
-					box3.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac3 = new Tac("x");
-								box3.setIcon(tac3.getIcon());
-								table[0][2] = tac3;
-								box3.removeMouseListener(this);
-							}
-							
-							else if (turn == true) {
-								Tic tic3 = new Tic("o");
-								box3.setIcon(tic3.getIcon());
-								table[0][2] = tic3;
-								box3.removeMouseListener(this);
-							}
-
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-						}
-					});
-					box4.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac4 = new Tac("x");
-								box4.setIcon(tac4.getIcon());
-								table[1][0] = tac4;
-								box4.removeMouseListener(this);
-								
-							}
-							
-							else if (turn == true) {
-								Tic tic4 = new Tic("o");
-								box4.setIcon(tic4.getIcon());
-								table[1][0] = tic4;
-								box4.removeMouseListener(this);
-								
-							}
-
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-						}
-					});
-					box5.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac5 = new Tac("x");
-								box5.setIcon(tac5.getIcon());
-								table[1][1] = tac5;
-								box5.removeMouseListener(this);
-							}
-							
-							else if (turn == true) {
-								Tic tic5 = new Tic("o");
-								box5.setIcon(tic5.getIcon());
-								table[1][1] = tic5;
-								box5.removeMouseListener(this);
-								
-							}
-
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-						}
-					});
-					box6.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac6 = new Tac("x");
-								box6.setIcon(tac6.getIcon());
-								table[1][2] = tac6;
-								box6.removeMouseListener(this);
-							}
-							
-							else if (turn == true) {
-								Tic tic6 = new Tic("o");
-								box6.setIcon(tic6.getIcon());
-								table[1][2] = tic6;
-								box6.removeMouseListener(this);
-								
-							}
-
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-						}
-					});
-					box7.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac7 = new Tac("x");
-								box7.setIcon(tac7.getIcon());
-								table[2][0] = tac7;
-								box7.removeMouseListener(this);
-							}
-							
-							else if (turn == true) {
-								Tic tic7 = new Tic("o");
-								box7.setIcon(tic7.getIcon());
-								table[2][0] = tic7;
-								box7.removeMouseListener(this);
-								
-							}
-
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-						}
-					});
-					box8.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac8 = new Tac("x");
-								box8.setIcon(tac8.getIcon());
-								table[2][1] = tac8;
-								box8.removeMouseListener(this);
-							}
-							
-							else if (turn == true) {
-								Tic tic8 = new Tic("o");
-								box8.setIcon(tic8.getIcon());
-								table[2][1] = tic8;
-								box8.removeMouseListener(this);
-								
-							}
-
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;					
-							 
-						}
-					});
-					box9.addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent e) {
-							if (turn == false) {
-								Tac tac9 = new Tac("x");
-								box9.setIcon(tac9.getIcon());
-								table[2][2] = tac9;
-								box9.removeMouseListener(this);
-							}
-							
-							else if (turn == true) {
-								Tic tic9 = new Tic("o");
-								box9.setIcon(tic9.getIcon());
-								table[2][2] = tic9;
-								box9.removeMouseListener(this);
-								
-							}
-
-							if (turn == false)
-								turn = true;
-							else 
-								turn = false;
-							
-							checkResult(table);	
-							counter++;
-							 
-							
-						}
-					});
+				box1.addMouseListener(m1);
+				box2.addMouseListener(m2);
+				box3.addMouseListener(m3);
+				box4.addMouseListener(m4);
+				box5.addMouseListener(m5);
+				box6.addMouseListener(m6);
+				box7.addMouseListener(m7);
+				box8.addMouseListener(m8);
+				box9.addMouseListener(m9);
 					
 				}
 			
