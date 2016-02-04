@@ -1,21 +1,12 @@
 package UI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Database.ChatboxDA;
-import Database.NewUserDA;
-import Entity.ChatboxConstructor;
-import Entity.NewUserConstructor;
-
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -25,7 +16,6 @@ import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 public class Chatbox extends JFrame {
@@ -86,9 +76,6 @@ public class Chatbox extends JFrame {
 				String input = textField.getText();
 				textArea.append(timeStamp + " " + ChatboxUsername.nickname + ": " +input + "\n");
 				textField.setText("");
-				
-				ChatboxConstructor constructor = new ChatboxConstructor(input);
-				int id = ChatboxDA.createItem(constructor);
 			}
 		});
 		btnNewButton.setBounds(356, 236, 68, 23);
