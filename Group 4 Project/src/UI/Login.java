@@ -289,32 +289,13 @@ public class Login extends JFrame {
 			    String nameauthenticate = username.getText();
 			    String userpasswordauthenticate = password.getText();
 			    
-			    String databaseUsername = null;
-				String databasePassword = null;
-				ResultSet rs = null;
-				
-				DBController db1=new DBController();
-				
-				String dbQuery = "SELECT name, password FROM users WHERE name='" + nameauthenticate + "' AND password='" + userpasswordauthenticate+ "'";
-				
-				//queries database
-				rs = db1.readRequest(dbQuery);
-				
-				//check username and password
-				try {
-					while (rs.next()) {
-					    databaseUsername = rs.getString("name");
-					    databasePassword = rs.getString("password");
-					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+			    LoginConstructor constructor = LoginDA.authenticateAdmin(nameauthenticate, userpasswordauthenticate);
 				
 				if (nameauthenticate.equals("") || userpasswordauthenticate.equals("")) {
 					JOptionPane.showMessageDialog(Login.this, "Empty fields detected.\n\nPlease enter details.");
 				}
 				else {
-					if (databaseUsername.equals("Admin") && databasePassword.equals("admin")) {
+					if (constructor.getPermissions().equals("Administrator")) {
 						JOptionPane.showMessageDialog(Login.this, "Administrator Authenticated.\n\nPermissions granted.");
 						comboBox.setEnabled(true);
 					}
@@ -332,7 +313,7 @@ public class Login extends JFrame {
 				String name = textField_3.getText();
 				int age = (int) spinner.getValue();
 				String email = textField_4.getText();
-				String password = textField_5.getText();
+				String password = passwordField_2.getText();
 				String permission = (String) comboBox.getSelectedItem();
 				int gender = 0;
 				btnClear1.setEnabled(false);
